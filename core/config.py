@@ -3,8 +3,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-GUILD_ID = os.getenv("GUILD_ID") # Optional, for testing sync commands faster
+# Paste your Discord bot token between the quotes:
+HARDCODED_DISCORD_TOKEN = "PASTE_YOUR_DISCORD_TOKEN_HERE"
+
+DISCORD_TOKEN = (
+    HARDCODED_DISCORD_TOKEN.strip()
+    or os.getenv("DISCORD_TOKEN")
+    or os.getenv("TOKEN")
+)
+
+GUILD_ID = os.getenv("GUILD_ID")  # Optional, for faster guild-only command sync
 
 if not DISCORD_TOKEN:
-    raise ValueError("لا يوجد توكن بوت ديسكورد (DISCORD_TOKEN) في البيئة!")
+    raise ValueError(
+        "Missing Discord token. Either set HARDCODED_DISCORD_TOKEN in core/config.py "
+        "or set DISCORD_TOKEN/TOKEN in environment variables."
+    )

@@ -4,8 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Direct token-in-code setup requested by user.
-DISCORD_TOKEN = "MTQ4MjUzMTQ3MzgwNTQxNDU4Mg.GxusNa.jektuWVo7Nd8uLprkonTC_kFYhiijbfAKVUmLc"
-
+DISCORD_TOKEN = ""
 # Optional fallback if you clear DISCORD_TOKEN above:
 if not DISCORD_TOKEN.strip():
     DISCORD_TOKEN = os.getenv("DISCORD_TOKEN", "")

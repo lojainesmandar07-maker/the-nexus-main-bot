@@ -1,0 +1,377 @@
+import json
+import os
+
+def generate_story():
+    story = {
+        "id": 102,
+        "title": "جريمة في الظلال: سرقة بنك الجمهورية",
+        "theme": "التحقيق الجنائي (عقول إجرامية)",
+        "series": 2,
+        "game_mode": "single",
+        "description": "أنت العقل المدبر لعملية سرقة 'بنك الجمهورية'. الخطة كانت مثالية حتى قرر أحد أفراد فريقك خيانتك والهرب بالمال. أنت محاصر الآن داخل قبو البنك، والشرطة في الخارج تتفاوض معك. المحقق 'عمر' على الطرف الآخر من الهاتف. هدفك: كسب الوقت، إيجاد مخرج بديل، أو خداع الشرطة لتأمين هروبك قبل اقتحام المكان. النقاط تمثل (وقتك/مساحة المناورة).",
+        "start_scene": "scene_01_vault",
+        "image_url": "https://images.unsplash.com/photo-1601006509425-9fc2ab550f28?q=80&w=600&auto=format&fit=crop",
+        "scenes": [
+            {
+                "id": "scene_01_vault",
+                "title": "داخل القبو",
+                "text": "الإنذار يملأ المكان بضجيج أحمر خافت. تجلس وحدك في قبو بنك الجمهورية. المال ذهب، والشرطة تحاصر المبنى الخالي من الرهائن. يرن هاتف البنك الأرضي بحدة. ترفع السماعة، لتسمع صوت المحقق 'عمر': 'لقد انتهت اللعبة يا صديقي. المبنى محاصر من كل الجهات. ما هي شروطك للاستسلام السلمي؟'",
+                "image_url": "https://images.unsplash.com/photo-1594912953531-e37ea3097b69?q=80&w=600&auto=format&fit=crop",
+                "choices": [
+                    {
+                        "text": "[الهدوء] 'أريد مروحية على السطح، ومليون دولار في حقائب غير معلمة.'",
+                        "next_scene": "scene_02_helicopter",
+                        "color": "primary",
+                        "points_reward": 5
+                    },
+                    {
+                        "text": "[المراوغة] 'لا شروط. أنا مجرد رهينة، السارق الحقيقي هرب من الباب الخلفي!'",
+                        "next_scene": "scene_02_hostage_lie",
+                        "color": "secondary",
+                        "points_reward": -5
+                    },
+                    {
+                        "text": "[الاستفزاز] 'لعبة؟ أنت من يلعب. اقتحموا إن كنتم تجرؤون!'",
+                        "next_scene": "scene_02_provoke",
+                        "color": "danger",
+                        "points_reward": -10
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_02_helicopter",
+                "title": "شروط كلاسيكية",
+                "text": "'مروحية؟ كأننا في فيلم من الثمانينيات.' يضحك عمر. 'لا مروحيات. نعرف أنك لوحدك في الداخل، ونعرف أن لا رهائن معك. فلماذا قد نتفاوض؟'",
+                "choices": [
+                    {
+                        "text": "'لدي متفجرات مزروعة في الأعمدة الأساسية. سأدمر البنك.'",
+                        "next_scene": "scene_03_bomb",
+                        "color": "danger",
+                        "points_reward": 5
+                    },
+                    {
+                        "text": "'لأنني أعرف من سرب لي الرموز الأمنية للبنك من داخل جهاز الشرطة.'",
+                        "next_scene": "scene_03_mole",
+                        "color": "primary",
+                        "points_reward": 10
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_02_hostage_lie",
+                "title": "كذبة הرهينة",
+                "text": "'رهينة؟' يرد عمر ببرود. 'الطائرات المسيرة الحرارية تؤكد وجود شخص واحد فقط في القبو. إذا كنت رهينة، فأين السارق؟'",
+                "choices": [
+                    {
+                        "text": "'استخدم نفق الصرف الصحي تحت القبو.'",
+                        "next_scene": "scene_03_sewer_lie",
+                        "color": "secondary",
+                        "points_reward": 5
+                    },
+                    {
+                        "text": "'لقد تخفّى في زي حارس أمن وخرج قبل وصولكم.'",
+                        "next_scene": "scene_03_guard_lie",
+                        "color": "danger",
+                        "points_reward": -10
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_02_provoke",
+                "title": "نفاد الصبر",
+                "text": "'اقتحام؟ حسناً.' تسمع صوت عمر يعطي أوامر في الراديو. 'فريق SWAT يستعد لكسر الباب الأمامي الآن. إذا لم تعطني سبباً وجيهاً لإيقافهم، ستكون هذه آخر مكالمة لك.'",
+                "choices": [
+                    {
+                        "text": "'انتظر! لدي رهينة مخفية لم ترصدوها.'",
+                        "next_scene": "scene_fail_swat",
+                        "color": "danger",
+                        "points_reward": 0
+                    },
+                    {
+                        "text": "'أنا الوحيد الذي يعرف أين ذهب باقي الفريق بالأموال.'",
+                        "next_scene": "scene_04_the_money",
+                        "color": "primary",
+                        "points_reward": 5
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_03_bomb",
+                "title": "خدعة المتفجرات",
+                "text": "'متفجرات؟' يصمت عمر لثوان. 'فريق تفكيك القنابل جاهز، لكنني لا أصدقك. لو كان لديك متفجرات لهربت أثناء الفوضى الأولى. أين زرعت القنابل إن كنت صادقاً؟'",
+                "choices": [
+                    {
+                        "text": "'في غرفة المحولات الكهربائية.'",
+                        "next_scene": "scene_fail_bomb_lie",
+                        "color": "danger",
+                        "points_reward": 0
+                    },
+                    {
+                        "text": "'حفرت تحت الأساسات الجنوبية. أي اقتحام سيؤدي لانہيار المبنى.'",
+                        "next_scene": "scene_05_time_gained",
+                        "color": "primary",
+                        "points_reward": 10
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_03_mole",
+                "title": "ورقة الجاسوس",
+                "text": "تشعر بصدمة عمر عبر الخط. 'هذه اتهامات خطيرة. ما الدليل على وجود خائن بيننا؟'",
+                "choices": [
+                    {
+                        "text": "'أرسل لي رقم هاتف غير مراقب لأرسل لك صورة كدليل.'",
+                        "next_scene": "scene_05_time_gained",
+                        "color": "primary",
+                        "points_reward": 10
+                    },
+                    {
+                        "text": "'اسمه الضابط سمير.' (اسم عشوائي)",
+                        "next_scene": "scene_fail_mole",
+                        "color": "danger",
+                        "points_reward": 0
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_03_sewer_lie",
+                "title": "الهروب الوهمي",
+                "text": "'الصرف الصحي؟' يرد عمر بسرعة: 'لقد أغلقنا كل المخارج قبل نصف ساعة. لكن سأرسل فريقاً للتأكد.' تكسب بعض الوقت الثمين بينما يبحثون عن شبح.",
+                "choices": [
+                    {
+                        "text": "تبدأ في البحث عن مخرج في سقف القبو...",
+                        "next_scene": "scene_06_ventilation",
+                        "color": "primary",
+                        "points_reward": 5
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_03_guard_lie",
+                "title": "كذبة ضعيفة",
+                "text": "'حارس أمن؟ لقد احتجزنا جميع الحراس منذ وصولنا وقمنا بعدّهم. أنت المشتبه به الوحيد في الداخل. يبدو أنك تكذب لكسب الوقت. الاقتحام بعد 5 دقائق.'",
+                "choices": [
+                    {
+                        "text": "الاستمرار في الكذب: 'أنا لست السارق صدقني!'",
+                        "next_scene": "scene_fail_swat",
+                        "color": "danger",
+                        "points_reward": 0
+                    },
+                    {
+                        "text": "الاعتراف التكتيكي: 'حسناً، أنا السارق. لكن لا تقتحم، لدي عرض.'",
+                        "next_scene": "scene_04_the_money",
+                        "color": "secondary",
+                        "points_reward": 5
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_04_the_money",
+                "title": "الورقة الرابحة",
+                "text": "'إذاً شريكك هرب بالمال وتركك هنا.' يقول عمر بسخرية. 'إذا ساعدتنا في القبض عليه، سأوصي بتخفيف عقوبتك. أين ذهب؟'",
+                "choices": [
+                    {
+                        "text": "'لا، أريد حصانة كاملة، وإلا لن أخبرك.'",
+                        "next_scene": "scene_05_time_gained",
+                        "color": "primary",
+                        "points_reward": 5
+                    },
+                    {
+                        "text": "'ذهب إلى المطار، رحلته بعد ساعة.'",
+                        "next_scene": "scene_fail_airport",
+                        "color": "danger",
+                        "points_reward": 0
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_05_time_gained",
+                "title": "ثوانٍ معدودة",
+                "text": "عمر يوقف الاقتحام مؤقتاً للتأكد من معلوماتك. لقد كسبت حوالي 15 دقيقة. تترك سماعة الهاتف وتبحث في القبو المظلم. هناك فتحة تهوية قديمة، وجهاز إنذار الحريق. كيف ستستغل الوقت؟",
+                "choices": [
+                    {
+                        "text": "استخدام أدوات اللحام لفتح فتحة التهوية للصعود للسطح.",
+                        "next_scene": "scene_06_ventilation",
+                        "color": "primary",
+                        "points_reward": 5
+                    },
+                    {
+                        "text": "إشعال حريق صغير لتفعيل نظام الإطفاء لخلق فوضى دخانية.",
+                        "next_scene": "scene_06_smoke",
+                        "color": "secondary",
+                        "points_reward": 5
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_06_ventilation",
+                "title": "في مجاري الهواء",
+                "text": "تتمكن من إزالة الشبكة وتزحف داخل أنابيب التهوية الضيقة. المكان مليء بالغبار وتسمع صدى خطوات الشرطة بالخارج. تصل إلى مفترق طرق: يمين (باتجاه السقف) أو يسار (باتجاه مرآب السيارات تحت الأرض).",
+                "choices": [
+                    {
+                        "text": "الزحف يميناً نحو السطح.",
+                        "next_scene": "scene_fail_roof",
+                        "color": "danger",
+                        "points_reward": -10
+                    },
+                    {
+                        "text": "الزحف يساراً نحو المرآب.",
+                        "next_scene": "scene_07_garage",
+                        "color": "primary",
+                        "points_reward": 10
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_06_smoke",
+                "title": "الدخان يعمي العيون",
+                "text": "تشعل الأوراق. نظام الإطفاء يعمل بكثافة. القبو يمتلئ بالدخان والمياه. يكسر فريق SWAT الباب ويدخلون بحذر مرتدين الأقنعة. لا يمكنهم الرؤية جيداً.",
+                "choices": [
+                    {
+                        "text": "الاختباء داخل إحدى الخزنات المفتوحة.",
+                        "next_scene": "scene_fail_hide",
+                        "color": "danger",
+                        "points_reward": 0
+                    },
+                    {
+                        "text": "الهجوم المباغت على آخر شرطي لسرقة زيه.",
+                        "next_scene": "scene_07_disguise",
+                        "color": "success",
+                        "points_reward": 15
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_07_garage",
+                "title": "المرآب المظلم",
+                "text": "تسقط من فتحة التهوية وتجد نفسك في المرآب. هناك سيارة شرطة فارغة ومفتوحة، وهناك شاحنة نظافة بنك. (يتطلب 20 نقطة ثقة/وقت لاتخاذ الخيار الآمن).",
+                "choices": [
+                    {
+                        "text": "سرقة سيارة الشرطة والقيادة بسرعة نحو المخرج.",
+                        "next_scene": "scene_fail_police_car",
+                        "color": "danger",
+                        "points_reward": 0
+                    },
+                    {
+                        "text": "الاختباء داخل حاوية شاحنة النظافة للهروب في الصباح.",
+                        "next_scene": "scene_win_narrow",
+                        "required_points": 20,
+                        "color": "success",
+                        "points_reward": 10
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_07_disguise",
+                "title": "زي الشرطة",
+                "text": "تنجح في سحب الشرطي وتجريده من زيه بخفة تحت غطاء الدخان. تخرج من القبو مرتدياً الخوذة والدرع، وتتجه نحو المخرج الأمامي وسط الفوضى.",
+                "choices": [
+                    {
+                        "text": "المشي بهدوء مع المجموعة المنسحبة.",
+                        "next_scene": "scene_win_perfect",
+                        "required_points": 30,
+                        "color": "success",
+                        "points_reward": 10
+                    },
+                    {
+                        "text": "الركض سريعاً نحو سيارات الإسعاف.",
+                        "next_scene": "scene_fail_run",
+                        "color": "danger",
+                        "points_reward": 0
+                    }
+                ],
+                "is_ending": False
+            },
+            {
+                "id": "scene_fail_swat",
+                "title": "النهاية: اقتحام قاسي",
+                "text": "كذباتك لم تنطلِ على عمر. دخل فريق SWAT من السقف والجدران، وقنابل الغاز أصابتك بالعمى. استسلمت مقيداً. (لقد خسرت).",
+                "choices": [],
+                "is_ending": True
+            },
+            {
+                "id": "scene_fail_bomb_lie",
+                "title": "النهاية: كذبة المتفجرات",
+                "text": "'غرفة المحولات تم تأمينها قبل ساعة.' يضحك عمر. اقتحموا البنك وتم القبض عليك بتهمة السطو والتهديد. (لقد خسرت).",
+                "choices": [],
+                "is_ending": True
+            },
+            {
+                "id": "scene_fail_mole",
+                "title": "النهاية: تخمين خاطئ",
+                "text": "'ليس لدينا أي ضابط باسم سمير في هذه العملية.' الاقتحام تم فوراً، وانتهت مسيرتك الإجرامية. (لقد خسرت).",
+                "choices": [],
+                "is_ending": True
+            },
+            {
+                "id": "scene_fail_airport",
+                "title": "النهاية: إغلاق المطار",
+                "text": "اتصلوا بالمطار، ولم يجدوا أحداً. أدرك المحقق أنك تماطل، واقتحموا المبنى. (لقد خسرت).",
+                "choices": [],
+                "is_ending": True
+            },
+            {
+                "id": "scene_fail_roof",
+                "title": "النهاية: قناص السطح",
+                "text": "وصلت للسطح وتنفست الصعداء، لكن نقطة حمراء استقرت على صدرك. القناصة كانوا بانتظارك. (لقد خسرت).",
+                "choices": [],
+                "is_ending": True
+            },
+            {
+                "id": "scene_fail_hide",
+                "title": "النهاية: الاختباء الفاشل",
+                "text": "الخزنة لم تكن آمنة. فريق SWAT مع الكاميرات الحرارية وجدوك بسرعة. (لقد خسرت).",
+                "choices": [],
+                "is_ending": True
+            },
+            {
+                "id": "scene_fail_police_car",
+                "title": "النهاية: سيارة الشرطة",
+                "text": "بمجرد تشغيل السيارة، تم تفعيل نظام التتبع. إطارات السيارة تم ثقبها عند المخرج والقي القبض عليك. (لقد خسرت).",
+                "choices": [],
+                "is_ending": True
+            },
+            {
+                "id": "scene_fail_run",
+                "title": "النهاية: ركض مشبوه",
+                "text": "الركض أثار انتباه المحقق عمر شخصياً. أوقفك وسحب خوذتك ليجد وجهك. (لقد خسرت).",
+                "choices": [],
+                "is_ending": True
+            },
+            {
+                "id": "scene_win_narrow",
+                "title": "النهاية: النجاة في القمامة",
+                "text": "اختبأت طوال الليل وسط القمامة. في الصباح الباكر، تحركت الشاحنة بك لخارج نطاق البنك تماماً. هربت بلا مال، لكن حراً. (لقد فزت بصعوبة).",
+                "choices": [],
+                "is_ending": True
+            },
+            {
+                "id": "scene_win_perfect",
+                "title": "النهاية: هروب مثالي",
+                "text": "مشيت مع فرقة SWAT بهدوء تام. ركبت إحدى مدرعاتهم كضابط مصاب. غادرت المنطقة دون أن يلحظك أحد. هروب أسطوري بلا أخطاء. (لقد فزت).",
+                "choices": [],
+                "is_ending": True
+            }
+        ]
+    }
+
+    os.makedirs("data/stories", exist_ok=True)
+    with open("data/stories/sp_investigation_2.json", "w", encoding="utf-8") as f:
+        json.dump(story, f, ensure_ascii=False, indent=4)
+    print("Story 2 generated successfully!")
+
+if __name__ == "__main__":
+    generate_story()

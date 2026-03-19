@@ -1,0 +1,577 @@
+{
+  "id": 111,
+  "title": "جناح الصدى",
+  "theme": "الرعب النفسي",
+  "series": 1,
+  "game_mode": "single",
+  "description": "استيقظ داخل مصحة نفسية مع ذاكرة ممزقة. كل قرار يكشف حقيقة وقد يقودك للنجاة أو الانهيار.",
+  "start_scene": "scene_01",
+  "image_url": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528",
+  "scenes": [
+    {
+      "id": "scene_01",
+      "title": "ليلة الانقطاع",
+      "text": "تستيقظ داخل مصحة قديمة بعد انقطاع الكهرباء. مذياع مكسور يكرر اسمك بصوت متقطع، وتجد بطاقة مريض لا تحمل صورتك.",
+      "choices": [
+        {
+          "text": "تفقد غرفة الأرشيف بسرعة",
+          "next_scene": "scene_02",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "تتبع الصوت في الممر المظلم",
+          "next_scene": "scene_03",
+          "color": "danger",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_02",
+      "title": "دفتر الأعراض",
+      "text": "في الأرشيف تجد ملفاً يصف هلوسات مطابقة لما تراه الآن، لكن التاريخ هو تاريخ الغد.",
+      "choices": [
+        {
+          "text": "تأخذ الملف وتبحث عن مكتب المدير",
+          "next_scene": "scene_04",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "تحرق الملف خوفاً من التلاعب",
+          "next_scene": "scene_05",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_03",
+      "title": "الممر الطويل",
+      "text": "الصوت يقودك لباب غرفة علاج جماعي، وعلى الزجاج كتابة: لا تثق بذاكرتك.",
+      "choices": [
+        {
+          "text": "تدخل الغرفة بحذر",
+          "next_scene": "scene_05",
+          "color": "primary",
+          "points_reward": 5
+        },
+        {
+          "text": "تعود للأرشيف قبل فوات الأوان",
+          "next_scene": "scene_04",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_04",
+      "title": "مكتب المدير",
+      "text": "تجد خريطة للمصحة ومفتاحاً يحمل رمز القبو. كاميرا قديمة تعمل وتعرضك وأنت نائم قبل دقيقة.",
+      "choices": [
+        {
+          "text": "تأخذ المفتاح وتتجه للقبو",
+          "next_scene": "scene_06",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "تحاول كسر شاشة الكاميرا",
+          "next_scene": "scene_07",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_05",
+      "title": "حلقة التسجيل",
+      "text": "جهاز تسجيل يبث جلسة علاج بصوتك أنت، وفيه اعتراف بأنك تخفي شيئاً خطيراً عن الفريق الطبي.",
+      "choices": [
+        {
+          "text": "تستمع للنهاية كاملة",
+          "next_scene": "scene_07",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "توقف التسجيل وتهرب للأسطح",
+          "next_scene": "scene_08",
+          "color": "danger",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_06",
+      "title": "درج القبو",
+      "text": "الدرج رطب وتظهر آثار أقدام حديثة. المفتاح يفتح باباً معدنياً عليه كلمة: الملاحظة.",
+      "choices": [
+        {
+          "text": "تفتح الباب فوراً",
+          "next_scene": "scene_09",
+          "color": "primary",
+          "points_reward": 5
+        },
+        {
+          "text": "تفحص الآثار قبل الدخول",
+          "next_scene": "scene_10",
+          "color": "success",
+          "points_reward": 10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_07",
+      "title": "المرآة ثنائية الاتجاه",
+      "text": "تدخل غرفة مراقبة فيها مرآة تكشف غرفة علاج فارغة، ثم يظهر انعكاسك بملابس طبيب.",
+      "choices": [
+        {
+          "text": "تبحث عن ملفات الطبيب",
+          "next_scene": "scene_10",
+          "color": "primary",
+          "points_reward": 5
+        },
+        {
+          "text": "تحطم المرآة وتدخل الغرفة المقابلة",
+          "next_scene": "scene_11",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_08",
+      "title": "سطح المصحة",
+      "text": "المدينة تحتك صامتة بشكل غير طبيعي. هاتف طوارئ على السطح فيه رسالة صوتية باسم: المريض 17.",
+      "choices": [
+        {
+          "text": "تشغل الرسالة",
+          "next_scene": "scene_11",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "تحاول النزول عبر سلم الطوارئ",
+          "next_scene": "scene_12",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_09",
+      "title": "غرفة الملاحظة",
+      "text": "في القبو تجد شاشة تعرض جلساتك على مدى سنوات، مع ملاحظة: استجابة ممتازة عندما يظن أنه المحقق.",
+      "choices": [
+        {
+          "text": "تقبل الفرضية وتكمل التحقيق",
+          "next_scene": "scene_13",
+          "color": "success",
+          "points_reward": 15
+        },
+        {
+          "text": "ترفضها وتبحث عن دليل خارجي",
+          "next_scene": "scene_12",
+          "color": "primary",
+          "points_reward": 5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_10",
+      "title": "خزانة الأدوية",
+      "text": "تجد دواءين: واحد يهدئ الهلوسة وآخر يعيد الذكريات بقوة مؤلمة.",
+      "choices": [
+        {
+          "text": "تأخذ دواء الذاكرة",
+          "next_scene": "scene_14",
+          "color": "success",
+          "points_reward": 15,
+          "required_points": 20
+        },
+        {
+          "text": "تأخذ المهدئ وتتحرك",
+          "next_scene": "scene_13",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_11",
+      "title": "رسالة الممرضة",
+      "text": "الممرضة المسجلة تقول: إذا كنت تسمعني، لا تفتح الجناح الشرقي قبل أن تعرف من مات فعلاً.",
+      "choices": [
+        {
+          "text": "تبحث عن سجل الوفيات",
+          "next_scene": "scene_14",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "تتجه مباشرة للجناح الشرقي",
+          "next_scene": "scene_15",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_12",
+      "title": "مخرج الطوارئ",
+      "text": "المخرج مقفل بسلسلة جديدة. هناك بطاقة أمن تسمح لك بفتح طابق واحد فقط.",
+      "choices": [
+        {
+          "text": "تفتح جناح المختبر",
+          "next_scene": "scene_15",
+          "color": "primary",
+          "points_reward": 5
+        },
+        {
+          "text": "تفتح قسم السجلات الجنائية",
+          "next_scene": "scene_16",
+          "color": "success",
+          "points_reward": 10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_13",
+      "title": "لوح الأدلة",
+      "text": "تجمع خيوطاً تشير إلى حادث حريق قديم. ثلاثة أسماء تتكرر: أنت، المدير، والممرضة لينا.",
+      "choices": [
+        {
+          "text": "التركيز على ملف لينا",
+          "next_scene": "scene_16",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "مواجهة المدير مباشرة",
+          "next_scene": "scene_17",
+          "color": "danger",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_14",
+      "title": "استعادة الذاكرة",
+      "text": "ومضات سريعة تكشف أنك كنت شاهداً لا مريضاً، لكنك أخفيت جزءاً من الحقيقة لتحمي شخصاً.",
+      "choices": [
+        {
+          "text": "تكمل الاستعادة رغم الألم",
+          "next_scene": "scene_18",
+          "color": "success",
+          "points_reward": 15
+        },
+        {
+          "text": "توقف العملية قبل الانهيار",
+          "next_scene": "scene_17",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_15",
+      "title": "الجناح الشرقي",
+      "text": "تدخل جناحاً محظوراً وتجد أسرة فارغة تحمل أسماء محذوفة. صوت إنذار يبدأ تدريجياً.",
+      "choices": [
+        {
+          "text": "تعطيل الإنذار من اللوحة",
+          "next_scene": "scene_18",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "الهروب للممر الخلفي",
+          "next_scene": "scene_19",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_16",
+      "title": "قسم السجلات الجنائية",
+      "text": "سجل الحريق يذكر وفاة مريض واحد فقط، لكن قائمة الناجين لا تحتوي اسمك.",
+      "choices": [
+        {
+          "text": "تحلل التناقض في غرفة الحاسوب",
+          "next_scene": "scene_20",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "تتهم الإدارة بالتزوير فوراً",
+          "next_scene": "scene_19",
+          "color": "danger",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_17",
+      "title": "مواجهة المدير",
+      "text": "المدير يظهر عبر مكبر صوت: أنت لست جاهزاً للحقيقة كاملة. يعود الانقطاع مجدداً.",
+      "choices": [
+        {
+          "text": "تتبع مصدر الصوت",
+          "next_scene": "scene_20",
+          "color": "primary",
+          "points_reward": 5
+        },
+        {
+          "text": "تبحث عن لينا أولاً",
+          "next_scene": "scene_21",
+          "color": "success",
+          "points_reward": 10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_18",
+      "title": "غرفة الصدمة",
+      "text": "تكتشف شريطاً يظهر لحظة الحريق: شخص ما دفعك للخروج بينما بقي آخرون بالداخل.",
+      "choices": [
+        {
+          "text": "تحديد هوية المنقذ عبر الأرشيف",
+          "next_scene": "scene_22",
+          "color": "success",
+          "points_reward": 15
+        },
+        {
+          "text": "إخفاء الشريط حتى لا ينهار عقلك",
+          "next_scene": "scene_21",
+          "color": "secondary",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_19",
+      "title": "الممر الخلفي",
+      "text": "الممر يقود لمشرحة صغيرة. كل الأدراج فارغة عدا درج يحمل اسمك.",
+      "choices": [
+        {
+          "text": "فتح الدرج",
+          "next_scene": "scene_22",
+          "color": "danger",
+          "points_reward": -10
+        },
+        {
+          "text": "رفض الفخ والعودة للملفات",
+          "next_scene": "scene_23",
+          "color": "primary",
+          "points_reward": 5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_20",
+      "title": "غرفة الحاسوب",
+      "text": "تخترق النظام وتجد حساباً باسمك كان يغيّر السجلات لسنوات.",
+      "choices": [
+        {
+          "text": "تتبع سجل التعديلات",
+          "next_scene": "scene_23",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "حذف النظام بالكامل",
+          "next_scene": "scene_24",
+          "color": "danger",
+          "points_reward": -15
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_21",
+      "title": "مكتب لينا",
+      "text": "تجد رسالة بخط يد لينا: الحقيقة ستؤذيك لكنها ستحررك.",
+      "choices": [
+        {
+          "text": "تبحث عن موقع لينا عبر جهاز التتبع",
+          "next_scene": "scene_24",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "تتجاهلها وتغادر للمخرج",
+          "next_scene": "scene_25",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_22",
+      "title": "الهوية المزدوجة",
+      "text": "تتأكد أنك كنت متعاوناً مع الفريق الطبي ثم انقلبت عليهم عندما اكتشفت تجربة غير قانونية.",
+      "choices": [
+        {
+          "text": "جمع الأدلة لفضح التجربة",
+          "next_scene": "scene_25",
+          "color": "success",
+          "points_reward": 15
+        },
+        {
+          "text": "تدمير الأدلة وإنهاء كل شيء",
+          "next_scene": "scene_26",
+          "color": "danger",
+          "points_reward": -15
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_23",
+      "title": "ممر الاعتراف",
+      "text": "سماعة في الحائط تطلب منك جملة مرور لإنقاذ ما تبقى من السجلات.",
+      "choices": [
+        {
+          "text": "استخدام اسم المريض 17",
+          "next_scene": "scene_26",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "استخدام اسم لينا",
+          "next_scene": "scene_25",
+          "color": "success",
+          "points_reward": 10,
+          "required_points": 35
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_24",
+      "title": "غرفة القرار",
+      "text": "لينا تظهر حيّة وتعرض عليك صفقة: تخرج بلا ملاحقة مقابل إخفاء الحقيقة.",
+      "choices": [
+        {
+          "text": "رفض الصفقة وتوثيق كل شيء",
+          "next_scene": "scene_27",
+          "color": "success",
+          "points_reward": 15,
+          "required_points": 40
+        },
+        {
+          "text": "قبول الصفقة والهرب",
+          "next_scene": "scene_28",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_25",
+      "title": "السطح الأخير",
+      "text": "تصل للسطح ومعك جزء من الأدلة. مروحية إسعاف تقترب بينما الحرس يصعد الدرج.",
+      "choices": [
+        {
+          "text": "تسليم الأدلة للمروحية",
+          "next_scene": "scene_29",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "القفز إلى مبنى مجاور",
+          "next_scene": "scene_30",
+          "color": "danger",
+          "points_reward": -15
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_26",
+      "title": "انهيار النظام",
+      "text": "النظام الأمني ينهار وتُغلق الأبواب تلقائياً. لديك دقيقة قبل حقن تهدئة جماعي في الممرات.",
+      "choices": [
+        {
+          "text": "تفتح غرفة التحكم يدوياً",
+          "next_scene": "scene_31",
+          "color": "primary",
+          "points_reward": 5
+        },
+        {
+          "text": "تختبئ وتنتظر",
+          "next_scene": "scene_32",
+          "color": "danger",
+          "points_reward": -20
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_27",
+      "title": "نهاية: الحقيقة الكاملة",
+      "text": "تنشر التسجيلات كاملة وتتحمل عاصفة إعلامية، لكن التجربة تُغلق ويُحاكم المسؤولون.",
+      "choices": [],
+      "is_ending": true
+    },
+    {
+      "id": "scene_28",
+      "title": "نهاية: نجاة صامتة",
+      "text": "تهرب بهوية جديدة. نجوت جسدياً، لكن الكوابيس تعيدك كل ليلة إلى المصحة.",
+      "choices": [],
+      "is_ending": true
+    },
+    {
+      "id": "scene_29",
+      "title": "نهاية: شاهد الدولة",
+      "text": "تنجح في تسليم الأدلة وتحصل على حماية كشاهد، وتبدأ التعافي ببطء.",
+      "choices": [],
+      "is_ending": true
+    },
+    {
+      "id": "scene_30",
+      "title": "نهاية: السقوط",
+      "text": "تقفز تحت ضغط الخوف وتصاب إصابة دائمة؛ الحقيقة تضيع وتتحول قصتك إلى إشاعة.",
+      "choices": [],
+      "is_ending": true
+    },
+    {
+      "id": "scene_31",
+      "title": "نهاية: اعتقال",
+      "text": "تُفتح الأبواب، لكن قوات التحقيق تعتبرك شريكاً في التزوير وتُحتجز حتى انتهاء التحقيق.",
+      "choices": [],
+      "is_ending": true
+    },
+    {
+      "id": "scene_32",
+      "title": "نهاية: الغيبوبة",
+      "text": "تستسلم للمهدئات المنتشرة في الممرات وتدخل غيبوبة طويلة دون أن يعرف أحد الحقيقة.",
+      "choices": [],
+      "is_ending": true
+    }
+  ]
+}

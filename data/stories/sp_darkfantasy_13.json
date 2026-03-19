@@ -1,0 +1,562 @@
+{
+  "id": 113,
+  "title": "عهد أورمان",
+  "theme": "الفانتازيا المظلمة",
+  "series": 1,
+  "game_mode": "single",
+  "description": "رحلة في مدينة ملعونة حيث الاعتراف، الأختام، والاختيارات الأخلاقية تحدد إن كنت ستنقذها أو تصبح لعنتها الجديدة.",
+  "start_scene": "scene_01",
+  "image_url": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23",
+  "scenes": [
+    {
+      "id": "scene_01",
+      "title": "بوابة الرماد",
+      "text": "🧭 الهدف: اختيار طريق دخول المدينة الملعونة. تصل إلى (أورمان) حيث سماء بنفسجية وثلاثة أبواب حجرية تحمل رموزاً متعارضة.",
+      "choices": [
+        {
+          "text": "ادخل من باب الشمال (رمز الحكمة)",
+          "next_scene": "scene_02",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "ادخل من باب الغرب (رمز القوة)",
+          "next_scene": "scene_03",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_02",
+      "title": "ساحة المرايا",
+      "text": "🧭 الهدف: جمع أول ختم ضوئي. المرايا تكرر صورتك مع فروق طفيفة، إحداها تحمل وشماً غير موجود على يدك.",
+      "choices": [
+        {
+          "text": "تتبع الانعكاس صاحب الوشم",
+          "next_scene": "scene_04",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "تكسر المرآة الكبرى فوراً",
+          "next_scene": "scene_05",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_03",
+      "title": "زقاق الحديد",
+      "text": "🧭 الهدف: النجاة من كمين الحرس الأشباح. دروعهم فارغة لكنها تتحرك بإيقاع الطبول القديمة.",
+      "choices": [
+        {
+          "text": "التسلل عبر الممر الجانبي",
+          "next_scene": "scene_05",
+          "color": "primary",
+          "points_reward": 5
+        },
+        {
+          "text": "مواجهتهم مباشرة بالسيف",
+          "next_scene": "scene_06",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_04",
+      "title": "الوشم الحي",
+      "text": "🧭 الهدف: فهم الرمز الأول. الانعكاس يشير إلى كلمة: (العهد)، ثم يتلاشى ويترك أثراً مضيئاً على الأرض.",
+      "choices": [
+        {
+          "text": "تنسخ الأثر في دفتر التعاويذ",
+          "next_scene": "scene_07",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "تمسح الأثر بيدك مباشرة",
+          "next_scene": "scene_06",
+          "color": "danger",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_05",
+      "title": "جرس الصمت",
+      "text": "🧭 الهدف: تحديد مصدر اللعنة. تسمع جرساً لا يصدر صوتاً لكنه يوقف حركة الظلال كلما تأرجح.",
+      "choices": [
+        {
+          "text": "تفحص برج الجرس",
+          "next_scene": "scene_07",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "تتجاهل البرج وتكمل للأسفل",
+          "next_scene": "scene_08",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_06",
+      "title": "ساحة النزف",
+      "text": "🧭 الهدف: إنقاذ طاقتك. الأرض تمتص الحرارة من جسدك كل دقيقة.",
+      "choices": [
+        {
+          "text": "ارسم دائرة حماية مؤقتة",
+          "next_scene": "scene_08",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "تركض عشوائياً نحو القلعة",
+          "next_scene": "scene_09",
+          "color": "danger",
+          "points_reward": -15
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_07",
+      "title": "دفتر التعاويذ",
+      "text": "🧭 الهدف: فتح الختم الثاني. تكتشف أن المدينة بُنيت على عقد قديم بين مجلس السحرة والملك الميت.",
+      "choices": [
+        {
+          "text": "البحث عن قاعة العقد",
+          "next_scene": "scene_10",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "البحث عن سرداب الملك مباشرة",
+          "next_scene": "scene_09",
+          "color": "danger",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_08",
+      "title": "نهر الزجاج",
+      "text": "🧭 الهدف: عبور النهر دون فقدان الذكريات. سطحه يعكس طفولتك وكأنها تحدث الآن.",
+      "choices": [
+        {
+          "text": "تعبر على الجسر الحجري البطيء",
+          "next_scene": "scene_10",
+          "color": "primary",
+          "points_reward": 5
+        },
+        {
+          "text": "تعبر مباشرة فوق الزجاج",
+          "next_scene": "scene_11",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_09",
+      "title": "بوابة العظام",
+      "text": "🧭 الهدف: جمع دليل عن الملك الميت. نقوش العظام تذكر أن اللعنة تتغذى من الحنث بالوعود.",
+      "choices": [
+        {
+          "text": "تنسخ النقوش كاملة",
+          "next_scene": "scene_11",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "تقتلع عظمة كتعويذة",
+          "next_scene": "scene_12",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_10",
+      "title": "قاعة العقد",
+      "text": "🧭 الهدف: تحديد الطرف الخائن في العهد. تجد أسماء ثلاثة سحرة، أحدهم مشطوب بالحبر الأسود.",
+      "choices": [
+        {
+          "text": "تفحص سجل الساحر المشطوب",
+          "next_scene": "scene_13",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "تقرأ عهد الملك أولاً",
+          "next_scene": "scene_12",
+          "color": "success",
+          "points_reward": 10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_11",
+      "title": "ذاكرة مسروقة",
+      "text": "🧭 الهدف: استرجاع اسمك الحقيقي. النهر سرق جزءاً من هويتك، وتسمع صوتاً يناديك باسمين مختلفين.",
+      "choices": [
+        {
+          "text": "تتبع الاسم الأول",
+          "next_scene": "scene_13",
+          "color": "secondary",
+          "points_reward": 0
+        },
+        {
+          "text": "تتبع الاسم الثاني",
+          "next_scene": "scene_14",
+          "color": "primary",
+          "points_reward": 10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_12",
+      "title": "العهد الملكي",
+      "text": "🧭 الهدف: فك شرط اللعنة. النص يقول: لا تتحرر المدينة إلا إذا اعترف الحارس الأول بخيانته.",
+      "choices": [
+        {
+          "text": "البحث عن الحارس الأول",
+          "next_scene": "scene_14",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "محاولة كسر الشرط بالسحر",
+          "next_scene": "scene_15",
+          "color": "danger",
+          "points_reward": -15
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_13",
+      "title": "الساحر المشطوب",
+      "text": "🧭 الهدف: معرفة الحقيقة من شاهد حي. روح الساحر تظهر وتقول إن الحارس الأول هو أنت في حياة سابقة.",
+      "choices": [
+        {
+          "text": "تطلب منه الدليل",
+          "next_scene": "scene_16",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "ترفض وتتهمه بالكذب",
+          "next_scene": "scene_15",
+          "color": "danger",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_14",
+      "title": "ممر الشهادات",
+      "text": "🧭 الهدف: جمع ثلاث شهادات قبل دخول العرش.",
+      "choices": [
+        {
+          "text": "أخذ شهادة الكاهنة",
+          "next_scene": "scene_16",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "أخذ شهادة القائد العسكري",
+          "next_scene": "scene_17",
+          "color": "primary",
+          "points_reward": 5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_15",
+      "title": "ارتداد السحر",
+      "text": "🧭 الهدف: النجاة من فشل التعويذة. طاقة سوداء ترتد وتصيب ذراعك بختم حارق.",
+      "choices": [
+        {
+          "text": "استخدم الختم كمفتاح",
+          "next_scene": "scene_17",
+          "color": "secondary",
+          "points_reward": 0
+        },
+        {
+          "text": "حاول إزالة الختم بالقوة",
+          "next_scene": "scene_18",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_16",
+      "title": "شهادة الكاهنة",
+      "text": "🧭 الهدف: اختبار صدقك. الكاهنة تقول: من يعترف بذنبه يفتح الطريق إلى القمر السفلي.",
+      "choices": [
+        {
+          "text": "تعترف بأنك أخفيت الحقيقة سابقاً",
+          "next_scene": "scene_19",
+          "color": "success",
+          "points_reward": 15
+        },
+        {
+          "text": "تدّعي البراءة التامة",
+          "next_scene": "scene_18",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_17",
+      "title": "شهادة القائد",
+      "text": "🧭 الهدف: كسب دعم الحرس. القائد يطلب منك إعادة راية سقطت في حفرة الظلال.",
+      "choices": [
+        {
+          "text": "تنزل للحفرة بحذر",
+          "next_scene": "scene_19",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "ترفض المهمة وتطلب طريقاً آخر",
+          "next_scene": "scene_20",
+          "color": "danger",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_18",
+      "title": "ثمن الإنكار",
+      "text": "🧭 الهدف: منع فقدان السيطرة. الختم الحارق يبدأ بابتلاع ذكرياتك الأخيرة.",
+      "choices": [
+        {
+          "text": "تستدعي روح الساحر لمساعدتك",
+          "next_scene": "scene_20",
+          "color": "primary",
+          "points_reward": 5
+        },
+        {
+          "text": "تعتمد على القوة وحدها",
+          "next_scene": "scene_21",
+          "color": "danger",
+          "points_reward": -15
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_19",
+      "title": "القمر السفلي",
+      "text": "🧭 الهدف: جمع الختم الثالث. ترى بحيرة فضية تعكس مشهد خيانتك القديمة بوضوح.",
+      "choices": [
+        {
+          "text": "تقبل المشهد وتوقّع اعترافاً",
+          "next_scene": "scene_22",
+          "color": "success",
+          "points_reward": 15
+        },
+        {
+          "text": "تمزق صفحة الاعتراف",
+          "next_scene": "scene_21",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_20",
+      "title": "طريق بديل",
+      "text": "🧭 الهدف: إيجاد مدخل للعرش دون الأختام الكاملة.",
+      "choices": [
+        {
+          "text": "استخدام الخريطة الممزقة",
+          "next_scene": "scene_22",
+          "color": "secondary",
+          "points_reward": 0
+        },
+        {
+          "text": "التسلل عبر بئر النار",
+          "next_scene": "scene_23",
+          "color": "danger",
+          "points_reward": -10
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_21",
+      "title": "قلب الظلال",
+      "text": "🧭 الهدف: منع تحولك لحارس جديد. الظلال تعرض عليك القوة مقابل صمت أبدي.",
+      "choices": [
+        {
+          "text": "رفض العرض بصوت مسموع",
+          "next_scene": "scene_23",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "قبول العرض مؤقتاً",
+          "next_scene": "scene_24",
+          "color": "danger",
+          "points_reward": -15
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_22",
+      "title": "مدخل العرش",
+      "text": "🧭 الهدف: فتح بوابة العرش.",
+      "choices": [
+        {
+          "text": "فتح البوابة بالأختام الثلاثة",
+          "next_scene": "scene_25",
+          "color": "success",
+          "points_reward": 15,
+          "required_points": 35
+        },
+        {
+          "text": "فتحها بقوة الختم الحارق",
+          "next_scene": "scene_24",
+          "color": "danger",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_23",
+      "title": "ممر النار",
+      "text": "🧭 الهدف: الوصول للعرش قبل الانهيار. السقف ينهار قطعة قطعة.",
+      "choices": [
+        {
+          "text": "المحافظة على الوثائق قبل الركض",
+          "next_scene": "scene_25",
+          "color": "primary",
+          "points_reward": 10
+        },
+        {
+          "text": "الركض دون أي شيء",
+          "next_scene": "scene_26",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_24",
+      "title": "عرش الكتمان",
+      "text": "🧭 الهدف: اتخاذ القرار النهائي. الملك الميت يعرض تحرير المدينة مقابل أن تحمل اللعنة بدلاً عنها.",
+      "choices": [
+        {
+          "text": "ترفض الصفقة وتكشف الحقيقة",
+          "next_scene": "scene_27",
+          "color": "success",
+          "points_reward": 15,
+          "required_points": 45
+        },
+        {
+          "text": "تقبل الصفقة لتنقذهم فوراً",
+          "next_scene": "scene_28",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_25",
+      "title": "كتاب الإبراء",
+      "text": "🧭 الهدف: اختيار صيغة الإبراء.",
+      "choices": [
+        {
+          "text": "إبراء كامل مع محاسبة الخونة",
+          "next_scene": "scene_27",
+          "color": "success",
+          "points_reward": 10
+        },
+        {
+          "text": "إبراء سريع بلا محاسبة",
+          "next_scene": "scene_29",
+          "color": "secondary",
+          "points_reward": -5
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_26",
+      "title": "العرش العاري",
+      "text": "🧭 الهدف: إنقاذ ما يمكن إنقاذه بعد ضياع الأدلة.",
+      "choices": [
+        {
+          "text": "تثبيت اعتراف شفهي أمام الشهود",
+          "next_scene": "scene_29",
+          "color": "primary",
+          "points_reward": 5
+        },
+        {
+          "text": "الفرار من القلعة",
+          "next_scene": "scene_30",
+          "color": "danger",
+          "points_reward": -15
+        }
+      ],
+      "is_ending": false
+    },
+    {
+      "id": "scene_27",
+      "title": "نهاية: فجر أورمان",
+      "text": "تكسر دائرة اللعنة باعتراف كامل وأدلة موثقة. المدينة تتحرر ويُكتب اسمك ضمن حرّاس العهد الجدد.",
+      "choices": [],
+      "is_ending": true
+    },
+    {
+      "id": "scene_28",
+      "title": "نهاية: حامل الظل",
+      "text": "تنقذ الناس سريعاً لكن اللعنة تنتقل إليك. تصير حارساً خالداً على عرش بارد.",
+      "choices": [],
+      "is_ending": true
+    },
+    {
+      "id": "scene_29",
+      "title": "نهاية: حرية ناقصة",
+      "text": "تتحرر المدينة جزئياً، لكن غياب المحاسبة يترك بذور لعنة جديدة في الجيل القادم.",
+      "choices": [],
+      "is_ending": true
+    },
+    {
+      "id": "scene_30",
+      "title": "نهاية: سقوط القلعة",
+      "text": "تفقد الخيوط الحاسمة وتهرب قبل الانهيار. تنجو، لكن أورمان تبقى مدينة نصف ميتة.",
+      "choices": [],
+      "is_ending": true
+    }
+  ]
+}

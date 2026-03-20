@@ -1,0 +1,29 @@
+{
+    "id": 5,
+    "title": "جرائم وتحقيقات: جثة في الثلج",
+    "theme": "جرائم وتحقيقات",
+    "series": 1,
+    "game_mode": "single",
+    "world_type": "solo",
+    "description": "من هو القاتل في ليلة العاصفة؟",
+    "start_scene": "start",
+    "scenes": [
+        {
+            "id": "start",
+            "title": "مسرح الجريمة",
+            "text": "الدم يلطخ الثلج الأبيض...",
+            "choices": [
+                {
+                    "text": "تفحص الجثة",
+                    "next_scene": "end_win"
+                }
+            ]
+        },
+        {
+            "id": "end_win",
+            "title": "نهاية مؤقتة",
+            "text": "نجحت.",
+            "is_ending": true
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "id": 4,
+    "title": "نسخة أخرى منك: مرآة الزمن",
+    "theme": "نسخة أخرى منك",
+    "series": 1,
+    "game_mode": "single",
+    "world_type": "alternate",
+    "description": "تواجه نفسك من بعد موازٍ.",
+    "start_scene": "start",
+    "scenes": [
+        {
+            "id": "start",
+            "title": "المكتبة المغلقة",
+            "text": "شخص يشبهك تماماً يقرأ كتابك...",
+            "choices": [
+                {
+                    "text": "تحدث معه",
+                    "next_scene": "end_win"
+                }
+            ]
+        },
+        {
+            "id": "end_win",
+            "title": "نهاية مؤقتة",
+            "text": "نجحت.",
+            "is_ending": true
+        }
+    ]
+}

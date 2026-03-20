@@ -1,0 +1,29 @@
+{
+    "id": 1,
+    "title": "عروش مشققة: الأمير المنسي",
+    "theme": "عروش مشققة",
+    "series": 1,
+    "game_mode": "single",
+    "world_type": "fantasy",
+    "description": "أمير فقير يبني طريقه للعرش بالدهاء لا بالسيف.",
+    "start_scene": "start",
+    "scenes": [
+        {
+            "id": "start",
+            "title": "قصر الأشباح",
+            "text": "تستيقظ في غرفتك الباردة...",
+            "choices": [
+                {
+                    "text": "استكشف القصر",
+                    "next_scene": "end_win"
+                }
+            ]
+        },
+        {
+            "id": "end_win",
+            "title": "نهاية مؤقتة",
+            "text": "نجحت.",
+            "is_ending": true
+        }
+    ]
+}

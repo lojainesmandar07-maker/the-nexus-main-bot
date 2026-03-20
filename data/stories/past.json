@@ -1,0 +1,29 @@
+{
+    "id": 2,
+    "title": "جواسيس التاريخ: الظل الروماني",
+    "theme": "جواسيس التاريخ",
+    "series": 1,
+    "game_mode": "single",
+    "world_type": "past",
+    "description": "عميل سري في الإمبراطورية الرومانية.",
+    "start_scene": "start",
+    "scenes": [
+        {
+            "id": "start",
+            "title": "روما ليلاً",
+            "text": "تراقب منزل السيناتور...",
+            "choices": [
+                {
+                    "text": "تسلل للداخل",
+                    "next_scene": "end_win"
+                }
+            ]
+        },
+        {
+            "id": "end_win",
+            "title": "نهاية مؤقتة",
+            "text": "نجحت.",
+            "is_ending": true
+        }
+    ]
+}

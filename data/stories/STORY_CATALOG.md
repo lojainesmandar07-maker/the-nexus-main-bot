@@ -18,7 +18,7 @@ Auto-organized index for planning and generation continuity.
 
 
 ### الغموض العلمي
-
+- ID `401` | Series `1` | Scenes `39` | **إيكاروس: محطة الصمت الجليدي** (`sp_sci_fi_mystery_1.json`)
 
 ### الفانتازيا المظلمة
 - ID `301` | Series `1` | Scenes `37` | **لعنة الدمار: ظلال المدينة المنسية** (`sp_dark_fantasy_1.json`)

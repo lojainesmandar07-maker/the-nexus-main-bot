@@ -30,6 +30,7 @@ class VotingView(discord.ui.View):
         super().__init__(timeout=timeout)
         self.choices = choices
         self.votes: Dict[int, str] = {} # user_id -> custom_id
+        self.message = None
 
         for i, choice in enumerate(self.choices):
             custom_id = f"choice_{i}"
@@ -44,3 +45,8 @@ class VotingView(discord.ui.View):
     async def on_timeout(self):
         for child in self.children:
             child.disabled = True
+        if self.message:
+            try:
+                await self.message.edit(view=self)
+            except Exception:
+                pass

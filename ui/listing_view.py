@@ -152,7 +152,7 @@ class BaseLibraryView(discord.ui.View):
 class PrevStoriesButton(discord.ui.Button):
     def __init__(self, parent_view: BaseLibraryView):
         self.parent_view = parent_view
-        super().__init__(label="⬅️ السابق", style=discord.ButtonStyle.secondary, row=2)
+        super().__init__(label="⬅️ السابق", style=discord.ButtonStyle.secondary, row=2, custom_id="lib_prev_page")
 
     async def callback(self, interaction: discord.Interaction):
         if self.parent_view.story_page > 0:
@@ -164,7 +164,7 @@ class PrevStoriesButton(discord.ui.Button):
 class NextStoriesButton(discord.ui.Button):
     def __init__(self, parent_view: BaseLibraryView):
         self.parent_view = parent_view
-        super().__init__(label="التالي ➡️", style=discord.ButtonStyle.secondary, row=2)
+        super().__init__(label="التالي ➡️", style=discord.ButtonStyle.secondary, row=2, custom_id="lib_next_page")
 
     async def callback(self, interaction: discord.Interaction):
         if self.parent_view.story_page < self.parent_view.max_page:
@@ -176,7 +176,7 @@ class NextStoriesButton(discord.ui.Button):
 class StartSoloButton(discord.ui.Button):
     def __init__(self, parent_view: "SoloLibraryView"):
         self.parent_view = parent_view
-        super().__init__(label="▶️ ابدأ اللعب الفردي", style=discord.ButtonStyle.success, row=3)
+        super().__init__(label="▶️ ابدأ اللعب الفردي", style=discord.ButtonStyle.success, row=3, custom_id="lib_start_solo")
 
     async def callback(self, interaction: discord.Interaction):
         if self.parent_view.selected_story_id is None:
@@ -191,7 +191,7 @@ class StartSoloButton(discord.ui.Button):
 class StartEventButton(discord.ui.Button):
     def __init__(self, parent_view: "MultiLibraryView"):
         self.parent_view = parent_view
-        super().__init__(label="🚀 بدء الحدث الآن", style=discord.ButtonStyle.primary, row=3)
+        super().__init__(label="🚀 بدء الحدث الآن", style=discord.ButtonStyle.primary, row=3, custom_id="lib_start_event")
 
     async def callback(self, interaction: discord.Interaction):
         if self.parent_view.selected_story_id is None:

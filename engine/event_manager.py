@@ -84,6 +84,14 @@ class EventManager:
                 # If it's an ending scene, stop here
                 if self.current_scene.is_ending or not self.current_scene.choices:
                     await self.event_channel.send(embed=embed)
+                    # Notify profile system — credit all recent voters
+                    try:
+                        from cogs.profile_cog import on_story_complete
+                        if 'view' in locals() and view and hasattr(view, 'votes'):
+                            for voter_id in view.votes.keys():
+                                await on_story_complete(voter_id, self.event_channel)
+                    except Exception:
+                        pass
                     self._reset_state()
                     break
 

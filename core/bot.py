@@ -24,6 +24,8 @@ class StoryBot(commands.Bot):
         # Load cogs here
         await self.load_extension("cogs.event_cog")
         await self.load_extension("cogs.solo_cog")
+        await self.load_extension("cogs.profile_cog")
+        await self.load_extension("cogs.admin_cog")
 
         # Sync commands
         from core.config import GUILD_ID

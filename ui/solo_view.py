@@ -47,6 +47,12 @@ class SoloChoiceButton(discord.ui.Button):
             view = SoloView(self.solo_manager, self.user_id, scene.choices)
         else:
             self.solo_manager.end_solo_game(self.user_id)
+            # Notify profile system of completion
+            try:
+                from cogs.profile_cog import on_story_complete
+                await on_story_complete(self.user_id, interaction.channel)
+            except Exception:
+                pass
 
         await interaction.response.edit_message(embed=embed, view=view)
 

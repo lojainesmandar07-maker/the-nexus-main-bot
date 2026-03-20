@@ -14,7 +14,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "عام 1258 ميلادي. أصوات طبول جيش هولاكو تدوي كالرعد خارج أسوار بغداد. أنت أمين مكتبة في (دار الحكمة). الشوارع تعمها الفوضى. زوجتك تبكي وتطلب الهروب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -29,7 +29,7 @@
               ]
             },
             "p_pc_1_02": {
-              "text": "تختار عائلتك وتضع المخطوطات النادرة في حقيبتك الجلدية. تركضون في الأزقة المظلمة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -39,7 +39,7 @@
               ]
             },
             "p_pc_1_03": {
-              "text": "تطلب من زوجتك الهروب مع الأطفال، بينما تركض نحو النهر مع طلابك لإنقاذ الكتب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -49,7 +49,7 @@
               ]
             },
             "p_pc_1_04": {
-              "text": "تجد أمامك بوابة فرعية يحرسها جنود خائنون يطلبون ضريبة باهظة للعبور.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -64,57 +64,57 @@
               ]
             },
             "p_pc_1_05": {
-              "text": "تصل للنهر وترمي الكتب في القوارب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_pc_1_07"
+                  "next": "p_pc_1_05_ex"
                 }
               ]
             },
             "p_pc_1_06": {
-              "text": "يقتحم المغول المكتبة ويبدأون برمي الكتب الباقية في نهر دجلة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_pc_1_08"
+                  "next": "p_pc_1_06_ex"
                 }
               ]
             },
             "p_pc_1_07": {
-              "text": "أعطهم كل ما تملك من ذهب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_pc_1_09"
+                  "next": "p_pc_1_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_pc_1_10"
+                  "next": "p_pc_1_07_ex2"
                 }
               ]
             },
             "p_pc_1_08": {
-              "text": "قاتلهم بخنجرك الصغير لتعبر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_pc_1_11"
+                  "next": "p_pc_1_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_pc_1_12"
+                  "next": "p_pc_1_08_ex2"
                 }
               ]
             },
             "p_pc_1_09": {
-              "text": "تلمح أحدهم يرفع سيفه الملطخ بالدماء نحوك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -124,7 +124,7 @@
               ]
             },
             "p_pc_1_10": {
-              "text": "يأخذون الذهب ويسمحون لكم بالعبور.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -134,7 +134,7 @@
               ]
             },
             "p_pc_1_11": {
-              "text": "تهاجمهم كأب يائس وتطعن أحدهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -144,7 +144,7 @@
               ]
             },
             "p_pc_1_12": {
-              "text": "تقفز في النهر البارد لإنقاذ حياتك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -154,7 +154,7 @@
               ]
             },
             "p_pc_1_13": {
-              "text": "تقوم بنسخ المخطوطات التي أنقذتها في مدينة أخرى.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -164,7 +164,7 @@
               ]
             },
             "p_pc_1_14": {
-              "text": "تحاول إقناع المغولي بقيمة الكتب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -174,16 +174,76 @@
               ]
             },
             "p_pc_1_win": {
-              "text": "تنجون بأعجوبة من المذبحة وتورث علمك لأبنائك. خسرتم بغداد لكن المعرفة عاشت.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_pc_1_bad": {
-              "text": "تُقتل وتُسقط عائلتك أسيرة بيد المغول لتُباع في أسواق النخاسة. سقطت كمدينتك.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_pc_1_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_pc_1_07"
+                }
+              ]
+            },
+            "p_pc_1_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_pc_1_08"
+                }
+              ]
+            },
+            "p_pc_1_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_pc_1_09"
+                }
+              ]
+            },
+            "p_pc_1_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_pc_1_10"
+                }
+              ]
+            },
+            "p_pc_1_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_pc_1_11"
+                }
+              ]
+            },
+            "p_pc_1_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_pc_1_12"
+                }
+              ]
             }
           }
         },
@@ -195,7 +255,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "يدك ملطخة بالطين، والشمس تحرق ظهرك بينما تشيد السور الذي سيحمي الصينيين لاحقاً من الغزاة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -210,7 +270,7 @@
               ]
             },
             "p_pc_2_02": {
-              "text": "تحاول الهرب تحت جنح الظلام.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -220,7 +280,7 @@
               ]
             },
             "p_pc_2_03": {
-              "text": "تستمر في العمل الشاق بإخلاص.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -230,7 +290,7 @@
               ]
             },
             "p_pc_2_04": {
-              "text": "تجد طريقاً سرياً بين الحجارة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -245,57 +305,57 @@
               ]
             },
             "p_pc_2_05": {
-              "text": "تنهار قواك وتسقط مريضاً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_pc_2_07"
+                  "next": "p_pc_2_05_ex"
                 }
               ]
             },
             "p_pc_2_06": {
-              "text": "تشارك زملاءك خطة للتمرد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_pc_2_08"
+                  "next": "p_pc_2_06_ex"
                 }
               ]
             },
             "p_pc_2_07": {
-              "text": "الحراس يقتربون من مسارك السري.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_pc_2_09"
+                  "next": "p_pc_2_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_pc_2_10"
+                  "next": "p_pc_2_07_ex2"
                 }
               ]
             },
             "p_pc_2_08": {
-              "text": "تسرق خبزاً من خيمة الضابط.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_pc_2_11"
+                  "next": "p_pc_2_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_pc_2_12"
+                  "next": "p_pc_2_08_ex2"
                 }
               ]
             },
             "p_pc_2_09": {
-              "text": "الحراس يعذبون صديقك المقرب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -305,7 +365,7 @@
               ]
             },
             "p_pc_2_10": {
-              "text": "تقاتل الحارس لإنقاذ صديقك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -315,7 +375,7 @@
               ]
             },
             "p_pc_2_11": {
-              "text": "تهرب للجبال متخفياً كحارس.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -325,7 +385,7 @@
               ]
             },
             "p_pc_2_12": {
-              "text": "تخبر الضابط بخطة التمرد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -335,7 +395,7 @@
               ]
             },
             "p_pc_2_13": {
-              "text": "تقود العبيد في ثورة دامية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -345,7 +405,7 @@
               ]
             },
             "p_pc_2_14": {
-              "text": "تصل لقرية حرة في الجنوب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -355,16 +415,76 @@
               ]
             },
             "p_pc_2_win": {
-              "text": "تحرر العبيد وتهربون للجبال لتبدؤوا حياة جديدة بعيداً عن السوط.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_pc_2_bad": {
-              "text": "تخون أصدقاءك ليعدمهم الضابط، تعيش عبداً منبوذاً حتى تموت من الإرهاق.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_pc_2_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_pc_2_07"
+                }
+              ]
+            },
+            "p_pc_2_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_pc_2_08"
+                }
+              ]
+            },
+            "p_pc_2_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_pc_2_09"
+                }
+              ]
+            },
+            "p_pc_2_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_pc_2_10"
+                }
+              ]
+            },
+            "p_pc_2_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_pc_2_11"
+                }
+              ]
+            },
+            "p_pc_2_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_pc_2_12"
+                }
+              ]
             }
           }
         },
@@ -376,7 +496,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "النيران تقترب من قصرك في روما بينما أنت تحاول إنقاذ الخرائط التي استغرقت عمرك كله برسمها.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -391,7 +511,7 @@
               ]
             },
             "p_pc_3_02": {
-              "text": "تحمل المخططات المعمارية للإمبراطورية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -401,7 +521,7 @@
               ]
             },
             "p_pc_3_03": {
-              "text": "تذهب لإنقاذ الإمبراطور نيرون من جنونه.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -411,7 +531,7 @@
               ]
             },
             "p_pc_3_04": {
-              "text": "ينهار السقف الخشبي أمامك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -426,57 +546,57 @@
               ]
             },
             "p_pc_3_05": {
-              "text": "تجد نيرون يعزف القيثارة أمام الحريق.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_pc_3_07"
+                  "next": "p_pc_3_05_ex"
                 }
               ]
             },
             "p_pc_3_06": {
-              "text": "تحاول الركض عبر ألسنة اللهب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_pc_3_08"
+                  "next": "p_pc_3_06_ex"
                 }
               ]
             },
             "p_pc_3_07": {
-              "text": "تغطس في حوض المياه الداخلي واهرب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_pc_3_09"
+                  "next": "p_pc_3_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_pc_3_10"
+                  "next": "p_pc_3_07_ex2"
                 }
               ]
             },
             "p_pc_3_08": {
-              "text": "أقنعه بالهروب قبل انهيار القصر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_pc_3_11"
+                  "next": "p_pc_3_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_pc_3_12"
+                  "next": "p_pc_3_08_ex2"
                 }
               ]
             },
             "p_pc_3_09": {
-              "text": "ادفعه في النيران انتقاماً لروما.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -486,7 +606,7 @@
               ]
             },
             "p_pc_3_10": {
-              "text": "تحترق ملابسك وتختنق من الدخان.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -496,7 +616,7 @@
               ]
             },
             "p_pc_3_11": {
-              "text": "يأمر نيرون بقتلك لإفساد موسيقاه.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -506,7 +626,7 @@
               ]
             },
             "p_pc_3_12": {
-              "text": "تدفعه بقوة ليسقط في بحر النيران.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -516,7 +636,7 @@
               ]
             },
             "p_pc_3_13": {
-              "text": "تنجو من الحريق وتساهم لاحقاً في إعادة بناء أعظم مدن العالم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -526,7 +646,7 @@
               ]
             },
             "p_pc_3_14": {
-              "text": "تهرب من الشرفة بنجاح.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -536,16 +656,76 @@
               ]
             },
             "p_pc_3_win": {
-              "text": "تنجو بمخططاتك وتصبح باني روما الثاني المجيد.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_pc_3_bad": {
-              "text": "تموت مختنقاً كبطل مجهول احتضن أوراقه حتى النهاية.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_pc_3_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_pc_3_07"
+                }
+              ]
+            },
+            "p_pc_3_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_pc_3_08"
+                }
+              ]
+            },
+            "p_pc_3_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_pc_3_09"
+                }
+              ]
+            },
+            "p_pc_3_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_pc_3_10"
+                }
+              ]
+            },
+            "p_pc_3_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_pc_3_11"
+                }
+              ]
+            },
+            "p_pc_3_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_pc_3_12"
+                }
+              ]
             }
           }
         },
@@ -557,7 +737,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "السلطان المريض يسألك النصيحة بينما الأعداء يتقاسمون الإمبراطورية في الخارج.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -572,7 +752,7 @@
               ]
             },
             "p_pc_4_02": {
-              "text": "تنصحه بتوقيع معاهدة استسلام.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -582,7 +762,7 @@
               ]
             },
             "p_pc_4_03": {
-              "text": "تنصحه بدخول حرب خاسرة للشرف.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -592,7 +772,7 @@
               ]
             },
             "p_pc_4_04": {
-              "text": "يوقع السلطان المعاهدة المذلة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -607,57 +787,57 @@
               ]
             },
             "p_pc_4_05": {
-              "text": "الجيش يخرج للقتال ببسالة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_pc_4_07"
+                  "next": "p_pc_4_05_ex"
                 }
               ]
             },
             "p_pc_4_06": {
-              "text": "الجيش ينقلب على السلطان لضعفه.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_pc_4_08"
+                  "next": "p_pc_4_06_ex"
                 }
               ]
             },
             "p_pc_4_07": {
-              "text": "تدخلون حرباً شاملة وطاحنة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_pc_4_09"
+                  "next": "p_pc_4_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_pc_4_10"
+                  "next": "p_pc_4_07_ex2"
                 }
               ]
             },
             "p_pc_4_08": {
-              "text": "تُسجن بتهمة الخيانة الوطنية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_pc_4_11"
+                  "next": "p_pc_4_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_pc_4_12"
+                  "next": "p_pc_4_08_ex2"
                 }
               ]
             },
             "p_pc_4_09": {
-              "text": "تسيل دماء شباب الدولة في كل جبهة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -667,7 +847,7 @@
               ]
             },
             "p_pc_4_10": {
-              "text": "تدافع عن السلطان أمام الانقلابيين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -677,7 +857,7 @@
               ]
             },
             "p_pc_4_11": {
-              "text": "تهربون في قطار سري لألمانيا.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -687,7 +867,7 @@
               ]
             },
             "p_pc_4_12": {
-              "text": "تُهزمون شر هزيمة وتُقسم الدولة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -697,7 +877,7 @@
               ]
             },
             "p_pc_4_13": {
-              "text": "تموت مخلصاً لسلطانك الأخير.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -707,7 +887,7 @@
               ]
             },
             "p_pc_4_14": {
-              "text": "تنجو بحياتك في المنفى الغريب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -717,16 +897,76 @@
               ]
             },
             "p_pc_4_win": {
-              "text": "تنجو مع عائلتك بعد توقيع المعاهدة وتنقذ ملايين الأرواح من المحارق.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_pc_4_bad": {
-              "text": "يُسقطكم الجيش الخائن، وتُعدم كوزير جبان في ساحة إسطنبول.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_pc_4_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_pc_4_07"
+                }
+              ]
+            },
+            "p_pc_4_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_pc_4_08"
+                }
+              ]
+            },
+            "p_pc_4_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_pc_4_09"
+                }
+              ]
+            },
+            "p_pc_4_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_pc_4_10"
+                }
+              ]
+            },
+            "p_pc_4_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_pc_4_11"
+                }
+              ]
+            },
+            "p_pc_4_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_pc_4_12"
+                }
+              ]
             }
           }
         },
@@ -738,7 +978,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تنادي في الشوارع المهجورة بقرب النهاية المأساوية لحضارة الإغريق العظيمة، لا أحد يستمع لك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -753,7 +993,7 @@
               ]
             },
             "p_pc_5_02": {
-              "text": "تستمر في الصراخ محذراً من الطوفان.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -763,7 +1003,7 @@
               ]
             },
             "p_pc_5_03": {
-              "text": "تترك المدينة الفاسدة وحيداً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -773,7 +1013,7 @@
               ]
             },
             "p_pc_5_04": {
-              "text": "كهنة المعبد يعتقلونك للهرطقة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -788,57 +1028,57 @@
               ]
             },
             "p_pc_5_05": {
-              "text": "تصل لقمة جبل عالٍ آمن.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_pc_5_07"
+                  "next": "p_pc_5_05_ex"
                 }
               ]
             },
             "p_pc_5_06": {
-              "text": "تُحاكم أمام مجلس الشيوخ.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_pc_5_08"
+                  "next": "p_pc_5_06_ex"
                 }
               ]
             },
             "p_pc_5_07": {
-              "text": "تبني سفينة صغيرة لنجاتك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_pc_5_09"
+                  "next": "p_pc_5_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_pc_5_10"
+                  "next": "p_pc_5_07_ex2"
                 }
               ]
             },
             "p_pc_5_08": {
-              "text": "تلقي خطاباً بليغاً في المحكمة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_pc_5_11"
+                  "next": "p_pc_5_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_pc_5_12"
+                  "next": "p_pc_5_08_ex2"
                 }
               ]
             },
             "p_pc_5_09": {
-              "text": "يقررون رميك للأسود.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -848,7 +1088,7 @@
               ]
             },
             "p_pc_5_10": {
-              "text": "بعض الفقراء يؤمنون بك ويتبعونك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -858,7 +1098,7 @@
               ]
             },
             "p_pc_5_11": {
-              "text": "تنجح في الهروب من السجن.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -868,7 +1108,7 @@
               ]
             },
             "p_pc_5_12": {
-              "text": "تغني للأسود بدلاً من الخوف.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -878,7 +1118,7 @@
               ]
             },
             "p_pc_5_13": {
-              "text": "تقود المؤمنين نحو الجبل قبل الغرق.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -888,7 +1128,7 @@
               ]
             },
             "p_pc_5_14": {
-              "text": "تراقب المدينة تغرق تحت الموج.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -898,16 +1138,76 @@
               ]
             },
             "p_pc_5_win": {
-              "text": "تنجو مع قلة من المؤمنين، وتبنون مجتمعاً جديداً على قمة الجبل.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_pc_5_bad": {
-              "text": "تأكلك الأسود، وتغرق المدينة بكاملها في اليوم التالي، لم يعتبروا بكلماتك.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_pc_5_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_pc_5_07"
+                }
+              ]
+            },
+            "p_pc_5_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_pc_5_08"
+                }
+              ]
+            },
+            "p_pc_5_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_pc_5_09"
+                }
+              ]
+            },
+            "p_pc_5_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_pc_5_10"
+                }
+              ]
+            },
+            "p_pc_5_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_pc_5_11"
+                }
+              ]
+            },
+            "p_pc_5_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_pc_5_12"
+                }
+              ]
             }
           }
         }
@@ -926,7 +1226,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "ترتدي ملابس رثة وتخرج للسوق، تتفقد أحوال رعيتك في ليلة شتوية قاسية لا يعلمون من أنت فيها.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -941,7 +1241,7 @@
               ]
             },
             "p_pr_1_02": {
-              "text": "تستمع لشكوى تاجر مسكين من الضرائب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -951,7 +1251,7 @@
               ]
             },
             "p_pr_1_03": {
-              "text": "تدخل حانة لتسمع هموم الفقراء.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -961,7 +1261,7 @@
               ]
             },
             "p_pr_1_04": {
-              "text": "تعد التاجر بحل المشكلة غداً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -976,57 +1276,57 @@
               ]
             },
             "p_pr_1_05": {
-              "text": "تُصدم من فساد حراسك هناك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_pr_1_07"
+                  "next": "p_pr_1_05_ex"
                 }
               ]
             },
             "p_pr_1_06": {
-              "text": "تأمر قائد الحرس سراً بإلغاء الضريبة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_pr_1_08"
+                  "next": "p_pr_1_06_ex"
                 }
               ]
             },
             "p_pr_1_07": {
-              "text": "تتشاجر مع الحرس الفاسدين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_pr_1_09"
+                  "next": "p_pr_1_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_pr_1_10"
+                  "next": "p_pr_1_07_ex2"
                 }
               ]
             },
             "p_pr_1_08": {
-              "text": "تستدعي الحرس لقصرك في الصباح.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_pr_1_11"
+                  "next": "p_pr_1_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_pr_1_12"
+                  "next": "p_pr_1_08_ex2"
                 }
               ]
             },
             "p_pr_1_09": {
-              "text": "يهاجمك الحرس لاعتراضك طريقهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -1036,7 +1336,7 @@
               ]
             },
             "p_pr_1_10": {
-              "text": "تكشف هويتك أمام العامة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -1046,7 +1346,7 @@
               ]
             },
             "p_pr_1_11": {
-              "text": "تحاكمهم بعدل وقسوة في القصر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -1056,7 +1356,7 @@
               ]
             },
             "p_pr_1_12": {
-              "text": "تُصاب بجرح بليغ قبل وصول الدعم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -1066,7 +1366,7 @@
               ]
             },
             "p_pr_1_13": {
-              "text": "تُعفي التاجر وتطرد الفاسدين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -1076,7 +1376,7 @@
               ]
             },
             "p_pr_1_14": {
-              "text": "تأمر بتوزيع أموالك الخاصة عليهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -1086,16 +1386,76 @@
               ]
             },
             "p_pr_1_win": {
-              "text": "يعرفك الشعب بالخليفة العادل، وتحكم لسنوات بسلام وحب.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_pr_1_bad": {
-              "text": "يطعنك أحد الحراس في الشجار وتموت في السوق كأي متسول مجهول.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_pr_1_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_pr_1_07"
+                }
+              ]
+            },
+            "p_pr_1_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_pr_1_08"
+                }
+              ]
+            },
+            "p_pr_1_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_pr_1_09"
+                }
+              ]
+            },
+            "p_pr_1_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_pr_1_10"
+                }
+              ]
+            },
+            "p_pr_1_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_pr_1_11"
+                }
+              ]
+            },
+            "p_pr_1_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_pr_1_12"
+                }
+              ]
             }
           }
         },
@@ -1107,7 +1467,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "شعوبك تعتبرك إلهاً لكن قلبك يعلم أنك بشر، وأنت تراقب الغضب يتصاعد في أعين البنائين بالأسفل.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -1122,7 +1482,7 @@
               ]
             },
             "p_pr_2_02": {
-              "text": "تأمر بزيادة حصص طعامهم لتهدئتهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -1132,7 +1492,7 @@
               ]
             },
             "p_pr_2_03": {
-              "text": "ترسل الحرس لجلد المتمردين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -1142,7 +1502,7 @@
               ]
             },
             "p_pr_2_04": {
-              "text": "العمال يشكرون كرمك ويهدؤون.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -1157,57 +1517,57 @@
               ]
             },
             "p_pr_2_05": {
-              "text": "ينفجر التمرد وتشتعل النيران في الساحة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_pr_2_07"
+                  "next": "p_pr_2_05_ex"
                 }
               ]
             },
             "p_pr_2_06": {
-              "text": "تستدعي قائد التمرد للتفاوض.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_pr_2_08"
+                  "next": "p_pr_2_06_ex"
                 }
               ]
             },
             "p_pr_2_07": {
-              "text": "تأمر بإغلاق بوابات القصر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_pr_2_09"
+                  "next": "p_pr_2_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_pr_2_10"
+                  "next": "p_pr_2_07_ex2"
                 }
               ]
             },
             "p_pr_2_08": {
-              "text": "يعرض عليك القائد مطالب معقولة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_pr_2_11"
+                  "next": "p_pr_2_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_pr_2_12"
+                  "next": "p_pr_2_08_ex2"
                 }
               ]
             },
             "p_pr_2_09": {
-              "text": "تأمر بقتله أمام الجموع.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -1217,7 +1577,7 @@
               ]
             },
             "p_pr_2_10": {
-              "text": "توافق على المطالب وتُعلن كمصلح.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -1227,7 +1587,7 @@
               ]
             },
             "p_pr_2_11": {
-              "text": "تندلع ثورة لا تبقي ولا تذر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -1237,7 +1597,7 @@
               ]
             },
             "p_pr_2_12": {
-              "text": "تهرب من ممر الملوك السري.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -1247,7 +1607,7 @@
               ]
             },
             "p_pr_2_13": {
-              "text": "العمال يحطمون تماثيلك المقدسة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -1257,7 +1617,7 @@
               ]
             },
             "p_pr_2_14": {
-              "text": "تعود بجيش من الممالك المجاورة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -1267,16 +1627,76 @@
               ]
             },
             "p_pr_2_win": {
-              "text": "تستمع لشعبك وتبني مصر عظيمة بالعدل لا بالسوط. خلدك التاريخ.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_pr_2_bad": {
-              "text": "تُسحق تحت أقدام المتمردين الغاضبين كملك فاشل متكبر.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_pr_2_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_pr_2_07"
+                }
+              ]
+            },
+            "p_pr_2_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_pr_2_08"
+                }
+              ]
+            },
+            "p_pr_2_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_pr_2_09"
+                }
+              ]
+            },
+            "p_pr_2_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_pr_2_10"
+                }
+              ]
+            },
+            "p_pr_2_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_pr_2_11"
+                }
+              ]
+            },
+            "p_pr_2_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_pr_2_12"
+                }
+              ]
             }
           }
         },
@@ -1288,7 +1708,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تأكل من الأطباق الفضية ثم تخرج للشرفة لتجد متسولاً يجمع العظام بجانب القصر. الحقيقة تصفعك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -1303,7 +1723,7 @@
               ]
             },
             "p_pr_3_02": {
-              "text": "ترمي له الذهب من شرفتك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -1313,7 +1733,7 @@
               ]
             },
             "p_pr_3_03": {
-              "text": "تأمر بفتح خزائن الطعام فوراً للعامة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -1323,7 +1743,7 @@
               ]
             },
             "p_pr_3_04": {
-              "text": "النبلاء يعترضون على تبديد الثروة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -1338,57 +1758,57 @@
               ]
             },
             "p_pr_3_05": {
-              "text": "الوزير يهددك بانقلاب النبلاء.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_pr_3_07"
+                  "next": "p_pr_3_05_ex"
                 }
               ]
             },
             "p_pr_3_06": {
-              "text": "تصر على قرارك الإنساني.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_pr_3_08"
+                  "next": "p_pr_3_06_ex"
                 }
               ]
             },
             "p_pr_3_07": {
-              "text": "تتراجع وتترك الشعب يجوع.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_pr_3_09"
+                  "next": "p_pr_3_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_pr_3_10"
+                  "next": "p_pr_3_07_ex2"
                 }
               ]
             },
             "p_pr_3_08": {
-              "text": "تقود النبلاء في حملة خيرية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_pr_3_11"
+                  "next": "p_pr_3_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_pr_3_12"
+                  "next": "p_pr_3_08_ex2"
                 }
               ]
             },
             "p_pr_3_09": {
-              "text": "يسممك الوزير في الكأس التالي.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -1398,7 +1818,7 @@
               ]
             },
             "p_pr_3_10": {
-              "text": "تصادر أراضي النبلاء بالقوة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -1408,7 +1828,7 @@
               ]
             },
             "p_pr_3_11": {
-              "text": "تعتقل الوزير الفاسد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -1418,7 +1838,7 @@
               ]
             },
             "p_pr_3_12": {
-              "text": "تهرب مع الفقراء خارج العاصمة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -1428,7 +1848,7 @@
               ]
             },
             "p_pr_3_13": {
-              "text": "النبلاء يثيرون الجيش ضدك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -1438,7 +1858,7 @@
               ]
             },
             "p_pr_3_14": {
-              "text": "تطعم كل فم جائع في مملكتك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -1448,16 +1868,76 @@
               ]
             },
             "p_pr_3_win": {
-              "text": "يُحكم عليك بالإعدام من قبل النبلاء الجشعين، لكن الفقراء ينقذونك لتصبح ملكهم المحبوب.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_pr_3_bad": {
-              "text": "تسمم وتموت، ويعود الشعب لجوعه الأبدي دون أن يعلم أنك حاولت مساعدته.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_pr_3_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_pr_3_07"
+                }
+              ]
+            },
+            "p_pr_3_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_pr_3_08"
+                }
+              ]
+            },
+            "p_pr_3_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_pr_3_09"
+                }
+              ]
+            },
+            "p_pr_3_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_pr_3_10"
+                }
+              ]
+            },
+            "p_pr_3_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_pr_3_11"
+                }
+              ]
+            },
+            "p_pr_3_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_pr_3_12"
+                }
+              ]
             }
           }
         },
@@ -1469,7 +1949,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تقرأ رسالة ملطخة بالدم من أحد جواسيسك تخبرك بأن كأسك الليلة سيكون مسموماً. كيف ستنجو؟",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -1484,7 +1964,7 @@
               ]
             },
             "p_pr_4_02": {
-              "text": "تدعو أخاك للشرب من الكأس أولاً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -1494,7 +1974,7 @@
               ]
             },
             "p_pr_4_03": {
-              "text": "تتظاهر بشرب الكأس وتسقط.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -1504,7 +1984,7 @@
               ]
             },
             "p_pr_4_04": {
-              "text": "أخوك يشرب ويسقط صريعاً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -1519,57 +1999,57 @@
               ]
             },
             "p_pr_4_05": {
-              "text": "القتلة يدخلون للتأكد من موتك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_pr_4_07"
+                  "next": "p_pr_4_05_ex"
                 }
               ]
             },
             "p_pr_4_06": {
-              "text": "تبكي على أخيك وتتوعد بالانتقام.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_pr_4_08"
+                  "next": "p_pr_4_06_ex"
                 }
               ]
             },
             "p_pr_4_07": {
-              "text": "تقف فجأة وتقتل المتآمرين بسيفك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_pr_4_09"
+                  "next": "p_pr_4_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_pr_4_10"
+                  "next": "p_pr_4_07_ex2"
                 }
               ]
             },
             "p_pr_4_08": {
-              "text": "تعتقل طباخ القصر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_pr_4_11"
+                  "next": "p_pr_4_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_pr_4_12"
+                  "next": "p_pr_4_08_ex2"
                 }
               ]
             },
             "p_pr_4_09": {
-              "text": "تنتظر حتى يتكلم قائدهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -1579,7 +2059,7 @@
               ]
             },
             "p_pr_4_10": {
-              "text": "تطارد زعيم المؤامرة لغرفته.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -1589,7 +2069,7 @@
               ]
             },
             "p_pr_4_11": {
-              "text": "تكتشف أن زوجتك هي العقل المدبر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -1599,7 +2079,7 @@
               ]
             },
             "p_pr_4_12": {
-              "text": "تأمر بصلب كل الخونة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -1609,7 +2089,7 @@
               ]
             },
             "p_pr_4_13": {
-              "text": "تغتال زوجتك بصمت وحسرة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -1619,7 +2099,7 @@
               ]
             },
             "p_pr_4_14": {
-              "text": "تُحكم قبضتك على المملكة بخوف.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -1629,16 +2109,76 @@
               ]
             },
             "p_pr_4_win": {
-              "text": "تطهر القصر من الخونة بالدهاء وتصبح أسطورة في القضاء على المؤامرات.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_pr_4_bad": {
-              "text": "يخدعك أحد المتآمرين الباقين ويطعنك في ظهرك وأنت تحتفل بنصرك المزيف.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_pr_4_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_pr_4_07"
+                }
+              ]
+            },
+            "p_pr_4_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_pr_4_08"
+                }
+              ]
+            },
+            "p_pr_4_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_pr_4_09"
+                }
+              ]
+            },
+            "p_pr_4_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_pr_4_10"
+                }
+              ]
+            },
+            "p_pr_4_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_pr_4_11"
+                }
+              ]
+            },
+            "p_pr_4_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_pr_4_12"
+                }
+              ]
             }
           }
         },
@@ -1650,7 +2190,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "العدو يعرض عليك خروجاً آمناً وعرشك في منفى، بشرط ترك شعبك للموت أو تقاتل معهم بفرص معدومة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -1665,7 +2205,7 @@
               ]
             },
             "p_pr_5_02": {
-              "text": "أرفض العرض وأقاتل مع الجند.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -1675,7 +2215,7 @@
               ]
             },
             "p_pr_5_03": {
-              "text": "أقبل العرض وأهرب مع عائلتي.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -1685,7 +2225,7 @@
               ]
             },
             "p_pr_5_04": {
-              "text": "ترتدي درعك وتنزل للخنادق.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -1700,57 +2240,57 @@
               ]
             },
             "p_pr_5_05": {
-              "text": "ترحل في الظلام مع كنز القصر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_pr_5_07"
+                  "next": "p_pr_5_05_ex"
                 }
               ]
             },
             "p_pr_5_06": {
-              "text": "الجنود يستبسلون برؤيتك بينهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_pr_5_08"
+                  "next": "p_pr_5_06_ex"
                 }
               ]
             },
             "p_pr_5_07": {
-              "text": "ضميرك يعذبك في المنفى.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_pr_5_09"
+                  "next": "p_pr_5_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_pr_5_10"
+                  "next": "p_pr_5_07_ex2"
                 }
               ]
             },
             "p_pr_5_08": {
-              "text": "تُصاب في خط المواجهة الأول.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_pr_5_11"
+                  "next": "p_pr_5_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_pr_5_12"
+                  "next": "p_pr_5_08_ex2"
                 }
               ]
             },
             "p_pr_5_09": {
-              "text": "تنتحر هرباً من العار.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -1760,7 +2300,7 @@
               ]
             },
             "p_pr_5_10": {
-              "text": "تستمر في القتال وأنت تنزف.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -1770,7 +2310,7 @@
               ]
             },
             "p_pr_5_11": {
-              "text": "تؤسس جيشاً جديداً في المنفى للعودة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -1780,7 +2320,7 @@
               ]
             },
             "p_pr_5_12": {
-              "text": "العدو يتفاجأ بصمودكم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -1790,7 +2330,7 @@
               ]
             },
             "p_pr_5_13": {
-              "text": "تهزمون طلائع العدو المنهكة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -1800,7 +2340,7 @@
               ]
             },
             "p_pr_5_14": {
-              "text": "تطالب بدعم الملوك الجوار.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -1810,16 +2350,76 @@
               ]
             },
             "p_pr_5_win": {
-              "text": "تنتصرون بمعجزة صمودكم الأسطوري، وتبقى ملكاً توجته الدماء والكرامة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_pr_5_bad": {
-              "text": "تُقتل في المنفى على يد لاجئ من شعبك المحترق، جزاءً لجبنك التام.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_pr_5_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_pr_5_07"
+                }
+              ]
+            },
+            "p_pr_5_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_pr_5_08"
+                }
+              ]
+            },
+            "p_pr_5_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_pr_5_09"
+                }
+              ]
+            },
+            "p_pr_5_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_pr_5_10"
+                }
+              ]
+            },
+            "p_pr_5_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_pr_5_11"
+                }
+              ]
+            },
+            "p_pr_5_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_pr_5_12"
+                }
+              ]
             }
           }
         }
@@ -1838,7 +2438,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "أنت تكتب تقريرك السري للملك الفرنسي وأنت تجلس على يمين الملك الإسباني في حفلته الكبيرة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -1853,7 +2453,7 @@
               ]
             },
             "p_ps_1_02": {
-              "text": "ترسل الرسالة عبر الخادم السري.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -1863,7 +2463,7 @@
               ]
             },
             "p_ps_1_03": {
-              "text": "تحتفظ بها لوقت أكثر أماناً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -1873,7 +2473,7 @@
               ]
             },
             "p_ps_1_04": {
-              "text": "الخادم يُقبض عليه ويُفتش.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -1888,57 +2488,57 @@
               ]
             },
             "p_ps_1_05": {
-              "text": "الحراس يشكون في نظراتك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_ps_1_07"
+                  "next": "p_ps_1_05_ex"
                 }
               ]
             },
             "p_ps_1_06": {
-              "text": "تستل سيفك للدفاع عن نفسك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_ps_1_08"
+                  "next": "p_ps_1_06_ex"
                 }
               ]
             },
             "p_ps_1_07": {
-              "text": "تُتهم بالخيانة أمام الملك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_ps_1_09"
+                  "next": "p_ps_1_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_ps_1_10"
+                  "next": "p_ps_1_07_ex2"
                 }
               ]
             },
             "p_ps_1_08": {
-              "text": "تدعي أن الخادم سارق لا تعرفه.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_ps_1_11"
+                  "next": "p_ps_1_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_ps_1_12"
+                  "next": "p_ps_1_08_ex2"
                 }
               ]
             },
             "p_ps_1_09": {
-              "text": "تشرب السم قبل اعتقالك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -1948,7 +2548,7 @@
               ]
             },
             "p_ps_1_10": {
-              "text": "يصدقك الملك ويعدم الخادم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -1958,7 +2558,7 @@
               ]
             },
             "p_ps_1_11": {
-              "text": "تهرب من الشرفة للحديقة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -1968,7 +2568,7 @@
               ]
             },
             "p_ps_1_12": {
-              "text": "تحصل على ترقية لولائك الكاذب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -1978,7 +2578,7 @@
               ]
             },
             "p_ps_1_13": {
-              "text": "تُكمل مهمتك كجاسوس خفي ناجح.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -1988,7 +2588,7 @@
               ]
             },
             "p_ps_1_14": {
-              "text": "تنقذ فرنسا بمعلومات حاسمة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -1998,16 +2598,76 @@
               ]
             },
             "p_ps_1_win": {
-              "text": "ترجع لفرنسا كبطل حرب غامض، عشت في الظل ونجوت بذكائك الفائق.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_ps_1_bad": {
-              "text": "يُكشف الخادم ويعترف باسمك. تُعذب في زنازين إسبانيا الباردة حتى تموت.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_ps_1_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_ps_1_07"
+                }
+              ]
+            },
+            "p_ps_1_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_ps_1_08"
+                }
+              ]
+            },
+            "p_ps_1_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_ps_1_09"
+                }
+              ]
+            },
+            "p_ps_1_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_ps_1_10"
+                }
+              ]
+            },
+            "p_ps_1_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_ps_1_11"
+                }
+              ]
+            },
+            "p_ps_1_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_ps_1_12"
+                }
+              ]
             }
           }
         },
@@ -2019,7 +2679,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تبيع المعلومات للمحاصرين نهاراً، وللغزاة ليلاً. حياتك تسير على خيط من الكذب المعقد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -2034,7 +2694,7 @@
               ]
             },
             "p_ps_2_02": {
-              "text": "تخبر الغزاة عن نقطة ضعف السور.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -2044,7 +2704,7 @@
               ]
             },
             "p_ps_2_03": {
-              "text": "تكذب على الغزاة لإنقاذ المدينة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -2054,7 +2714,7 @@
               ]
             },
             "p_ps_2_04": {
-              "text": "الغزاة يقتحمون المدينة ويدمرونها.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -2069,57 +2729,57 @@
               ]
             },
             "p_ps_2_05": {
-              "text": "القائد الغازي يشك بك ويعتقلك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_ps_2_07"
+                  "next": "p_ps_2_05_ex"
                 }
               ]
             },
             "p_ps_2_06": {
-              "text": "تأخذ مكافأتك من الغزاة وتهرب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_ps_2_08"
+                  "next": "p_ps_2_06_ex"
                 }
               ]
             },
             "p_ps_2_07": {
-              "text": "تُجلد لمحاولة خداعهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_ps_2_09"
+                  "next": "p_ps_2_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_ps_2_10"
+                  "next": "p_ps_2_07_ex2"
                 }
               ]
             },
             "p_ps_2_08": {
-              "text": "المحاصرون يكتشفون خيانتك لهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_ps_2_11"
+                  "next": "p_ps_2_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_ps_2_12"
+                  "next": "p_ps_2_08_ex2"
                 }
               ]
             },
             "p_ps_2_09": {
-              "text": "تهرب قبل الغزو الشامل.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -2129,7 +2789,7 @@
               ]
             },
             "p_ps_2_10": {
-              "text": "تحاول الفرار بأموالك الكبيرة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -2139,7 +2799,7 @@
               ]
             },
             "p_ps_2_11": {
-              "text": "تختبئ في قبو مهجور لأيام.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -2149,7 +2809,7 @@
               ]
             },
             "p_ps_2_12": {
-              "text": "يُعثر عليك وتُصلب بتهمة الخيانة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -2159,7 +2819,7 @@
               ]
             },
             "p_ps_2_13": {
-              "text": "تصل لدولة مجاورة بسلام.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -2169,7 +2829,7 @@
               ]
             },
             "p_ps_2_14": {
-              "text": "تشتري حياة جديدة بالذهب الملوث.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -2179,16 +2839,76 @@
               ]
             },
             "p_ps_2_win": {
-              "text": "تنجو بثروة طائلة وتعيش في الرفاهية، لكنك وحيد ومرعوب للأبد.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_ps_2_bad": {
-              "text": "تُقتل وتُعلق على أبواب المدينة كخائن مزدوج بغيض لا يحترمه أحد.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_ps_2_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_ps_2_07"
+                }
+              ]
+            },
+            "p_ps_2_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_ps_2_08"
+                }
+              ]
+            },
+            "p_ps_2_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_ps_2_09"
+                }
+              ]
+            },
+            "p_ps_2_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_ps_2_10"
+                }
+              ]
+            },
+            "p_ps_2_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_ps_2_11"
+                }
+              ]
+            },
+            "p_ps_2_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_ps_2_12"
+                }
+              ]
             }
           }
         },
@@ -2200,7 +2920,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "في غرناطة، تمسكين بخريطة مسروقة في كمك وتعلمين أن من يسقط هذه الرسالة سيسقط ممالك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -2215,7 +2935,7 @@
               ]
             },
             "p_ps_3_02": {
-              "text": "أسلم الخريطة للملك فرناندو.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -2225,7 +2945,7 @@
               ]
             },
             "p_ps_3_03": {
-              "text": "أسلم الخريطة للمسلمين الأندلسيين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -2235,7 +2955,7 @@
               ]
             },
             "p_ps_3_04": {
-              "text": "يأخذ فرناندو الخريطة ويهاجم حصن المسلمين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -2250,57 +2970,57 @@
               ]
             },
             "p_ps_3_05": {
-              "text": "المسلمون يصدون الهجوم بفضل الخريطة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_ps_3_07"
+                  "next": "p_ps_3_05_ex"
                 }
               ]
             },
             "p_ps_3_06": {
-              "text": "تُكافئين بالذهب وتُرسلين لمنفى آمن.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_ps_3_08"
+                  "next": "p_ps_3_06_ex"
                 }
               ]
             },
             "p_ps_3_07": {
-              "text": "قائد قرطبة يعرض عليك الزواج كمكافأة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_ps_3_09"
+                  "next": "p_ps_3_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_ps_3_10"
+                  "next": "p_ps_3_07_ex2"
                 }
               ]
             },
             "p_ps_3_08": {
-              "text": "فرناندو يغضب ويأمر بقتلك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_ps_3_11"
+                  "next": "p_ps_3_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_ps_3_12"
+                  "next": "p_ps_3_08_ex2"
                 }
               ]
             },
             "p_ps_3_09": {
-              "text": "تقبلين المنفى لتعيشي بسلام.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -2310,7 +3030,7 @@
               ]
             },
             "p_ps_3_10": {
-              "text": "تهربين نحو المغرب בסفينة تجارية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -2320,7 +3040,7 @@
               ]
             },
             "p_ps_3_11": {
-              "text": "ترفضين البقاء وتهربين بعيداً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -2330,7 +3050,7 @@
               ]
             },
             "p_ps_3_12": {
-              "text": "السفينة تتعرض لعاصفة عنيفة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -2340,7 +3060,7 @@
               ]
             },
             "p_ps_3_13": {
-              "text": "تصلين لشواطئ إفريقيا بأمان.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -2350,7 +3070,7 @@
               ]
             },
             "p_ps_3_14": {
-              "text": "تكتبين مذكراتك كأخطر جاسوسة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -2360,16 +3080,76 @@
               ]
             },
             "p_ps_3_win": {
-              "text": "تعيشين بسلام في المغرب كأميرة غامضة تخلدها الأساطير الأندلسية.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_ps_3_bad": {
-              "text": "يقتلك جواسيس فرناندو قبل أن تهربي لخيانتك له. النهاية المأساوية.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_ps_3_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_ps_3_07"
+                }
+              ]
+            },
+            "p_ps_3_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_ps_3_08"
+                }
+              ]
+            },
+            "p_ps_3_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_ps_3_09"
+                }
+              ]
+            },
+            "p_ps_3_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_ps_3_10"
+                }
+              ]
+            },
+            "p_ps_3_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_ps_3_11"
+                }
+              ]
+            },
+            "p_ps_3_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_ps_3_12"
+                }
+              ]
             }
           }
         },
@@ -2381,7 +3161,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تسمم آبار المياه ببطء وتكتب قائمة بالشرفاء الذين سيقتلون أولاً عندما تدخل جيوش جنكيز خان.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -2396,7 +3176,7 @@
               ]
             },
             "p_ps_4_02": {
-              "text": "تُنهي تسميم الآبار وتهرب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -2406,7 +3186,7 @@
               ]
             },
             "p_ps_4_03": {
-              "text": "تشعر بالندم وتتوقف عن التسميم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -2416,7 +3196,7 @@
               ]
             },
             "p_ps_4_04": {
-              "text": "أهل المدينة يموتون ببطء.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -2431,57 +3211,57 @@
               ]
             },
             "p_ps_4_05": {
-              "text": "تُخبر الحامية بخطة المغول الحقيقية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_ps_4_07"
+                  "next": "p_ps_4_05_ex"
                 }
               ]
             },
             "p_ps_4_06": {
-              "text": "المغول يدخلون بسهولة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_ps_4_08"
+                  "next": "p_ps_4_06_ex"
                 }
               ]
             },
             "p_ps_4_07": {
-              "text": "قائدك المغولي يرشحك لمنصب كبير.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_ps_4_09"
+                  "next": "p_ps_4_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_ps_4_10"
+                  "next": "p_ps_4_07_ex2"
                 }
               ]
             },
             "p_ps_4_08": {
-              "text": "يكتشف المغول خيانتك لهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_ps_4_11"
+                  "next": "p_ps_4_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_ps_4_12"
+                  "next": "p_ps_4_08_ex2"
                 }
               ]
             },
             "p_ps_4_09": {
-              "text": "تُصبح والياً على أنقاض المدينة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -2491,7 +3271,7 @@
               ]
             },
             "p_ps_4_10": {
-              "text": "يهجمون عليك ويقطعون أطرافك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -2501,7 +3281,7 @@
               ]
             },
             "p_ps_4_11": {
-              "text": "تُحاول الهروب من انتقامهم الغاشم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -2511,7 +3291,7 @@
               ]
             },
             "p_ps_4_12": {
-              "text": "تعيش كحاكم مكروه منبوذ.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -2521,7 +3301,7 @@
               ]
             },
             "p_ps_4_13": {
-              "text": "تبني قصراً من عظام الضحايا.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -2531,7 +3311,7 @@
               ]
             },
             "p_ps_4_14": {
-              "text": "تتزوج ابنة جنكيز خان.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -2541,16 +3321,76 @@
               ]
             },
             "p_ps_4_win": {
-              "text": "تُصبح والياً نافذاً تحت حكم المغول، وتنسى ماضيك في الثروة والسلطة المطلقة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_ps_4_bad": {
-              "text": "تندم متأخراً وتُقتل على يد المغول لخروجك عن النص القاسي.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_ps_4_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_ps_4_07"
+                }
+              ]
+            },
+            "p_ps_4_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_ps_4_08"
+                }
+              ]
+            },
+            "p_ps_4_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_ps_4_09"
+                }
+              ]
+            },
+            "p_ps_4_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_ps_4_10"
+                }
+              ]
+            },
+            "p_ps_4_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_ps_4_11"
+                }
+              ]
+            },
+            "p_ps_4_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_ps_4_12"
+                }
+              ]
             }
           }
         },
@@ -2562,7 +3402,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "أنت تمحو اسم بطل شعبي من الكتب وتضع اسم ملك طاغية بدلاً منه. هذا هو الثمن لإنقاذ عائلتك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -2577,7 +3417,7 @@
               ]
             },
             "p_ps_5_02": {
-              "text": "أكمل التزوير لحمايتهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -2587,7 +3427,7 @@
               ]
             },
             "p_ps_5_03": {
-              "text": "أرفض التزوير وأحرق المخطوطة الكاذبة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -2597,7 +3437,7 @@
               ]
             },
             "p_ps_5_04": {
-              "text": "يعيش أطفالك وتُصبح مؤرخ البلاط.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -2612,57 +3452,57 @@
               ]
             },
             "p_ps_5_05": {
-              "text": "الملك يغضب ويأمر بحرق عائلتك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_ps_5_07"
+                  "next": "p_ps_5_05_ex"
                 }
               ]
             },
             "p_ps_5_06": {
-              "text": "ضميرك يجعلك تكتب الحقيقة سراً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_ps_5_08"
+                  "next": "p_ps_5_06_ex"
                 }
               ]
             },
             "p_ps_5_07": {
-              "text": "تُسجن وتُعذب لأيام.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_ps_5_09"
+                  "next": "p_ps_5_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_ps_5_10"
+                  "next": "p_ps_5_07_ex2"
                 }
               ]
             },
             "p_ps_5_08": {
-              "text": "تُخفي الحقيقة في كهف بعيد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_ps_5_11"
+                  "next": "p_ps_5_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_ps_5_12"
+                  "next": "p_ps_5_08_ex2"
                 }
               ]
             },
             "p_ps_5_09": {
-              "text": "تُهرب عائلتك قبل الحرق مباشرة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -2672,7 +3512,7 @@
               ]
             },
             "p_ps_5_10": {
-              "text": "المؤرخون يجدون الحقيقة بعد قرون.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -2682,7 +3522,7 @@
               ]
             },
             "p_ps_5_11": {
-              "text": "تهاجم الملك بخنجرك يائساً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -2692,7 +3532,7 @@
               ]
             },
             "p_ps_5_12": {
-              "text": "تعيش غنياً لكنك كذاب محترف.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -2702,7 +3542,7 @@
               ]
             },
             "p_ps_5_13": {
-              "text": "يمجّدون اسمك كمؤرخ شجاع.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -2712,7 +3552,7 @@
               ]
             },
             "p_ps_5_14": {
-              "text": "تموت وأنت تحاول اغتيال الملك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -2722,16 +3562,76 @@
               ]
             },
             "p_ps_5_win": {
-              "text": "ينكشف كذب الملك عبر مذكراتك السرية التي وجدوها بعد قرن. أنت بطل تاريخي حقيقي.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_ps_5_bad": {
-              "text": "تستمر في التزوير وتموت جباناً، ولا يذكرك التاريخ سوى بكذبة بائسة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_ps_5_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_ps_5_07"
+                }
+              ]
+            },
+            "p_ps_5_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_ps_5_08"
+                }
+              ]
+            },
+            "p_ps_5_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_ps_5_09"
+                }
+              ]
+            },
+            "p_ps_5_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_ps_5_10"
+                }
+              ]
+            },
+            "p_ps_5_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_ps_5_11"
+                }
+              ]
+            },
+            "p_ps_5_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_ps_5_12"
+                }
+              ]
             }
           }
         }
@@ -2750,7 +3650,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "حين أصدرت حكم الإعدام بحق صديقك المقرب لخيانته للثورة، أدركت أنك أصبحت طاغية جديداً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -2765,7 +3665,7 @@
               ]
             },
             "p_prev_1_02": {
-              "text": "أوقف الإعدام واعترف بخطأي أمام الشعب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -2775,7 +3675,7 @@
               ]
             },
             "p_prev_1_03": {
-              "text": "أنفذ الإعدام لفرض النظام الصارم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -2785,7 +3685,7 @@
               ]
             },
             "p_prev_1_04": {
-              "text": "الشعب يسامحك ويحبك أكثر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -2800,57 +3700,57 @@
               ]
             },
             "p_prev_1_05": {
-              "text": "تسود الفوضى وتنهار الثورة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_prev_1_07"
+                  "next": "p_prev_1_05_ex"
                 }
               ]
             },
             "p_prev_1_06": {
-              "text": "يسقط رأس صديقك، وتتصلب مشاعرك تماماً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_prev_1_08"
+                  "next": "p_prev_1_06_ex"
                 }
               ]
             },
             "p_prev_1_07": {
-              "text": "تُحاكم كطاغية جديد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_prev_1_09"
+                  "next": "p_prev_1_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_prev_1_10"
+                  "next": "p_prev_1_07_ex2"
                 }
               ]
             },
             "p_prev_1_08": {
-              "text": "تستقيل من قيادة الثورة لتعيش بسلام.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_prev_1_11"
+                  "next": "p_prev_1_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_prev_1_12"
+                  "next": "p_prev_1_08_ex2"
                 }
               ]
             },
             "p_prev_1_09": {
-              "text": "الثوار الآخرون ينقلبون عليك بخوف.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -2860,7 +3760,7 @@
               ]
             },
             "p_prev_1_10": {
-              "text": "تُعدم بنفس المقصلة التي أسستها.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -2870,7 +3770,7 @@
               ]
             },
             "p_prev_1_11": {
-              "text": "تغادر البلاد وتعيش كفلاح بسيط.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -2880,7 +3780,7 @@
               ]
             },
             "p_prev_1_12": {
-              "text": "تقمع التمرد الداخلي بالحديد والنار.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -2890,7 +3790,7 @@
               ]
             },
             "p_prev_1_13": {
-              "text": "تصبح حاكماً دكتاتورياً وحشياً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -2900,7 +3800,7 @@
               ]
             },
             "p_prev_1_14": {
-              "text": "تكتب مذكراتك في المنفى البعيد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -2910,16 +3810,76 @@
               ]
             },
             "p_prev_1_win": {
-              "text": "تترك السلطة في الوقت المناسب وتعيش بسلام محتفظاً بإنسانيتك وشرفك الثوري.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_prev_1_bad": {
-              "text": "تقتل الجميع وتبقى الدكتاتور الأقوى والأكثر وحدة في التاريخ البشري المظلم.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_prev_1_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_prev_1_07"
+                }
+              ]
+            },
+            "p_prev_1_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_prev_1_08"
+                }
+              ]
+            },
+            "p_prev_1_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_prev_1_09"
+                }
+              ]
+            },
+            "p_prev_1_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_prev_1_10"
+                }
+              ]
+            },
+            "p_prev_1_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_prev_1_11"
+                }
+              ]
+            },
+            "p_prev_1_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_prev_1_12"
+                }
+              ]
             }
           }
         },
@@ -2931,7 +3891,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تقف على الجبل شاهراً بندقيتك، تراقب قوافل الاحتلال وهي تمر تحتك... الفرصة لن تتكرر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -2946,7 +3906,7 @@
               ]
             },
             "p_prev_2_02": {
-              "text": "أطلق النار على القافلة العسكرية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -2956,7 +3916,7 @@
               ]
             },
             "p_prev_2_03": {
-              "text": "انتظر حتى تمر القافلة بسلام لتجنب الخسائر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -2966,7 +3926,7 @@
               ]
             },
             "p_prev_2_04": {
-              "text": "تدمرون القافلة وتغنمون السلاح.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -2981,57 +3941,57 @@
               ]
             },
             "p_prev_2_05": {
-              "text": "الاحتلال يهاجم قريتكم رداً على الصمت.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_prev_2_07"
+                  "next": "p_prev_2_05_ex"
                 }
               ]
             },
             "p_prev_2_06": {
-              "text": "ترسل السلاح لثوار المدن الكبرى.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_prev_2_08"
+                  "next": "p_prev_2_06_ex"
                 }
               ]
             },
             "p_prev_2_07": {
-              "text": "تقود الهجوم للدفاع عن قريتك المحترقة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_prev_2_09"
+                  "next": "p_prev_2_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_prev_2_10"
+                  "next": "p_prev_2_07_ex2"
                 }
               ]
             },
             "p_prev_2_08": {
-              "text": "تهاجمون معسكرهم الرئيسي بنجاح.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_prev_2_11"
+                  "next": "p_prev_2_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_prev_2_12"
+                  "next": "p_prev_2_08_ex2"
                 }
               ]
             },
             "p_prev_2_09": {
-              "text": "تُصاب في المعركة بجرح خطير.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -3041,7 +4001,7 @@
               ]
             },
             "p_prev_2_10": {
-              "text": "تحررون مناطق شاسعة من الجبل.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -3051,7 +4011,7 @@
               ]
             },
             "p_prev_2_11": {
-              "text": "تُسلم نفسك مقابل سلامتهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -3061,7 +4021,7 @@
               ]
             },
             "p_prev_2_12": {
-              "text": "تستمر في القتال المستميت.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -3071,7 +4031,7 @@
               ]
             },
             "p_prev_2_13": {
-              "text": "تنضم للثورة الكبرى وتصبح قائداً فذاً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -3081,7 +4041,7 @@
               ]
             },
             "p_prev_2_14": {
-              "text": "تُشنق كإرهابي في الساحة العامة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -3091,16 +4051,76 @@
               ]
             },
             "p_prev_2_win": {
-              "text": "تهزمون الاحتلال في منطقتكم وتصبح رمزاً أسطورياً للمقاومة العظيمة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_prev_2_bad": {
-              "text": "تُعتقل وتُشنق لتبقى ذكراك، لكنك لم تحرر أحداً. شهادة حزينة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_prev_2_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_prev_2_07"
+                }
+              ]
+            },
+            "p_prev_2_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_prev_2_08"
+                }
+              ]
+            },
+            "p_prev_2_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_prev_2_09"
+                }
+              ]
+            },
+            "p_prev_2_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_prev_2_10"
+                }
+              ]
+            },
+            "p_prev_2_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_prev_2_11"
+                }
+              ]
+            },
+            "p_prev_2_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_prev_2_12"
+                }
+              ]
             }
           }
         },
@@ -3112,7 +4132,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "قيودك الحديدية ثقيلة، لكن سيفك الذي سرقته الليلة الماضية يخبرك أن الحرية أصبحت بين يديك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -3127,7 +4147,7 @@
               ]
             },
             "p_prev_3_02": {
-              "text": "اقتل الحارس وأطلق سراح العبيد الآخرين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -3137,7 +4157,7 @@
               ]
             },
             "p_prev_3_03": {
-              "text": "اهرب وحدك لتجنب المواجهة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -3147,7 +4167,7 @@
               ]
             },
             "p_prev_3_04": {
-              "text": "العبيد يهتفون باسمك كأسبرتاكوس جديد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -3162,57 +4182,57 @@
               ]
             },
             "p_prev_3_05": {
-              "text": "تضيع في غابات إيطاليا كهارب مطلوب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_prev_3_07"
+                  "next": "p_prev_3_05_ex"
                 }
               ]
             },
             "p_prev_3_06": {
-              "text": "تقود جيش العبيد نحو الجبال للتحصن.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_prev_3_08"
+                  "next": "p_prev_3_06_ex"
                 }
               ]
             },
             "p_prev_3_07": {
-              "text": "صيادو العبيد يلحقون بك ويقتلونك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_prev_3_09"
+                  "next": "p_prev_3_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_prev_3_10"
+                  "next": "p_prev_3_07_ex2"
                 }
               ]
             },
             "p_prev_3_08": {
-              "text": "تهزم جيش روما الأول المرسل ضدكم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_prev_3_11"
+                  "next": "p_prev_3_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_prev_3_12"
+                  "next": "p_prev_3_08_ex2"
                 }
               ]
             },
             "p_prev_3_09": {
-              "text": "روما ترسل جيشاً جراراً لإبادتكم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -3222,7 +4242,7 @@
               ]
             },
             "p_prev_3_10": {
-              "text": "تحاول التفاوض للهروب بحراً نحو مصر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -3232,7 +4252,7 @@
               ]
             },
             "p_prev_3_11": {
-              "text": "تقاتل حتى الموت في ساحة المجد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -3242,7 +4262,7 @@
               ]
             },
             "p_prev_3_12": {
-              "text": "القراصنة يخونونكم ويأخذون الذهب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -3252,7 +4272,7 @@
               ]
             },
             "p_prev_3_13": {
-              "text": "تنجحون في الإبحار والفرار لتبنوا مدينة حرة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -3262,7 +4282,7 @@
               ]
             },
             "p_prev_3_14": {
-              "text": "تُصلب على طول طريق أبيان مع آلاف العبيد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -3272,16 +4292,76 @@
               ]
             },
             "p_prev_3_win": {
-              "text": "تنجحون في الهروب بحراً وتؤسسون مدينة حرة في المشرق بعيداً عن الرومان.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_prev_3_bad": {
-              "text": "تُصلبون جميعاً في روما لترهيب كل من يفكر بالحرية مجدداً.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_prev_3_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_prev_3_07"
+                }
+              ]
+            },
+            "p_prev_3_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_prev_3_08"
+                }
+              ]
+            },
+            "p_prev_3_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_prev_3_09"
+                }
+              ]
+            },
+            "p_prev_3_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_prev_3_10"
+                }
+              ]
+            },
+            "p_prev_3_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_prev_3_11"
+                }
+              ]
+            },
+            "p_prev_3_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_prev_3_12"
+                }
+              ]
             }
           }
         },
@@ -3293,7 +4373,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "ترتدين الحرير الفاخر وتسكبين الشاي للمسؤولين بينما تنقلين أسرارهم لقادة الفلاحين المتمردين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -3308,7 +4388,7 @@
               ]
             },
             "p_prev_4_02": {
-              "text": "أدس السم البطيء في شاي الجنرال الأكبر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -3318,7 +4398,7 @@
               ]
             },
             "p_prev_4_03": {
-              "text": "أنقل تحركات الجيش القادمة فقط.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -3328,7 +4408,7 @@
               ]
             },
             "p_prev_4_04": {
-              "text": "يمرض الجنرال وتعم الفوضى في البلاط.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -3343,57 +4423,57 @@
               ]
             },
             "p_prev_4_05": {
-              "text": "ينجح الفلاحون في نصب كمين كبير للجيش.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_prev_4_07"
+                  "next": "p_prev_4_05_ex"
                 }
               ]
             },
             "p_prev_4_06": {
-              "text": "تُتهمين بالسم وتخضعين للتعذيب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_prev_4_08"
+                  "next": "p_prev_4_06_ex"
                 }
               ]
             },
             "p_prev_4_07": {
-              "text": "الملك يهرب وتنجح الثورة الشعبية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_prev_4_09"
+                  "next": "p_prev_4_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_prev_4_10"
+                  "next": "p_prev_4_07_ex2"
                 }
               ]
             },
             "p_prev_4_08": {
-              "text": "ترفضين الاعتراف وتقطعين لسانك بصمت.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_prev_4_11"
+                  "next": "p_prev_4_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_prev_4_12"
+                  "next": "p_prev_4_08_ex2"
                 }
               ]
             },
             "p_prev_4_09": {
-              "text": "تُصبحين بطلة الثورة المخفية الخالدة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -3403,7 +4483,7 @@
               ]
             },
             "p_prev_4_10": {
-              "text": "يُعدمونكِ بقسوة أمام الناس.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -3413,7 +4493,7 @@
               ]
             },
             "p_prev_4_11": {
-              "text": "تعيشين بسلام كمعلمة أطفال.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -3423,7 +4503,7 @@
               ]
             },
             "p_prev_4_12": {
-              "text": "يُكشف سر نقل المعلومات عبر الطيور.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -3433,7 +4513,7 @@
               ]
             },
             "p_prev_4_13": {
-              "text": "تقفزين من شرفة القصر هرباً منهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -3443,7 +4523,7 @@
               ]
             },
             "p_prev_4_14": {
-              "text": "يُعفو عنك الفلاحون المنتصرون.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -3453,16 +4533,76 @@
               ]
             },
             "p_prev_4_win": {
-              "text": "تنجح الثورة الصامتة، وتعيشين كرمز تاريخي للحرية والمقاومة المخفية.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_prev_4_bad": {
-              "text": "تُكتشفين وتُعذبين حتى الموت دون أن يعرف أحد بتضحيتك العظيمة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_prev_4_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_prev_4_07"
+                }
+              ]
+            },
+            "p_prev_4_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_prev_4_08"
+                }
+              ]
+            },
+            "p_prev_4_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_prev_4_09"
+                }
+              ]
+            },
+            "p_prev_4_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_prev_4_10"
+                }
+              ]
+            },
+            "p_prev_4_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_prev_4_11"
+                }
+              ]
+            },
+            "p_prev_4_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_prev_4_12"
+                }
+              ]
             }
           }
         },
@@ -3474,7 +4614,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تجلس في قفص الاتهام وتنظر في عيون من شاركوك الحلم، واليوم يحاكمونك بتهمة الخيانة العظمى.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -3489,7 +4629,7 @@
               ]
             },
             "p_prev_5_02": {
-              "text": "أدافع عن نفسي بخطاب ناري يزلزلهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -3499,7 +4639,7 @@
               ]
             },
             "p_prev_5_03": {
-              "text": "أصمت، لقد خاب ظني بهم تماماً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -3509,7 +4649,7 @@
               ]
             },
             "p_prev_5_04": {
-              "text": "الجمهور يبكي ويتأثر بكلماتك الصادقة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -3524,57 +4664,57 @@
               ]
             },
             "p_prev_5_05": {
-              "text": "يحكمون عليك بالإعدام بالمقصلة سريعاً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_prev_5_07"
+                  "next": "p_prev_5_05_ex"
                 }
               ]
             },
             "p_prev_5_06": {
-              "text": "ينقسم القضاة حول إدانتك أو العفو عنك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_prev_5_08"
+                  "next": "p_prev_5_06_ex"
                 }
               ]
             },
             "p_prev_5_07": {
-              "text": "يأمرون بتنفيذ الإعدام فجراً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_prev_5_09"
+                  "next": "p_prev_5_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_prev_5_10"
+                  "next": "p_prev_5_07_ex2"
                 }
               ]
             },
             "p_prev_5_08": {
-              "text": "الشباب الثائر يقتحمون المحكمة لإنقاذك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_prev_5_11"
+                  "next": "p_prev_5_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_prev_5_12"
+                  "next": "p_prev_5_08_ex2"
                 }
               ]
             },
             "p_prev_5_09": {
-              "text": "تقود الثوار نحو العاصمة لتأديب القضاة الفاسدين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -3584,7 +4724,7 @@
               ]
             },
             "p_prev_5_10": {
-              "text": "تُساق للمقصلة وتهتف بالحرية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -3594,7 +4734,7 @@
               ]
             },
             "p_prev_5_11": {
-              "text": "تنتصر وتصبح الدكتاتور الأقوى.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -3604,7 +4744,7 @@
               ]
             },
             "p_prev_5_12": {
-              "text": "تهرب لمنفى فرنسي آمن.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -3614,7 +4754,7 @@
               ]
             },
             "p_prev_5_13": {
-              "text": "يُخلد اسمك كشهيد المبادئ النقية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -3624,7 +4764,7 @@
               ]
             },
             "p_prev_5_14": {
-              "text": "تعيش نادماً وتكتب مذكراتك القاسية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -3634,16 +4774,76 @@
               ]
             },
             "p_prev_5_win": {
-              "text": "تُنقذ من الإعدام، وتنجح في تصحيح مسار الثورة المائل للظلم. لقد انتصر الحق.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_prev_5_bad": {
-              "text": "يقطعون رأسك بالمقصلة، لتطوي صفحتك كثائر مخلص قتلته الثورة العبثية.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_prev_5_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_prev_5_07"
+                }
+              ]
+            },
+            "p_prev_5_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_prev_5_08"
+                }
+              ]
+            },
+            "p_prev_5_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_prev_5_09"
+                }
+              ]
+            },
+            "p_prev_5_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_prev_5_10"
+                }
+              ]
+            },
+            "p_prev_5_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_prev_5_11"
+                }
+              ]
+            },
+            "p_prev_5_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_prev_5_12"
+                }
+              ]
             }
           }
         }
@@ -3662,7 +4862,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تسمع دوي الأسلحة وصهيل الخيل وأنت تفر فراراً في ساحة معركة لا تنتمي إليها بأي شكل كان.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -3677,7 +4877,7 @@
               ]
             },
             "p_ptt_1_02": {
-              "text": "تختبئ تحت جثة حصان ميت.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -3687,7 +4887,7 @@
               ]
             },
             "p_ptt_1_03": {
-              "text": "تحاول مساعدة جندي جريح يبكي.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -3697,7 +4897,7 @@
               ]
             },
             "p_ptt_1_04": {
-              "text": "جنود رمسيس الثاني يجدونك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -3712,57 +4912,57 @@
               ]
             },
             "p_ptt_1_05": {
-              "text": "الجندي يحميك من رماح الحيثيين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_ptt_1_07"
+                  "next": "p_ptt_1_05_ex"
                 }
               ]
             },
             "p_ptt_1_06": {
-              "text": "تُؤخذ كأسير غريب بملابس مضحكة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_ptt_1_08"
+                  "next": "p_ptt_1_06_ex"
                 }
               ]
             },
             "p_ptt_1_07": {
-              "text": "تُقدم كهدية للفرعون وتتحدث الإنكليزية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_ptt_1_09"
+                  "next": "p_ptt_1_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_ptt_1_10"
+                  "next": "p_ptt_1_07_ex2"
                 }
               ]
             },
             "p_ptt_1_08": {
-              "text": "يعتبرك الفرعون إلهاً أو نذير شؤم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_ptt_1_11"
+                  "next": "p_ptt_1_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_ptt_1_12"
+                  "next": "p_ptt_1_08_ex2"
                 }
               ]
             },
             "p_ptt_1_09": {
-              "text": "يُأمر الكهنة بإلقائك في النيل للتماسيح.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -3772,7 +4972,7 @@
               ]
             },
             "p_ptt_1_10": {
-              "text": "تشرح لهم علومك لينجحوا في البناء.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -3782,7 +4982,7 @@
               ]
             },
             "p_ptt_1_11": {
-              "text": "تنجو بفضل معرفتك بكسوف الشمس.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -3792,7 +4992,7 @@
               ]
             },
             "p_ptt_1_12": {
-              "text": "يهرب بك تاجر عبر الصحراء.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -3802,7 +5002,7 @@
               ]
             },
             "p_ptt_1_13": {
-              "text": "تصبح مستشاراً علمياً عظيماً بمصر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -3812,7 +5012,7 @@
               ]
             },
             "p_ptt_1_14": {
-              "text": "تعيش في واحة نائية كعراف أعمى.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -3822,16 +5022,76 @@
               ]
             },
             "p_ptt_1_win": {
-              "text": "تبني لهم عجائب جديدة بعلمك وتُقدس في مصر كإله من سماء مختلفة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_ptt_1_bad": {
-              "text": "تفشل في إقناعهم وتأكلك التماسيح كقربان لآلهتهم المتعطشة للدماء.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_ptt_1_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_ptt_1_07"
+                }
+              ]
+            },
+            "p_ptt_1_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_ptt_1_08"
+                }
+              ]
+            },
+            "p_ptt_1_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_ptt_1_09"
+                }
+              ]
+            },
+            "p_ptt_1_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_ptt_1_10"
+                }
+              ]
+            },
+            "p_ptt_1_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_ptt_1_11"
+                }
+              ]
+            },
+            "p_ptt_1_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_ptt_1_12"
+                }
+              ]
             }
           }
         },
@@ -3843,7 +5103,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "أنت تحمل في حقيبتك المضادات الحيوية (البنسلين)، والناس يموتون في شوارع فلورنسا من الطاعون المظلم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -3858,7 +5118,7 @@
               ]
             },
             "p_ptt_2_02": {
-              "text": "أبدأ بعلاج فقراء المدينة أولاً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -3868,7 +5128,7 @@
               ]
             },
             "p_ptt_2_03": {
-              "text": "أذهب لأعالج الحاكم والنبلاء لحماية نفسي.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -3878,7 +5138,7 @@
               ]
             },
             "p_ptt_2_04": {
-              "text": "الفقراء يشفون بسرعة ويعتبرونك قديساً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -3893,57 +5153,57 @@
               ]
             },
             "p_ptt_2_05": {
-              "text": "النبلاء يمنحونك الذهب ويطردونك من القصر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_ptt_2_07"
+                  "next": "p_ptt_2_05_ex"
                 }
               ]
             },
             "p_ptt_2_06": {
-              "text": "الكهنة يغارون ويتهمونك بممارسة السحر الأسود.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_ptt_2_08"
+                  "next": "p_ptt_2_06_ex"
                 }
               ]
             },
             "p_ptt_2_07": {
-              "text": "تهاجمك الحشود الغاضبة بتحريض الكهنة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_ptt_2_09"
+                  "next": "p_ptt_2_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_ptt_2_10"
+                  "next": "p_ptt_2_07_ex2"
                 }
               ]
             },
             "p_ptt_2_08": {
-              "text": "تستخدم الذهب لبناء مستشفى آمن ومحمي.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_ptt_2_11"
+                  "next": "p_ptt_2_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_ptt_2_12"
+                  "next": "p_ptt_2_08_ex2"
                 }
               ]
             },
             "p_ptt_2_09": {
-              "text": "تهرب نحو الجبال وتؤسس عيادة سرية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -3953,7 +5213,7 @@
               ]
             },
             "p_ptt_2_10": {
-              "text": "تُحرق كساحر في ساحة إيطاليا.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -3963,7 +5223,7 @@
               ]
             },
             "p_ptt_2_11": {
-              "text": "تعالج المئات وتنهي الوباء بمفردك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -3973,7 +5233,7 @@
               ]
             },
             "p_ptt_2_12": {
-              "text": "تعيش متخفياً وتعالج الناس بصمت.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -3983,7 +5243,7 @@
               ]
             },
             "p_ptt_2_13": {
-              "text": "يكتشف الكهنة مكانك السري ويهاجمونه.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -3993,7 +5253,7 @@
               ]
             },
             "p_ptt_2_14": {
-              "text": "تنجو وتغير مسار الطب الأوروبي للأبد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -4003,16 +5263,76 @@
               ]
             },
             "p_ptt_2_win": {
-              "text": "تصبح أسطورة الطب الأوروبي وتنهي الوباء الأسود من جذوره. أنت ملاك الرحمة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_ptt_2_bad": {
-              "text": "تُحرق حياً كساحر كافر. العلم لم يكن كافياً لإنقاذك من الجهل الأعمى.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_ptt_2_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_ptt_2_07"
+                }
+              ]
+            },
+            "p_ptt_2_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_ptt_2_08"
+                }
+              ]
+            },
+            "p_ptt_2_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_ptt_2_09"
+                }
+              ]
+            },
+            "p_ptt_2_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_ptt_2_10"
+                }
+              ]
+            },
+            "p_ptt_2_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_ptt_2_11"
+                }
+              ]
+            },
+            "p_ptt_2_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_ptt_2_12"
+                }
+              ]
             }
           }
         },
@@ -4024,7 +5344,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تفتح عينيك لتجد نفسك وسط قافلة، وفي يدك هاتف. الجو حار والجنود يتجهون نحوك ليعتقلوك كجاسوس.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -4039,7 +5359,7 @@
               ]
             },
             "p_ptt_3_02": {
-              "text": "أشغل الكشاف (الفلاش) وأخفهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -4049,7 +5369,7 @@
               ]
             },
             "p_ptt_3_03": {
-              "text": "أركض نحو أزقة السوق للهرب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -4059,7 +5379,7 @@
               ]
             },
             "p_ptt_3_04": {
-              "text": "الجنود يسقطون راكعين لظنهم أنه سحر إلهي.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -4074,57 +5394,57 @@
               ]
             },
             "p_ptt_3_05": {
-              "text": "تتعثر وتُسجن في زنزانة أرضية مظلمة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_ptt_3_07"
+                  "next": "p_ptt_3_05_ex"
                 }
               ]
             },
             "p_ptt_3_06": {
-              "text": "تُؤخذ للقاء الخليفة هارون الرشيد كأعجوبة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_ptt_3_08"
+                  "next": "p_ptt_3_06_ex"
                 }
               ]
             },
             "p_ptt_3_07": {
-              "text": "يأخذون هاتفك الغريب ولا تستطيع شرحه.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_ptt_3_09"
+                  "next": "p_ptt_3_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_ptt_3_10"
+                  "next": "p_ptt_3_07_ex2"
                 }
               ]
             },
             "p_ptt_3_08": {
-              "text": "تعرض له الصور والموسيقى فيذهل تماماً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_ptt_3_11"
+                  "next": "p_ptt_3_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_ptt_3_12"
+                  "next": "p_ptt_3_08_ex2"
                 }
               ]
             },
             "p_ptt_3_09": {
-              "text": "تُحكم عليك بالإعدام لجهلهم بهويتك التامة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -4134,7 +5454,7 @@
               ]
             },
             "p_ptt_3_10": {
-              "text": "تصبح مستشاره العلمي المقرب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -4144,7 +5464,7 @@
               ]
             },
             "p_ptt_3_11": {
-              "text": "تصنع لهم اختراعات بسيطة كالعجلات والتروس.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -4154,7 +5474,7 @@
               ]
             },
             "p_ptt_3_12": {
-              "text": "تبني آلة طباعة بدائية لمساعدتهم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -4164,7 +5484,7 @@
               ]
             },
             "p_ptt_3_13": {
-              "text": "تؤسس ثورة صناعية مبكرة جداً في بغداد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -4174,7 +5494,7 @@
               ]
             },
             "p_ptt_3_14": {
-              "text": "ينفد شحن هاتفك لكنك تعلمت العيش بذكاء.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -4184,16 +5504,76 @@
               ]
             },
             "p_ptt_3_win": {
-              "text": "تبدأ ثورة علمية عباسية مبكرة جداً بفضل تلميحاتك. أنت مؤسس النهضة العظيمة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_ptt_3_bad": {
-              "text": "يُصادر هاتفك وتُعدم كجاسوس غريب. المستقبل لم ينفعك هنا.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_ptt_3_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_ptt_3_07"
+                }
+              ]
+            },
+            "p_ptt_3_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_ptt_3_08"
+                }
+              ]
+            },
+            "p_ptt_3_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_ptt_3_09"
+                }
+              ]
+            },
+            "p_ptt_3_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_ptt_3_10"
+                }
+              ]
+            },
+            "p_ptt_3_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_ptt_3_11"
+                }
+              ]
+            },
+            "p_ptt_3_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_ptt_3_12"
+                }
+              ]
             }
           }
         },
@@ -4205,7 +5585,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تجلس أمام المحقق وتتصبب عرقاً... أفكارك الحديثة عن الحرية وحقوق الإنسان تبدو لهم كهرطقة، وعقوبتها الحرق الصريح.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -4220,7 +5600,7 @@
               ]
             },
             "p_ptt_4_02": {
-              "text": "أتظاهر بالجنون والهلوسة لينقذوني.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -4230,7 +5610,7 @@
               ]
             },
             "p_ptt_4_03": {
-              "text": "أتراجع وأقسم بولائي التام لتعاليمهم القاسية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -4240,7 +5620,7 @@
               ]
             },
             "p_ptt_4_04": {
-              "text": "يحبسونك في مصح عقلي مظلم مليء بالجرذان.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -4255,57 +5635,57 @@
               ]
             },
             "p_ptt_4_05": {
-              "text": "يفكون قيدك ويجعلونك خادماً ذليلاً في المعبد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_ptt_4_07"
+                  "next": "p_ptt_4_05_ex"
                 }
               ]
             },
             "p_ptt_4_06": {
-              "text": "تحاول حفر خندق هروب بملعقة خشبية لسنوات.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_ptt_4_08"
+                  "next": "p_ptt_4_06_ex"
                 }
               ]
             },
             "p_ptt_4_07": {
-              "text": "يُقررون حرقك مع المجانين في الساحة الكبرى.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_ptt_4_09"
+                  "next": "p_ptt_4_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_ptt_4_10"
+                  "next": "p_ptt_4_07_ex2"
                 }
               ]
             },
             "p_ptt_4_08": {
-              "text": "تسرق مفاتيح المعبد وتهرب ليلاً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_ptt_4_11"
+                  "next": "p_ptt_4_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_ptt_4_12"
+                  "next": "p_ptt_4_08_ex2"
                 }
               ]
             },
             "p_ptt_4_09": {
-              "text": "تنجح في الهروب نحو ميناء إسباني بعيد.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -4315,7 +5695,7 @@
               ]
             },
             "p_ptt_4_10": {
-              "text": "تُحرق حياً والناس يهتفون.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -4325,7 +5705,7 @@
               ]
             },
             "p_ptt_4_11": {
-              "text": "تركب سفينة وتتجه نحو العالم الجديد (أمريكا).",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -4335,7 +5715,7 @@
               ]
             },
             "p_ptt_4_12": {
-              "text": "تُغرق السفينة وتغرق في المحيط الأطلسي.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -4345,7 +5725,7 @@
               ]
             },
             "p_ptt_4_13": {
-              "text": "تصل لأمريكا وتبدأ حياة كفلاح بسيط حر.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -4355,7 +5735,7 @@
               ]
             },
             "p_ptt_4_14": {
-              "text": "تكتب قصة معاناتك في كتاب مجهول الاسم.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -4365,16 +5745,76 @@
               ]
             },
             "p_ptt_4_win": {
-              "text": "تنجو لتعيش كفلاح حر في قارة جديدة، بعيداً عن بطش أوروبا القديمة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_ptt_4_bad": {
-              "text": "تُحرق حياً كهرطوقي ملعون في ساحة مدريد. التنوير جاء متأخراً جداً لك.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_ptt_4_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_ptt_4_07"
+                }
+              ]
+            },
+            "p_ptt_4_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_ptt_4_08"
+                }
+              ]
+            },
+            "p_ptt_4_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_ptt_4_09"
+                }
+              ]
+            },
+            "p_ptt_4_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_ptt_4_10"
+                }
+              ]
+            },
+            "p_ptt_4_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_ptt_4_11"
+                }
+              ]
+            },
+            "p_ptt_4_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_ptt_4_12"
+                }
+              ]
             }
           }
         },
@@ -4386,7 +5826,7 @@
           "estimated_length": "طويلة",
           "nodes": {
             "start": {
-              "text": "تدركين أنكِ مسجونة في الكولوسيوم، ولا علمك بالكيمياء أو الفيزياء سيحميكِ من سيف المصارع الأعمى المندفع نحوكِ.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الطريق الأول",
@@ -4401,7 +5841,7 @@
               ]
             },
             "p_ptt_5_02": {
-              "text": "أرمي الرمل في عينيه وأركض نحو البوابة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر للداخل",
@@ -4411,7 +5851,7 @@
               ]
             },
             "p_ptt_5_03": {
-              "text": "أستسلم وأطلب الرحمة باللاتينية التي تعلمتها.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "استمر بحذر",
@@ -4421,7 +5861,7 @@
               ]
             },
             "p_ptt_5_04": {
-              "text": "يعمى المصارع مؤقتاً وتنجحين في الهرب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اكسر الباب",
@@ -4436,57 +5876,57 @@
               ]
             },
             "p_ptt_5_05": {
-              "text": "يندهش المصارع من لغتك الضعيفة ويضحك.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "واجه الخطر",
                   "emoji": "🔥",
-                  "next": "p_ptt_5_07"
+                  "next": "p_ptt_5_05_ex"
                 }
               ]
             },
             "p_ptt_5_06": {
-              "text": "الجمهور يطالب بقتلك، والإمبراطور يرفع إبهامه للأسفل.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "ابحث عن المخرج",
                   "emoji": "🔍",
-                  "next": "p_ptt_5_08"
+                  "next": "p_ptt_5_06_ex"
                 }
               ]
             },
             "p_ptt_5_07": {
-              "text": "تختبئين في قنوات المياه السفلية للملعب.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "هاجم بقوة",
                   "emoji": "⚔️",
-                  "next": "p_ptt_5_09"
+                  "next": "p_ptt_5_07_ex1"
                 },
                 {
                   "label": "تراجع وتفاوض",
                   "emoji": "🗣️",
-                  "next": "p_ptt_5_10"
+                  "next": "p_ptt_5_07_ex2"
                 }
               ]
             },
             "p_ptt_5_08": {
-              "text": "المصارع يرفض قتلك، فيأمرون بقتلكما معاً.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقفز للاسفل",
                   "emoji": "⬇️",
-                  "next": "p_ptt_5_11"
+                  "next": "p_ptt_5_08_ex1"
                 },
                 {
                   "label": "اختبئ في الظلام",
                   "emoji": "🌑",
-                  "next": "p_ptt_5_12"
+                  "next": "p_ptt_5_08_ex2"
                 }
               ]
             },
             "p_ptt_5_09": {
-              "text": "تصنعين قنبلة دخانية بدائية من مواد التنظيف.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "الضربة القاضية",
@@ -4496,7 +5936,7 @@
               ]
             },
             "p_ptt_5_10": {
-              "text": "تفجرين القنبلة وتهربين في الفوضى العارمة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اقبل العرض",
@@ -4506,7 +5946,7 @@
               ]
             },
             "p_ptt_5_11": {
-              "text": "الجنود يلاحقونك في شوارع روما وتُمسكين.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "تجاهل الألم واركض",
@@ -4516,7 +5956,7 @@
               ]
             },
             "p_ptt_5_12": {
-              "text": "تصلين للغابات وتهربين للعيش كساحرة حكيمة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "انتظرهم ليرحلوا",
@@ -4526,7 +5966,7 @@
               ]
             },
             "p_ptt_5_13": {
-              "text": "تبنين حياة كطبيبة شعبية في القرى الإيطالية.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "افتح الصندوق",
@@ -4536,7 +5976,7 @@
               ]
             },
             "p_ptt_5_14": {
-              "text": "روما تُنسى وتعيشين كعالمة طبيعة مبدعة.",
+              "text": "[PLACEHOLDER]",
               "choices": [
                 {
                   "label": "اسرق الغنيمة ببطء",
@@ -4546,16 +5986,76 @@
               ]
             },
             "p_ptt_5_win": {
-              "text": "تهربين ותعيشين حرة كطبيبة تحظى باحترام القرى البعيدة في إيطاليا القديمة.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "victory",
               "choices": []
             },
             "p_ptt_5_bad": {
-              "text": "تُذبحين في الكولوسيوم كضحية بائسة لمتعة الجمهور الروماني الهمجي.",
+              "text": "[PLACEHOLDER]",
               "is_ending": true,
               "ending_type": "defeat",
               "choices": []
+            },
+            "p_ptt_5_05_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تابع",
+                  "emoji": "⏩",
+                  "next": "p_ptt_5_07"
+                }
+              ]
+            },
+            "p_ptt_5_06_ex": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تقدم",
+                  "emoji": "🚶",
+                  "next": "p_ptt_5_08"
+                }
+              ]
+            },
+            "p_ptt_5_07_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "تأكيد",
+                  "emoji": "⚔️",
+                  "next": "p_ptt_5_09"
+                }
+              ]
+            },
+            "p_ptt_5_07_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "جرب طريقاً آخر",
+                  "emoji": "🗣️",
+                  "next": "p_ptt_5_10"
+                }
+              ]
+            },
+            "p_ptt_5_08_ex1": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اقفز",
+                  "emoji": "⬇️",
+                  "next": "p_ptt_5_11"
+                }
+              ]
+            },
+            "p_ptt_5_08_ex2": {
+              "text": "[PLACEHOLDER]",
+              "choices": [
+                {
+                  "label": "اختبئ",
+                  "emoji": "🌑",
+                  "next": "p_ptt_5_12"
+                }
+              ]
             }
           }
         }

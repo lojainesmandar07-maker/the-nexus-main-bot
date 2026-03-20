@@ -90,6 +90,7 @@ class EventManager:
                 # 2. Setup Voting
                 view = VotingView(choices=self.current_scene.choices, timeout=self.voting_timeout)
                 message = await self.event_channel.send(embed=embed, view=view)
+                view.message = message
 
                 # 3. Wait for voting to finish
                 await asyncio.sleep(self.voting_timeout)

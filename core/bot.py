@@ -16,6 +16,11 @@ class StoryBot(commands.Bot):
         self.event_manager = EventManager(self, self.story_manager)
 
     async def setup_hook(self):
+        # Re-register persistent views BEFORE loading cogs
+        from ui.listing_view import SoloLibraryView, MultiLibraryView
+        self.add_view(SoloLibraryView({}))
+        self.add_view(MultiLibraryView({}))
+
         # Load cogs here
         await self.load_extension("cogs.event_cog")
         await self.load_extension("cogs.solo_cog")
@@ -32,6 +37,18 @@ class StoryBot(commands.Bot):
             print("Synced global commands")
 
         print("Bot setup complete. Commands loaded.")
+
+    async def on_application_command_error(self, interaction: discord.Interaction, error):
+        msg = "⚠️ حدث خطأ غير متوقع، يرجى المحاولة لاحقاً."
+        try:
+            if interaction.response.is_done():
+                await interaction.followup.send(msg, ephemeral=True)
+            else:
+                await interaction.response.send_message(msg, ephemeral=True)
+        except Exception:
+            pass
+        import traceback
+        print(f"[ERROR] {traceback.format_exc()}")
 
     async def on_ready(self):
         print(f"Logged in as {self.user.name} (ID: {self.user.id})")

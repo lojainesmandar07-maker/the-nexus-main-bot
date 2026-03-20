@@ -89,6 +89,8 @@ class StoryManager:
             else:
                 story_id = raw_id
 
+            nodes = data.get("nodes", {})
+            default_start = "start" if "start" in nodes else (next(iter(nodes)) if nodes else "start")
             story = Story(
                 id=story_id,
                 title=data.get("title", "بدون عنوان"),
@@ -97,7 +99,7 @@ class StoryManager:
                 game_mode="single", # All of these nested ones are single player for now based on prompt
                 description=data.get("summary", data.get("description", "")),
                 scenes=scenes,
-                start_scene="start" if not perspectives else perspectives[0].start_node, # fallback
+                start_scene=default_start if not perspectives else perspectives[0].start_node, # fallback
                 world_type=world_type,
                 perspectives=perspectives
             )

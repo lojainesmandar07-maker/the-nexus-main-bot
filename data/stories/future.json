@@ -1,0 +1,29 @@
+{
+    "id": 3,
+    "title": "الحرب الأخيرة: صرخة الفضاء",
+    "theme": "الحرب الأخيرة",
+    "series": 1,
+    "game_mode": "single",
+    "world_type": "future",
+    "description": "آخر حرب يخوضها البشر في مدار نبتون.",
+    "start_scene": "start",
+    "scenes": [
+        {
+            "id": "start",
+            "title": "قمرة القيادة",
+            "text": "الإنذار الأحمر يملأ الشاشة...",
+            "choices": [
+                {
+                    "text": "اشحن الأسلحة",
+                    "next_scene": "end_win"
+                }
+            ]
+        },
+        {
+            "id": "end_win",
+            "title": "نهاية مؤقتة",
+            "text": "نجحت.",
+            "is_ending": true
+        }
+    ]
+}

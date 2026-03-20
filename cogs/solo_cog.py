@@ -35,8 +35,10 @@ class SoloCog(commands.Cog):
 
         await interaction.followup.send(embed=embed, view=view, ephemeral=True)
 
-    @app_commands.command(name="قصص_فردية", description="عرض جميع القصص المتاحة للعب الفردي مصنفة في قوائم")
+    @app_commands.command(name="قصص-فردية", description="تصفح وبدء القصص الفردية")
     async def list_solo_stories(self, interaction: discord.Interaction):
+        # We assume stories with a specific 'solo' internal marking or just all singles that aren't worlds
+        # For simplicity based on prompt, this fetches all single mode stories.
         stories = self.bot.story_manager.get_stories_by_mode("single")
         if not stories:
             await interaction.response.send_message("❌ لا توجد قصص فردية متاحة حالياً.", ephemeral=True)
@@ -46,11 +48,17 @@ class SoloCog(commands.Cog):
         from collections import defaultdict
         categories = defaultdict(list)
         for s in stories.values():
+            # Usually solo categories are like crime, horror etc.
             categories[s.theme].append(s)
 
-        from ui.listing_view import SoloLibraryView
-        view = SoloLibraryView(categories)
-        embed = view.render_embed()
+        from ui.listing_view import SoloCategorySelectView
+        view = SoloCategorySelectView(categories)
+
+        embed = discord.Embed(
+            title="👤 القصص الفردية",
+            description="اختر التصنيف الذي ترغب في استكشافه:",
+            color=0x1C1C1C
+        )
 
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
@@ -72,7 +80,7 @@ class SoloCog(commands.Cog):
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
-async def start_solo_interaction(interaction: discord.Interaction, story_id: int):
+async def start_solo_interaction(interaction: discord.Interaction, story_id: int, perspective: str = None):
     # This function is used by the StoryButton in listing_view.py to bypass the command
     bot = interaction.client
     cog = bot.get_cog("SoloCog")
@@ -94,7 +102,9 @@ async def start_solo_interaction(interaction: discord.Interaction, story_id: int
 
     from ui.embeds import EmbedBuilder
     from ui.solo_view import SoloView
-    embed = EmbedBuilder.solo_scene_embed(scene, round_number, story.title, points)
+
+    title = f"{story.title} - منظور {perspective}" if perspective else story.title
+    embed = EmbedBuilder.solo_scene_embed(scene, round_number, title, points)
 
     view = None
     if not scene.is_ending and scene.choices:

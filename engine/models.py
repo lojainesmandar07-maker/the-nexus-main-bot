@@ -19,6 +19,14 @@ class Scene:
     image_url: Optional[str] = None
 
 @dataclass
+class Perspective:
+    id: str
+    label: str
+    emoji: str
+    description: str
+    start_node: str
+
+@dataclass
 class Story:
     id: int
     title: str
@@ -29,6 +37,8 @@ class Story:
     scenes: Dict[str, Scene] = field(default_factory=dict)
     start_scene: str = "start"
     image_url: Optional[str] = None
+    world_type: Optional[str] = None
+    perspectives: List[Perspective] = field(default_factory=list)
 
     def get_scene(self, scene_id: str) -> Optional[Scene]:
         return self.scenes.get(scene_id)

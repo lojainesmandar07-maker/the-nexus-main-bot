@@ -1,8 +1,264 @@
-[
+{
+  "questions": [
     {
-        "text": "السؤال الأول المؤقت.",
-        "choices": [
-            {"text": "أ", "archetype": "strategist"}
-        ]
+      "id": "q01",
+      "text": "وجدت كنزاً دفيناً في زنزانة مهجورة — أول شيء تفعله؟",
+      "choices": [
+        { "label": "أفحصه بحثاً عن فخاخ محتملة.", "emoji": "🛡️", "archetype": "guardian", "scores": { "guardian": 2, "strategist": 1 } },
+        { "label": "أحلل الرموز المنقوشة لمعرفة مصدره.", "emoji": "🧠", "archetype": "seeker", "scores": { "seeker": 2, "strategist": 1 } },
+        { "label": "آخذه بسرعة وأغادر دون أن يلاحظني أحد.", "emoji": "👁️", "archetype": "shadow", "scores": { "shadow": 2, "wanderer": 1 } },
+        { "label": "أوزعه على المحتاجين في القرية المجاورة.", "emoji": "🌪️", "archetype": "rebel", "scores": { "rebel": 2, "warrior": 1 } }
+      ]
+    },
+    {
+      "id": "q02",
+      "text": "مدينتك تُحاصَر من قبل جيش لا يُقهر — ما هو دورك في الدفاع؟",
+      "choices": [
+        { "label": "أقف في الصفوف الأولى للقتال حتى الموت.", "emoji": "⚔️", "archetype": "warrior", "scores": { "warrior": 2, "guardian": 1 } },
+        { "label": "أضع خطة لصد الهجوم واستنزاف العدو.", "emoji": "📜", "archetype": "strategist", "scores": { "strategist": 2, "shadow": 1 } },
+        { "label": "أتأمل السماء باحثاً عن علامة تدل على النصر.", "emoji": "🔮", "archetype": "oracle", "scores": { "oracle": 2, "seeker": 1 } },
+        { "label": "أقود مجموعة لتهريب المدنيين عبر ممرات سرية.", "emoji": "🚪", "archetype": "guardian", "scores": { "guardian": 2, "rebel": 1 } }
+      ]
+    },
+    {
+      "id": "q03",
+      "text": "صديقك المقرب خانك لأسباب مفهومة ومبررة — ما هو رد فعلك؟",
+      "choices": [
+        { "label": "أواجهه وجهاً لوجه لأطالبه بتفسير منطقي.", "emoji": "⚖️", "archetype": "warrior", "scores": { "warrior": 2, "seeker": 1 } },
+        { "label": "أقطع علاقتي به بصمت وأختفي من حياته.", "emoji": "🍂", "archetype": "wanderer", "scores": { "wanderer": 2, "shadow": 1 } },
+        { "label": "أتوقع ذلك سلفاً وأضع خطة مضادة لحماية نفسي.", "emoji": "♟️", "archetype": "strategist", "scores": { "strategist": 2, "oracle": 1 } },
+        { "label": "أغفر له، لكنني لن أنسى أبداً ما فعله.", "emoji": "🛡️", "archetype": "guardian", "scores": { "guardian": 2, "rebel": 1 } }
+      ]
+    },
+    {
+      "id": "q04",
+      "text": "عُرض عليك سلاح أسطوري لا يُقهر — لكن ثمنه محو ذاكرة عزيزة لك — هل تقبل؟",
+      "choices": [
+        { "label": "أرفض بشدة، فذكرياتي هي ما تصنعني.", "emoji": "❤️", "archetype": "guardian", "scores": { "guardian": 2, "rebel": 1 } },
+        { "label": "أقبل، فالقوة ضرورية لتغيير هذا العالم الفاسد.", "emoji": "🔥", "archetype": "rebel", "scores": { "rebel": 2, "warrior": 1 } },
+        { "label": "أدرس السلاح لأفهم كيف يعمل دون استخدامه.", "emoji": "🔬", "archetype": "seeker", "scores": { "seeker": 2, "strategist": 1 } },
+        { "label": "أرى رؤيا لما سيحدث إن استخدمته قبل اتخاذ القرار.", "emoji": "👁️", "archetype": "oracle", "scores": { "oracle": 2, "shadow": 1 } }
+      ]
+    },
+    {
+      "id": "q05",
+      "text": "نجوت وحدك من كارثة تحطم سفينتك الفضائية على كوكب غريب — أول قرار تتخذه؟",
+      "choices": [
+        { "label": "أجمع المؤن وأبني مأوى مؤقتاً.", "emoji": "🏕️", "archetype": "strategist", "scores": { "strategist": 2, "guardian": 1 } },
+        { "label": "أبدأ فوراً باستكشاف هذا الكوكب الجديد المجهول.", "emoji": "🌌", "archetype": "wanderer", "scores": { "wanderer": 2, "seeker": 1 } },
+        { "label": "أصنع سلاحاً بدائياً من الحطام للدفاع عن نفسي.", "emoji": "🔪", "archetype": "warrior", "scores": { "warrior": 2, "rebel": 1 } },
+        { "label": "أحاول اختراق أنظمة السفينة المحطمة لطلب النجدة.", "emoji": "💻", "archetype": "seeker", "scores": { "seeker": 2, "shadow": 1 } }
+      ]
+    },
+    {
+      "id": "q06",
+      "text": "اكتشفت سراً خطيراً قد يدمر حياة شخص بريء تماماً إن كُشف — هل تصمت أم تتكلم؟",
+      "choices": [
+        { "label": "أتكلم فوراً، فالحقيقة يجب أن تظهر مهما كان الثمن.", "emoji": "📢", "archetype": "warrior", "scores": { "warrior": 2, "rebel": 1 } },
+        { "label": "أصمت، وأستخدم هذا السر لصالح خطتي الكبرى.", "emoji": "🤐", "archetype": "shadow", "scores": { "shadow": 2, "strategist": 1 } },
+        { "label": "أبحث عن طريقة لكشف الحقيقة دون الإضرار بالبريء.", "emoji": "🧩", "archetype": "strategist", "scores": { "strategist": 2, "seeker": 1 } },
+        { "label": "أدفن السر إلى الأبد لحماية ذلك الشخص.", "emoji": "🛡️", "archetype": "guardian", "scores": { "guardian": 2, "wanderer": 1 } }
+      ]
+    },
+    {
+      "id": "q07",
+      "text": "قائدك المباشر أعطاك أمراً تعتقد أنه خاطئ وسيؤدي لكارثة — هل تطيع أم ترفض؟",
+      "choices": [
+        { "label": "أرفض بشدة وأحرض الآخرين على العصيان.", "emoji": "✊", "archetype": "rebel", "scores": { "rebel": 2, "warrior": 1 } },
+        { "label": "أطيع ظاهرياً، لكنني أنفذ الأمر بطريقتي الخاصة.", "emoji": "🎭", "archetype": "shadow", "scores": { "shadow": 2, "strategist": 1 } },
+        { "label": "أناقشه بالأدلة والمنطق لمحاولة إقناعه.", "emoji": "📊", "archetype": "strategist", "scores": { "strategist": 2, "seeker": 1 } },
+        { "label": "أستقيل وأمضي في طريقي بعيداً عن هذا الصراع.", "emoji": "🚶", "archetype": "wanderer", "scores": { "wanderer": 2, "oracle": 1 } }
+      ]
+    },
+    {
+      "id": "q08",
+      "text": "في عالم مليء بالأكاذيب، اكتشفت أداة تظهر لك الحقيقة المطلقة — كيف تستخدمها؟",
+      "choices": [
+        { "label": "أكشف كل الأسرار المظلمة للعالم وأفضح الفاسدين.", "emoji": "⚡", "archetype": "rebel", "scores": { "rebel": 2, "warrior": 1 } },
+        { "label": "أحتفظ بها لنفسي لأتفهم نوايا من حولي بصمت.", "emoji": "👁️", "archetype": "oracle", "scores": { "oracle": 2, "shadow": 1 } },
+        { "label": "أدرسها علمياً لأفهم كيف تعمل هذه الأداة.", "emoji": "🔍", "archetype": "seeker", "scores": { "seeker": 2, "strategist": 1 } },
+        { "label": "أدمرها، فبعض الحقائق يجب أن تظل مخفية لسلامة الناس.", "emoji": "🔨", "archetype": "guardian", "scores": { "guardian": 2, "rebel": 1 } }
+      ]
+    },
+    {
+      "id": "q09",
+      "text": "تم تكليفك بمهمة اغتيال ملك ظالم، لكنه أب لثلاثة أطفال — ماذا تفعل عند مواجهته؟",
+      "choices": [
+        { "label": "أنفذ المهمة، فمصلحة المملكة فوق الجميع.", "emoji": "🗡️", "archetype": "shadow", "scores": { "shadow": 2, "warrior": 1 } },
+        { "label": "أتراجع، لا يمكنني قتل شخص أمام أطفاله.", "emoji": "🛡️", "archetype": "guardian", "scores": { "guardian": 2, "wanderer": 1 } },
+        { "label": "أعقد معه صفقة سرية مقابل الإبقاء على حياته.", "emoji": "🤝", "archetype": "strategist", "scores": { "strategist": 2, "shadow": 1 } },
+        { "label": "أنظر في عينيه لأرى إن كان يستحق فرصة للتوبة.", "emoji": "🔮", "archetype": "oracle", "scores": { "oracle": 2, "seeker": 1 } }
+      ]
+    },
+    {
+      "id": "q10",
+      "text": "استيقظت لتجد أن العالم قد نسي اسمك وتاريخك تماماً — ما هو أول شيء تقوم به؟",
+      "choices": [
+        { "label": "أغضب وأبدأ بكسر القواعد لأجبرهم على تذكري.", "emoji": "🔥", "archetype": "rebel", "scores": { "rebel": 2, "warrior": 1 } },
+        { "label": "أعتبرها فرصة ذهبية للبدء من جديد وبناء حياة أخرى.", "emoji": "🌅", "archetype": "wanderer", "scores": { "wanderer": 2, "shadow": 1 } },
+        { "label": "أقوم ببحث مكثف لمعرفة سبب هذا الخلل الغريب.", "emoji": "📚", "archetype": "seeker", "scores": { "seeker": 2, "oracle": 1 } },
+        { "label": "أبحث عن أي شخص قد يكون في نفس الوضع لنتعاون.", "emoji": "👥", "archetype": "guardian", "scores": { "guardian": 2, "strategist": 1 } }
+      ]
+    },
+    {
+      "id": "q11",
+      "text": "أنت في متاهة تحت الأرض، وسمعت صراخاً من مسار مجهول — هل تتجه نحوه أم تواصل طريقك؟",
+      "choices": [
+        { "label": "أندفع نحو الصوت لإنقاذ من يصرخ مهما كان الثمن.", "emoji": "⚔️", "archetype": "warrior", "scores": { "warrior": 2, "guardian": 1 } },
+        { "label": "أقترب بحذر وفي الخفاء لأراقب الوضع قبل التدخل.", "emoji": "🥷", "archetype": "shadow", "scores": { "shadow": 2, "strategist": 1 } },
+        { "label": "أتجاهله، قد يكون فخاً يهدف إلى تشتيتي عن المخرج.", "emoji": "🧭", "archetype": "strategist", "scores": { "strategist": 2, "wanderer": 1 } },
+        { "label": "أتبع الصوت لفضولي الشديد لمعرفة ما يخبئه الظلام.", "emoji": "🔦", "archetype": "seeker", "scores": { "seeker": 2, "oracle": 1 } }
+      ]
+    },
+    {
+      "id": "q12",
+      "text": "وجدت آلة يمكنها إعادة الزمن دقيقة واحدة فقط، لكنها تعمل مرة واحدة — متى تستخدمها؟",
+      "choices": [
+        { "label": "لتصحيح خطأ استراتيجي فادح في معركة مصيرية.", "emoji": "⏳", "archetype": "strategist", "scores": { "strategist": 2, "warrior": 1 } },
+        { "label": "لإنقاذ حياة شخص بريء سيموت أمامي.", "emoji": "❤️", "archetype": "guardian", "scores": { "guardian": 2, "oracle": 1 } },
+        { "label": "أفككها لأفهم التكنولوجيا المعقدة التي صنعتها.", "emoji": "⚙️", "archetype": "seeker", "scores": { "seeker": 2, "shadow": 1 } },
+        { "label": "لا أستخدمها أبداً وأمضي؛ فالماضي لا يجب تغييره.", "emoji": "🍂", "archetype": "wanderer", "scores": { "wanderer": 2, "rebel": 1 } }
+      ]
+    },
+    {
+      "id": "q13",
+      "text": "عليك العبور من بوابة يحرسها لغز أسطوري لم يحله أحد من قبل — ما خطتك؟",
+      "choices": [
+        { "label": "أجلس وأحلل كل كلمة في اللغز بعمق حتى أجد الحل.", "emoji": "🧩", "archetype": "seeker", "scores": { "seeker": 2, "strategist": 1 } },
+        { "label": "أغمض عيني وأنتظر أن تأتيني الإجابة عبر رؤيا أو إلهام.", "emoji": "✨", "archetype": "oracle", "scores": { "oracle": 2, "wanderer": 1 } },
+        { "label": "أبحث عن طريقة لتحطيم البوابة أو تسلقها.", "emoji": "🔨", "archetype": "rebel", "scores": { "rebel": 2, "warrior": 1 } },
+        { "label": "أنتظر في الظل حتى يأتي شخص آخر ليحله وأتبعه.", "emoji": "🌑", "archetype": "shadow", "scores": { "shadow": 2, "strategist": 1 } }
+      ]
+    },
+    {
+      "id": "q14",
+      "text": "تم اختيارك لقيادة سفينة فضائية في مهمة بلا عودة نحو ثقب أسود — لماذا توافق؟",
+      "choices": [
+        { "label": "أوافق، فهذا سيكشف للبشرية أسراراً عظيمة للكون.", "emoji": "🔭", "archetype": "seeker", "scores": { "seeker": 2, "oracle": 1 } },
+        { "label": "لأنها مهمة بطولية ستسجل اسمي في التاريخ إلى الأبد.", "emoji": "🏅", "archetype": "warrior", "scores": { "warrior": 2, "rebel": 1 } },
+        { "label": "لأهرب من ماضيّ المؤلم وأجد العزلة التي أبحث عنها.", "emoji": "🌌", "archetype": "wanderer", "scores": { "wanderer": 2, "shadow": 1 } },
+        { "label": "أوافق لأنني الوحيد القادر على إتمام المهمة وحمايتهم.", "emoji": "🛡️", "archetype": "guardian", "scores": { "guardian": 2, "strategist": 1 } }
+      ]
+    },
+    {
+      "id": "q15",
+      "text": "تسللت إلى قصر الحاكم، ووجدت أنه مجرد دمية ميكانيكية تتحرك ببرمجة دقيقة — رد فعلك؟",
+      "choices": [
+        { "label": "أحطم الدمية لأثبت للشعب أنهم كانوا يعيشون في كذبة.", "emoji": "💥", "archetype": "rebel", "scores": { "rebel": 2, "warrior": 1 } },
+        { "label": "أبحث فوراً عن الشخص الحقيقي الذي يتحكم بها في الخفاء.", "emoji": "🕵️", "archetype": "shadow", "scores": { "shadow": 2, "seeker": 1 } },
+        { "label": "أعيد برمجتها لتصدر قرارات تصب في صالح المجتمع.", "emoji": "💻", "archetype": "strategist", "scores": { "strategist": 2, "guardian": 1 } },
+        { "label": "أصاب بالذهول وأدرك أن الواقع أكثر تعقيداً مما نتخيل.", "emoji": "🤯", "archetype": "oracle", "scores": { "oracle": 2, "wanderer": 1 } }
+      ]
+    },
+    {
+      "id": "q16",
+      "text": "وجدت كائناً فضائياً صغيراً ومصاباً في الغابة، لكن وجوده قد يهدد كوكبك — ماذا تفعل؟",
+      "choices": [
+        { "label": "أعالجه وأخفيه، لا يحق لنا الحكم عليه قبل أن نفهمه.", "emoji": "🩹", "archetype": "guardian", "scores": { "guardian": 2, "oracle": 1 } },
+        { "label": "أقتله فوراً بلا تردد لحماية البشرية من الخطر المحتمل.", "emoji": "⚔️", "archetype": "warrior", "scores": { "warrior": 2, "strategist": 1 } },
+        { "label": "أدرسه وأأخذ عينات منه لمعرفة نقاط ضعفه.", "emoji": "🧪", "archetype": "seeker", "scores": { "seeker": 2, "shadow": 1 } },
+        { "label": "أتركه لمصيره وأغادر، هذا ليس شأني.", "emoji": "🚶", "archetype": "wanderer", "scores": { "wanderer": 2, "rebel": 1 } }
+      ]
+    },
+    {
+      "id": "q17",
+      "text": "عُرض عليك منصب حاكم المدينة، لكن عليك تنفيذ أوامر طاغية يعلوكَ مرتبة — هل تقبل؟",
+      "choices": [
+        { "label": "أقبل لأغير النظام من الداخل ببطء وحذر.", "emoji": "♟️", "archetype": "strategist", "scores": { "strategist": 2, "shadow": 1 } },
+        { "label": "أرفض بشدة وأعلن العصيان العام ضده.", "emoji": "🚩", "archetype": "rebel", "scores": { "rebel": 2, "warrior": 1 } },
+        { "label": "أقبل لأحمي الضعفاء بقدر ما أستطيع، رغم صعوبة الأمر.", "emoji": "🛡️", "archetype": "guardian", "scores": { "guardian": 2, "oracle": 1 } },
+        { "label": "أغادر المدينة بأكملها بحثاً عن مكان أكثر حرية.", "emoji": "🌍", "archetype": "wanderer", "scores": { "wanderer": 2, "seeker": 1 } }
+      ]
+    },
+    {
+      "id": "q18",
+      "text": "في عالم منسي، تتحدث الجدران وتخبرك بأسرار الناس المخفية — كيف تستفيد من ذلك؟",
+      "choices": [
+        { "label": "أستمع بانتباه وأجمع المعلومات لأبتز بها أعدائي.", "emoji": "🤫", "archetype": "shadow", "scores": { "shadow": 2, "strategist": 1 } },
+        { "label": "أسجل كل ما يقال لأكتب كتاباً يحفظ هذا السحر القديم.", "emoji": "📖", "archetype": "seeker", "scores": { "seeker": 2, "oracle": 1 } },
+        { "label": "أسد أذنيّ وأتجاهلها، فلا شأن لي بأسرار الآخرين.", "emoji": "🙉", "archetype": "wanderer", "scores": { "wanderer": 2, "guardian": 1 } },
+        { "label": "أستخدم الأسرار لكشف المؤامرات وحماية الأبرياء.", "emoji": "⚖️", "archetype": "guardian", "scores": { "guardian": 2, "warrior": 1 } }
+      ]
+    },
+    {
+      "id": "q19",
+      "text": "أنت في غرفة مغلقة مع قنبلة موقوتة، ولديك سلك أحمر وآخر أزرق ولا يوجد كتيب تعليمات — ماذا تقطع؟",
+      "choices": [
+        { "label": "أقطع السلك الأقرب بحدسي وبكل شجاعة.", "emoji": "✂️", "archetype": "warrior", "scores": { "warrior": 2, "rebel": 1 } },
+        { "label": "أحاول تفكيك الآلية من الداخل لفهم مسار الكهرباء.", "emoji": "⚙️", "archetype": "seeker", "scores": { "seeker": 2, "strategist": 1 } },
+        { "label": "أغمض عيني وأنتظر الإلهام ليخبرني أيهما الصحيح.", "emoji": "🧘", "archetype": "oracle", "scores": { "oracle": 2, "wanderer": 1 } },
+        { "label": "أقطع كليهما معاً أملاً في إبطال الدائرة كلياً.", "emoji": "💥", "archetype": "rebel", "scores": { "rebel": 2, "shadow": 1 } }
+      ]
+    },
+    {
+      "id": "q20",
+      "text": "تُعرض عليك تكنولوجيا تجعلك لا تشعر بالألم النفسي أبداً — لكنك لن تفرح بشدة أيضاً — هل توافق؟",
+      "choices": [
+        { "label": "أوافق، فالقرارات الباردة هي الأفضل دائماً.", "emoji": "🧊", "archetype": "strategist", "scores": { "strategist": 2, "shadow": 1 } },
+        { "label": "أرفض، فالمشاعر المتناقضة هي التي تجعلنا بشراً.", "emoji": "💔", "archetype": "wanderer", "scores": { "wanderer": 2, "guardian": 1 } },
+        { "label": "أوافق لتجنب ألم الفقد الذي يعيقني عن أداء مهامي.", "emoji": "🤖", "archetype": "warrior", "scores": { "warrior": 2, "rebel": 1 } },
+        { "label": "أدرس هذه التكنولوجيا ربما أجد طريقة للتحكم بدرجتها.", "emoji": "🔧", "archetype": "seeker", "scores": { "seeker": 2, "oracle": 1 } }
+      ]
+    },
+    {
+      "id": "q21",
+      "text": "مكتبتك الخاصة تحترق، ولا يمكنك سوى إنقاذ شيء واحد — ماذا تختار؟",
+      "choices": [
+        { "label": "المخطوطات القديمة التي تحتوي على أسرار تاريخية نادرة.", "emoji": "📜", "archetype": "seeker", "scores": { "seeker": 2, "oracle": 1 } },
+        { "label": "صورة تذكارية لعائلتي، فهي لا تعوض.", "emoji": "🖼️", "archetype": "guardian", "scores": { "guardian": 2, "wanderer": 1 } },
+        { "label": "سجل المذكرات الذي كتبت فيه نقاط ضعف كل أعدائي.", "emoji": "📓", "archetype": "strategist", "scores": { "strategist": 2, "shadow": 1 } },
+        { "label": "أقف لأشاهد النيران وأضحك؛ فكل شيء زائل.", "emoji": "🔥", "archetype": "rebel", "scores": { "rebel": 2, "warrior": 1 } }
+      ]
+    },
+    {
+      "id": "q22",
+      "text": "عدوك اللدود سقط في هاوية ويتوسل لك لإنقاذه، وأنت وحدك من تراه — ماذا تفعل؟",
+      "choices": [
+        { "label": "أسحبه فوراً، الشرف يمنعني من تركه يموت بهذه الطريقة.", "emoji": "🤝", "archetype": "warrior", "scores": { "warrior": 2, "guardian": 1 } },
+        { "label": "أستغل الموقف لأجعله يقسم على الاستسلام التام.", "emoji": "⚖️", "archetype": "strategist", "scores": { "strategist": 2, "shadow": 1 } },
+        { "label": "أدير ظهري وأمضي في صمت... انتهت المعركة.", "emoji": "🌑", "archetype": "shadow", "scores": { "shadow": 2, "wanderer": 1 } },
+        { "label": "أنظر إليه بصمت وأرى نهايته المحتومة التي تنبأت بها.", "emoji": "👁️", "archetype": "oracle", "scores": { "oracle": 2, "seeker": 1 } }
+      ]
+    },
+    {
+      "id": "q23",
+      "text": "تم استدعاؤك كشاهد الوحيد في قضية فساد كبرى، وحياتك في خطر إن أدليت بشهادتك — هل تشهد؟",
+      "choices": [
+        { "label": "أشهد بلا خوف وأفضح المتآمرين مهما كان الثمن.", "emoji": "📢", "archetype": "rebel", "scores": { "rebel": 2, "warrior": 1 } },
+        { "label": "أخفي هويتي وأسرب الوثائق لجهات مجهولة.", "emoji": "📁", "archetype": "shadow", "scores": { "shadow": 2, "strategist": 1 } },
+        { "label": "أتراجع وأحمي نفسي، لا فائدة من التضحية عبثاً.", "emoji": "🚶", "archetype": "wanderer", "scores": { "wanderer": 2, "guardian": 1 } },
+        { "label": "أشهد، لكن بعد أن أتأكد أن القاضي سيصدر حكماً عادلاً.", "emoji": "⚖️", "archetype": "oracle", "scores": { "oracle": 2, "seeker": 1 } }
+      ]
+    },
+    {
+      "id": "q24",
+      "text": "أنت مسافر في غابة غامضة ووجدت مفترق طرق: طريق مضاء بأزهار متوهجة وطريق مظلم تملؤه الأصوات الغريبة — أيهما تختار؟",
+      "choices": [
+        { "label": "الطريق المظلم، أثق بأنني سأكتشف شيئاً غير مألوف.", "emoji": "🔦", "archetype": "seeker", "scores": { "seeker": 2, "rebel": 1 } },
+        { "label": "الطريق المضاء، فهو الخيار الأكثر أماناً ومنطقية.", "emoji": "🌸", "archetype": "strategist", "scores": { "strategist": 2, "guardian": 1 } },
+        { "label": "الطريق المظلم، لكي أواجه أي خطر يكمن فيه.", "emoji": "🗡️", "archetype": "warrior", "scores": { "warrior": 2, "shadow": 1 } },
+        { "label": "أمضي في أي طريق دون تفكير؛ فالوجهة غير مهمة.", "emoji": "🍃", "archetype": "wanderer", "scores": { "wanderer": 2, "oracle": 1 } }
+      ]
+    },
+    {
+      "id": "q25",
+      "text": "إذا خُيرت بين أن تكون أسطورة يذكرها الناس إلى الأبد أو شبحاً يعمل في الخفاء وينقذ العالم، ماذا تختار؟",
+      "choices": [
+        { "label": "أسطورة، فالتاريخ لا يرحم الضعفاء.", "emoji": "👑", "archetype": "warrior", "scores": { "warrior": 2, "rebel": 1 } },
+        { "label": "شبحاً، فالمجد لا يعنيني؛ المهم هو إنجاز المهمة.", "emoji": "👻", "archetype": "shadow", "scores": { "shadow": 2, "strategist": 1 } },
+        { "label": "أرفض كلا الخيارين وأختار أن أعيش حراً طليقاً.", "emoji": "🕊️", "archetype": "wanderer", "scores": { "wanderer": 2, "seeker": 1 } },
+        { "label": "أنقذ العالم بصمت وأصبح حارسه المجهول.", "emoji": "🛡️", "archetype": "guardian", "scores": { "guardian": 2, "oracle": 1 } }
+      ]
     }
-]
+  ],
+  "archetypes": {
+    "warrior":    { "name": "المحارب",  "description": "أنت شجاع ومقدام، تواجه المخاطر بشرف وقوة ولا تخشى المواجهة المباشرة.", "color": "0xFF4444" },
+    "guardian":   { "name": "الحارس",   "description": "مخلص ووفي، تضع حماية من تحب فوق كل اعتبار وتتحلى بصبر لا ينفد.", "color": "0x4444FF" },
+    "strategist": { "name": "المخطط",   "description": "عقلك سلاحك؛ تفكر قبل كل خطوة وترى المسار كاملاً قبل البداية.", "color": "0x44AAFF" },
+    "shadow":     { "name": "الظل",     "description": "تفضل العمل في الخفاء، تعرف متى تتحدث ومتى تختفي لتحقيق هدفك بصمت.", "color": "0x333333" },
+    "rebel":      { "name": "المتمرد",  "description": "لا تقبل بالظلم أو القيود، وتسعى دائماً لكسر القواعد من أجل الحرية المطلقة.", "color": "0xFF6600" },
+    "seeker":     { "name": "الباحث",   "description": "الفضول يحركك، تسعى دائماً خلف المعرفة وكشف الأسرار المخفية في هذا الكون.", "color": "0x00CC88" },
+    "oracle":     { "name": "العرّاف",  "description": "تمتلك حدساً عميقاً وحكمة تفوق عمرك، وترى ما لا يراه الآخرون بسهولة.", "color": "0x9900FF" },
+    "wanderer":   { "name": "التائه",   "description": "أنت روح حرة لا ترتبط بمكان أو زمان، وتجد راحتك في المجهول والمغامرة المستمرة.", "color": "0xCCAA00" }
+  }
+}

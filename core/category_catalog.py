@@ -44,7 +44,7 @@ SOLO_CATEGORIES: List[StoryCategory] = [
     StoryCategory("alt_invasion", "الغزو الصامت", "الغزو الصامت"),
     StoryCategory("alt_matrix", "الواقع يتكسر", "الواقع يتكسر"),
 
-    # New Solo Categories (from prompt)
+    # New Solo Categories
     StoryCategory("solo_crime", "جرائم وتحقيقات", "جرائم وتحقيقات"),
     StoryCategory("solo_horror", "رعب نفسي", "رعب نفسي"),
     StoryCategory("solo_dark_social", "ظلام اجتماعي", "ظلام اجتماعي"),

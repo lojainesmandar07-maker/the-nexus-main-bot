@@ -21,7 +21,7 @@ Auto-organized index for planning and generation continuity.
 
 
 ### الفانتازيا المظلمة
-
+- ID `301` | Series `1` | Scenes `37` | **لعنة الدمار: ظلال المدينة المنسية** (`sp_dark_fantasy_1.json`)
 
 ## Event (multi)
 ### اختبارات أسطورية

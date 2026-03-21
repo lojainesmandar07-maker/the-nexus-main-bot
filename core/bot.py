@@ -104,7 +104,7 @@ class StoryBot(commands.Bot):
             )
             await member.send(embed=embed)
         except discord.Forbidden:
-            pass # DMs closed
+            pass  # DMs closed
 
         # Post in configured channel
         world_channels = get_config("world_channels", {})

@@ -126,12 +126,12 @@ class ShareEndingView(discord.ui.View):
 
                     await interaction.response.send_message("✅ تم مشاركة نهايتك بنجاح في القناة المخصصة!", ephemeral=True)
                 else:
-                     await interaction.response.send_message("❌ القناة المخصصة للمشاركات غير موجودة.", ephemeral=True)
+                    await interaction.response.send_message("❌ القناة المخصصة للمشاركات غير موجودة.", ephemeral=True)
             except Exception as e:
                 print(f"Error sharing: {e}")
                 await interaction.response.send_message("⚠️ لم نتمكن من مشاركة النهاية الآن.", ephemeral=True)
         else:
-             await interaction.response.send_message("❌ لم يتم إعداد قناة المشاركات في النظام.", ephemeral=True)
+            await interaction.response.send_message("❌ لم يتم إعداد قناة المشاركات في النظام.", ephemeral=True)
 
         # Disable buttons
         for child in self.children:
@@ -148,6 +148,7 @@ class ShareEndingView(discord.ui.View):
         for child in self.children:
             child.disabled = True
         await interaction.message.edit(view=self)
+
 
 class SoloView(discord.ui.View):
     def __init__(self, solo_manager, user_id: int, choices: List[Choice]):

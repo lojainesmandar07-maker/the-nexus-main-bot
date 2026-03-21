@@ -49,6 +49,7 @@ class StoryBot(commands.Bot):
         await self.load_extension("cogs.npc_cog")
         await self.load_extension("cogs.setup_cog")
         await self.load_extension("cogs.daily_cog")
+        await self.load_extension("cogs.challenge_cog")
 
         # Sync commands
         from core.config import GUILD_ID

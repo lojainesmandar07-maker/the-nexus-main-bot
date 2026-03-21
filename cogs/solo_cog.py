@@ -2,200 +2,176 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 from core.bot import StoryBot
-from core.category_catalog import SOLO_CATEGORIES
-from ui.embeds import EmbedBuilder
-from ui.solo_view import SoloView
+from core.config import get_config, save_config
+import aiosqlite
+import traceback
 
-class SoloCog(commands.Cog):
+DB_PATH = "data/nexus.db"
+
+async def init_nexus_db():
+    async with aiosqlite.connect(DB_PATH) as db:
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS nexus_config (
+                key TEXT PRIMARY KEY,
+                value TEXT
+            )
+        """)
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS daily_pulse (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date_str TEXT UNIQUE,
+                question TEXT,
+                options_json TEXT,
+                message_id INTEGER,
+                channel_id INTEGER,
+                is_closed BOOLEAN DEFAULT 0
+            )
+        """)
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS daily_pulse_votes (
+                pulse_id INTEGER,
+                user_id INTEGER,
+                option_index INTEGER,
+                PRIMARY KEY (pulse_id, user_id),
+                FOREIGN KEY (pulse_id) REFERENCES daily_pulse(id)
+            )
+        """)
+        await db.commit()
+
+class SetupCog(commands.Cog):
     def __init__(self, bot: StoryBot):
         self.bot = bot
-        from engine.solo_manager import SoloGameManager
-        self.solo_manager = SoloGameManager(bot, bot.story_manager)
+        self.bot.loop.create_task(init_nexus_db())
 
-    @app_commands.command(name="ابدأ", description="افتح مستكشف العوالم وابدأ رحلتك في القصص التفاعلية")
-    async def start_browser(self, interaction: discord.Interaction):
-        from ui.world_browser import WorldSelectView
-        from ui.embeds import EmbedBuilder
-        view = WorldSelectView()
-        embed = EmbedBuilder.world_select_embed()
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
-
-    @app_commands.command(name="مساعدة", description="عرض تعليمات ومعلومات حول كيفية استخدام بوت القصص التفاعلية")
-    async def help_command(self, interaction: discord.Interaction):
-        from ui.embeds import EmbedBuilder
-        embed = EmbedBuilder.help_embed()
-        await interaction.response.send_message(embed=embed, ephemeral=True)
-
-    @app_commands.command(name="لعب_فردي", description="ابدأ قصة تفاعلية بمفردك")
-    @app_commands.describe(story_id="رقم القصة التي تود لعبها")
-    async def play_solo(self, interaction: discord.Interaction, story_id: int):
-        await interaction.response.defer(ephemeral=True)
-
-        # Check exclusive story locks
+    @app_commands.command(name="إعداد_النيكسوس", description="لوحة تحكم الإدارة لتهيئة النظام (للمشرفين فقط)")
+    @app_commands.default_permissions(manage_guild=True)
+    async def setup_nexus(self, interaction: discord.Interaction):
         try:
-            import aiosqlite
-            DB_PATH = "data/nexus.db"
-            async with aiosqlite.connect(DB_PATH) as db:
-                cursor = await db.execute("SELECT winner_id FROM mystery_rooms WHERE is_active = 1 AND exclusive_story_id = ?", (story_id,))
-                lock = await cursor.fetchone()
-                if lock:
-                    winner_id = lock[0]
-                    if winner_id != interaction.user.id:
-                        await interaction.followup.send("❌ هذه القصة مقفلة حالياً خلف لغز غرفة الغموض! كن أول من يحل اللغز أو انتظر حتى تتاح للجميع.", ephemeral=True)
-                        return
-        except Exception as e:
-            print(f"Error checking story locks: {e}")
+            if not interaction.user.guild_permissions.manage_guild:
+                await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
+                return
 
-        session, error = self.solo_manager.start_solo_game(interaction.user.id, story_id)
-        if error:
-            await interaction.followup.send(embed=EmbedBuilder.error_embed(error), ephemeral=True)
-            return
-
-        story = session["story"]
-        scene = session["scene"]
-        points = session["points"]
-        round_number = session["round"]
-
-        embed = EmbedBuilder.solo_scene_embed(scene, round_number, story.title, points)
-
-        view = None
-        if not scene.is_ending and scene.choices:
-            view = SoloView(self.solo_manager, interaction.user.id, scene.choices)
-
-        await interaction.followup.send(embed=embed, view=view, ephemeral=True)
-
-    @app_commands.command(name="قصص_فردية", description="عرض جميع القصص المتاحة للعب الفردي مصنفة في قوائم")
-    async def list_solo_stories(self, interaction: discord.Interaction):
-        stories = self.bot.story_manager.get_stories_by_mode("single")
-        if not stories:
-            await interaction.response.send_message("❌ لا توجد قصص فردية متاحة حالياً.", ephemeral=True)
-            return
-
-        # Group by category
-        from collections import defaultdict
-        categories = defaultdict(list)
-        for s in stories.values():
-            categories[s.theme].append(s)
-
-        from ui.listing_view import SoloLibraryView
-        view = SoloLibraryView(categories)
-        embed = view.render_embed()
-
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
-
-    @app_commands.command(name="تصنيفات_فردية", description="عرض قائمة التصنيفات المقترحة للقصص الفردية")
-    async def list_solo_categories(self, interaction: discord.Interaction):
-        embed = discord.Embed(
-            title="🗂️ تصنيفات القصص الفردية",
-            description="استخدم هذه التصنيفات عند توليد قصص جديدة لضمان تنظيم المكتبة وتوحيد الثيمات.",
-            color=discord.Color.dark_purple(),
-        )
-
-        for index, category in enumerate(SOLO_CATEGORIES, start=1):
-            embed.add_field(
-                name=f"{index}. {category.name}",
-                value=category.description,
-                inline=False,
+            view = NexusSetupView()
+            embed = discord.Embed(
+                title="⚙️ لوحة تحكم النيكسوس",
+                description="اختر الإعداد الذي تود تعديله من القائمة أدناه:",
+                color=discord.Color.dark_theme()
             )
 
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+            # Display current config status
+            async with aiosqlite.connect(DB_PATH) as db:
+                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
+                c_val = await row.fetchone()
+                channel_id = c_val[0] if c_val else None
 
+                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_time'")
+                t_val = await row.fetchone()
+                time_str = t_val[0] if t_val else "غير محدد (بتوقيت UTC)"
 
-async def start_solo_interaction(interaction: discord.Interaction, story_id: int):
-    # This function is used by the StoryButton in listing_view.py to bypass the command
-    bot = interaction.client
-    cog = bot.get_cog("SoloCog")
+                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_enabled'")
+                e_val = await row.fetchone()
+                is_enabled = "مفعل ✅" if (e_val and e_val[0] == "1") else "معطل ❌"
 
-    if not cog:
-        await interaction.response.send_message("❌ لم يتم تحميل أوامر اللعب الفردي.", ephemeral=True)
-        return
+            channel_mention = f"<#{channel_id}>" if channel_id else "غير محدد"
 
-    session, error = cog.solo_manager.start_solo_game(interaction.user.id, story_id)
-    if error:
-        from ui.embeds import EmbedBuilder
-        await interaction.response.send_message(embed=EmbedBuilder.error_embed(error), ephemeral=True)
-        return
+            embed.add_field(name="القناة", value=channel_mention, inline=False)
+            embed.add_field(name="وقت النبضة", value=time_str, inline=False)
+            embed.add_field(name="حالة النظام", value=is_enabled, inline=False)
 
-    story = session["story"]
-    scene = session["scene"]
-    points = session["points"]
-    round_number = session["round"]
+            await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        except Exception as e:
+            print(f"Error in setup_nexus: {e}")
+            await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)
 
-    from ui.embeds import EmbedBuilder
-    from ui.solo_view import SoloView
-    embed = EmbedBuilder.solo_scene_embed(scene, round_number, story.title, points)
+async def set_config(key: str, value: str):
+    async with aiosqlite.connect(DB_PATH) as db:
+        await db.execute("""
+            INSERT INTO nexus_config (key, value)
+            VALUES (?, ?)
+            ON CONFLICT(key) DO UPDATE SET value = ?
+        """, (key, value, value))
+        await db.commit()
 
-    view = None
-    if not scene.is_ending and scene.choices:
-        view = SoloView(cog.solo_manager, interaction.user.id, scene.choices)
+async def get_db_config(key: str) -> str:
+    async with aiosqlite.connect(DB_PATH) as db:
+        row = await db.execute("SELECT value FROM nexus_config WHERE key = ?", (key,))
+        val = await row.fetchone()
+        return val[0] if val else None
 
-    await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+class NexusSetupView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
 
-
-async def handle_story_end(interaction: discord.Interaction, user_id: int, story, scene):
-    import aiosqlite
-    import discord
-    from ui.solo_view import ShareEndingView
-    DB_PATH = "data/nexus.db"
-
-    # 1. Save story play
-    try:
-        async with aiosqlite.connect(DB_PATH) as db:
-            await db.execute("""
-                INSERT INTO story_plays (user_id, story_id, ending_id)
-                VALUES (?, ?, ?)
-            """, (user_id, story.id, scene.id))
-            await db.commit()
-    except Exception as e:
-        print(f"Error saving story play: {e}")
-
-    # 2. Check challenges
-    try:
-        async with aiosqlite.connect(DB_PATH) as db:
-            # Active challenges for this story & ending
-            cursor = await db.execute("""
-                SELECT id, title, reward_role_id
-                FROM weekly_challenges
-                WHERE is_active = 1 AND target_story_id = ? AND target_ending_id = ?
-            """, (story.id, scene.id))
-            challenges = await cursor.fetchall()
-
-            for c_id, c_title, role_id in challenges:
-                # Check if already completed
-                cursor = await db.execute("SELECT 1 FROM challenge_completions WHERE user_id = ? AND challenge_id = ?", (user_id, c_id))
-                already_completed = await cursor.fetchone()
-
-                if not already_completed:
-                    # Mark complete
-                    await db.execute("INSERT INTO challenge_completions (user_id, challenge_id) VALUES (?, ?)", (user_id, c_id))
-                    await db.commit()
-
-                    # 3. Award role
-                    award_text = f"🎉 تهانينا! لقد أنجزت التحدي الأسبوعي: **{c_title}**"
-                    if role_id:
-                        try:
-                            # Must fetch member explicitly if it's an interaction
-                            member = interaction.guild.get_member(user_id) if interaction.guild else None
-                            if member:
-                                role = interaction.guild.get_role(int(role_id))
-                                if role:
-                                    await member.add_roles(role)
-                                    award_text += f"\nوقد حصلت على رتبة <@&{role_id}> كمكافأة!"
-                        except Exception as re:
-                            print(f"Error awarding role: {re}")
-
-                    await interaction.followup.send(award_text, ephemeral=True)
-    except Exception as e:
-        print(f"Error checking challenges: {e}")
-
-    # 4. Add Share UI
-    share_view = ShareEndingView(user_id, story.id, scene.id, scene.text, story.title)
-    embed = discord.Embed(
-        title="✨ هل تود مشاركة نهايتك؟",
-        description="نشر نهايتك في القناة المخصصة ليرى الآخرون مسارك!",
-        color=discord.Color.gold()
+    @discord.ui.select(
+        placeholder="اختر إعداداً للتعديل...",
+        options=[
+            discord.SelectOption(label="قناة النبضة اليومية", value="channel", emoji="📢"),
+            discord.SelectOption(label="وقت النبضة اليومية", value="time", emoji="⏰"),
+            discord.SelectOption(label="تفعيل/تعطيل النظام", value="toggle", emoji="🔄")
+        ],
+        custom_id="nexus_setup_select"
     )
-    await interaction.followup.send(embed=embed, view=share_view, ephemeral=True)
+    async def setup_select(self, interaction: discord.Interaction, select: discord.ui.Select):
+        if not interaction.user.guild_permissions.manage_guild:
+            await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
+            return
+
+        value = select.values[0]
+
+        if value == "channel":
+            view = ChannelSetupView()
+            await interaction.response.send_message("اختر القناة من القائمة:", view=view, ephemeral=True)
+        elif value == "time":
+            modal = TimeSetupModal()
+            await interaction.response.send_modal(modal)
+        elif value == "toggle":
+            current_val = await get_db_config("pulse_enabled")
+            new_val = "0" if current_val == "1" else "1"
+            await set_config("pulse_enabled", new_val)
+            status = "مفعل ✅" if new_val == "1" else "معطل ❌"
+            await interaction.response.send_message(f"تم تغيير حالة نظام النبضة اليومية إلى: {status}", ephemeral=True)
+
+class ChannelSetupView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+
+    @discord.ui.select(
+        cls=discord.ui.ChannelSelect,
+        channel_types=[discord.ChannelType.text],
+        placeholder="اختر قناة للنبضة اليومية...",
+        custom_id="nexus_channel_select"
+    )
+    async def channel_select(self, interaction: discord.Interaction, select: discord.ui.ChannelSelect):
+        if not interaction.user.guild_permissions.manage_guild:
+            await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
+            return
+
+        channel = select.values[0]
+        await set_config("pulse_channel_id", str(channel.id))
+        await interaction.response.send_message(f"✅ تم تعيين القناة <#{channel.id}> للنبضة اليومية.", ephemeral=True)
+
+class TimeSetupModal(discord.ui.Modal, title="تكوين وقت النبضة اليومية"):
+    time_input = discord.ui.TextInput(
+        label="الوقت (بتوقيت UTC, مثلاً 14:30)",
+        placeholder="HH:MM",
+        max_length=5,
+        min_length=5,
+        required=True
+    )
+
+    async def on_submit(self, interaction: discord.Interaction):
+        time_str = self.time_input.value
+        # Basic validation
+        try:
+            h, m = map(int, time_str.split(':'))
+            if not (0 <= h <= 23 and 0 <= m <= 59):
+                raise ValueError
+        except:
+            await interaction.response.send_message("❌ صيغة الوقت غير صحيحة. استخدم HH:MM (مثال 14:30)", ephemeral=True)
+            return
+
+        await set_config("pulse_time", time_str)
+        await interaction.response.send_message(f"✅ تم تعيين وقت النبضة اليومية إلى {time_str} UTC.", ephemeral=True)
 
 async def setup(bot: StoryBot):
-    await bot.add_cog(SoloCog(bot))
+    await bot.add_cog(SetupCog(bot))

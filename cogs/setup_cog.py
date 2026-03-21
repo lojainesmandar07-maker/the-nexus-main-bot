@@ -46,38 +46,42 @@ class SetupCog(commands.Cog):
     @app_commands.command(name="إعداد_النيكسوس", description="لوحة تحكم الإدارة لتهيئة النظام (للمشرفين فقط)")
     @app_commands.default_permissions(manage_guild=True)
     async def setup_nexus(self, interaction: discord.Interaction):
-        if not interaction.user.guild_permissions.manage_guild:
-            await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
-            return
+        try:
+            if not interaction.user.guild_permissions.manage_guild:
+                await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
+                return
 
-        view = NexusSetupView()
-        embed = discord.Embed(
-            title="⚙️ لوحة تحكم النيكسوس",
-            description="اختر الإعداد الذي تود تعديله من القائمة أدناه:",
-            color=discord.Color.dark_theme()
-        )
+            view = NexusSetupView()
+            embed = discord.Embed(
+                title="⚙️ لوحة تحكم النيكسوس",
+                description="اختر الإعداد الذي تود تعديله من القائمة أدناه:",
+                color=discord.Color.dark_theme()
+            )
 
-        # Display current config status
-        async with aiosqlite.connect(DB_PATH) as db:
-            row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
-            c_val = await row.fetchone()
-            channel_id = c_val[0] if c_val else None
+            # Display current config status
+            async with aiosqlite.connect(DB_PATH) as db:
+                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
+                c_val = await row.fetchone()
+                channel_id = c_val[0] if c_val else None
 
-            row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_time'")
-            t_val = await row.fetchone()
-            time_str = t_val[0] if t_val else "غير محدد (بتوقيت UTC)"
+                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_time'")
+                t_val = await row.fetchone()
+                time_str = t_val[0] if t_val else "غير محدد (بتوقيت UTC)"
 
-            row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_enabled'")
-            e_val = await row.fetchone()
-            is_enabled = "مفعل ✅" if (e_val and e_val[0] == "1") else "معطل ❌"
+                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_enabled'")
+                e_val = await row.fetchone()
+                is_enabled = "مفعل ✅" if (e_val and e_val[0] == "1") else "معطل ❌"
 
-        channel_mention = f"<#{channel_id}>" if channel_id else "غير محدد"
+            channel_mention = f"<#{channel_id}>" if channel_id else "غير محدد"
 
-        embed.add_field(name="القناة", value=channel_mention, inline=False)
-        embed.add_field(name="وقت النبضة", value=time_str, inline=False)
-        embed.add_field(name="حالة النظام", value=is_enabled, inline=False)
+            embed.add_field(name="القناة", value=channel_mention, inline=False)
+            embed.add_field(name="وقت النبضة", value=time_str, inline=False)
+            embed.add_field(name="حالة النظام", value=is_enabled, inline=False)
 
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+            await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        except Exception as e:
+            print(f"Error in setup_nexus: {e}")
+            await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)
 
 async def set_config(key: str, value: str):
     async with aiosqlite.connect(DB_PATH) as db:

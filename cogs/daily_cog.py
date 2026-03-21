@@ -171,31 +171,36 @@ class DailyCog(commands.Cog):
         await channel.send(embed=embed)
 
 
-    @app_commands.command(name="نبضة_اليوم", description="عرض أو نشر نبضة اليوم الحالية")
+    @app_commands.command(name="نبضة_اليوم", description="عرض أو نشر نبضة اليوم الحالية (للإدارة فقط)")
+    @app_commands.default_permissions(manage_guild=True)
     async def pulse_command(self, interaction: discord.Interaction):
-        # Admin can force post
-        if interaction.user.guild_permissions.manage_guild:
-            async with aiosqlite.connect(DB_PATH) as db:
-                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
-                c_val = await row.fetchone()
-                channel_id = c_val[0] if c_val else None
+        try:
+            # Admin can force post
+            if interaction.user.guild_permissions.manage_guild:
+                async with aiosqlite.connect(DB_PATH) as db:
+                    row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
+                    c_val = await row.fetchone()
+                    channel_id = c_val[0] if c_val else None
 
-            if not channel_id:
-                await interaction.response.send_message("❌ الرجاء إعداد قناة للنبضة أولاً عبر أمر `/إعداد_النيكسوس`.", ephemeral=True)
+                if not channel_id:
+                    await interaction.response.send_message("❌ الرجاء إعداد قناة للنبضة أولاً عبر أمر `/إعداد_النيكسوس`.", ephemeral=True)
+                    return
+
+                channel = self.bot.get_channel(int(channel_id))
+                if not channel:
+                    await interaction.response.send_message("❌ القناة المحددة غير موجودة.", ephemeral=True)
+                    return
+
+                date_str = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+                await interaction.response.send_message("جاري نشر نبضة اليوم وتوضيح النتائج السابقة إن وجدت...", ephemeral=True)
+                await self.post_daily_pulse(channel, date_str)
                 return
 
-            channel = self.bot.get_channel(int(channel_id))
-            if not channel:
-                await interaction.response.send_message("❌ القناة المحددة غير موجودة.", ephemeral=True)
-                return
-
-            date_str = datetime.datetime.utcnow().strftime("%Y-%m-%d")
-            await interaction.response.send_message("جاري نشر نبضة اليوم وتوضيح النتائج السابقة إن وجدت...", ephemeral=True)
-            await self.post_daily_pulse(channel, date_str)
-            return
-
-        # Regular user - show current active pulse info if possible
-        await interaction.response.send_message("هذا الأمر مخصص للمشرفين للتحكم بالنظام. يمكنك المشاركة في النبضة حينما تنشر في القناة المخصصة.", ephemeral=True)
+            # Regular user
+            await interaction.response.send_message("هذا الأمر مخصص للمشرفين للتحكم بالنظام. يمكنك المشاركة في النبضة حينما تنشر في القناة المخصصة.", ephemeral=True)
+        except Exception as e:
+            print(f"Error in pulse_command: {e}")
+            await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)
 
 
 class DailyPulseView(discord.ui.View):

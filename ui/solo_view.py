@@ -54,14 +54,16 @@ class SoloChoiceButton(discord.ui.Button):
             except Exception:
                 pass
 
-            # Handle Challenge logic and Share Ending View
+        # First edit the message to finish the interaction response safely
+        await interaction.response.edit_message(embed=embed, view=view)
+
+        # Now if it's an ending, we can safely send followups
+        if scene.is_ending:
             try:
                 from cogs.solo_cog import handle_story_end
                 await handle_story_end(interaction, self.user_id, story, scene)
             except Exception as e:
                 print(f"Error handling story end: {e}")
-
-        await interaction.response.edit_message(embed=embed, view=view)
 
 
 class ShareEndingView(discord.ui.View):
@@ -73,8 +75,18 @@ class ShareEndingView(discord.ui.View):
         self.ending_text = ending_text
         self.story_title = story_title
 
-    @discord.ui.button(label="شارك", style=discord.ButtonStyle.success, emoji="📣", custom_id="share_yes")
-    async def share_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
+        import uuid
+        uid = str(uuid.uuid4())[:8]
+
+        btn_share = discord.ui.Button(label="شارك", style=discord.ButtonStyle.success, emoji="📣", custom_id=f"share_yes_{uid}")
+        btn_share.callback = self.share_btn
+        self.add_item(btn_share)
+
+        btn_no = discord.ui.Button(label="لا", style=discord.ButtonStyle.secondary, emoji="❌", custom_id=f"share_no_{uid}")
+        btn_no.callback = self.no_share_btn
+        self.add_item(btn_no)
+
+    async def share_btn(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
             await interaction.response.send_message("❌ هذا الخيار ليس لك!", ephemeral=True)
             return
@@ -114,20 +126,19 @@ class ShareEndingView(discord.ui.View):
 
                     await interaction.response.send_message("✅ تم مشاركة نهايتك بنجاح في القناة المخصصة!", ephemeral=True)
                 else:
-                     await interaction.response.send_message("❌ القناة المخصصة للمشاركات غير موجودة.", ephemeral=True)
+                    await interaction.response.send_message("❌ القناة المخصصة للمشاركات غير موجودة.", ephemeral=True)
             except Exception as e:
                 print(f"Error sharing: {e}")
                 await interaction.response.send_message("⚠️ لم نتمكن من مشاركة النهاية الآن.", ephemeral=True)
         else:
-             await interaction.response.send_message("❌ لم يتم إعداد قناة المشاركات في النظام.", ephemeral=True)
+            await interaction.response.send_message("❌ لم يتم إعداد قناة المشاركات في النظام.", ephemeral=True)
 
         # Disable buttons
         for child in self.children:
             child.disabled = True
         await interaction.message.edit(view=self)
 
-    @discord.ui.button(label="لا", style=discord.ButtonStyle.secondary, emoji="❌", custom_id="share_no")
-    async def no_share_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
+    async def no_share_btn(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
             await interaction.response.send_message("❌ هذا الخيار ليس لك!", ephemeral=True)
             return
@@ -137,6 +148,7 @@ class ShareEndingView(discord.ui.View):
         for child in self.children:
             child.disabled = True
         await interaction.message.edit(view=self)
+
 
 class SoloView(discord.ui.View):
     def __init__(self, solo_manager, user_id: int, choices: List[Choice]):

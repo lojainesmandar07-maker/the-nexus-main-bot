@@ -184,6 +184,21 @@ class StartStoryButton(Button):
         self.story_id = story_id
 
     async def callback(self, interaction: discord.Interaction):
+        # Check exclusive story locks
+        try:
+            import aiosqlite
+            DB_PATH = "data/nexus.db"
+            async with aiosqlite.connect(DB_PATH) as db:
+                cursor = await db.execute("SELECT winner_id FROM mystery_rooms WHERE is_active = 1 AND exclusive_story_id = ?", (self.story_id,))
+                lock = await cursor.fetchone()
+                if lock:
+                    winner_id = lock[0]
+                    if winner_id != interaction.user.id:
+                        await interaction.response.send_message("❌ هذه القصة مقفلة حالياً خلف لغز غرفة الغموض! كن أول من يحل اللغز أو انتظر حتى تتاح للجميع.", ephemeral=True)
+                        return
+        except Exception as e:
+            print(f"Error checking story locks: {e}")
+
         cog = interaction.client.get_cog("SoloCog")
         if not cog:
             await interaction.response.send_message("❌ لم يتم تحميل أوامر اللعب الفردي.", ephemeral=True)

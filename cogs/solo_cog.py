@@ -12,6 +12,20 @@ class SoloCog(commands.Cog):
         from engine.solo_manager import SoloGameManager
         self.solo_manager = SoloGameManager(bot, bot.story_manager)
 
+    @app_commands.command(name="ابدأ", description="افتح مستكشف العوالم وابدأ رحلتك في القصص التفاعلية")
+    async def start_browser(self, interaction: discord.Interaction):
+        from ui.world_browser import WorldSelectView
+        from ui.embeds import EmbedBuilder
+        view = WorldSelectView()
+        embed = EmbedBuilder.world_select_embed()
+        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+
+    @app_commands.command(name="مساعدة", description="عرض تعليمات ومعلومات حول كيفية استخدام بوت القصص التفاعلية")
+    async def help_command(self, interaction: discord.Interaction):
+        from ui.embeds import EmbedBuilder
+        embed = EmbedBuilder.help_embed()
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
     @app_commands.command(name="لعب_فردي", description="ابدأ قصة تفاعلية بمفردك")
     @app_commands.describe(story_id="رقم القصة التي تود لعبها")
     async def play_solo(self, interaction: discord.Interaction, story_id: int):

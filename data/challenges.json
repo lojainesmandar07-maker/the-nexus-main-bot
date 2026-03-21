@@ -1,0 +1,18 @@
+[
+  {
+    "id": "chal_001",
+    "title": "أسبوع التحدي الأول: بداية الرحلة",
+    "description": "أكمل قصة فردية واستكشف النهايات المتاحة.",
+    "target_story_id": 1,
+    "target_ending_id": "end_1",
+    "reward_role_id": null
+  },
+  {
+    "id": "chal_002",
+    "title": "أسبوع الفانتازيا: سحر الملوك",
+    "description": "ابحث عن النهاية السحرية في قصة الفانتازيا.",
+    "target_story_id": 2,
+    "target_ending_id": "magic_ending",
+    "reward_role_id": null
+  }
+]

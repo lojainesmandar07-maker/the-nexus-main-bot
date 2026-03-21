@@ -3,6 +3,23 @@ from discord import app_commands
 from discord.ext import commands
 import json
 from core.config import get_config
+import aiosqlite
+import datetime
+import random
+from discord.ext import tasks
+
+DB_PATH = "data/nexus.db"
+
+async def init_npc_db():
+    async with aiosqlite.connect(DB_PATH) as db:
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS npc_encounters (
+                user_id INTEGER PRIMARY KEY,
+                last_encountered TIMESTAMP,
+                times_encountered INTEGER DEFAULT 0
+            )
+        """)
+        await db.commit()
 
 NPC_PATHS = {
     "fantasy":   "data/npcs/fantasy_npcs.json",
@@ -99,9 +116,120 @@ class NPCView(discord.ui.View):
         self.add_item(TopicSelectMenu(npc, member_archetype))
 
 
+class RandomEncounterView(discord.ui.View):
+    def __init__(self, npc: dict):
+        super().__init__(timeout=86400) # Valid for 1 day
+        self.npc = npc
+
+        # Add 3 dynamic action buttons for flavor
+        actions = ["استمع لقصته", "اسأله عن الأسرار", "تجاهله والمضي قدماً"]
+        styles = [discord.ButtonStyle.primary, discord.ButtonStyle.secondary, discord.ButtonStyle.danger]
+
+        for i, action in enumerate(actions):
+            btn = discord.ui.Button(
+                label=action,
+                style=styles[i],
+                custom_id=f"rand_encounter_{npc['id']}_{i}"
+            )
+            btn.callback = self.make_callback(i, action)
+            self.add_item(btn)
+
+    def make_callback(self, index: int, action: str):
+        async def callback(interaction: discord.Interaction):
+            response = ""
+            if index == 0:
+                response = f"**{self.npc['name']}:** 'لدي الكثير لأرويه... العالم مليء بالقصص، وأنت جزء منها الآن.'"
+            elif index == 1:
+                response = f"**{self.npc['name']}:** 'الأسرار؟ بعضها أفضل أن يظل مدفوناً في النيكسوس.'"
+            else:
+                response = f"تترك {self.npc['name']} خلفك وتكمل طريقك في ظلال النيكسوس."
+
+            embed = discord.Embed(
+                title=f"أنت اخترت: {action}",
+                description=response,
+                color=discord.Color.dark_theme()
+            )
+            for child in self.children:
+                child.disabled = True
+            await interaction.response.edit_message(embed=embed, view=self)
+        return callback
+
 class NPCCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.bot.loop.create_task(init_npc_db())
+        self.weekly_encounter.start()
+
+    def cog_unload(self):
+        self.weekly_encounter.cancel()
+
+    @tasks.loop(hours=168.0)
+    async def weekly_encounter(self):
+        """Weekly random NPC encounter."""
+        now = datetime.datetime.utcnow()
+        thirty_days_ago = now - datetime.timedelta(days=30)
+
+        async with aiosqlite.connect(DB_PATH) as db:
+            # Active players in last 30 days
+            cursor = await db.execute("SELECT DISTINCT user_id FROM story_plays WHERE played_at >= ?", (thirty_days_ago,))
+            active_players = [row[0] for row in await cursor.fetchall()]
+
+            # Filter players not encountered in 30 days
+            eligible_players = []
+            for uid in active_players:
+                cursor = await db.execute("SELECT last_encountered FROM npc_encounters WHERE user_id = ?", (uid,))
+                record = await cursor.fetchone()
+                if not record:
+                    eligible_players.append(uid)
+                else:
+                    last_enc = datetime.datetime.fromisoformat(record[0]) if record[0] else None
+                    if not last_enc or last_enc <= thirty_days_ago:
+                        eligible_players.append(uid)
+
+        if not eligible_players:
+            return
+
+        target_uid = random.choice(eligible_players)
+
+        # Pick random NPC
+        world = random.choice(list(NPC_PATHS.keys()))
+        npcs = load_npcs(world)
+        if not npcs:
+            return
+        npc = random.choice(npcs)
+
+        # DM user
+        try:
+            user = await self.bot.fetch_user(target_uid)
+            if user:
+                embed = discord.Embed(
+                    title="👤 لقاء مفاجئ في النيكسوس...",
+                    description=f"بينما تتجول في {WORLD_NAMES[world]}، يظهر أمامك فجأة **{npc['name']}**.\n\n*{npc.get('personality', 'ينظر إليك بصمت...')}*",
+                    color=discord.Color.dark_purple()
+                )
+                if npc.get("image_url"):
+                    embed.set_thumbnail(url=npc["image_url"])
+
+                view = RandomEncounterView(npc)
+                await user.send(embed=embed, view=view)
+
+                # Record encounter
+                async with aiosqlite.connect(DB_PATH) as db:
+                    await db.execute("""
+                        INSERT INTO npc_encounters (user_id, last_encountered, times_encountered)
+                        VALUES (?, ?, 1)
+                        ON CONFLICT(user_id) DO UPDATE SET
+                        last_encountered = ?, times_encountered = times_encountered + 1
+                    """, (target_uid, now.isoformat(), now.isoformat()))
+                    await db.commit()
+        except discord.Forbidden:
+            print(f"Failed to send random encounter DM to user {target_uid}. DMs are closed.")
+        except Exception as e:
+            print(f"Error sending random encounter: {e}")
+
+    @weekly_encounter.before_loop
+    async def before_weekly_encounter(self):
+        await self.bot.wait_until_ready()
 
     @app_commands.command(name="شخصيات", description="تفاعل مع شخصيات عالم The Nexus")
     @app_commands.choices(world=[

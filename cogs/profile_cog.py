@@ -125,6 +125,14 @@ class ProfileCog(commands.Cog):
             count = player[1] if player else 0
             joined = player[2][:10] if player and player[2] else "غير معروف"
 
+            # Fetch social stats
+            async with aiosqlite.connect(DB_PATH) as db:
+                row = await db.execute("SELECT COUNT(*) FROM friend_challenges WHERE challenger_id = ? OR target_user_id = ?", (interaction.user.id, interaction.user.id))
+                challenge_count = (await row.fetchone())[0]
+
+                row = await db.execute("SELECT COUNT(*) FROM decision_votes WHERE user_id = ?", (interaction.user.id,))
+                votes_count = (await row.fetchone())[0]
+
             # --- Step 3: Build embed ---
             embed = discord.Embed(
                 title=f"🪪 ملف {interaction.user.display_name}",
@@ -134,6 +142,8 @@ class ProfileCog(commands.Cog):
             embed.add_field(name="🧬 الشخصية",          value=archetype_display, inline=True)
             embed.add_field(name="🏷️ اللقب",            value=title,             inline=True)
             embed.add_field(name="📖 القصص المكتملة",   value=str(count),        inline=True)
+            embed.add_field(name="⚔️ التحديات الاجتماعية", value=str(challenge_count), inline=True)
+            embed.add_field(name="⚖️ التصويتات المنجزة",  value=str(votes_count),    inline=True)
             embed.add_field(name="📅 انضم منذ",         value=joined,            inline=True)
 
             if not archetype_key:

@@ -3,6 +3,53 @@ from engine.models import Story, Scene
 
 class EmbedBuilder:
     @staticmethod
+    def world_select_embed() -> discord.Embed:
+        embed = discord.Embed(
+            title="🌍 مستكشف العوالم",
+            description="اختر العالم الذي تود استكشاف قصصه من القائمة أدناه. كل عالم يحتوي على تصنيفات وقصص فريدة لتستمتع بها.",
+            color=discord.Color.blurple()
+        )
+        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/1234567890/1234567890/world_icon.png") # Placeholder
+        embed.set_footer(text="استخدم القائمة المنسدلة لاختيار العالم")
+        return embed
+
+    @staticmethod
+    def story_preview_embed(story: Story) -> discord.Embed:
+        embed = discord.Embed(
+            title=f"📖 {story.title}",
+            description=story.description or "لا يوجد وصف لهذه القصة.",
+            color=discord.Color.green()
+        )
+        embed.add_field(name="التصنيف", value=story.theme, inline=True)
+        if hasattr(story, 'world_type') and story.world_type:
+            embed.add_field(name="العالم", value=story.world_type, inline=True)
+        if story.image_url:
+            embed.set_thumbnail(url=story.image_url)
+        return embed
+
+    @staticmethod
+    def category_browser_embed(world_type: str, world_name: str, desc: str) -> discord.Embed:
+        embed = discord.Embed(
+            title=f"📁 تصنيفات: {world_name}",
+            description=f"{desc}\n\nالرجاء اختيار تصنيف من القائمة أدناه لعرض القصص المتاحة فيه.",
+            color=discord.Color.gold()
+        )
+        embed.set_footer(text="استخدم القائمة المنسدلة لاختيار التصنيف")
+        return embed
+
+    @staticmethod
+    def help_embed() -> discord.Embed:
+        embed = discord.Embed(
+            title="❓ مساعدة - نظام القصص التفاعلية",
+            description="مرحباً بك في بوت القصص التفاعلية! إليك كيف يمكنك البدء:",
+            color=discord.Color.blue()
+        )
+        embed.add_field(name="`/ابدأ`", value="لفتح مستكشف العوالم واختيار قصة لتلعبها.", inline=False)
+        embed.add_field(name="`/قصص_فردية`", value="لعرض قائمة بكل القصص الفردية.", inline=False)
+        embed.add_field(name="كيف ألعب؟", value="اختر قصة، ثم اتبع الأحداث واضغط على الأزرار لاختيار قراراتك. ستحدد قراراتك مسار القصة ونهايتها!", inline=False)
+        return embed
+
+    @staticmethod
     def event_start_embed(story: Story) -> discord.Embed:
         embed = discord.Embed(
             title=f"📖 حدث قصة تفاعلي جديد: {story.title}",

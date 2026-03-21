@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands, tasks
 from core.bot import StoryBot
+from core.config import get_config
 import aiosqlite
 import datetime
 import json
@@ -154,9 +155,9 @@ class SocialCog(commands.Cog):
         description="وصف وموقف القرار",
         options_comma_separated="الخيارات المتاحة مفصولة بفاصلة (,)"
     )
-    @app_commands.default_permissions(administrator=True)
+    @app_commands.default_permissions(manage_guild=True)
     async def create_decision(self, interaction: discord.Interaction, title: str, description: str, options_comma_separated: str):
-        if not interaction.user.guild_permissions.administrator:
+        if not interaction.user.guild_permissions.manage_guild:
             await interaction.response.send_message("❌ هذا الأمر مخصص للإدارة فقط.", ephemeral=True)
             return
 

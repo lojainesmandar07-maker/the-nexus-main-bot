@@ -44,9 +44,9 @@ class SetupCog(commands.Cog):
         self.bot.loop.create_task(init_nexus_db())
 
     @app_commands.command(name="إعداد_النيكسوس", description="لوحة تحكم الإدارة لتهيئة النظام (للمشرفين فقط)")
-    @app_commands.default_permissions(administrator=True)
+    @app_commands.default_permissions(manage_guild=True)
     async def setup_nexus(self, interaction: discord.Interaction):
-        if not interaction.user.guild_permissions.administrator:
+        if not interaction.user.guild_permissions.manage_guild:
             await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
             return
 
@@ -108,7 +108,7 @@ class NexusSetupView(discord.ui.View):
         custom_id="nexus_setup_select"
     )
     async def setup_select(self, interaction: discord.Interaction, select: discord.ui.Select):
-        if not interaction.user.guild_permissions.administrator:
+        if not interaction.user.guild_permissions.manage_guild:
             await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
             return
 
@@ -138,7 +138,7 @@ class ChannelSetupView(discord.ui.View):
         custom_id="nexus_channel_select"
     )
     async def channel_select(self, interaction: discord.Interaction, select: discord.ui.ChannelSelect):
-        if not interaction.user.guild_permissions.administrator:
+        if not interaction.user.guild_permissions.manage_guild:
             await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
             return
 

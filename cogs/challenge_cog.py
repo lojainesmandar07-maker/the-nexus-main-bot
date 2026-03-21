@@ -89,9 +89,9 @@ class ChallengeCog(commands.Cog):
         ending_id="معرف النهاية المستهدفة",
         role_id="معرف الرتبة للجائزة (اختياري)"
     )
-    @app_commands.default_permissions(administrator=True)
+    @app_commands.default_permissions(manage_guild=True)
     async def create_challenge(self, interaction: discord.Interaction, title: str, description: str, story_id: int, ending_id: str, role_id: str = None):
-        if not interaction.user.guild_permissions.administrator:
+        if not interaction.user.guild_permissions.manage_guild:
             await interaction.response.send_message("❌ هذا الأمر مخصص للإدارة فقط.", ephemeral=True)
             return
 

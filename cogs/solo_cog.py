@@ -31,6 +31,21 @@ class SoloCog(commands.Cog):
     async def play_solo(self, interaction: discord.Interaction, story_id: int):
         await interaction.response.defer(ephemeral=True)
 
+        # Check exclusive story locks
+        try:
+            import aiosqlite
+            DB_PATH = "data/nexus.db"
+            async with aiosqlite.connect(DB_PATH) as db:
+                cursor = await db.execute("SELECT winner_id FROM mystery_rooms WHERE is_active = 1 AND exclusive_story_id = ?", (story_id,))
+                lock = await cursor.fetchone()
+                if lock:
+                    winner_id = lock[0]
+                    if winner_id != interaction.user.id:
+                        await interaction.followup.send("❌ هذه القصة مقفلة حالياً خلف لغز غرفة الغموض! كن أول من يحل اللغز أو انتظر حتى تتاح للجميع.", ephemeral=True)
+                        return
+        except Exception as e:
+            print(f"Error checking story locks: {e}")
+
         session, error = self.solo_manager.start_solo_game(interaction.user.id, story_id)
         if error:
             await interaction.followup.send(embed=EmbedBuilder.error_embed(error), ephemeral=True)

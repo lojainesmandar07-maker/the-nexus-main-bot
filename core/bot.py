@@ -7,6 +7,7 @@ from engine.event_manager import EventManager
 class StoryBot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
+        intents.members = True
 
         # This bot currently uses slash/app commands only.
         # Using mention-only prefix avoids requiring privileged message content intent.
@@ -60,6 +61,7 @@ class StoryBot(commands.Bot):
         await self.load_extension("cogs.challenge_cog")
         await self.load_extension("cogs.social_cog")
         await self.load_extension("cogs.stats_cog")
+        await self.load_extension("cogs.mystery_cog")
 
         # Sync commands
         from core.config import GUILD_ID
@@ -85,6 +87,36 @@ class StoryBot(commands.Bot):
             pass
         import traceback
         print(f"[ERROR] {traceback.format_exc()}")
+
+    async def on_member_join(self, member: discord.Member):
+        import asyncio
+        from core.config import get_config
+
+        # Wait 30 seconds
+        await asyncio.sleep(30)
+
+        # Send DM
+        try:
+            embed = discord.Embed(
+                title="🌌 مرحباً بك في The Nexus",
+                description="عالم من القصص التفاعلية ينتظرك. كل قرار تتخذه يُشكّل مصيرك.\n\nاستخدم الأمر `/اختبار_الشخصية` في السيرفر لتبدأ رحلتك وتكتشف نمطك الحقيقي!",
+                color=discord.Color.from_rgb(88, 101, 242)
+            )
+            await member.send(embed=embed)
+        except discord.Forbidden:
+            pass  # DMs closed
+
+        # Post in configured channel
+        world_channels = get_config("world_channels", {})
+        welcome_ch_id = world_channels.get("general_channel") or get_config("test_channel")
+
+        if welcome_ch_id:
+            try:
+                channel = self.get_channel(int(welcome_ch_id))
+                if channel:
+                    await channel.send(f"👋 انضم <@{member.id}> — اكتب `/اختبار_الشخصية` لتبدأ!")
+            except Exception as e:
+                print(f"Error sending welcome message: {e}")
 
     async def on_ready(self):
         print(f"Logged in as {self.user.name} (ID: {self.user.id})")

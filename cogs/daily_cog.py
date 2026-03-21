@@ -174,7 +174,7 @@ class DailyCog(commands.Cog):
     @app_commands.command(name="نبضة_اليوم", description="عرض أو نشر نبضة اليوم الحالية")
     async def pulse_command(self, interaction: discord.Interaction):
         # Admin can force post
-        if interaction.user.guild_permissions.administrator:
+        if interaction.user.guild_permissions.manage_guild:
             async with aiosqlite.connect(DB_PATH) as db:
                 row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
                 c_val = await row.fetchone()

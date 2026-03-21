@@ -156,3 +156,55 @@ class StoryManager:
 
     def get_stories_by_mode(self, game_mode: str) -> Dict[int, Story]:
         return {k: v for k, v in self.stories.items() if v.game_mode == game_mode}
+
+    def get_stories_by_world(self, world_type: str) -> Dict[int, Story]:
+        return {k: v for k, v in self.stories.items() if v.world_type == world_type}
+
+    def get_world_categories(self, world_type: str) -> Dict[str, List[Story]]:
+        from collections import defaultdict
+        stories = self.get_stories_by_world(world_type)
+        categories = defaultdict(list)
+        for s in stories.values():
+            categories[s.theme].append(s)
+        return dict(categories)
+
+    def get_stories_by_world_and_category(self, world_type: str, category: str) -> List[Story]:
+        stories = self.get_stories_by_world(world_type)
+        return [s for s in stories.values() if s.theme == category]
+
+    def apply_loading_rules(self):
+        if not os.path.exists(self.stories_dir):
+            return
+
+        for filename in os.listdir(self.stories_dir):
+            if filename.endswith(".json"):
+                filepath = os.path.join(self.stories_dir, filename)
+                try:
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+
+                    raw_id = data.get("id", 0)
+                    if isinstance(raw_id, str):
+                        import hashlib
+                        story_id = int(hashlib.sha256(raw_id.encode()).hexdigest(), 16) % 10**8
+                    else:
+                        story_id = raw_id
+
+                    if story_id in self.stories:
+                        story = self.stories[story_id]
+                        if filename == "solo.json" or filename.startswith("sp_"):
+                            story.world_type = "solo"
+                            story.game_mode = "single"
+                        elif filename.startswith("mp_"):
+                            story.world_type = "multi"
+                            story.game_mode = "multi"
+                        elif filename == "fantasy.json":
+                            story.world_type = "fantasy"
+                        elif filename == "past.json":
+                            story.world_type = "past"
+                        elif filename == "future.json":
+                            story.world_type = "future"
+                        elif filename == "alternate.json":
+                            story.world_type = "alternate"
+                except Exception as e:
+                    print(f"Error applying rules to {filepath}: {e}")

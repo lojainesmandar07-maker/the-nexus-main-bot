@@ -18,8 +18,8 @@ class StoryBot(commands.Bot):
     async def setup_hook(self):
         # Re-register persistent views BEFORE loading cogs
         from ui.listing_view import SoloLibraryView, MultiLibraryView
-        self.add_view(SoloLibraryView({}))
-        self.add_view(MultiLibraryView({}))
+        self.add_view(SoloLibraryView({}, timeout=None))
+        self.add_view(MultiLibraryView({}, timeout=None))
 
         # Load cogs here
         await self.load_extension("cogs.event_cog")

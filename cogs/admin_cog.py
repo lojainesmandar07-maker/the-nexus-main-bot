@@ -23,7 +23,7 @@ class AdminCog(commands.Cog):
     # ─────────────────────────────────────────
     @app_commands.command(name="رسالة_البوت", description="أرسل رسالة من البوت إلى أي قناة (للمشرفين)")
     @app_commands.describe(channel="القناة المستهدفة", message="نص الرسالة")
-    async def bot_message(self, interaction: discord.Interaction,
+    async def send_bot_message(self, interaction: discord.Interaction,
                            channel: discord.TextChannel, message: str):
         if not self._is_admin(interaction):
             await interaction.response.send_message("❌ هذا الأمر للمشرفين فقط.", ephemeral=True)

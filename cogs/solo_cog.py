@@ -12,10 +12,39 @@ class SoloCog(commands.Cog):
         from engine.solo_manager import SoloGameManager
         self.solo_manager = SoloGameManager(bot, bot.story_manager)
 
+    @app_commands.command(name="ابدأ", description="افتح مستكشف العوالم وابدأ رحلتك في القصص التفاعلية")
+    async def start_browser(self, interaction: discord.Interaction):
+        from ui.world_browser import WorldSelectView
+        from ui.embeds import EmbedBuilder
+        view = WorldSelectView()
+        embed = EmbedBuilder.world_select_embed()
+        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+
+    @app_commands.command(name="مساعدة", description="عرض تعليمات ومعلومات حول كيفية استخدام بوت القصص التفاعلية")
+    async def help_command(self, interaction: discord.Interaction):
+        from ui.embeds import EmbedBuilder
+        embed = EmbedBuilder.help_embed()
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
     @app_commands.command(name="لعب_فردي", description="ابدأ قصة تفاعلية بمفردك")
     @app_commands.describe(story_id="رقم القصة التي تود لعبها")
     async def play_solo(self, interaction: discord.Interaction, story_id: int):
         await interaction.response.defer(ephemeral=True)
+
+        # Check exclusive story locks
+        try:
+            import aiosqlite
+            DB_PATH = "data/nexus.db"
+            async with aiosqlite.connect(DB_PATH) as db:
+                cursor = await db.execute("SELECT winner_id FROM mystery_rooms WHERE is_active = 1 AND exclusive_story_id = ?", (story_id,))
+                lock = await cursor.fetchone()
+                if lock:
+                    winner_id = lock[0]
+                    if winner_id != interaction.user.id:
+                        await interaction.followup.send("❌ هذه القصة مقفلة حالياً خلف لغز غرفة الغموض! كن أول من يحل اللغز أو انتظر حتى تتاح للجميع.", ephemeral=True)
+                        return
+        except Exception as e:
+            print(f"Error checking story locks: {e}")
 
         session, error = self.solo_manager.start_solo_game(interaction.user.id, story_id)
         if error:
@@ -102,6 +131,77 @@ async def start_solo_interaction(interaction: discord.Interaction, story_id: int
 
     await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
+
+async def handle_story_end(interaction: discord.Interaction, user_id: int, story, scene):
+    import aiosqlite
+    import discord
+    from ui.solo_view import ShareEndingView
+    DB_PATH = "data/nexus.db"
+
+    # 1. Save story play
+    try:
+        async with aiosqlite.connect(DB_PATH) as db:
+            await db.execute("""
+                INSERT INTO story_plays (user_id, story_id, ending_id)
+                VALUES (?, ?, ?)
+            """, (user_id, story.id, scene.id))
+            await db.commit()
+    except Exception as e:
+        print(f"Error saving story play: {e}")
+
+    # 2. Check challenges
+    try:
+        async with aiosqlite.connect(DB_PATH) as db:
+            # Active challenges for this story & ending
+            cursor = await db.execute("""
+                SELECT id, title, reward_role_id
+                FROM weekly_challenges
+                WHERE is_active = 1 AND target_story_id = ? AND target_ending_id = ?
+            """, (story.id, scene.id))
+            challenges = await cursor.fetchall()
+
+            for c_id, c_title, role_id in challenges:
+                # Check if already completed
+                cursor = await db.execute("SELECT 1 FROM challenge_completions WHERE user_id = ? AND challenge_id = ?", (user_id, c_id))
+                already_completed = await cursor.fetchone()
+
+                if not already_completed:
+                    # Mark complete
+                    await db.execute("INSERT INTO challenge_completions (user_id, challenge_id) VALUES (?, ?)", (user_id, c_id))
+                    await db.commit()
+
+                    # 3. Award role
+                    award_text = f"🎉 تهانينا! لقد أنجزت التحدي الأسبوعي: **{c_title}**"
+                    if role_id:
+                        try:
+                            # Must fetch member explicitly if it's an interaction
+                            member = interaction.guild.get_member(user_id) if interaction.guild else None
+                            if member:
+                                role = interaction.guild.get_role(int(role_id))
+                                if role:
+                                    await member.add_roles(role)
+                                    award_text += f"\nوقد حصلت على رتبة <@&{role_id}> كمكافأة!"
+                        except Exception as re:
+                            print(f"Error awarding role: {re}")
+
+                    try:
+                        await interaction.followup.send(award_text, ephemeral=True)
+                    except Exception:
+                        pass
+    except Exception as e:
+        print(f"Error checking challenges: {e}")
+
+    # 4. Add Share UI
+    share_view = ShareEndingView(user_id, story.id, scene.id, scene.text, story.title)
+    embed = discord.Embed(
+        title="✨ هل تود مشاركة نهايتك؟",
+        description="نشر نهايتك في القناة المخصصة ليرى الآخرون مسارك!",
+        color=discord.Color.gold()
+    )
+    try:
+        await interaction.followup.send(embed=embed, view=share_view, ephemeral=True)
+    except Exception:
+        pass
 
 async def setup(bot: StoryBot):
     await bot.add_cog(SoloCog(bot))

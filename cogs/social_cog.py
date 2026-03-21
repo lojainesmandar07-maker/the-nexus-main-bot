@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands, tasks
 from core.bot import StoryBot
+from core.config import get_config
 import aiosqlite
 import datetime
 import json

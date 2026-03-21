@@ -24,7 +24,7 @@ class StoryBot(commands.Bot):
         self.add_view(MultiLibraryView({}, timeout=None))
         self.add_view(WorldSelectView())
 
-        # Load daily pulse views
+        # Load daily pulse views and decision views
         import aiosqlite
         import json
         import os
@@ -37,8 +37,16 @@ class StoryBot(commands.Bot):
                     for pulse_id, options_json in rows:
                         options = json.loads(options_json)
                         self.add_view(DailyPulseView(pulse_id, options))
+
+                    # Also load collective decision views
+                    d_cursor = await db.execute("SELECT id, options_json FROM collective_decisions WHERE is_active = 1")
+                    d_rows = await d_cursor.fetchall()
+                    from cogs.social_cog import DecisionVoteView
+                    for decision_id, options_json in d_rows:
+                        options = json.loads(options_json)
+                        self.add_view(DecisionVoteView(decision_id, options))
             except Exception as e:
-                print(f"Error loading daily pulse views: {e}")
+                print(f"Error loading persistent views: {e}")
 
         # Load cogs here
         await self.load_extension("cogs.event_cog")
@@ -50,6 +58,8 @@ class StoryBot(commands.Bot):
         await self.load_extension("cogs.setup_cog")
         await self.load_extension("cogs.daily_cog")
         await self.load_extension("cogs.challenge_cog")
+        await self.load_extension("cogs.social_cog")
+        await self.load_extension("cogs.stats_cog")
 
         # Sync commands
         from core.config import GUILD_ID

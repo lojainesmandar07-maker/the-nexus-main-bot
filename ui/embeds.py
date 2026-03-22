@@ -96,7 +96,8 @@ class EmbedBuilder:
             title="🌍 مستكشف العوالم",
             description=(
                 "مرحباً بك في **The Nexus**.\n"
-                "اختر العالم الذي ترغب بالدخول إليه، ثم حدّد التصنيف فالقصة لبدء التجربة."
+                "اختر العالم الذي ترغب بالدخول إليه، ثم حدّد التصنيف فالقصة لبدء التجربة.\n\n"
+                "✨ إن كانت هذه زيارتك الأولى: ابدأ من `/اختبار_الشخصية` ثم عُد إلى `/ابدأ`."
             ),
             color=discord.Color.blurple(),
         )
@@ -166,13 +167,31 @@ class EmbedBuilder:
     @staticmethod
     def help_embed() -> discord.Embed:
         embed = discord.Embed(
-            title="❓ مساعدة - نظام القصص التفاعلية",
-            description="مرحباً بك في بوت القصص التفاعلية! إليك كيف يمكنك البدء:",
+            title="🆘 دليل The Nexus السريع",
+            description="دليل مختصر يساعدك تبدأ بسرعة وبثقة داخل المنصة.",
             color=discord.Color.blue()
         )
-        embed.add_field(name="`/ابدأ`", value="لفتح مستكشف العوالم واختيار قصة لتلعبها.", inline=False)
-        embed.add_field(name="`/قصص_فردية`", value="لعرض قائمة بكل القصص الفردية.", inline=False)
-        embed.add_field(name="كيف ألعب؟", value="اختر قصة، ثم اتبع الأحداث واضغط على الأزرار لاختيار قراراتك. ستحدد قراراتك مسار القصة ونهايتها!", inline=False)
+        embed.add_field(
+            name="👋 أول دخول",
+            value="1) `/اختبار_الشخصية`\n2) `/ابدأ`\n3) اختر العالم ← التصنيف ← القصة",
+            inline=False,
+        )
+        embed.add_field(
+            name="🎮 اللعب الفردي",
+            value="استخدم `/قصص_فردية` للتصفح أو `/لعب_فردي` إذا تعرف رقم القصة.",
+            inline=False,
+        )
+        embed.add_field(
+            name="🌐 الأنظمة الاجتماعية",
+            value="`/قرار_اجتماعي` للتصويت • `/نبضة_اليوم` (حسب النشر) • `/تحدي_الأسبوع` للمهام الأسبوعية.",
+            inline=False,
+        )
+        embed.add_field(
+            name="🧭 أوامر مفيدة",
+            value="`/بروفايل` • `/شخصيات` • `/إنجازاتي`",
+            inline=False,
+        )
+        embed.set_footer(text="إذا ضعت في أي خطوة: نفّذ /مساعدة من جديد وستجد المسار المناسب.")
         return embed
 
     @staticmethod

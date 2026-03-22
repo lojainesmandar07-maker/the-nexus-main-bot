@@ -212,7 +212,11 @@ class SocialCog(commands.Cog):
         try:
             record = await _get_active_decision()
             if not record:
-                await interaction.response.send_message("ℹ️ لا يوجد قرار اجتماعي نشط حالياً.", ephemeral=True)
+                await interaction.response.send_message(
+                    "ℹ️ لا يوجد قرار اجتماعي نشط حالياً.\n"
+                    "تابع القنوات العامة، أو اطلب من الإدارة إنشاء قرار عبر `/إنشاء_قرار`.",
+                    ephemeral=True,
+                )
                 return
 
             decision_id, question, options_json = record
@@ -258,7 +262,11 @@ class SocialCog(commands.Cog):
                 items = await row.fetchall()
 
             if not items:
-                await interaction.response.send_message("ℹ️ لا يوجد سجل قرارات بعد.", ephemeral=True)
+                await interaction.response.send_message(
+                    "ℹ️ لا يوجد سجل قرارات بعد.\n"
+                    "عند نشر أول قرار جماعي سيظهر تاريخه هنا.",
+                    ephemeral=True,
+                )
                 return
 
             embed = discord.Embed(

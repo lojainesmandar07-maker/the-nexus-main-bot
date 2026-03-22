@@ -184,44 +184,8 @@ class StartStoryButton(Button):
         self.story_id = story_id
 
     async def callback(self, interaction: discord.Interaction):
-        # Check exclusive story locks
-        try:
-            import aiosqlite
-            DB_PATH = "data/nexus.db"
-            async with aiosqlite.connect(DB_PATH) as db:
-                cursor = await db.execute("SELECT winner_id FROM mystery_rooms WHERE is_active = 1 AND exclusive_story_id = ?", (self.story_id,))
-                lock = await cursor.fetchone()
-                if lock:
-                    winner_id = lock[0]
-                    if winner_id != interaction.user.id:
-                        await interaction.response.send_message("❌ هذه القصة مقفلة حالياً خلف لغز غرفة الغموض! كن أول من يحل اللغز أو انتظر حتى تتاح للجميع.", ephemeral=True)
-                        return
-        except Exception as e:
-            print(f"Error checking story locks: {e}")
-
-        cog = interaction.client.get_cog("SoloCog")
-        if not cog:
-            await interaction.response.send_message("❌ لم يتم تحميل أوامر اللعب الفردي.", ephemeral=True)
-            return
-
-        session, error = cog.solo_manager.start_solo_game(interaction.user.id, self.story_id)
-        if error:
-            await interaction.response.send_message(embed=EmbedBuilder.error_embed(error), ephemeral=True)
-            return
-
-        story = session["story"]
-        scene = session["scene"]
-        points = session["points"]
-        round_number = session["round"]
-
-        from ui.solo_view import SoloView
-        embed = EmbedBuilder.solo_scene_embed(scene, round_number, story.title, points)
-
-        view = None
-        if not scene.is_ending and scene.choices:
-            view = SoloView(cog.solo_manager, interaction.user.id, scene.choices)
-
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        from cogs.solo_cog import start_solo_interaction_with_perspective
+        await start_solo_interaction_with_perspective(interaction, self.story_id)
 
 
 class BackToWorldsButton(Button):

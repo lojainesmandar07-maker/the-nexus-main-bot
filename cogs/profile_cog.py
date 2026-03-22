@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 import aiosqlite
+import asyncio
 from core.config import get_config
 
 DB_PATH = "data/nexus.db"
@@ -31,7 +32,7 @@ ARCHETYPE_NAMES = {
 
 
 async def init_db():
-    """Create players table if it doesn't exist."""
+    """Create profile and optional-social tables if they don't exist."""
     async with aiosqlite.connect(DB_PATH) as db:
         await db.execute("""
             CREATE TABLE IF NOT EXISTS players (
@@ -39,6 +40,25 @@ async def init_db():
                 title             TEXT    DEFAULT 'الراوي المبتدئ',
                 stories_completed INTEGER DEFAULT 0,
                 joined_at         TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        # Optional systems: keep /بروفايل safe on fresh databases.
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS friend_challenges (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                challenger_id INTEGER,
+                target_user_id INTEGER,
+                status TEXT DEFAULT 'pending',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS decision_votes (
+                decision_id INTEGER,
+                user_id INTEGER,
+                option_index INTEGER,
+                voted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (decision_id, user_id)
             )
         """)
         await db.commit()
@@ -96,7 +116,7 @@ class ProfileCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         # Initialize DB on cog load
-        self.bot.loop.create_task(init_db())
+        asyncio.create_task(init_db())
 
     @app_commands.command(name="بروفايل", description="اعرض ملفك الشخصي في The Nexus")
     async def profile(self, interaction: discord.Interaction):
@@ -125,13 +145,27 @@ class ProfileCog(commands.Cog):
             count = player[1] if player else 0
             joined = player[2][:10] if player and player[2] else "غير معروف"
 
-            # Fetch social stats
+            # Fetch optional social stats safely
+            challenge_count = 0
+            votes_count = 0
             async with aiosqlite.connect(DB_PATH) as db:
-                row = await db.execute("SELECT COUNT(*) FROM friend_challenges WHERE challenger_id = ? OR target_user_id = ?", (interaction.user.id, interaction.user.id))
-                challenge_count = (await row.fetchone())[0]
+                try:
+                    row = await db.execute(
+                        "SELECT COUNT(*) FROM friend_challenges WHERE challenger_id = ? OR target_user_id = ?",
+                        (interaction.user.id, interaction.user.id),
+                    )
+                    challenge_count = (await row.fetchone())[0]
+                except Exception:
+                    challenge_count = 0
 
-                row = await db.execute("SELECT COUNT(*) FROM decision_votes WHERE user_id = ?", (interaction.user.id,))
-                votes_count = (await row.fetchone())[0]
+                try:
+                    row = await db.execute(
+                        "SELECT COUNT(*) FROM decision_votes WHERE user_id = ?",
+                        (interaction.user.id,),
+                    )
+                    votes_count = (await row.fetchone())[0]
+                except Exception:
+                    votes_count = 0
 
             # --- Step 3: Build embed ---
             embed = discord.Embed(

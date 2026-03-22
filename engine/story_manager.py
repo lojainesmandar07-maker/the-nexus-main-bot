@@ -91,6 +91,14 @@ class StoryManager:
 
             nodes = data.get("nodes", {})
             default_start = "start" if "start" in nodes else (next(iter(nodes)) if nodes else "start")
+            if perspectives:
+                perspective_start = perspectives[0].start_node
+                if perspective_start in scenes:
+                    resolved_start = perspective_start
+                else:
+                    resolved_start = default_start
+            else:
+                resolved_start = default_start
             story = Story(
                 id=story_id,
                 title=data.get("title", "بدون عنوان"),
@@ -99,7 +107,7 @@ class StoryManager:
                 game_mode="single", # All of these nested ones are single player for now based on prompt
                 description=data.get("summary", data.get("description", "")),
                 scenes=scenes,
-                start_scene=default_start if not perspectives else perspectives[0].start_node, # fallback
+                start_scene=resolved_start,
                 world_type=world_type,
                 perspectives=perspectives
             )
@@ -132,6 +140,10 @@ class StoryManager:
                 image_url=scene_data.get("image_url")
             )
 
+        configured_start = data.get("start_scene", "start")
+        if configured_start not in scenes:
+            configured_start = "start" if "start" in scenes else (next(iter(scenes)) if scenes else "start")
+
         story = Story(
             id=data["id"],
             title=data["title"],
@@ -140,7 +152,7 @@ class StoryManager:
             game_mode=data.get("game_mode", "single"),
             description=data.get("description", ""),
             scenes=scenes,
-            start_scene=data.get("start_scene", "start"),
+            start_scene=configured_start,
             image_url=data.get("image_url"),
             world_type=data.get("world_type")
         )

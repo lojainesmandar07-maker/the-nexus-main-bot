@@ -34,7 +34,7 @@ class CategorySelect(discord.ui.Select):
             discord.SelectOption(label=category[:100], value=category, emoji="🗂️")
             for category in parent_view.category_names
         ]
-        super().__init__(placeholder="اختر تصنيفاً", options=options, min_values=1, max_values=1)
+        super().__init__(placeholder="1) اختر التصنيف", options=options, min_values=1, max_values=1)
 
     async def callback(self, interaction: discord.Interaction):
         self.parent_view.current_category = self.values[0]
@@ -51,7 +51,7 @@ class StorySelect(discord.ui.Select):
         options = _story_select_options(stories, start_index, parent_view.page_size)
 
         super().__init__(
-            placeholder="اختر قصة",
+            placeholder="2) اختر القصة",
             options=options,
             min_values=1,
             max_values=1,
@@ -92,8 +92,8 @@ class BaseLibraryView(discord.ui.View):
         if self.category_names:
             self.add_item(CategorySelect(self))
             self.add_item(StorySelect(self))
-        self.add_item(PrevStoriesButton(self))
-        self.add_item(NextStoriesButton(self))
+        self.add_item(PrevStoriesButton(self, disabled=self.story_page <= 0))
+        self.add_item(NextStoriesButton(self, disabled=self.story_page >= self.max_page))
         self.add_action_components()
 
     def add_action_components(self):
@@ -101,6 +101,7 @@ class BaseLibraryView(discord.ui.View):
 
     def build_embed(self, title: str, description: str, color: discord.Color) -> discord.Embed:
         embed = discord.Embed(title=title, description=description, color=color)
+        embed.set_footer(text="التدفق: تصنيف ← قصة ← بدء. يمكنك تغيير الاختيار في أي وقت.")
 
         if not self.current_category:
             embed.add_field(name="لا توجد بيانات", value="لم يتم العثور على تصنيفات حالياً.", inline=False)
@@ -123,6 +124,8 @@ class BaseLibraryView(discord.ui.View):
                 f"• #{story.id} | سلسلة {story.series} — {story.title}" for story in page_stories[:8]
             )
             embed.add_field(name="معاينة القصص", value=preview[:1024], inline=False)
+        else:
+            embed.add_field(name="معاينة القصص", value="لا توجد قصص في هذه الصفحة.", inline=False)
 
         if self.selected_story_id is not None:
             selected_story = next((story for story in stories if story.id == self.selected_story_id), None)
@@ -150,9 +153,15 @@ class BaseLibraryView(discord.ui.View):
 
 
 class PrevStoriesButton(discord.ui.Button):
-    def __init__(self, parent_view: BaseLibraryView):
+    def __init__(self, parent_view: BaseLibraryView, disabled: bool = False):
         self.parent_view = parent_view
-        super().__init__(label="⬅️ السابق", style=discord.ButtonStyle.secondary, row=2, custom_id="lib_prev_page")
+        super().__init__(
+            label="⬅️ السابق",
+            style=discord.ButtonStyle.secondary,
+            row=2,
+            custom_id="lib_prev_page",
+            disabled=disabled,
+        )
 
     async def callback(self, interaction: discord.Interaction):
         if self.parent_view.story_page > 0:
@@ -162,9 +171,15 @@ class PrevStoriesButton(discord.ui.Button):
 
 
 class NextStoriesButton(discord.ui.Button):
-    def __init__(self, parent_view: BaseLibraryView):
+    def __init__(self, parent_view: BaseLibraryView, disabled: bool = False):
         self.parent_view = parent_view
-        super().__init__(label="التالي ➡️", style=discord.ButtonStyle.secondary, row=2, custom_id="lib_next_page")
+        super().__init__(
+            label="التالي ➡️",
+            style=discord.ButtonStyle.secondary,
+            row=2,
+            custom_id="lib_next_page",
+            disabled=disabled,
+        )
 
     async def callback(self, interaction: discord.Interaction):
         if self.parent_view.story_page < self.parent_view.max_page:
@@ -176,7 +191,7 @@ class NextStoriesButton(discord.ui.Button):
 class StartSoloButton(discord.ui.Button):
     def __init__(self, parent_view: "SoloLibraryView"):
         self.parent_view = parent_view
-        super().__init__(label="▶️ ابدأ اللعب الفردي", style=discord.ButtonStyle.success, row=3, custom_id="lib_start_solo")
+        super().__init__(label="3) ▶️ ابدأ القصة", style=discord.ButtonStyle.success, row=3, custom_id="lib_start_solo")
 
     async def callback(self, interaction: discord.Interaction):
         if self.parent_view.selected_story_id is None:
@@ -191,7 +206,7 @@ class StartSoloButton(discord.ui.Button):
 class StartEventButton(discord.ui.Button):
     def __init__(self, parent_view: "MultiLibraryView"):
         self.parent_view = parent_view
-        super().__init__(label="🚀 بدء الحدث الآن", style=discord.ButtonStyle.primary, row=3, custom_id="lib_start_event")
+        super().__init__(label="3) 🚀 بدء الحدث", style=discord.ButtonStyle.primary, row=3, custom_id="lib_start_event")
 
     async def callback(self, interaction: discord.Interaction):
         if self.parent_view.selected_story_id is None:

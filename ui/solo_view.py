@@ -45,6 +45,8 @@ class SoloChoiceButton(discord.ui.Button):
         view = None
         if not scene.is_ending and scene.choices:
             view = SoloView(self.solo_manager, self.user_id, scene.choices)
+            if interaction.message:
+                view.message = interaction.message
         else:
             self.solo_manager.end_solo_game(self.user_id)
 
@@ -72,11 +74,11 @@ class ShareEndingView(discord.ui.View):
         import uuid
         uid = str(uuid.uuid4())[:8]
 
-        btn_share = discord.ui.Button(label="شارك", style=discord.ButtonStyle.success, emoji="📣", custom_id=f"share_yes_{uid}")
+        btn_share = discord.ui.Button(label="نعم، شارك النهاية", style=discord.ButtonStyle.success, emoji="📣", custom_id=f"share_yes_{uid}")
         btn_share.callback = self.share_btn
         self.add_item(btn_share)
 
-        btn_no = discord.ui.Button(label="لا", style=discord.ButtonStyle.secondary, emoji="❌", custom_id=f"share_no_{uid}")
+        btn_no = discord.ui.Button(label="لا، احتفظ بها", style=discord.ButtonStyle.secondary, emoji="❌", custom_id=f"share_no_{uid}")
         btn_no.callback = self.no_share_btn
         self.add_item(btn_no)
 
@@ -149,6 +151,16 @@ class SoloView(discord.ui.View):
         super().__init__(timeout=600)
         self.solo_manager = solo_manager
         self.user_id = user_id
+        self.message = None
 
         for idx, choice in enumerate(choices):
             self.add_item(SoloChoiceButton(choice, idx, solo_manager, user_id))
+
+    async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+        if self.message:
+            try:
+                await self.message.edit(view=self)
+            except Exception:
+                pass

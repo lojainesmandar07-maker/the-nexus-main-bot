@@ -190,7 +190,7 @@ class SocialCog(commands.Cog):
             )
             for i, opt in enumerate(options, start=1):
                 embed.add_field(name=f"الخيار {i}", value=opt, inline=False)
-            embed.set_footer(text=f"معرف القرار: {decision_id}")
+            embed.set_footer(text=f"صوّت من الأزرار أدناه • معرف القرار: {decision_id}")
 
             view = DecisionVoteView(decision_id, options)
             message = await target_channel.send(embed=embed, view=view)
@@ -232,6 +232,7 @@ class SocialCog(commands.Cog):
             )
             for i, opt in enumerate(options[:5], start=1):
                 embed.add_field(name=f"الخيار {i}", value=opt, inline=False)
+            embed.set_footer(text="اختيارك قابل للتعديل أثناء بقاء القرار نشطاً.")
 
             await interaction.response.send_message(
                 embed=embed,
@@ -260,7 +261,11 @@ class SocialCog(commands.Cog):
                 await interaction.response.send_message("ℹ️ لا يوجد سجل قرارات بعد.", ephemeral=True)
                 return
 
-            embed = discord.Embed(title="🧾 سجل القرارات", color=discord.Color.dark_blue())
+            embed = discord.Embed(
+                title="🧾 سجل القرارات",
+                description="آخر 5 قرارات جماعية (من الأحدث إلى الأقدم).",
+                color=discord.Color.dark_blue(),
+            )
             for decision_id, question, is_active, created_at in items:
                 status = "نشط ✅" if is_active == 1 else "مغلق"
                 embed.add_field(

@@ -144,8 +144,8 @@ async def start_solo_interaction_with_perspective(
         view = PerspectiveSelectView(story_id=story_id, user_id=interaction.user.id, perspectives=story.perspectives)
         embed = discord.Embed(
             title=f"🎭 اختر منظورك — {story.title}",
-            description="هذه القصة تدعم عدة مناظير. اختر المنظور الذي تريد أن تبدأ منه.",
-            color=discord.Color.blurple(),
+            description="هذه القصة تدعم أكثر من منظور. اختر منظور البداية لتحديد زاوية السرد.",
+            color=EmbedBuilder.world_color("solo", discord.Color.blurple()),
         )
         for p in story.perspectives[:5]:
             embed.add_field(
@@ -190,8 +190,15 @@ async def start_solo_interaction_with_perspective(
 
     if force_new_response:
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        if view is not None:
+            try:
+                view.message = await interaction.original_response()
+            except Exception:
+                pass
     else:
         await interaction.response.edit_message(embed=embed, view=view)
+        if view is not None and interaction.message:
+            view.message = interaction.message
         if scene.is_ending:
             await handle_story_end(interaction, interaction.user.id, story, scene)
 
@@ -262,10 +269,10 @@ async def handle_story_end(
             await interaction.followup.send(challenge_notice, ephemeral=True)
 
         if not endings_ch_id:
-            await interaction.followup.send("🎉 وصلت إلى نهاية القصة بنجاح!", ephemeral=True)
+            await interaction.followup.send("🎉 وصلت إلى نهاية القصة بنجاح! يمكنك بدء قصة جديدة من `/قصص_فردية`.", ephemeral=True)
             return
 
-        prompt = "🎉 وصلت إلى نهاية القصة! هل ترغب بمشاركة نهايتك في قناة النهايات؟"
+        prompt = "🎉 نهاية رائعة! هل ترغب بمشاركة نهايتك في قناة النهايات؟"
         view = ShareEndingView(
             user_id=user_id,
             story_id=story.id,

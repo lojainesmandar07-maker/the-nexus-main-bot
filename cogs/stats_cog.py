@@ -90,13 +90,13 @@ class StatsCog(commands.Cog):
                     ),
                     color=discord.Color.blurple(),
                 )
-                embed.set_footer(text="💡 جرّبوا /ابدأ_فردي أو أكملوا قصة لبدء تتبّع الإحصائيات")
+                embed.set_footer(text="💡 جرّبوا /ابدأ أو /قصص_فردية ثم أكملوا قصة لبدء التتبع")
                 await interaction.response.send_message(embed=embed, ephemeral=False)
                 return
 
             embed = discord.Embed(
                 title="📊 إحصائيات السيرفر",
-                description="ملخص حقيقي مبني على البيانات المتاحة حالياً في قاعدة البيانات.",
+                description="لوحة موجزة مبنية على البيانات المتاحة حالياً.",
                 color=discord.Color.dark_teal(),
             )
             for name, value in metrics:
@@ -167,10 +167,10 @@ class StatsCog(commands.Cog):
 
             embed = discord.Embed(
                 title="🏆 لوحة الشرف",
-                description="\n".join(lines),
+                description="أفضل اللاعبين حسب عدد القصص المكتملة:\n\n" + "\n".join(lines),
                 color=discord.Color.gold(),
             )
-            embed.set_footer(text="الترتيب يعتمد على عدد القصص المكتملة في جدول اللاعبين")
+            embed.set_footer(text="يتم تحديث الترتيب تلقائياً كلما اكتملت قصص جديدة.")
             await interaction.response.send_message(embed=embed, ephemeral=False)
 
         except Exception as e:

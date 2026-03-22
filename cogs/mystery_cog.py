@@ -25,6 +25,20 @@ async def init_mystery_db():
         """)
         await db.commit()
 
+
+def get_mystery_channel_id() -> int | None:
+    world_channels = get_config("world_channels", {})
+    target = (
+        world_channels.get("general_channel")
+        or world_channels.get("endings_channel")
+        or get_config("test_channel")
+    )
+    try:
+        return int(target) if target else None
+    except Exception:
+        return None
+
+
 class MysteryRoomModal(discord.ui.Modal, title="إنشاء غرفة الغموض"):
     riddle = discord.ui.TextInput(label="اللغز", style=discord.TextStyle.paragraph, required=True)
     answer = discord.ui.TextInput(label="الجواب", style=discord.TextStyle.short, required=True)
@@ -42,15 +56,20 @@ class MysteryRoomModal(discord.ui.Modal, title="إنشاء غرفة الغموض
 
         opens_at = datetime.datetime.utcnow() + datetime.timedelta(days=d_val)
 
-        # Post the riddle to the server general channel (e.g. endings_channel or a test channel for now)
-        world_channels = get_config("world_channels", {})
-        target_channel_id = world_channels.get("general_channel") or world_channels.get("endings_channel") or get_config("test_channel")
+        story = interaction.client.story_manager.get_story(s_id)
+        if not story:
+            await interaction.response.send_message(
+                "❌ رقم القصة غير صالح. استخدم `/قصص_فردية` لاختيار قصة موجودة أولاً.",
+                ephemeral=True,
+            )
+            return
 
+        target_channel_id = get_mystery_channel_id()
         if not target_channel_id:
              await interaction.response.send_message("❌ لم يتم تحديد قناة عامة لنشر اللغز في الإعدادات.", ephemeral=True)
              return
 
-        channel = interaction.client.get_channel(int(target_channel_id))
+        channel = interaction.client.get_channel(target_channel_id)
         if not channel:
              await interaction.response.send_message("❌ القناة المحددة غير موجودة.", ephemeral=True)
              return
@@ -77,8 +96,14 @@ class MysteryRoomModal(discord.ui.Modal, title="إنشاء غرفة الغموض
 class MysteryCog(commands.Cog):
     def __init__(self, bot: StoryBot):
         self.bot = bot
-        self.bot.loop.create_task(init_mystery_db())
-        self.check_opens_loop.start()
+
+    async def cog_load(self):
+        try:
+            await init_mystery_db()
+            if not self.check_opens_loop.is_running():
+                self.check_opens_loop.start()
+        except Exception as e:
+            print(f"[MysteryCog] init error: {e}")
 
     def cog_unload(self):
         self.check_opens_loop.cancel()
@@ -96,10 +121,9 @@ class MysteryCog(commands.Cog):
                 await db.commit()
 
                 # Announce
-                world_channels = get_config("world_channels", {})
-                ch_id = world_channels.get("general_channel") or world_channels.get("endings_channel") or get_config("test_channel")
+                ch_id = get_mystery_channel_id()
                 if ch_id:
-                    channel = self.bot.get_channel(int(ch_id))
+                    channel = self.bot.get_channel(ch_id)
                     if channel:
                         story = self.bot.story_manager.get_story(story_id)
                         s_name = story.title if story else f"قصة #{story_id}"
@@ -108,7 +132,10 @@ class MysteryCog(commands.Cog):
                             description=f"القصة الحصرية **{s_name}** أصبحت الآن متاحة للجميع للعب!\nاستخدم `/لعب_فردي` لاستكشافها.",
                             color=discord.Color.green()
                         )
-                        await channel.send(embed=embed)
+                        try:
+                            await channel.send(embed=embed)
+                        except Exception as e:
+                            print(f"[MysteryCog] announce open error: {e}")
 
     @check_opens_loop.before_loop
     async def before_check_opens(self):
@@ -157,17 +184,19 @@ class MysteryCog(commands.Cog):
                 s_name = story.title if story else f"القصة #{story_id}"
 
                 # Announce winner
-                world_channels = get_config("world_channels", {})
-                ch_id = world_channels.get("general_channel") or world_channels.get("endings_channel") or get_config("test_channel")
+                ch_id = get_mystery_channel_id()
                 if ch_id:
-                    channel = self.bot.get_channel(int(ch_id))
+                    channel = self.bot.get_channel(ch_id)
                     if channel:
                         embed = discord.Embed(
                             title="🎉 لغز محلول!",
                             description=f"تهانينا لـ <@{interaction.user.id}> لقد حل اللغز الصحيح للغرفة المظلمة!\n\nلقد حصل على وصول حصري مبكر إلى **{s_name}**.",
                             color=discord.Color.gold()
                         )
-                        await channel.send(embed=embed)
+                        try:
+                            await channel.send(embed=embed)
+                        except Exception as e:
+                            print(f"[MysteryCog] winner announce error: {e}")
 
                 await interaction.response.send_message(f"✅ جواب صحيح! لقد فككت الشفرة وربحت وصولاً حصرياً إلى **{s_name}**.", ephemeral=True)
             else:

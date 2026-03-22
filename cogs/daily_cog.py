@@ -29,10 +29,55 @@ DAILY_QUESTIONS = [
     }
 ]
 
+
+async def init_daily_db():
+    async with aiosqlite.connect(DB_PATH) as db:
+        await db.execute(
+            """
+            CREATE TABLE IF NOT EXISTS nexus_config (
+                key TEXT PRIMARY KEY,
+                value TEXT
+            )
+            """
+        )
+        await db.execute(
+            """
+            CREATE TABLE IF NOT EXISTS daily_pulse (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date_str TEXT UNIQUE,
+                question TEXT,
+                options_json TEXT,
+                message_id INTEGER,
+                channel_id INTEGER,
+                is_closed BOOLEAN DEFAULT 0
+            )
+            """
+        )
+        await db.execute(
+            """
+            CREATE TABLE IF NOT EXISTS daily_pulse_votes (
+                pulse_id INTEGER,
+                user_id INTEGER,
+                option_index INTEGER,
+                PRIMARY KEY (pulse_id, user_id),
+                FOREIGN KEY (pulse_id) REFERENCES daily_pulse(id)
+            )
+            """
+        )
+        await db.commit()
+
+
 class DailyCog(commands.Cog):
     def __init__(self, bot: StoryBot):
         self.bot = bot
-        self.daily_loop.start()
+
+    async def cog_load(self):
+        try:
+            await init_daily_db()
+            if not self.daily_loop.is_running():
+                self.daily_loop.start()
+        except Exception as e:
+            print(f"[DailyCog] init error: {e}")
 
     def cog_unload(self):
         self.daily_loop.cancel()
@@ -40,19 +85,23 @@ class DailyCog(commands.Cog):
     @tasks.loop(minutes=1.0)
     async def daily_loop(self):
         """Checks every minute if it's time to post the daily pulse."""
-        async with aiosqlite.connect(DB_PATH) as db:
-            row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_enabled'")
-            e_val = await row.fetchone()
-            if not e_val or e_val[0] != "1":
-                return
+        try:
+            async with aiosqlite.connect(DB_PATH) as db:
+                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_enabled'")
+                e_val = await row.fetchone()
+                if not e_val or e_val[0] != "1":
+                    return
 
-            row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_time'")
-            t_val = await row.fetchone()
-            target_time_str = t_val[0] if t_val else None
+                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_time'")
+                t_val = await row.fetchone()
+                target_time_str = t_val[0] if t_val else None
 
-            row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
-            c_val = await row.fetchone()
-            target_channel_id = c_val[0] if c_val else None
+                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
+                c_val = await row.fetchone()
+                target_channel_id = c_val[0] if c_val else None
+        except Exception as e:
+            print(f"[DailyCog] daily loop skipped: {e}")
+            return
 
         if not target_time_str or not target_channel_id:
             return
@@ -80,17 +129,24 @@ class DailyCog(commands.Cog):
     async def before_daily_loop(self):
         await self.bot.wait_until_ready()
 
-    async def post_daily_pulse(self, channel: discord.TextChannel, date_str: str):
+    async def post_daily_pulse(self, channel: discord.TextChannel, date_str: str) -> bool:
         # 1. Announce yesterday's results if exists
-        await self.announce_results(channel)
+        await self.announce_results(channel, date_str)
 
-        # 2. Pick a random question
+        # 2. Ensure we don't duplicate today's pulse
+        async with aiosqlite.connect(DB_PATH) as db:
+            row = await db.execute("SELECT id, is_closed FROM daily_pulse WHERE date_str = ?", (date_str,))
+            existing = await row.fetchone()
+            if existing:
+                return False
+
+        # 3. Pick a random question
         q_data = random.choice(DAILY_QUESTIONS)
         question = q_data["q"]
         options = q_data["opts"]
         options_json = json.dumps(options, ensure_ascii=False)
 
-        # 3. Save to DB
+        # 4. Save to DB
         async with aiosqlite.connect(DB_PATH) as db:
             cursor = await db.execute("""
                 INSERT INTO daily_pulse (date_str, question, options_json, channel_id, is_closed)
@@ -99,7 +155,7 @@ class DailyCog(commands.Cog):
             pulse_id = cursor.lastrowid
             await db.commit()
 
-        # 4. Post message
+        # 5. Post message
         embed = discord.Embed(
             title="❤️‍🔥 نبضة اليوم",
             description=f"**{question}**\n\nصوت لخيارك المفضل أدناه!",
@@ -110,15 +166,25 @@ class DailyCog(commands.Cog):
         view = DailyPulseView(pulse_id, options)
         msg = await channel.send(embed=embed, view=view)
 
-        # 5. Update DB with message ID
+        # 6. Update DB with message ID
         async with aiosqlite.connect(DB_PATH) as db:
             await db.execute("UPDATE daily_pulse SET message_id = ? WHERE id = ?", (msg.id, pulse_id))
             await db.commit()
+        return True
 
-    async def announce_results(self, channel: discord.TextChannel):
-        """Announce results for the most recent unclosed pulse."""
+    async def announce_results(self, channel: discord.TextChannel, current_date: str):
+        """Announce results for the most recent unclosed pulse that is older than today."""
         async with aiosqlite.connect(DB_PATH) as db:
-            row = await db.execute("SELECT id, question, options_json, date_str FROM daily_pulse WHERE is_closed = 0 ORDER BY id DESC LIMIT 1")
+            row = await db.execute(
+                """
+                SELECT id, question, options_json, date_str
+                FROM daily_pulse
+                WHERE is_closed = 0 AND date_str < ?
+                ORDER BY id DESC
+                LIMIT 1
+                """,
+                (current_date,),
+            )
             pulse = await row.fetchone()
 
             if not pulse:
@@ -192,8 +258,17 @@ class DailyCog(commands.Cog):
                     return
 
                 date_str = datetime.datetime.utcnow().strftime("%Y-%m-%d")
-                await interaction.response.send_message("جاري نشر نبضة اليوم وتوضيح النتائج السابقة إن وجدت...", ephemeral=True)
-                await self.post_daily_pulse(channel, date_str)
+                created = await self.post_daily_pulse(channel, date_str)
+                if created:
+                    await interaction.response.send_message(
+                        "✅ تم نشر نبضة اليوم، وتم إعلان نتائج النبضة السابقة إن وُجدت.",
+                        ephemeral=True,
+                    )
+                else:
+                    await interaction.response.send_message(
+                        "ℹ️ نبضة اليوم منشورة بالفعل لهذا التاريخ. يمكنك تعديل الإعدادات من `/إعداد_النيكسوس`.",
+                        ephemeral=True,
+                    )
                 return
 
             # Regular user

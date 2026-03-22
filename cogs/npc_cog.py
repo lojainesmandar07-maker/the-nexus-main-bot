@@ -21,6 +21,14 @@ async def init_npc_db():
         """)
         await db.commit()
 
+
+async def table_exists(db: aiosqlite.Connection, table_name: str) -> bool:
+    cursor = await db.execute(
+        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?",
+        (table_name,),
+    )
+    return (await cursor.fetchone()) is not None
+
 NPC_PATHS = {
     "fantasy":   "data/npcs/fantasy_npcs.json",
     "past":      "data/npcs/past_npcs.json",
@@ -85,7 +93,7 @@ class TopicSelectMenu(discord.ui.Select):
 
     async def callback(self, interaction: discord.Interaction):
         selected_id = self.values[0]
-        topics = {t["id"]: t for t in self.npc.get("topics", {})}
+        topics = {t["id"]: t for t in self.npc.get("topics", [])}
         topic = topics.get(selected_id)
 
         if not topic:
@@ -113,7 +121,8 @@ class TopicSelectMenu(discord.ui.Select):
 class NPCView(discord.ui.View):
     def __init__(self, npc: dict, member_archetype: str | None):
         super().__init__(timeout=180)
-        self.add_item(TopicSelectMenu(npc, member_archetype))
+        if npc.get("topics"):
+            self.add_item(TopicSelectMenu(npc, member_archetype))
 
 
 class RandomEncounterView(discord.ui.View):
@@ -157,8 +166,14 @@ class RandomEncounterView(discord.ui.View):
 class NPCCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.bot.loop.create_task(init_npc_db())
-        self.weekly_encounter.start()
+
+    async def cog_load(self):
+        try:
+            await init_npc_db()
+            if not self.weekly_encounter.is_running():
+                self.weekly_encounter.start()
+        except Exception as e:
+            print(f"[NPCCog] init error: {e}")
 
     def cog_unload(self):
         self.weekly_encounter.cancel()
@@ -169,22 +184,38 @@ class NPCCog(commands.Cog):
         now = datetime.datetime.utcnow()
         thirty_days_ago = now - datetime.timedelta(days=30)
 
-        async with aiosqlite.connect(DB_PATH) as db:
-            # Active players in last 30 days
-            cursor = await db.execute("SELECT DISTINCT user_id FROM story_plays WHERE played_at >= ?", (thirty_days_ago,))
-            active_players = [row[0] for row in await cursor.fetchall()]
+        try:
+            async with aiosqlite.connect(DB_PATH) as db:
+                if not await table_exists(db, "story_plays"):
+                    return
 
-            # Filter players not encountered in 30 days
-            eligible_players = []
-            for uid in active_players:
-                cursor = await db.execute("SELECT last_encountered FROM npc_encounters WHERE user_id = ?", (uid,))
-                record = await cursor.fetchone()
-                if not record:
-                    eligible_players.append(uid)
-                else:
-                    last_enc = datetime.datetime.fromisoformat(record[0]) if record[0] else None
-                    if not last_enc or last_enc <= thirty_days_ago:
+                # Active players in last 30 days
+                cursor = await db.execute(
+                    "SELECT DISTINCT user_id FROM story_plays WHERE played_at >= ?",
+                    (thirty_days_ago,),
+                )
+                active_players = [row[0] for row in await cursor.fetchall()]
+
+                # Filter players not encountered in 30 days
+                eligible_players = []
+                for uid in active_players:
+                    cursor = await db.execute(
+                        "SELECT last_encountered FROM npc_encounters WHERE user_id = ?",
+                        (uid,),
+                    )
+                    record = await cursor.fetchone()
+                    if not record:
                         eligible_players.append(uid)
+                    else:
+                        try:
+                            last_enc = datetime.datetime.fromisoformat(record[0]) if record[0] else None
+                        except Exception:
+                            last_enc = None
+                        if not last_enc or last_enc <= thirty_days_ago:
+                            eligible_players.append(uid)
+        except Exception as e:
+            print(f"[NPCCog] weekly encounter skipped: {e}")
+            return
 
         if not eligible_players:
             return
@@ -242,12 +273,17 @@ class NPCCog(commands.Cog):
                          world: app_commands.Choice[str]):
         npcs = load_npcs(world.value)
         if not npcs:
-            await interaction.response.send_message(
-                f"❌ لا توجد شخصيات مسجلة لعالم {world.name} بعد.", ephemeral=True
+            embed = discord.Embed(
+                title=f"🌍 شخصيات عالم {world.name}",
+                description="لا توجد شخصيات متاحة لهذا العالم حالياً. سنضيف شخصيات جديدة قريباً.",
+                color=discord.Color.blurple(),
             )
+            embed.set_footer(text="جرّب عالماً آخر من /شخصيات أو عُد لاحقاً")
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             return
 
         member_archetype = get_member_archetype(interaction.user)
+        archetype_label = ARCHETYPE_NAMES.get(member_archetype, "غير محددة")
 
         # Show first NPC — user can run command again for others
         # For simplicity: show all NPCs as a select first, then show chosen NPC
@@ -285,8 +321,18 @@ class NPCCog(commands.Cog):
                         ),
                         color=0x4B3D60
                     )
+                    embed.add_field(name="🧬 شخصيتك الحالية", value=archetype_label, inline=False)
                     if chosen_npc.get("image_url"):
                         embed.set_image(url=chosen_npc["image_url"])
+
+                    if not chosen_npc.get("topics"):
+                        embed.add_field(
+                            name="💬 حالة التفاعل",
+                            value="هذه الشخصية لا تملك مواضيع حوار كافية حالياً.",
+                            inline=False,
+                        )
+                        await inter.response.edit_message(embed=embed, view=None)
+                        return
 
                     npc_view = NPCView(chosen_npc, member_archetype)
                     await inter.response.edit_message(embed=embed, view=npc_view)

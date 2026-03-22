@@ -170,18 +170,30 @@ class ProfileCog(commands.Cog):
             # --- Step 3: Build embed ---
             embed = discord.Embed(
                 title=f"🪪 ملف {interaction.user.display_name}",
+                description="ملخص تقدمك الحالي داخل The Nexus.",
                 color=0x2E4057
             )
             embed.set_thumbnail(url=interaction.user.display_avatar.url)
-            embed.add_field(name="🧬 الشخصية",          value=archetype_display, inline=True)
-            embed.add_field(name="🏷️ اللقب",            value=title,             inline=True)
-            embed.add_field(name="📖 القصص المكتملة",   value=str(count),        inline=True)
-            embed.add_field(name="⚔️ التحديات الاجتماعية", value=str(challenge_count), inline=True)
-            embed.add_field(name="⚖️ التصويتات المنجزة",  value=str(votes_count),    inline=True)
-            embed.add_field(name="📅 انضم منذ",         value=joined,            inline=True)
+            embed.add_field(
+                name="🧬 الهوية",
+                value=f"**الشخصية:** {archetype_display}\n**اللقب:** {title}",
+                inline=False,
+            )
+            embed.add_field(
+                name="📚 التقدم القصصي",
+                value=f"القصص المكتملة: **{count}**\nتاريخ الانضمام: **{joined}**",
+                inline=True,
+            )
+            embed.add_field(
+                name="🤝 النشاط الاجتماعي",
+                value=f"التحديات: **{challenge_count}**\nالتصويتات: **{votes_count}**",
+                inline=True,
+            )
 
             if not archetype_key:
                 embed.set_footer(text="💡 استخدم /اختبار_الشخصية لتحديد شخصيتك وفتح محتوى إضافي")
+            else:
+                embed.set_footer(text="لتحسين ملفك: أكمل قصصاً أكثر وشارك في القرارات الاجتماعية.")
 
             await interaction.response.send_message(embed=embed, ephemeral=True)
 

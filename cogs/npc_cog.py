@@ -84,7 +84,7 @@ class TopicSelectMenu(discord.ui.Select):
             for t in npc.get("topics", [])
         ]
         super().__init__(
-            placeholder="اختر موضوعاً للحديث عنه...",
+            placeholder="اختر موضوع الحوار...",
             options=options,
             min_values=1,
             max_values=1,
@@ -112,6 +112,7 @@ class TopicSelectMenu(discord.ui.Select):
             description=f"*{self.npc.get('personality', '')}*\n\n{response}",
             color=0x4B3D60
         )
+        embed.set_footer(text="لخيارات إضافية: أعد استخدام أمر /شخصيات.")
         if self.npc.get("image_url"):
             embed.set_thumbnail(url=self.npc["image_url"])
 
@@ -154,7 +155,7 @@ class RandomEncounterView(discord.ui.View):
                 response = f"تترك {self.npc['name']} خلفك وتكمل طريقك في ظلال النيكسوس."
 
             embed = discord.Embed(
-                title=f"أنت اخترت: {action}",
+                title=f"📌 اختيارك: {action}",
                 description=response,
                 color=discord.Color.dark_theme()
             )
@@ -238,6 +239,7 @@ class NPCCog(commands.Cog):
                     description=f"بينما تتجول في {WORLD_NAMES[world]}، يظهر أمامك فجأة **{npc['name']}**.\n\n*{npc.get('personality', 'ينظر إليك بصمت...')}*",
                     color=discord.Color.dark_purple()
                 )
+                embed.set_footer(text="اختر تصرفك من الأزرار أدناه. بعد الاختيار سيتم إغلاق الأزرار.")
                 if npc.get("image_url"):
                     embed.set_thumbnail(url=npc["image_url"])
 
@@ -301,7 +303,7 @@ class NPCCog(commands.Cog):
             def __init__(self):
                 super().__init__(timeout=120)
                 select = discord.ui.Select(
-                    placeholder="اختر شخصية...",
+                    placeholder="اختر الشخصية للتفاعل معها...",
                     options=options,
                     custom_id=f"npc_pick_{world.value}"
                 )
@@ -317,7 +319,7 @@ class NPCCog(commands.Cog):
                         description=(
                             f"**{chosen_npc.get('title', '')}**\n\n"
                             f"*{chosen_npc.get('personality', '')}*\n\n"
-                            f"اختر موضوعاً للحديث عنه:"
+                            f"اختر موضوعاً للحديث عنه من القائمة:"
                         ),
                         color=0x4B3D60
                     )
@@ -342,9 +344,10 @@ class NPCCog(commands.Cog):
 
         embed = discord.Embed(
             title=f"🌍 شخصيات عالم {world.name}",
-            description="اختر الشخصية التي تريد التحدث معها:",
+            description="اختر الشخصية، ثم اختر موضوع الحوار لتحصل على تفاعل مخصص.",
             color=0x4B3D60
         )
+        embed.add_field(name="🧬 شخصيتك الحالية", value=archetype_label, inline=False)
         await interaction.response.send_message(embed=embed, view=NPCPickView(), ephemeral=True)
 
 

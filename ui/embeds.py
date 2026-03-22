@@ -2,38 +2,68 @@ import discord
 from engine.models import Story, Scene
 
 class EmbedBuilder:
+    WORLD_STYLES = {
+        "fantasy": {"emoji": "👑", "color": 0xD4AF37, "label": "عالم الفانتازيا"},
+        "past": {"emoji": "📜", "color": 0xA67C52, "label": "عالم الماضي"},
+        "future": {"emoji": "🛸", "color": 0x00B7FF, "label": "عالم المستقبل"},
+        "alternate": {"emoji": "🕳️", "color": 0x5C2D91, "label": "العالم البديل"},
+        "solo": {"emoji": "🌓", "color": 0x2B2D42, "label": "القصص الفردية"},
+    }
+
+    @staticmethod
+    def world_color(world_type: str | None, fallback: discord.Color | None = None) -> discord.Color:
+        if world_type and world_type in EmbedBuilder.WORLD_STYLES:
+            return discord.Color(EmbedBuilder.WORLD_STYLES[world_type]["color"])
+        return fallback or discord.Color.blurple()
+
     @staticmethod
     def world_select_embed() -> discord.Embed:
         embed = discord.Embed(
             title="🌍 مستكشف العوالم",
-            description="اختر العالم الذي تود استكشاف قصصه من القائمة أدناه. كل عالم يحتوي على تصنيفات وقصص فريدة لتستمتع بها.",
-            color=discord.Color.blurple()
+            description=(
+                "مرحباً بك في **The Nexus**.\n"
+                "اختر العالم الذي ترغب بالدخول إليه، ثم حدّد التصنيف فالقصة لبدء التجربة."
+            ),
+            color=discord.Color.blurple(),
         )
-        embed.set_footer(text="استخدم القائمة المنسدلة لاختيار العالم")
+        embed.add_field(
+            name="🧭 خطوات سريعة",
+            value="1) اختر العالم  •  2) اختر التصنيف  •  3) اختر القصة  •  4) ابدأ اللعب",
+            inline=False,
+        )
+        embed.set_footer(text="استخدم القائمة المنسدلة أدناه، ويمكنك الرجوع خطوة للخلف في أي وقت.")
         return embed
 
     @staticmethod
     def story_preview_embed(story: Story) -> discord.Embed:
+        world_type = getattr(story, "world_type", None)
+        world_style = EmbedBuilder.WORLD_STYLES.get(world_type, {})
         embed = discord.Embed(
             title=f"📖 {story.title}",
-            description=story.description or "لا يوجد وصف لهذه القصة.",
-            color=discord.Color.green()
+            description=(story.description or "لا يوجد وصف لهذه القصة."),
+            color=EmbedBuilder.world_color(world_type, discord.Color.green()),
         )
-        embed.add_field(name="التصنيف", value=story.theme, inline=True)
-        if hasattr(story, 'world_type') and story.world_type:
-            embed.add_field(name="العالم", value=story.world_type, inline=True)
+        embed.add_field(name="🏷️ التصنيف", value=story.theme, inline=True)
+        if world_type:
+            embed.add_field(
+                name="🌐 العالم",
+                value=f"{world_style.get('emoji', '🌍')} {world_style.get('label', world_type)}",
+                inline=True,
+            )
+        embed.add_field(name="🎮 النمط", value="لعب فردي" if story.game_mode == "single" else "حدث جماعي", inline=True)
         if story.image_url:
             embed.set_thumbnail(url=story.image_url)
+        embed.set_footer(text="إذا بدت القصة مناسبة لك، اضغط «ابدأ القصة الآن».")
         return embed
 
     @staticmethod
     def category_browser_embed(world_type: str, world_name: str, desc: str) -> discord.Embed:
         embed = discord.Embed(
             title=f"📁 تصنيفات: {world_name}",
-            description=f"{desc}\n\nالرجاء اختيار تصنيف من القائمة أدناه لعرض القصص المتاحة فيه.",
-            color=discord.Color.gold()
+            description=f"{desc}\n\nاختر التصنيف المناسب لتظهر لك القصص المتاحة مباشرة.",
+            color=EmbedBuilder.world_color(world_type, discord.Color.gold()),
         )
-        embed.set_footer(text="استخدم القائمة المنسدلة لاختيار التصنيف")
+        embed.set_footer(text="بعد اختيار التصنيف ستنتقل لمرحلة اختيار القصة.")
         return embed
 
     @staticmethod
@@ -74,13 +104,14 @@ class EmbedBuilder:
         if scene.image_url:
             embed.set_image(url=scene.image_url)
 
-        embed.set_author(name=f"{story_title} (لعب فردي)")
-        embed.add_field(name="النقاط ⭐️", value=f"{points}", inline=False)
+        embed.set_author(name=f"{story_title} • اللعب الفردي")
+        embed.add_field(name="⭐ النقاط الحالية", value=f"{points}", inline=True)
+        embed.add_field(name="🧭 الحالة", value="نهاية القصة" if scene.is_ending else "داخل القصة", inline=True)
 
         if not scene.is_ending:
-            embed.set_footer(text="اختر بحكمة، مصيرك يعتمد على قرارك...")
+            embed.set_footer(text="اختر خياراً واحداً للمتابعة. قراراتك تؤثر مباشرة على النهاية.")
         else:
-            embed.set_footer(text="نهاية القصة. شكراً للعبك!")
+            embed.set_footer(text="أتممت هذه الرحلة بنجاح. يمكنك الآن مشاركة النهاية أو بدء قصة جديدة.")
 
         return embed
 
@@ -110,18 +141,22 @@ class EmbedBuilder:
     def voting_result_embed(winning_choice_text: str, total_votes: int) -> discord.Embed:
         embed = discord.Embed(
             title="✅ انتهى التصويت!",
-            description=f"**الخيار الفائز هو:** {winning_choice_text}\n(بإجمالي {total_votes} أصوات)",
-            color=discord.Color.green()
+            description=f"**الخيار الفائز:** {winning_choice_text}",
+            color=discord.Color.green(),
         )
+        embed.add_field(name="🗳️ إجمالي الأصوات", value=str(total_votes), inline=True)
+        embed.set_footer(text="جارٍ الانتقال إلى المشهد التالي...")
         return embed
 
     @staticmethod
     def tie_break_embed(winning_choice_text: str, total_votes: int) -> discord.Embed:
         embed = discord.Embed(
             title="⚖️ تعادل في الأصوات!",
-            description=f"حدث تعادل. اختار النظام عشوائياً:\n**الخيار الفائز هو:** {winning_choice_text}\n(بإجمالي {total_votes} أصوات)",
-            color=discord.Color.orange()
+            description=f"حدث تعادل، فاختار النظام عشوائياً:\n**الخيار الفائز:** {winning_choice_text}",
+            color=discord.Color.orange(),
         )
+        embed.add_field(name="🗳️ إجمالي الأصوات", value=str(total_votes), inline=True)
+        embed.set_footer(text="يمكنكم تغيير النتيجة في الجولة القادمة عبر التصويت الجماعي.")
         return embed
 
     @staticmethod

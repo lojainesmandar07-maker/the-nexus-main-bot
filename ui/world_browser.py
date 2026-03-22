@@ -7,13 +7,13 @@ WORLD_CONFIG = {
         "name": "القصص الفردية",
         "desc": "مجموعة من القصص المنوعة للعب الفردي.",
         "emoji": "👤",
-        "color": discord.Color.blue()
+        "color": discord.Color.dark_grey()
     },
     "fantasy": {
         "name": "عالم الفانتازيا",
         "desc": "عالم السحر والمخلوقات الأسطورية.",
         "emoji": "🐉",
-        "color": discord.Color.purple()
+        "color": discord.Color.gold()
     },
     "past": {
         "name": "عالم الماضي",
@@ -25,7 +25,7 @@ WORLD_CONFIG = {
         "name": "عالم المستقبل",
         "desc": "تكنولوجيا متقدمة وخيال علمي.",
         "emoji": "🚀",
-        "color": discord.Color.teal()
+        "color": discord.Color.blue()
     },
     "alternate": {
         "name": "العالم البديل",
@@ -66,7 +66,10 @@ class WorldSelectView(View):
         categories = bot.story_manager.get_world_categories(world_type)
 
         if not categories:
-            await interaction.response.send_message("❌ لا توجد قصص متاحة في هذا العالم حالياً.", ephemeral=True)
+            await interaction.response.send_message(
+                "لا توجد قصص متاحة في هذا العالم حالياً. جرّب عالماً آخر من القائمة 🌍",
+                ephemeral=True,
+            )
             return
 
         view = CategoryBrowserView(world_type, categories)
@@ -118,7 +121,10 @@ class CategorySelect(Select):
         stories = bot.story_manager.get_stories_by_world_and_category(self.world_type, category)
 
         if not stories:
-            await interaction.response.send_message("❌ لا توجد قصص في هذا التصنيف.", ephemeral=True)
+            await interaction.response.send_message(
+                "لا توجد قصص في هذا التصنيف حالياً. اختر تصنيفاً آخر.",
+                ephemeral=True,
+            )
             return
 
         # Update view to show stories in this category
@@ -138,6 +144,7 @@ class CategorySelect(Select):
             story_select = StorySelect(self.world_type, category, options)
             view.add_item(story_select)
 
+        view.add_item(BackToCategoriesButton(self.world_type))
         view.add_item(BackToWorldsButton())
 
         # We edit the message to keep the same UI flow
@@ -169,6 +176,7 @@ class StorySelect(Select):
 
         view = View(timeout=None)
         view.add_item(StartStoryButton(story.id))
+        view.add_item(BackToCategoriesButton(self.world_type))
         view.add_item(BackToWorldsButton())
 
         await interaction.response.edit_message(embed=embed, view=view)
@@ -199,4 +207,22 @@ class BackToWorldsButton(Button):
     async def callback(self, interaction: discord.Interaction):
         view = WorldSelectView()
         embed = EmbedBuilder.world_select_embed()
+        await interaction.response.edit_message(embed=embed, view=view)
+
+
+class BackToCategoriesButton(Button):
+    def __init__(self, world_type: str):
+        super().__init__(
+            style=discord.ButtonStyle.secondary,
+            label="العودة للتصنيفات",
+            custom_id=f"back_to_categories_{world_type}",
+        )
+        self.world_type = world_type
+
+    async def callback(self, interaction: discord.Interaction):
+        bot = interaction.client
+        categories = bot.story_manager.get_world_categories(self.world_type)
+        view = CategoryBrowserView(self.world_type, categories or {})
+        world = WORLD_CONFIG[self.world_type]
+        embed = EmbedBuilder.category_browser_embed(self.world_type, world["name"], world["desc"])
         await interaction.response.edit_message(embed=embed, view=view)

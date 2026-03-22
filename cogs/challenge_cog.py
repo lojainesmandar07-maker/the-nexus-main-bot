@@ -5,6 +5,7 @@ from core.bot import StoryBot
 import aiosqlite
 import datetime
 import uuid
+import asyncio
 
 DB_PATH = "data/nexus.db"
 
@@ -52,10 +53,82 @@ async def init_challenge_db():
         """)
         await db.commit()
 
+
+async def check_weekly_challenge_completion(
+    bot: StoryBot,
+    user_id: int,
+    story_id: int,
+    ending_id: str,
+    guild: discord.Guild | None = None,
+    notify_channel: discord.abc.Messageable | None = None,
+) -> str | None:
+    """
+    Checks and records weekly challenge completion for a story ending.
+    Returns a user-facing success message if a new completion was recorded.
+    """
+    try:
+        async with aiosqlite.connect(DB_PATH) as db:
+            row = await db.execute(
+                """
+                SELECT id, title, target_ending_id, reward_role_id
+                FROM weekly_challenges
+                WHERE is_active = 1 AND target_story_id = ?
+                ORDER BY created_at DESC
+                LIMIT 1
+                """,
+                (story_id,),
+            )
+            challenge = await row.fetchone()
+            if not challenge:
+                return None
+
+            challenge_id, title, target_ending_id, reward_role_id = challenge
+            if target_ending_id and target_ending_id != ending_id:
+                return None
+
+            done_row = await db.execute(
+                "SELECT 1 FROM challenge_completions WHERE user_id = ? AND challenge_id = ?",
+                (user_id, challenge_id),
+            )
+            already_done = await done_row.fetchone()
+            if already_done:
+                return None
+
+            await db.execute(
+                """
+                INSERT INTO challenge_completions (user_id, challenge_id)
+                VALUES (?, ?)
+                """,
+                (user_id, challenge_id),
+            )
+            await db.commit()
+    except Exception as e:
+        print(f"[ChallengeCog] completion check failed: {e}")
+        return None
+
+    reward_msg = ""
+    if reward_role_id and guild:
+        try:
+            role = guild.get_role(int(reward_role_id))
+            member = guild.get_member(user_id) or await guild.fetch_member(user_id)
+            if role and member:
+                await member.add_roles(role, reason="Weekly challenge completion")
+                reward_msg = f"\n🏅 تمت إضافة رتبة المكافأة: **{role.name}**"
+        except Exception as e:
+            print(f"[ChallengeCog] reward role grant failed: {e}")
+
+    message = f"🏆 تم تسجيل إنجازك في تحدي الأسبوع: **{title}**{reward_msg}"
+    if notify_channel:
+        try:
+            await notify_channel.send(f"<@{user_id}> {message}")
+        except Exception:
+            pass
+    return message
+
 class ChallengeCog(commands.Cog):
     def __init__(self, bot: StoryBot):
         self.bot = bot
-        self.bot.loop.create_task(init_challenge_db())
+        asyncio.create_task(init_challenge_db())
 
     @app_commands.command(name="تحدي_الأسبوع", description="عرض التحدي الأسبوعي النشط")
     async def show_challenge(self, interaction: discord.Interaction):

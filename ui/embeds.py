@@ -9,7 +9,6 @@ class EmbedBuilder:
             description="اختر العالم الذي تود استكشاف قصصه من القائمة أدناه. كل عالم يحتوي على تصنيفات وقصص فريدة لتستمتع بها.",
             color=discord.Color.blurple()
         )
-        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/1234567890/1234567890/world_icon.png") # Placeholder
         embed.set_footer(text="استخدم القائمة المنسدلة لاختيار العالم")
         return embed
 

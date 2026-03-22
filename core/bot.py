@@ -29,23 +29,39 @@ class StoryBot(commands.Bot):
         import aiosqlite
         import json
         import os
+
+        async def table_exists(db, table_name: str) -> bool:
+            cursor = await db.execute(
+                "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?",
+                (table_name,),
+            )
+            return (await cursor.fetchone()) is not None
+
         if os.path.exists("data/nexus.db"):
             try:
                 async with aiosqlite.connect("data/nexus.db") as db:
-                    cursor = await db.execute("SELECT id, options_json FROM daily_pulse WHERE is_closed = 0")
-                    rows = await cursor.fetchall()
-                    from cogs.daily_cog import DailyPulseView
-                    for pulse_id, options_json in rows:
-                        options = json.loads(options_json)
-                        self.add_view(DailyPulseView(pulse_id, options))
+                    if await table_exists(db, "daily_pulse"):
+                        cursor = await db.execute("SELECT id, options_json FROM daily_pulse WHERE is_closed = 0")
+                        rows = await cursor.fetchall()
+                        from cogs.daily_cog import DailyPulseView
+                        for pulse_id, options_json in rows:
+                            try:
+                                options = json.loads(options_json)
+                            except Exception:
+                                options = []
+                            self.add_view(DailyPulseView(pulse_id, options))
 
-                    # Also load collective decision views
-                    d_cursor = await db.execute("SELECT id, options_json FROM collective_decisions WHERE is_active = 1")
-                    d_rows = await d_cursor.fetchall()
-                    from cogs.social_cog import DecisionVoteView
-                    for decision_id, options_json in d_rows:
-                        options = json.loads(options_json)
-                        self.add_view(DecisionVoteView(decision_id, options))
+                    if await table_exists(db, "collective_decisions"):
+                        d_cursor = await db.execute("SELECT id, options_json FROM collective_decisions WHERE is_active = 1")
+                        d_rows = await d_cursor.fetchall()
+                        from cogs.social_cog import DecisionVoteView
+                        for decision_id, options_json in d_rows:
+                            try:
+                                options = json.loads(options_json)
+                            except Exception:
+                                options = []
+                            if isinstance(options, list) and options:
+                                self.add_view(DecisionVoteView(decision_id, options))
             except Exception as e:
                 print(f"Error loading persistent views: {e}")
 

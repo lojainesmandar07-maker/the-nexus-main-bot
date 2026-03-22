@@ -1,177 +1,279 @@
+import json
 import discord
 from discord import app_commands
 from discord.ext import commands
-from core.bot import StoryBot
-from core.config import get_config, save_config
 import aiosqlite
-import traceback
+import asyncio
+
+from core.bot import StoryBot
 
 DB_PATH = "data/nexus.db"
 
-async def init_nexus_db():
+
+async def init_social_db() -> None:
     async with aiosqlite.connect(DB_PATH) as db:
-        await db.execute("""
-            CREATE TABLE IF NOT EXISTS nexus_config (
-                key TEXT PRIMARY KEY,
-                value TEXT
-            )
-        """)
-        await db.execute("""
-            CREATE TABLE IF NOT EXISTS daily_pulse (
+        await db.execute(
+            """
+            CREATE TABLE IF NOT EXISTS collective_decisions (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                date_str TEXT UNIQUE,
-                question TEXT,
-                options_json TEXT,
-                message_id INTEGER,
+                question TEXT NOT NULL,
+                options_json TEXT NOT NULL,
+                is_active INTEGER DEFAULT 1,
+                created_by INTEGER,
                 channel_id INTEGER,
-                is_closed BOOLEAN DEFAULT 0
+                message_id INTEGER,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                closed_at TIMESTAMP
             )
-        """)
-        await db.execute("""
-            CREATE TABLE IF NOT EXISTS daily_pulse_votes (
-                pulse_id INTEGER,
+            """
+        )
+        await db.execute(
+            """
+            CREATE TABLE IF NOT EXISTS decision_votes (
+                decision_id INTEGER,
                 user_id INTEGER,
                 option_index INTEGER,
-                PRIMARY KEY (pulse_id, user_id),
-                FOREIGN KEY (pulse_id) REFERENCES daily_pulse(id)
+                voted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (decision_id, user_id),
+                FOREIGN KEY (decision_id) REFERENCES collective_decisions(id)
             )
-        """)
+            """
+        )
+        await db.execute(
+            """
+            CREATE TABLE IF NOT EXISTS friend_challenges (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                challenger_id INTEGER,
+                target_user_id INTEGER,
+                status TEXT DEFAULT 'pending',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            """
+        )
         await db.commit()
 
-class SetupCog(commands.Cog):
+
+class DecisionVoteView(discord.ui.View):
+    """Persistent decision-voting view used by both commands and startup restore."""
+
+    def __init__(self, decision_id: int, options: list[str]):
+        super().__init__(timeout=None)
+        self.decision_id = decision_id
+        self.options = options[:5]
+
+        for idx, option in enumerate(self.options):
+            btn = discord.ui.Button(
+                style=discord.ButtonStyle.primary,
+                label=(option[:80] if option else f"خيار {idx + 1}"),
+                custom_id=f"decision_vote_{decision_id}_{idx}",
+            )
+            btn.callback = self._make_callback(idx)
+            self.add_item(btn)
+
+    def _make_callback(self, option_index: int):
+        async def callback(interaction: discord.Interaction):
+            try:
+                async with aiosqlite.connect(DB_PATH) as db:
+                    row = await db.execute(
+                        "SELECT is_active FROM collective_decisions WHERE id = ?",
+                        (self.decision_id,),
+                    )
+                    decision = await row.fetchone()
+                    if not decision or decision[0] != 1:
+                        await interaction.response.send_message("❌ هذا القرار لم يعد نشطاً.", ephemeral=True)
+                        return
+
+                    await db.execute(
+                        """
+                        INSERT INTO decision_votes (decision_id, user_id, option_index)
+                        VALUES (?, ?, ?)
+                        ON CONFLICT(decision_id, user_id) DO UPDATE SET
+                            option_index = excluded.option_index,
+                            voted_at = CURRENT_TIMESTAMP
+                        """,
+                        (self.decision_id, interaction.user.id, option_index),
+                    )
+                    await db.commit()
+
+                    count_row = await db.execute(
+                        "SELECT COUNT(*) FROM decision_votes WHERE decision_id = ?",
+                        (self.decision_id,),
+                    )
+                    total_votes = (await count_row.fetchone())[0]
+
+                await interaction.response.send_message(
+                    f"✅ تم تسجيل تصويتك على الخيار رقم {option_index + 1}. (إجمالي الأصوات: {total_votes})",
+                    ephemeral=True,
+                )
+            except Exception as e:
+                print(f"[SocialCog] vote error: {e}")
+                await interaction.response.send_message("⚠️ تعذر تسجيل التصويت حالياً.", ephemeral=True)
+
+        return callback
+
+
+async def _get_active_decision():
+    async with aiosqlite.connect(DB_PATH) as db:
+        row = await db.execute(
+            """
+            SELECT id, question, options_json
+            FROM collective_decisions
+            WHERE is_active = 1
+            ORDER BY id DESC
+            LIMIT 1
+            """
+        )
+        return await row.fetchone()
+
+
+class SocialCog(commands.Cog):
     def __init__(self, bot: StoryBot):
         self.bot = bot
-        self.bot.loop.create_task(init_nexus_db())
+        asyncio.create_task(init_social_db())
 
-    @app_commands.command(name="إعداد_النيكسوس", description="لوحة تحكم الإدارة لتهيئة النظام (للمشرفين فقط)")
+    @app_commands.command(name="إنشاء_قرار", description="إنشاء قرار جماعي جديد للتصويت (للإدارة فقط)")
     @app_commands.default_permissions(manage_guild=True)
-    async def setup_nexus(self, interaction: discord.Interaction):
+    @app_commands.describe(
+        question="سؤال القرار",
+        option_1="الخيار الأول",
+        option_2="الخيار الثاني",
+        option_3="الخيار الثالث (اختياري)",
+        option_4="الخيار الرابع (اختياري)",
+        channel="القناة التي يُنشر فيها القرار (اختياري)",
+    )
+    async def create_decision(
+        self,
+        interaction: discord.Interaction,
+        question: str,
+        option_1: str,
+        option_2: str,
+        option_3: str | None = None,
+        option_4: str | None = None,
+        channel: discord.TextChannel | None = None,
+    ):
+        if not interaction.user.guild_permissions.manage_guild:
+            await interaction.response.send_message("❌ هذا الأمر مخصص للإدارة فقط.", ephemeral=True)
+            return
+
+        options = [option_1.strip(), option_2.strip()]
+        if option_3 and option_3.strip():
+            options.append(option_3.strip())
+        if option_4 and option_4.strip():
+            options.append(option_4.strip())
+
+        if len(options) < 2:
+            await interaction.response.send_message("❌ يجب توفير خيارين على الأقل.", ephemeral=True)
+            return
+
+        target_channel = channel or interaction.channel
+        if not target_channel:
+            await interaction.response.send_message("❌ لا يمكن نشر القرار في هذه الوجهة.", ephemeral=True)
+            return
+
         try:
-            if not interaction.user.guild_permissions.manage_guild:
-                await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
+            async with aiosqlite.connect(DB_PATH) as db:
+                await db.execute("UPDATE collective_decisions SET is_active = 0, closed_at = CURRENT_TIMESTAMP WHERE is_active = 1")
+                cursor = await db.execute(
+                    """
+                    INSERT INTO collective_decisions (question, options_json, is_active, created_by)
+                    VALUES (?, ?, 1, ?)
+                    """,
+                    (question.strip(), json.dumps(options, ensure_ascii=False), interaction.user.id),
+                )
+                decision_id = cursor.lastrowid
+                await db.commit()
+
+            embed = discord.Embed(
+                title="🗳️ قرار جماعي جديد",
+                description=question,
+                color=discord.Color.blurple(),
+            )
+            for i, opt in enumerate(options, start=1):
+                embed.add_field(name=f"الخيار {i}", value=opt, inline=False)
+            embed.set_footer(text=f"معرف القرار: {decision_id}")
+
+            view = DecisionVoteView(decision_id, options)
+            message = await target_channel.send(embed=embed, view=view)
+
+            async with aiosqlite.connect(DB_PATH) as db:
+                await db.execute(
+                    "UPDATE collective_decisions SET channel_id = ?, message_id = ? WHERE id = ?",
+                    (target_channel.id, message.id, decision_id),
+                )
+                await db.commit()
+
+            await interaction.response.send_message("✅ تم إنشاء القرار ونشره بنجاح.", ephemeral=True)
+        except Exception as e:
+            print(f"[SocialCog] create_decision error: {e}")
+            await interaction.response.send_message("⚠️ تعذر إنشاء القرار حالياً.", ephemeral=True)
+
+    @app_commands.command(name="قرار_اجتماعي", description="عرض القرار الجماعي النشط والتصويت عليه")
+    async def latest_decision(self, interaction: discord.Interaction):
+        try:
+            record = await _get_active_decision()
+            if not record:
+                await interaction.response.send_message("ℹ️ لا يوجد قرار اجتماعي نشط حالياً.", ephemeral=True)
                 return
 
-            view = NexusSetupView()
+            decision_id, question, options_json = record
+            try:
+                options = json.loads(options_json)
+            except Exception:
+                options = []
+
+            if not isinstance(options, list) or not options:
+                await interaction.response.send_message("⚠️ بيانات القرار الحالي غير صالحة.", ephemeral=True)
+                return
+
             embed = discord.Embed(
-                title="⚙️ لوحة تحكم النيكسوس",
-                description="اختر الإعداد الذي تود تعديله من القائمة أدناه:",
-                color=discord.Color.dark_theme()
+                title="🗳️ القرار الجماعي الحالي",
+                description=question,
+                color=discord.Color.blurple(),
             )
+            for i, opt in enumerate(options[:5], start=1):
+                embed.add_field(name=f"الخيار {i}", value=opt, inline=False)
 
-            # Display current config status
-            async with aiosqlite.connect(DB_PATH) as db:
-                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
-                c_val = await row.fetchone()
-                channel_id = c_val[0] if c_val else None
-
-                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_time'")
-                t_val = await row.fetchone()
-                time_str = t_val[0] if t_val else "غير محدد (بتوقيت UTC)"
-
-                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_enabled'")
-                e_val = await row.fetchone()
-                is_enabled = "مفعل ✅" if (e_val and e_val[0] == "1") else "معطل ❌"
-
-            channel_mention = f"<#{channel_id}>" if channel_id else "غير محدد"
-
-            embed.add_field(name="القناة", value=channel_mention, inline=False)
-            embed.add_field(name="وقت النبضة", value=time_str, inline=False)
-            embed.add_field(name="حالة النظام", value=is_enabled, inline=False)
-
-            await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+            await interaction.response.send_message(
+                embed=embed,
+                view=DecisionVoteView(decision_id, options),
+                ephemeral=True,
+            )
         except Exception as e:
-            print(f"Error in setup_nexus: {e}")
-            await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)
+            print(f"[SocialCog] latest_decision error: {e}")
+            await interaction.response.send_message("⚠️ تعذر جلب القرار الاجتماعي.", ephemeral=True)
 
-async def set_config(key: str, value: str):
-    async with aiosqlite.connect(DB_PATH) as db:
-        await db.execute("""
-            INSERT INTO nexus_config (key, value)
-            VALUES (?, ?)
-            ON CONFLICT(key) DO UPDATE SET value = ?
-        """, (key, value, value))
-        await db.commit()
-
-async def get_db_config(key: str) -> str:
-    async with aiosqlite.connect(DB_PATH) as db:
-        row = await db.execute("SELECT value FROM nexus_config WHERE key = ?", (key,))
-        val = await row.fetchone()
-        return val[0] if val else None
-
-class NexusSetupView(discord.ui.View):
-    def __init__(self):
-        super().__init__(timeout=None)
-
-    @discord.ui.select(
-        placeholder="اختر إعداداً للتعديل...",
-        options=[
-            discord.SelectOption(label="قناة النبضة اليومية", value="channel", emoji="📢"),
-            discord.SelectOption(label="وقت النبضة اليومية", value="time", emoji="⏰"),
-            discord.SelectOption(label="تفعيل/تعطيل النظام", value="toggle", emoji="🔄")
-        ],
-        custom_id="nexus_setup_select"
-    )
-    async def setup_select(self, interaction: discord.Interaction, select: discord.ui.Select):
-        if not interaction.user.guild_permissions.manage_guild:
-            await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
-            return
-
-        value = select.values[0]
-
-        if value == "channel":
-            view = ChannelSetupView()
-            await interaction.response.send_message("اختر القناة من القائمة:", view=view, ephemeral=True)
-        elif value == "time":
-            modal = TimeSetupModal()
-            await interaction.response.send_modal(modal)
-        elif value == "toggle":
-            current_val = await get_db_config("pulse_enabled")
-            new_val = "0" if current_val == "1" else "1"
-            await set_config("pulse_enabled", new_val)
-            status = "مفعل ✅" if new_val == "1" else "معطل ❌"
-            await interaction.response.send_message(f"تم تغيير حالة نظام النبضة اليومية إلى: {status}", ephemeral=True)
-
-class ChannelSetupView(discord.ui.View):
-    def __init__(self):
-        super().__init__(timeout=None)
-
-    @discord.ui.select(
-        cls=discord.ui.ChannelSelect,
-        channel_types=[discord.ChannelType.text],
-        placeholder="اختر قناة للنبضة اليومية...",
-        custom_id="nexus_channel_select"
-    )
-    async def channel_select(self, interaction: discord.Interaction, select: discord.ui.ChannelSelect):
-        if not interaction.user.guild_permissions.manage_guild:
-            await interaction.response.send_message("❌ هذا الأمر مخصص للمشرفين فقط.", ephemeral=True)
-            return
-
-        channel = select.values[0]
-        await set_config("pulse_channel_id", str(channel.id))
-        await interaction.response.send_message(f"✅ تم تعيين القناة <#{channel.id}> للنبضة اليومية.", ephemeral=True)
-
-class TimeSetupModal(discord.ui.Modal, title="تكوين وقت النبضة اليومية"):
-    time_input = discord.ui.TextInput(
-        label="الوقت (بتوقيت UTC, مثلاً 14:30)",
-        placeholder="HH:MM",
-        max_length=5,
-        min_length=5,
-        required=True
-    )
-
-    async def on_submit(self, interaction: discord.Interaction):
-        time_str = self.time_input.value
-        # Basic validation
+    @app_commands.command(name="سجل_القرارات", description="عرض آخر القرارات الجماعية")
+    async def decisions_history(self, interaction: discord.Interaction):
         try:
-            h, m = map(int, time_str.split(':'))
-            if not (0 <= h <= 23 and 0 <= m <= 59):
-                raise ValueError
-        except:
-            await interaction.response.send_message("❌ صيغة الوقت غير صحيحة. استخدم HH:MM (مثال 14:30)", ephemeral=True)
-            return
+            async with aiosqlite.connect(DB_PATH) as db:
+                row = await db.execute(
+                    """
+                    SELECT id, question, is_active, created_at
+                    FROM collective_decisions
+                    ORDER BY id DESC
+                    LIMIT 5
+                    """
+                )
+                items = await row.fetchall()
 
-        await set_config("pulse_time", time_str)
-        await interaction.response.send_message(f"✅ تم تعيين وقت النبضة اليومية إلى {time_str} UTC.", ephemeral=True)
+            if not items:
+                await interaction.response.send_message("ℹ️ لا يوجد سجل قرارات بعد.", ephemeral=True)
+                return
+
+            embed = discord.Embed(title="🧾 سجل القرارات", color=discord.Color.dark_blue())
+            for decision_id, question, is_active, created_at in items:
+                status = "نشط ✅" if is_active == 1 else "مغلق"
+                embed.add_field(
+                    name=f"#{decision_id} • {status}",
+                    value=f"{question[:140]}\nتاريخ الإنشاء: {created_at}",
+                    inline=False,
+                )
+
+            await interaction.response.send_message(embed=embed, ephemeral=True)
+        except Exception as e:
+            print(f"[SocialCog] decisions_history error: {e}")
+            await interaction.response.send_message("⚠️ تعذر عرض سجل القرارات حالياً.", ephemeral=True)
+
 
 async def setup(bot: StoryBot):
-    await bot.add_cog(SetupCog(bot))
+    await bot.add_cog(SocialCog(bot))

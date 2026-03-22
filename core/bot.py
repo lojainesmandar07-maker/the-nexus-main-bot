@@ -72,6 +72,7 @@ class StoryBot(commands.Bot):
             "cogs.profile_cog",
             "cogs.admin_cog",
             "cogs.personality_cog",
+            "cogs.help_cog",
             "cogs.npc_cog",
             "cogs.setup_cog",
             "cogs.daily_cog",

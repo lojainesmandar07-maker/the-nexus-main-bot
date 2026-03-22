@@ -49,19 +49,31 @@ class StoryBot(commands.Bot):
             except Exception as e:
                 print(f"Error loading persistent views: {e}")
 
-        # Load cogs here
-        await self.load_extension("cogs.event_cog")
-        await self.load_extension("cogs.solo_cog")
-        await self.load_extension("cogs.profile_cog")
-        await self.load_extension("cogs.admin_cog")
-        await self.load_extension("cogs.personality_cog")
-        await self.load_extension("cogs.npc_cog")
-        await self.load_extension("cogs.setup_cog")
-        await self.load_extension("cogs.daily_cog")
-        await self.load_extension("cogs.challenge_cog")
-        await self.load_extension("cogs.social_cog")
-        await self.load_extension("cogs.stats_cog")
-        await self.load_extension("cogs.mystery_cog")
+        # Load cogs here. Keep startup resilient: one broken extension should not crash the bot.
+        extensions = [
+            "cogs.event_cog",
+            "cogs.solo_cog",
+            "cogs.profile_cog",
+            "cogs.admin_cog",
+            "cogs.personality_cog",
+            "cogs.npc_cog",
+            "cogs.setup_cog",
+            "cogs.daily_cog",
+            "cogs.challenge_cog",
+            "cogs.social_cog",
+            "cogs.stats_cog",
+            "cogs.mystery_cog",
+        ]
+        loaded_extensions = []
+        failed_extensions = []
+
+        for extension in extensions:
+            try:
+                await self.load_extension(extension)
+                loaded_extensions.append(extension)
+            except Exception as e:
+                failed_extensions.append((extension, str(e)))
+                print(f"Failed to load extension {extension}: {e}")
 
         # Sync commands
         from core.config import GUILD_ID
@@ -74,7 +86,11 @@ class StoryBot(commands.Bot):
             await self.tree.sync()
             print("Synced global commands")
 
-        print("Bot setup complete. Commands loaded.")
+        print(f"Bot setup complete. Loaded {len(loaded_extensions)}/{len(extensions)} extensions.")
+        if failed_extensions:
+            print("Failed extensions:")
+            for extension, error in failed_extensions:
+                print(f"- {extension}: {error}")
 
     async def on_application_command_error(self, interaction: discord.Interaction, error):
         msg = "⚠️ حدث خطأ غير متوقع، يرجى المحاولة لاحقاً."

@@ -64,6 +64,27 @@ class AdminCog(commands.Cog):
         )
 
     # ─────────────────────────────────────────
+    # /تعيين_قناة_شرح_العالم
+    # ─────────────────────────────────────────
+    @app_commands.command(name="تعيين_قناة_شرح_العالم", description="عيّن هذه القناة لشرح عالم محدد (للمشرفين)")
+    @app_commands.choices(world=WORLD_CHOICES)
+    async def assign_world_explanation_channel(
+        self,
+        interaction: discord.Interaction,
+        world: app_commands.Choice[str],
+    ):
+        if not self._is_admin(interaction):
+            await interaction.response.send_message("❌ هذا الأمر للمشرفين فقط.", ephemeral=True)
+            return
+        config = load_config()
+        config["world_explanation_channels"][world.value] = interaction.channel_id
+        save_config(config)
+        await interaction.response.send_message(
+            f"✅ تم تعيين هذه القناة لشرح عالم **{world.name}** بنجاح.",
+            ephemeral=True,
+        )
+
+    # ─────────────────────────────────────────
     # /نشر_شرح_العالم
     # ─────────────────────────────────────────
     @app_commands.command(name="نشر_شرح_العالم", description="انشر إمبد تعريفي لعالم محدد (للمشرفين)")
@@ -83,7 +104,8 @@ class AdminCog(commands.Cog):
             return
 
         config = load_config()
-        configured_channel_id = config.get("world_channels", {}).get(world.value)
+        explanation_channels = config.get("world_explanation_channels", {})
+        configured_channel_id = explanation_channels.get(world.value) or config.get("world_channels", {}).get(world.value)
         target_channel = channel or interaction.channel
 
         if target_channel is None:
@@ -134,6 +156,7 @@ class AdminCog(commands.Cog):
 
         config = load_config()
         world_channels = config.get("world_channels", {})
+        explanation_channels = config.get("world_explanation_channels", {})
 
         await interaction.response.defer(ephemeral=True, thinking=True)
 
@@ -142,7 +165,7 @@ class AdminCog(commands.Cog):
         skipped_worlds = []
 
         for world_key, world_name in world_labels.items():
-            channel_id = world_channels.get(world_key)
+            channel_id = explanation_channels.get(world_key) or world_channels.get(world_key)
             if not channel_id:
                 skipped_worlds.append(f"• {world_name}: لا توجد قناة مضبوطة")
                 continue
@@ -169,6 +192,75 @@ class AdminCog(commands.Cog):
         if skipped_worlds:
             summary += "\n\n⚠️ عناصر لم تُنشر:\n" + "\n".join(skipped_worlds)
         await interaction.followup.send(summary, ephemeral=True)
+
+    # ─────────────────────────────────────────
+    # /معرفات_القصص
+    # ─────────────────────────────────────────
+    @app_commands.command(name="معرفات_القصص", description="عرض معرفات القصص للمشرفين (تساعد في التحديات والإدارة)")
+    @app_commands.describe(mode="فلترة حسب النمط", world="فلترة حسب العالم")
+    @app_commands.choices(
+        mode=[
+            app_commands.Choice(name="كل الأنماط", value="all"),
+            app_commands.Choice(name="فردي", value="single"),
+            app_commands.Choice(name="جماعي", value="multi"),
+        ],
+        world=[
+            app_commands.Choice(name="كل العوالم", value="all"),
+            app_commands.Choice(name="الفانتازيا", value="fantasy"),
+            app_commands.Choice(name="الماضي", value="past"),
+            app_commands.Choice(name="المستقبل", value="future"),
+            app_commands.Choice(name="الواقع البديل", value="alternate"),
+            app_commands.Choice(name="القصص الفردية", value="solo"),
+        ],
+    )
+    async def story_ids(
+        self,
+        interaction: discord.Interaction,
+        mode: app_commands.Choice[str] | None = None,
+        world: app_commands.Choice[str] | None = None,
+    ):
+        if not self._is_admin(interaction):
+            await interaction.response.send_message("❌ هذا الأمر للمشرفين فقط.", ephemeral=True)
+            return
+
+        selected_mode = mode.value if mode else "all"
+        selected_world = world.value if world else "all"
+        stories = self.bot.story_manager.stories.values()
+
+        filtered = []
+        for story in stories:
+            if selected_mode != "all" and story.game_mode != selected_mode:
+                continue
+            if selected_world != "all" and getattr(story, "world_type", None) != selected_world:
+                continue
+            filtered.append(story)
+
+        filtered.sort(key=lambda s: (getattr(s, "world_type", ""), s.theme, s.id))
+
+        if not filtered:
+            await interaction.response.send_message(
+                "ℹ️ لا توجد قصص مطابقة للفلاتر المختارة.",
+                ephemeral=True,
+            )
+            return
+
+        lines = []
+        for story in filtered[:25]:
+            world_label = EmbedBuilder.WORLD_STYLES.get(getattr(story, "world_type", None), {}).get("label", getattr(story, "world_type", "غير محدد"))
+            mode_label = "فردي" if story.game_mode == "single" else "جماعي"
+            lines.append(f"`{story.id}` • {story.title} • {world_label} • {mode_label}")
+
+        extra = ""
+        if len(filtered) > 25:
+            extra = f"\n\n…ويوجد {len(filtered) - 25} قصة إضافية. ضيّق الفلترة لعرض أدق."
+
+        embed = discord.Embed(
+            title="🆔 معرفات القصص",
+            description="\n".join(lines) + extra,
+            color=discord.Color.dark_gold(),
+        )
+        embed.set_footer(text="استخدم هذه المعرّفات في أوامر مثل /إنشاء_تحدي أو التشغيل المباشر.")
+        await interaction.response.send_message(embed=embed, ephemeral=True)
 
     # ─────────────────────────────────────────
     # /تعيين_رتبة

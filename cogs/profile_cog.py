@@ -195,7 +195,7 @@ class ProfileCog(commands.Cog):
             else:
                 embed.set_footer(text="لتحسين ملفك: أكمل قصصاً أكثر وشارك في القرارات الاجتماعية.")
 
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(embed=embed, ephemeral=False)
 
         except Exception as e:
             import traceback

@@ -138,7 +138,11 @@ class ChallengeCog(commands.Cog):
                 challenge = await row.fetchone()
 
             if not challenge:
-                await interaction.response.send_message("❌ لا يوجد تحدي أسبوعي نشط حالياً. عد لاحقاً!", ephemeral=True)
+                await interaction.response.send_message(
+                    "❌ لا يوجد تحدي أسبوعي نشط حالياً.\n"
+                    "💡 يمكنك متابعة تقدمك عبر `/بروفايل` والعودة لاحقاً إلى `/تحدي_الأسبوع`.",
+                    ephemeral=True,
+                )
                 return
 
             c_id, title, desc, role_id, story_id = challenge
@@ -214,7 +218,11 @@ class ChallengeCog(commands.Cog):
                 completions = await row.fetchall()
 
             if not completions:
-                await interaction.response.send_message("لم تنجز أي تحدي أسبوعي بعد. انطلق وشارك في `/تحدي_الأسبوع`!", ephemeral=True)
+                await interaction.response.send_message(
+                    "لم تُسجّل أي إنجاز أسبوعي بعد.\n"
+                    "ابدأ من `/تحدي_الأسبوع` ثم أكمل القصة المطلوبة لتظهر إنجازاتك هنا.",
+                    ephemeral=True,
+                )
                 return
 
             embed = discord.Embed(

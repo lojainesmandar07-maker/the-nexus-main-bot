@@ -295,7 +295,11 @@ class SoloCog(commands.Cog):
     async def list_solo_stories(self, interaction: discord.Interaction):
         stories = self.bot.story_manager.get_stories_by_mode("single")
         if not stories:
-            await interaction.response.send_message("❌ لا توجد قصص فردية متاحة حالياً.", ephemeral=True)
+            await interaction.response.send_message(
+                "❌ لا توجد قصص فردية متاحة حالياً.\n"
+                "💡 جرّب `/ابدأ` لاكتشاف عوالم أخرى أو عد لاحقاً.",
+                ephemeral=True,
+            )
             return
 
         from collections import defaultdict
@@ -311,6 +315,10 @@ class SoloCog(commands.Cog):
     async def start_world_browser(self, interaction: discord.Interaction):
         embed = EmbedBuilder.world_select_embed()
         await interaction.response.send_message(embed=embed, view=WorldSelectView(), ephemeral=True)
+
+    @app_commands.command(name="مساعدة", description="دليل سريع لأوامر وخطوات The Nexus")
+    async def help_command(self, interaction: discord.Interaction):
+        await interaction.response.send_message(embed=EmbedBuilder.help_embed(), ephemeral=True)
 
     @app_commands.command(name="لعب_فردي", description="ابدأ قصة فردية مباشرة برقم القصة")
     @app_commands.describe(story_id="رقم القصة الفردية")

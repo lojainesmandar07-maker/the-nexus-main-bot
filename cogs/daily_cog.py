@@ -272,7 +272,11 @@ class DailyCog(commands.Cog):
                 return
 
             # Regular user
-            await interaction.response.send_message("هذا الأمر مخصص للمشرفين للتحكم بالنظام. يمكنك المشاركة في النبضة حينما تنشر في القناة المخصصة.", ephemeral=True)
+            await interaction.response.send_message(
+                "هذا الأمر مخصص للمشرفين للتحكم بالنظام.\n"
+                "للمشاركة: راقب قناة النبضة اليومية وصوّت مباشرة من الأزرار عند نشر النبضة.",
+                ephemeral=True,
+            )
         except Exception as e:
             print(f"Error in pulse_command: {e}")
             await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)

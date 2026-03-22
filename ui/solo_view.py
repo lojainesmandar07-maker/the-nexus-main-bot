@@ -149,6 +149,7 @@ class ShareEndingView(discord.ui.View):
             child.disabled = True
         await interaction.message.edit(view=self)
 
+
 class SoloView(discord.ui.View):
     def __init__(self, solo_manager, user_id: int, choices: List[Choice]):
         super().__init__(timeout=600)

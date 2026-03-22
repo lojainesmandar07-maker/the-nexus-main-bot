@@ -14,91 +14,114 @@ class SoloCog(commands.Cog):
 
     @app_commands.command(name="ابدأ", description="افتح مستكشف العوالم وابدأ رحلتك في القصص التفاعلية")
     async def start_browser(self, interaction: discord.Interaction):
-        from ui.world_browser import WorldSelectView
-        from ui.embeds import EmbedBuilder
-        view = WorldSelectView()
-        embed = EmbedBuilder.world_select_embed()
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        try:
+            from ui.world_browser import WorldSelectView
+            from ui.embeds import EmbedBuilder
+            view = WorldSelectView()
+            embed = EmbedBuilder.world_select_embed()
+            await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        except Exception as e:
+            print(f"Error in start_browser: {e}")
+            await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)
 
     @app_commands.command(name="مساعدة", description="عرض تعليمات ومعلومات حول كيفية استخدام بوت القصص التفاعلية")
     async def help_command(self, interaction: discord.Interaction):
-        from ui.embeds import EmbedBuilder
-        embed = EmbedBuilder.help_embed()
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+        try:
+            from ui.embeds import EmbedBuilder
+            embed = EmbedBuilder.help_embed()
+            await interaction.response.send_message(embed=embed, ephemeral=True)
+        except Exception as e:
+            print(f"Error in help_command: {e}")
+            await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)
 
     @app_commands.command(name="لعب_فردي", description="ابدأ قصة تفاعلية بمفردك")
     @app_commands.describe(story_id="رقم القصة التي تود لعبها")
     async def play_solo(self, interaction: discord.Interaction, story_id: int):
-        await interaction.response.defer(ephemeral=True)
-
-        # Check exclusive story locks
         try:
-            import aiosqlite
-            DB_PATH = "data/nexus.db"
-            async with aiosqlite.connect(DB_PATH) as db:
-                cursor = await db.execute("SELECT winner_id FROM mystery_rooms WHERE is_active = 1 AND exclusive_story_id = ?", (story_id,))
-                lock = await cursor.fetchone()
-                if lock:
-                    winner_id = lock[0]
-                    if winner_id != interaction.user.id:
-                        await interaction.followup.send("❌ هذه القصة مقفلة حالياً خلف لغز غرفة الغموض! كن أول من يحل اللغز أو انتظر حتى تتاح للجميع.", ephemeral=True)
-                        return
+            await interaction.response.defer(ephemeral=True)
+
+            # Check exclusive story locks
+            try:
+                import aiosqlite
+                DB_PATH = "data/nexus.db"
+                async with aiosqlite.connect(DB_PATH) as db:
+                    cursor = await db.execute("SELECT winner_id FROM mystery_rooms WHERE is_active = 1 AND exclusive_story_id = ?", (story_id,))
+                    lock = await cursor.fetchone()
+                    if lock:
+                        winner_id = lock[0]
+                        if winner_id != interaction.user.id:
+                            await interaction.followup.send("❌ هذه القصة مقفلة حالياً خلف لغز غرفة الغموض! كن أول من يحل اللغز أو انتظر حتى تتاح للجميع.", ephemeral=True)
+                            return
+            except Exception as e:
+                print(f"Error checking story locks: {e}")
+
+            session, error = self.solo_manager.start_solo_game(interaction.user.id, story_id)
+            if error:
+                await interaction.followup.send(embed=EmbedBuilder.error_embed(error), ephemeral=True)
+                return
+
+            story = session["story"]
+            scene = session["scene"]
+            points = session["points"]
+            round_number = session["round"]
+
+            embed = EmbedBuilder.solo_scene_embed(scene, round_number, story.title, points)
+
+            view = None
+            if not scene.is_ending and scene.choices:
+                view = SoloView(self.solo_manager, interaction.user.id, scene.choices)
+
+            await interaction.followup.send(embed=embed, view=view, ephemeral=True)
         except Exception as e:
-            print(f"Error checking story locks: {e}")
-
-        session, error = self.solo_manager.start_solo_game(interaction.user.id, story_id)
-        if error:
-            await interaction.followup.send(embed=EmbedBuilder.error_embed(error), ephemeral=True)
-            return
-
-        story = session["story"]
-        scene = session["scene"]
-        points = session["points"]
-        round_number = session["round"]
-
-        embed = EmbedBuilder.solo_scene_embed(scene, round_number, story.title, points)
-
-        view = None
-        if not scene.is_ending and scene.choices:
-            view = SoloView(self.solo_manager, interaction.user.id, scene.choices)
-
-        await interaction.followup.send(embed=embed, view=view, ephemeral=True)
+            print(f"Error in play_solo: {e}")
+            try:
+                await interaction.followup.send("⚠️ حدث خطأ أثناء بدء القصة.", ephemeral=True)
+            except Exception:
+                pass
 
     @app_commands.command(name="قصص_فردية", description="عرض جميع القصص المتاحة للعب الفردي مصنفة في قوائم")
     async def list_solo_stories(self, interaction: discord.Interaction):
-        stories = self.bot.story_manager.get_stories_by_mode("single")
-        if not stories:
-            await interaction.response.send_message("❌ لا توجد قصص فردية متاحة حالياً.", ephemeral=True)
-            return
+        try:
+            stories = self.bot.story_manager.get_stories_by_mode("single")
+            if not stories:
+                await interaction.response.send_message("❌ لا توجد قصص فردية متاحة حالياً.", ephemeral=True)
+                return
 
-        # Group by category
-        from collections import defaultdict
-        categories = defaultdict(list)
-        for s in stories.values():
-            categories[s.theme].append(s)
+            # Group by category
+            from collections import defaultdict
+            categories = defaultdict(list)
+            for s in stories.values():
+                categories[s.theme].append(s)
 
-        from ui.listing_view import SoloLibraryView
-        view = SoloLibraryView(categories)
-        embed = view.render_embed()
+            from ui.listing_view import SoloLibraryView
+            view = SoloLibraryView(categories)
+            embed = view.render_embed()
 
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+            await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        except Exception as e:
+            print(f"Error in list_solo_stories: {e}")
+            await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)
 
     @app_commands.command(name="تصنيفات_فردية", description="عرض قائمة التصنيفات المقترحة للقصص الفردية")
     async def list_solo_categories(self, interaction: discord.Interaction):
-        embed = discord.Embed(
-            title="🗂️ تصنيفات القصص الفردية",
-            description="استخدم هذه التصنيفات عند توليد قصص جديدة لضمان تنظيم المكتبة وتوحيد الثيمات.",
-            color=discord.Color.dark_purple(),
-        )
-
-        for index, category in enumerate(SOLO_CATEGORIES, start=1):
-            embed.add_field(
-                name=f"{index}. {category.name}",
-                value=category.description,
-                inline=False,
+        try:
+            embed = discord.Embed(
+                title="🗂️ تصنيفات القصص الفردية",
+                description="استخدم هذه التصنيفات عند توليد قصص جديدة لضمان تنظيم المكتبة وتوحيد الثيمات.",
+                color=discord.Color.dark_purple(),
             )
 
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+            for index, category in enumerate(SOLO_CATEGORIES, start=1):
+                embed.add_field(
+                    name=f"{index}. {category.name}",
+                    value=category.description,
+                    inline=False,
+                )
+
+            await interaction.response.send_message(embed=embed, ephemeral=True)
+        except Exception as e:
+            print(f"Error in list_solo_categories: {e}")
+            await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)
 
 
 async def start_solo_interaction(interaction: discord.Interaction, story_id: int):
@@ -130,7 +153,6 @@ async def start_solo_interaction(interaction: discord.Interaction, story_id: int
         view = SoloView(cog.solo_manager, interaction.user.id, scene.choices)
 
     await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
-
 
 async def handle_story_end(interaction: discord.Interaction, user_id: int, story, scene):
     import aiosqlite

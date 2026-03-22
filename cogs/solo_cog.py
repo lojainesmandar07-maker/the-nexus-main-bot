@@ -5,6 +5,7 @@ import aiosqlite
 import asyncio
 
 from core.bot import StoryBot
+from core.config import get_config
 from engine.solo_manager import SoloGameManager
 from ui.embeds import EmbedBuilder
 from ui.listing_view import SoloLibraryView
@@ -139,6 +140,20 @@ async def start_solo_interaction_with_perspective(
         sender = interaction.response.send_message if force_new_response else interaction.followup.send
         await sender(embed=EmbedBuilder.error_embed("هذه القصة غير مخصصة للعب الفردي."), ephemeral=True)
         return
+
+    world_type = getattr(story, "world_type", None)
+    if interaction.guild and interaction.channel and world_type in {"fantasy", "past", "future", "alternate"}:
+        world_channels = get_config("world_channels", {})
+        expected_channel_id = world_channels.get(world_type)
+        if expected_channel_id and int(expected_channel_id) != interaction.channel.id:
+            world_label = EmbedBuilder.WORLD_STYLES.get(world_type, {}).get("label", world_type)
+            sender = interaction.response.send_message if force_new_response else interaction.followup.send
+            await sender(
+                f"❌ هذه القصة تخص **{world_label}**.\n"
+                f"الرجاء اللعب في القناة المخصصة: <#{expected_channel_id}>.",
+                ephemeral=True,
+            )
+            return
 
     if story.perspectives and not perspective_id:
         view = PerspectiveSelectView(story_id=story_id, user_id=interaction.user.id, perspectives=story.perspectives)
@@ -291,11 +306,14 @@ class SoloCog(commands.Cog):
         self.solo_manager = SoloGameManager(bot, bot.story_manager)
         asyncio.create_task(init_solo_db())
 
-    @app_commands.command(name="قصص_فردية", description="عرض مكتبة القصص الفردية")
-    async def list_solo_stories(self, interaction: discord.Interaction):
+    async def _send_solo_library(self, interaction: discord.Interaction):
         stories = self.bot.story_manager.get_stories_by_mode("single")
         if not stories:
-            await interaction.response.send_message("❌ لا توجد قصص فردية متاحة حالياً.", ephemeral=True)
+            await interaction.response.send_message(
+                "❌ لا توجد قصص فردية متاحة حالياً.\n"
+                "💡 جرّب `/ابدأ` لاكتشاف عوالم أخرى أو عد لاحقاً.",
+                ephemeral=True,
+            )
             return
 
         from collections import defaultdict
@@ -307,10 +325,22 @@ class SoloCog(commands.Cog):
         view = SoloLibraryView(categories)
         await interaction.response.send_message(embed=view.render_embed(), view=view, ephemeral=True)
 
+    @app_commands.command(name="قصص_فردية", description="عرض مكتبة القصص الفردية")
+    async def list_solo_stories(self, interaction: discord.Interaction):
+        await self._send_solo_library(interaction)
+
+    @app_commands.command(name="مكتبة_فردية", description="بديل سريع لعرض مكتبة القصص الفردية")
+    async def solo_library_alias(self, interaction: discord.Interaction):
+        await self._send_solo_library(interaction)
+
     @app_commands.command(name="ابدأ", description="ابدأ رحلتك عبر مستكشف العوالم")
     async def start_world_browser(self, interaction: discord.Interaction):
         embed = EmbedBuilder.world_select_embed()
         await interaction.response.send_message(embed=embed, view=WorldSelectView(), ephemeral=True)
+
+    @app_commands.command(name="مساعدة", description="دليل سريع لأوامر وخطوات The Nexus")
+    async def help_command(self, interaction: discord.Interaction):
+        await interaction.response.send_message(embed=EmbedBuilder.help_embed(), ephemeral=True)
 
     @app_commands.command(name="لعب_فردي", description="ابدأ قصة فردية مباشرة برقم القصة")
     @app_commands.describe(story_id="رقم القصة الفردية")

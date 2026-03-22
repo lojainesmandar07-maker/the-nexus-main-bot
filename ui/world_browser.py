@@ -147,8 +147,24 @@ class CategorySelect(Select):
         view.add_item(BackToCategoriesButton(self.world_type))
         view.add_item(BackToWorldsButton())
 
+        world = WORLD_CONFIG[self.world_type]
+        preview = "\n".join(
+            f"• {story.title}" for story in stories[:5]
+        )
+        embed = discord.Embed(
+            title=f"📚 {world['name']} • {category}",
+            description=(
+                "اختر القصة من القائمة المنسدلة بالأسفل، ثم اضغط زر البدء.\n\n"
+                f"**معاينة سريعة:**\n{preview or 'لا توجد معاينة حالياً.'}"
+            ),
+            color=world["color"],
+        )
+        if len(stories) > 5:
+            embed.add_field(name="معلومة", value=f"يوجد {len(stories)} قصة في هذا التصنيف.", inline=False)
+        embed.set_footer(text="يمكنك العودة للتصنيفات أو العوالم في أي وقت.")
+
         # We edit the message to keep the same UI flow
-        await interaction.response.edit_message(view=view)
+        await interaction.response.edit_message(embed=embed, view=view)
 
 
 class StorySelect(Select):
@@ -186,7 +202,7 @@ class StartStoryButton(Button):
     def __init__(self, story_id: int):
         super().__init__(
             style=discord.ButtonStyle.success,
-            label="ابدأ القصة",
+            label="ابدأ القصة الآن",
             custom_id=f"start_story_btn_{story_id}"
         )
         self.story_id = story_id

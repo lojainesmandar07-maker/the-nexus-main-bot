@@ -16,6 +16,7 @@ CONFIG_PATH = "data/config.json"
 
 _DEFAULT_CONFIG = {
     "world_channels": {},
+    "world_explanation_channels": {},
     "test_channel": None,
     "archetype_roles": {},
     "npc_channels": {}
@@ -42,7 +43,7 @@ def load_config() -> dict:
         # Merge with defaults and sanitize known dict fields
         for key, val in _DEFAULT_CONFIG.items():
             data.setdefault(key, val)
-        for dict_key in ("world_channels", "archetype_roles", "npc_channels"):
+        for dict_key in ("world_channels", "world_explanation_channels", "archetype_roles", "npc_channels"):
             if not isinstance(data.get(dict_key), dict):
                 data[dict_key] = {}
 

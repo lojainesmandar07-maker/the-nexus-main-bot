@@ -23,7 +23,7 @@ class EventManager:
         self.is_stopped: bool = False
         self.event_task: Optional[asyncio.Task] = None
 
-    async def start_event(self, channel: discord.TextChannel, story_id: int, voting_timeout: Optional[float] = None):
+    async def start_event(self, channel: discord.TextChannel, story_id: int | str, voting_timeout: Optional[float] = None):
         if self.active_event:
             await channel.send(embed=EmbedBuilder.error_embed("هناك حدث جارٍ بالفعل في الخادم!"))
             return

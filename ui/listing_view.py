@@ -7,7 +7,7 @@ from engine.models import Story
 def _sorted_categories(categories: Dict[str, List[Story]]) -> Dict[str, List[Story]]:
     sorted_items = sorted(categories.items(), key=lambda item: item[0])
     return {
-        category: sorted(stories, key=lambda story: (story.series, story.id, story.title))
+        category: sorted(stories, key=lambda story: (story.series, str(story.id), story.title))
         for category, stories in sorted_items
     }
 
@@ -59,7 +59,7 @@ class StorySelect(discord.ui.Select):
         )
 
     async def callback(self, interaction: discord.Interaction):
-        self.parent_view.selected_story_id = int(self.values[0])
+        self.parent_view.selected_story_id = self.values[0]
         await self.parent_view.refresh_message(interaction)
 
 
@@ -69,7 +69,7 @@ class BaseLibraryView(discord.ui.View):
         self.categories = _sorted_categories(categories)
         self.category_names = list(self.categories.keys())
         self.current_category = self.category_names[0] if self.category_names else None
-        self.selected_story_id: Optional[int] = None
+        self.selected_story_id: Optional[str] = None
         self.page_size = 20
         self.story_page = 0
         self._rebuild_components()
@@ -128,7 +128,7 @@ class BaseLibraryView(discord.ui.View):
             embed.add_field(name="معاينة القصص", value="لا توجد قصص في هذه الصفحة.", inline=False)
 
         if self.selected_story_id is not None:
-            selected_story = next((story for story in stories if story.id == self.selected_story_id), None)
+            selected_story = next((story for story in stories if str(story.id) == str(self.selected_story_id)), None)
             if selected_story:
                 embed.add_field(
                     name="القصة المختارة",
@@ -223,7 +223,7 @@ class StartEventButton(discord.ui.Button):
             await interaction.response.send_message("❌ يوجد حدث نشط حالياً. أوقفه ثم أعد المحاولة.", ephemeral=True)
             return
 
-        story = bot.story_manager.get_story(self.parent_view.selected_story_id)
+        story = bot.story_manager.resolve_story(self.parent_view.selected_story_id, game_mode="multi")
         if not story or story.game_mode != "multi":
             await interaction.response.send_message("❌ القصة المختارة غير متاحة كحدث جماعي.", ephemeral=True)
             return

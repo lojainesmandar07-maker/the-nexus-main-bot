@@ -66,11 +66,12 @@ class QuestionView(discord.ui.View):
 class TestSession:
     """Tracks one user's test progress."""
 
-    def __init__(self, user_id: int, questions: list, archetypes: dict, followup):
+    def __init__(self, user_id: int, questions: list, archetypes: dict, followup, cog: "PersonalityCog"):
         self.user_id = user_id
         self.questions = questions
         self.archetypes = archetypes
         self.followup = followup  # interaction.followup for sending next questions
+        self.cog = cog
         self.scores: dict = {arch: 0 for arch in archetypes}
         self.current_index = 0
         self.cancelled = False
@@ -93,37 +94,40 @@ class TestSession:
         await self.followup.send(embed=embed, view=view, ephemeral=True)
 
     async def show_result(self, interaction: discord.Interaction):
-        # Find winning archetype
-        winner = max(self.scores, key=lambda k: self.scores[k])
-        archetype_data = self.archetypes.get(winner, {})
-
-        color_str = archetype_data.get("color", "0x2E4057")
         try:
-            color = int(color_str, 16)
-        except Exception:
-            color = 0x2E4057
+            # Find winning archetype
+            winner = max(self.scores, key=lambda k: self.scores[k])
+            archetype_data = self.archetypes.get(winner, {})
 
-        embed = discord.Embed(
-            title=f"✨ نتيجة اختبارك: {archetype_data.get('name', winner)}",
-            description=archetype_data.get("description", ""),
-            color=color
-        )
-        embed.set_footer(text="تم تحديد شخصيتك — ستُمنح الرتبة المناسبة تلقائياً")
-        await self.followup.send(embed=embed, ephemeral=True)
+            color_str = archetype_data.get("color", "0x2E4057")
+            try:
+                color = int(color_str, 16)
+            except Exception:
+                color = 0x2E4057
 
-        # Assign role
-        await self._assign_role(interaction, winner)
+            embed = discord.Embed(
+                title=f"✨ نتيجة اختبارك: {archetype_data.get('name', winner)}",
+                description=archetype_data.get("description", ""),
+                color=color
+            )
+            embed.set_footer(text="تم تحديد شخصيتك — ستُمنح الرتبة المناسبة تلقائياً")
+            await self.followup.send(embed=embed, ephemeral=True)
 
-        # Update DB
-        try:
-            async with aiosqlite.connect(DB_PATH) as db:
-                await db.execute("""
-                    INSERT INTO players (user_id) VALUES (?)
-                    ON CONFLICT(user_id) DO NOTHING
-                """, (self.user_id,))
-                await db.commit()
-        except Exception:
-            pass
+            # Assign role
+            await self._assign_role(interaction, winner)
+
+            # Update DB
+            try:
+                async with aiosqlite.connect(DB_PATH) as db:
+                    await db.execute("""
+                        INSERT INTO players (user_id) VALUES (?)
+                        ON CONFLICT(user_id) DO NOTHING
+                    """, (self.user_id,))
+                    await db.commit()
+            except Exception:
+                pass
+        finally:
+            self.cog.active_tests.pop(self.user_id, None)
 
     async def _assign_role(self, interaction: discord.Interaction, archetype_key: str):
         archetype_roles = get_config("archetype_roles", {})
@@ -169,6 +173,8 @@ class TestSession:
             await self.followup.send(message, ephemeral=True)
         except Exception:
             pass
+        finally:
+            self.cog.active_tests.pop(self.user_id, None)
 
 
 class PersonalityCog(commands.Cog):
@@ -229,7 +235,8 @@ class PersonalityCog(commands.Cog):
             user_id=interaction.user.id,
             questions=questions,
             archetypes=archetypes,
-            followup=interaction.followup
+            followup=interaction.followup,
+            cog=self,
         )
         self.active_tests[interaction.user.id] = session
 

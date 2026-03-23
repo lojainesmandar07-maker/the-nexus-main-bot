@@ -97,6 +97,24 @@ class MysteryCog(commands.Cog):
     def __init__(self, bot: StoryBot):
         self.bot = bot
 
+    async def single_story_autocomplete(
+        self,
+        interaction: discord.Interaction,
+        current: str,
+    ) -> list[app_commands.Choice[str]]:
+        stories = self.bot.story_manager.get_stories_by_mode("single").values()
+        needle = (current or "").strip().casefold()
+        out: list[app_commands.Choice[str]] = []
+        for story in stories:
+            sid = str(story.id)
+            label = f"{story.title} ({sid})"
+            if needle and needle not in label.casefold():
+                continue
+            out.append(app_commands.Choice(name=label[:100], value=sid))
+            if len(out) >= 25:
+                break
+        return out
+
     async def cog_load(self):
         try:
             await init_mystery_db()
@@ -143,12 +161,63 @@ class MysteryCog(commands.Cog):
 
     @app_commands.command(name="غرفة_جديدة", description="إنشاء لغز وغرفة غموض جديدة (للإدارة فقط)")
     @app_commands.default_permissions(manage_guild=True)
-    async def new_mystery_room(self, interaction: discord.Interaction):
+    @app_commands.describe(
+        story_ref="القصة الحصرية (اسم أو معرف)",
+        riddle="نص اللغز",
+        answer="الجواب الصحيح",
+        days="عدد الأيام قبل فتح القصة للجميع",
+        hint="تلميح اختياري",
+    )
+    @app_commands.autocomplete(story_ref=single_story_autocomplete)
+    async def new_mystery_room(
+        self,
+        interaction: discord.Interaction,
+        story_ref: str,
+        riddle: str,
+        answer: str,
+        days: app_commands.Range[int, 1, 30] = 7,
+        hint: str | None = None,
+    ):
         try:
             if not interaction.user.guild_permissions.manage_guild:
                 await interaction.response.send_message("❌ هذا الأمر مخصص للإدارة فقط.", ephemeral=True)
                 return
-            await interaction.response.send_modal(MysteryRoomModal())
+
+            story = self.bot.story_manager.resolve_story(story_ref, game_mode="single")
+            if not story or not isinstance(story.id, int):
+                await interaction.response.send_message("❌ القصة المختارة غير صالحة لغرفة الغموض.", ephemeral=True)
+                return
+
+            opens_at = datetime.datetime.utcnow() + datetime.timedelta(days=int(days))
+            target_channel_id = get_mystery_channel_id()
+            if not target_channel_id:
+                await interaction.response.send_message("❌ لم يتم تحديد قناة عامة لنشر اللغز في الإعدادات.", ephemeral=True)
+                return
+
+            channel = self.bot.get_channel(target_channel_id)
+            if not channel:
+                await interaction.response.send_message("❌ القناة المحددة غير موجودة.", ephemeral=True)
+                return
+
+            embed = discord.Embed(
+                title="🚪 غرفة الغموض الجديدة",
+                description=f"**لقد ظهر لغز جديد في النيكسوس!**\n\n{riddle}\n\n*أول من يقوم بحل اللغز عبر `/حل` سيحصل على وصول حصري لقصة سرية!*",
+                color=discord.Color.dark_magenta()
+            )
+            embed.set_footer(text="استخدم /تلميح إذا احتجت مساعدة لاحقاً")
+            msg = await channel.send(embed=embed)
+
+            async with aiosqlite.connect(DB_PATH) as db:
+                await db.execute("""
+                    INSERT INTO mystery_rooms (riddle, answer, hint, exclusive_story_id, opens_at, message_id)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                """, (riddle, answer, hint or "", story.id, opens_at, msg.id))
+                await db.commit()
+
+            await interaction.response.send_message(
+                f"✅ تم إنشاء غرفة الغموض ونشر اللغز بنجاح للقصة **{story.title}**.",
+                ephemeral=True,
+            )
         except Exception as e:
             print(f"Error in new_mystery_room: {e}")
             await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)

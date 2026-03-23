@@ -24,6 +24,9 @@ def _start_health_server(port: int) -> None:
 
 
 def main() -> None:
+    if not DISCORD_TOKEN:
+        raise RuntimeError("DISCORD_TOKEN is missing. Set it in environment or core/config.py before startup.")
+
     # Render Web Services require a bound port; Render Workers do not.
     # Start health server only when a PORT is explicitly provided.
     port_value = os.getenv("PORT")

@@ -2,7 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 from core.bot import StoryBot
-from core.config import get_config, save_config
+from core.config import load_config, save_config
 import aiosqlite
 import traceback
 
@@ -10,12 +10,6 @@ DB_PATH = "data/nexus.db"
 
 async def init_nexus_db():
     async with aiosqlite.connect(DB_PATH) as db:
-        await db.execute("""
-            CREATE TABLE IF NOT EXISTS nexus_config (
-                key TEXT PRIMARY KEY,
-                value TEXT
-            )
-        """)
         await db.execute("""
             CREATE TABLE IF NOT EXISTS daily_pulse (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -58,19 +52,10 @@ class SetupCog(commands.Cog):
                 color=discord.Color.dark_theme()
             )
 
-            # Display current config status
-            async with aiosqlite.connect(DB_PATH) as db:
-                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
-                c_val = await row.fetchone()
-                channel_id = c_val[0] if c_val else None
-
-                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_time'")
-                t_val = await row.fetchone()
-                time_str = t_val[0] if t_val else "غير محدد (بتوقيت UTC)"
-
-                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_enabled'")
-                e_val = await row.fetchone()
-                is_enabled = "مفعل ✅" if (e_val and e_val[0] == "1") else "معطل ❌"
+            config = load_config()
+            channel_id = config.get("pulse_channel_id")
+            time_str = config.get("pulse_time") or "غير محدد (بتوقيت UTC)"
+            is_enabled = "مفعل ✅" if str(config.get("pulse_enabled", "0")) == "1" else "معطل ❌"
 
             channel_mention = f"<#{channel_id}>" if channel_id else "غير محدد"
 
@@ -84,19 +69,12 @@ class SetupCog(commands.Cog):
             await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)
 
 async def set_config(key: str, value: str):
-    async with aiosqlite.connect(DB_PATH) as db:
-        await db.execute("""
-            INSERT INTO nexus_config (key, value)
-            VALUES (?, ?)
-            ON CONFLICT(key) DO UPDATE SET value = ?
-        """, (key, value, value))
-        await db.commit()
+    config = load_config()
+    config[key] = value
+    save_config(config)
 
 async def get_db_config(key: str) -> str:
-    async with aiosqlite.connect(DB_PATH) as db:
-        row = await db.execute("SELECT value FROM nexus_config WHERE key = ?", (key,))
-        val = await row.fetchone()
-        return val[0] if val else None
+    return load_config().get(key)
 
 class NexusSetupView(discord.ui.View):
     def __init__(self):

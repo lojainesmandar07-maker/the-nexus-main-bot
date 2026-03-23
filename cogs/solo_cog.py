@@ -314,7 +314,7 @@ class SoloCog(commands.Cog):
             categories[story.theme].append(story)
 
         view = SoloLibraryView(categories)
-        await interaction.response.send_message(embed=view.render_embed(), view=view, ephemeral=True)
+        await interaction.response.send_message(embed=view.render_embed(), view=view)
         try:
             view.message = await interaction.original_response()
         except Exception:
@@ -323,11 +323,11 @@ class SoloCog(commands.Cog):
     @app_commands.command(name="ابدأ", description="ابدأ رحلتك عبر مستكشف العوالم")
     async def start_world_browser(self, interaction: discord.Interaction):
         embed = EmbedBuilder.world_select_embed()
-        await interaction.response.send_message(embed=embed, view=WorldSelectView(), ephemeral=True)
+        await interaction.response.send_message(embed=embed, view=WorldSelectView())
 
     @app_commands.command(name="مساعدة", description="دليل سريع لأوامر وخطوات The Nexus")
     async def help_command(self, interaction: discord.Interaction):
-        await interaction.response.send_message(embed=EmbedBuilder.help_embed(), ephemeral=True)
+        await interaction.response.send_message(embed=EmbedBuilder.help_embed())
 
     async def story_ref_autocomplete(
         self,

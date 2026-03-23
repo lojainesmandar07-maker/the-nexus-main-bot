@@ -91,7 +91,7 @@ class EventCog(commands.Cog):
         view = MultiLibraryView(categories)
         embed = view.render_embed()
 
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        await interaction.response.send_message(embed=embed, view=view)
         try:
             view.message = await interaction.original_response()
         except Exception:
@@ -112,7 +112,7 @@ class EventCog(commands.Cog):
                 inline=False,
             )
 
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+        await interaction.response.send_message(embed=embed)
 
 
 async def setup(bot: StoryBot):

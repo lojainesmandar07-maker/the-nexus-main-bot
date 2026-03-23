@@ -179,7 +179,7 @@ class ChallengeCog(commands.Cog):
                 await interaction.response.send_message(
                     "❌ لا يوجد تحدي أسبوعي نشط حالياً.\n"
                     "💡 يمكنك متابعة تقدمك عبر `/بروفايل` والعودة لاحقاً إلى `/تحدي_الأسبوع`.",
-                    ephemeral=True,
+                    ephemeral=False,
                 )
                 return
 
@@ -195,7 +195,7 @@ class ChallengeCog(commands.Cog):
             if role_id:
                 embed.add_field(name="الجائزة", value=f"<@&{role_id}>", inline=False)
 
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(embed=embed)
         except Exception as e:
             print(f"Error in show_challenge: {e}")
             await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)

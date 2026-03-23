@@ -2,7 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands, tasks
 from core.bot import StoryBot
-from core.config import get_config
+from core.config import load_config
 import aiosqlite
 import datetime
 import json
@@ -32,14 +32,6 @@ DAILY_QUESTIONS = [
 
 async def init_daily_db():
     async with aiosqlite.connect(DB_PATH) as db:
-        await db.execute(
-            """
-            CREATE TABLE IF NOT EXISTS nexus_config (
-                key TEXT PRIMARY KEY,
-                value TEXT
-            )
-            """
-        )
         await db.execute(
             """
             CREATE TABLE IF NOT EXISTS daily_pulse (
@@ -86,19 +78,11 @@ class DailyCog(commands.Cog):
     async def daily_loop(self):
         """Checks every minute if it's time to post the daily pulse."""
         try:
-            async with aiosqlite.connect(DB_PATH) as db:
-                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_enabled'")
-                e_val = await row.fetchone()
-                if not e_val or e_val[0] != "1":
-                    return
-
-                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_time'")
-                t_val = await row.fetchone()
-                target_time_str = t_val[0] if t_val else None
-
-                row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
-                c_val = await row.fetchone()
-                target_channel_id = c_val[0] if c_val else None
+            config = load_config()
+            if str(config.get("pulse_enabled", "0")) != "1":
+                return
+            target_time_str = config.get("pulse_time")
+            target_channel_id = config.get("pulse_channel_id")
         except Exception as e:
             print(f"[DailyCog] daily loop skipped: {e}")
             return
@@ -243,10 +227,7 @@ class DailyCog(commands.Cog):
         try:
             # Admin can force post
             if interaction.user.guild_permissions.manage_guild:
-                async with aiosqlite.connect(DB_PATH) as db:
-                    row = await db.execute("SELECT value FROM nexus_config WHERE key = 'pulse_channel_id'")
-                    c_val = await row.fetchone()
-                    channel_id = c_val[0] if c_val else None
+                channel_id = load_config().get("pulse_channel_id")
 
                 if not channel_id:
                     await interaction.response.send_message("❌ الرجاء إعداد قناة للنبضة أولاً عبر أمر `/إعداد_النيكسوس`.", ephemeral=True)

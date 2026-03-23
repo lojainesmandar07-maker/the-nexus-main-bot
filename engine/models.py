@@ -28,7 +28,7 @@ class Perspective:
 
 @dataclass
 class Story:
-    id: int
+    id: int | str
     title: str
     theme: str # acts as category
     description: str

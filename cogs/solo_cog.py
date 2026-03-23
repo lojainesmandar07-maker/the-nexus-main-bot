@@ -45,10 +45,10 @@ async def init_solo_db() -> None:
 
 async def start_solo_interaction(
     interaction: discord.Interaction,
-    story_id: int,
+    story_ref: int | str,
     perspective_id: str | None = None,
 ) -> None:
-    await start_solo_interaction_with_perspective(interaction, story_id, perspective_id=perspective_id)
+    await start_solo_interaction_with_perspective(interaction, story_ref, perspective_id=perspective_id)
 
 
 async def _check_story_lock(interaction: discord.Interaction, story_id: int) -> str | None:
@@ -113,7 +113,7 @@ class PerspectiveSelectView(discord.ui.View):
 
 async def start_solo_interaction_with_perspective(
     interaction: discord.Interaction,
-    story_id: int,
+    story_ref: int | str,
     perspective_id: str | None = None,
     force_new_response: bool = True,
 ) -> None:
@@ -124,16 +124,21 @@ async def start_solo_interaction_with_perspective(
         await sender("❌ نظام اللعب الفردي غير متاح حالياً. حاول لاحقاً.", ephemeral=True)
         return
 
-    lock_error = await _check_story_lock(interaction, story_id)
-    if lock_error:
-        sender = interaction.response.send_message if force_new_response else interaction.followup.send
-        await sender(lock_error, ephemeral=True)
-        return
-
-    story = cog.bot.story_manager.get_story(story_id)
+    story = cog.bot.story_manager.resolve_story(story_ref, game_mode="single")
     if not story:
         sender = interaction.response.send_message if force_new_response else interaction.followup.send
         await sender(embed=EmbedBuilder.error_embed("القصة غير موجودة."), ephemeral=True)
+        return
+
+    if not isinstance(story.id, int):
+        sender = interaction.response.send_message if force_new_response else interaction.followup.send
+        await sender(embed=EmbedBuilder.error_embed("هذه القصة لا تدعم نمط اللعب الفردي المباشر حالياً."), ephemeral=True)
+        return
+
+    lock_error = await _check_story_lock(interaction, story.id)
+    if lock_error:
+        sender = interaction.response.send_message if force_new_response else interaction.followup.send
+        await sender(lock_error, ephemeral=True)
         return
     if story.game_mode != "single":
         sender = interaction.response.send_message if force_new_response else interaction.followup.send
@@ -141,7 +146,7 @@ async def start_solo_interaction_with_perspective(
         return
 
     if story.perspectives and not perspective_id:
-        view = PerspectiveSelectView(story_id=story_id, user_id=interaction.user.id, perspectives=story.perspectives)
+        view = PerspectiveSelectView(story_id=story.id, user_id=interaction.user.id, perspectives=story.perspectives)
         embed = discord.Embed(
             title=f"🎭 اختر منظورك — {story.title}",
             description="هذه القصة تدعم أكثر من منظور. اختر منظور البداية لتحديد زاوية السرد.",
@@ -156,7 +161,7 @@ async def start_solo_interaction_with_perspective(
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
         return
 
-    session, error = cog.solo_manager.start_solo_game(interaction.user.id, story_id)
+    session, error = cog.solo_manager.start_solo_game(interaction.user.id, story.id)
     if error:
         sender = interaction.response.send_message if force_new_response else interaction.followup.send
         await sender(embed=EmbedBuilder.error_embed(error), ephemeral=True)
@@ -310,6 +315,10 @@ class SoloCog(commands.Cog):
 
         view = SoloLibraryView(categories)
         await interaction.response.send_message(embed=view.render_embed(), view=view, ephemeral=True)
+        try:
+            view.message = await interaction.original_response()
+        except Exception:
+            pass
 
     @app_commands.command(name="ابدأ", description="ابدأ رحلتك عبر مستكشف العوالم")
     async def start_world_browser(self, interaction: discord.Interaction):
@@ -320,10 +329,29 @@ class SoloCog(commands.Cog):
     async def help_command(self, interaction: discord.Interaction):
         await interaction.response.send_message(embed=EmbedBuilder.help_embed(), ephemeral=True)
 
-    @app_commands.command(name="لعب_فردي", description="ابدأ قصة فردية مباشرة برقم القصة")
-    @app_commands.describe(story_id="رقم القصة الفردية")
-    async def play_solo(self, interaction: discord.Interaction, story_id: int):
-        await start_solo_interaction_with_perspective(interaction, story_id)
+    async def story_ref_autocomplete(
+        self,
+        interaction: discord.Interaction,
+        current: str,
+    ) -> list[app_commands.Choice[str]]:
+        stories = self.bot.story_manager.get_stories_by_mode("single").values()
+        needle = (current or "").strip().casefold()
+        choices: list[app_commands.Choice[str]] = []
+        for story in stories:
+            sid = str(story.id)
+            label = f"{story.title} ({sid})"
+            if needle and needle not in label.casefold():
+                continue
+            choices.append(app_commands.Choice(name=label[:100], value=sid))
+            if len(choices) >= 25:
+                break
+        return choices
+
+    @app_commands.command(name="لعب_فردي", description="ابدأ قصة فردية مباشرة بالاسم أو المعرّف")
+    @app_commands.describe(story_ref="اسم القصة أو رقمها")
+    @app_commands.autocomplete(story_ref=story_ref_autocomplete)
+    async def play_solo(self, interaction: discord.Interaction, story_ref: str):
+        await start_solo_interaction_with_perspective(interaction, story_ref)
 
 
 async def setup(bot: StoryBot):

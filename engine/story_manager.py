@@ -6,7 +6,7 @@ from engine.models import Story, Scene, Choice, Perspective
 class StoryManager:
     def __init__(self, stories_dir: str = "data/stories"):
         self.stories_dir = stories_dir
-        self.stories: Dict[int, Story] = {}
+        self.stories: Dict[int | str, Story] = {}
         self.load_all_stories()
 
     def load_all_stories(self):
@@ -160,16 +160,45 @@ class StoryManager:
         self.stories[story.id] = story
         print(f"Loaded Old Story {story.id}: {story.title}")
 
-    def get_story(self, story_id: int) -> Optional[Story]:
+    def get_story(self, story_id: int | str) -> Optional[Story]:
         return self.stories.get(story_id)
 
-    def get_all_stories(self) -> Dict[int, Story]:
+    def resolve_story(self, story_ref: int | str, game_mode: str | None = None) -> Optional[Story]:
+        """Resolve a story by id (int/str) or by exact title match."""
+        candidates = self.stories.values() if game_mode is None else (
+            s for s in self.stories.values() if s.game_mode == game_mode
+        )
+
+        # Direct lookup first
+        if story_ref in self.stories:
+            story = self.stories[story_ref]
+            if game_mode is None or story.game_mode == game_mode:
+                return story
+
+        # Numeric string fallback (e.g. "108")
+        if isinstance(story_ref, str) and story_ref.isdigit():
+            parsed = int(story_ref)
+            story = self.stories.get(parsed)
+            if story and (game_mode is None or story.game_mode == game_mode):
+                return story
+
+        # Stringified ID fallback + exact-title fallback
+        ref_text = str(story_ref).strip()
+        ref_fold = ref_text.casefold()
+        for story in candidates:
+            if str(story.id) == ref_text:
+                return story
+            if story.title.strip().casefold() == ref_fold:
+                return story
+        return None
+
+    def get_all_stories(self) -> Dict[int | str, Story]:
         return self.stories
 
-    def get_stories_by_mode(self, game_mode: str) -> Dict[int, Story]:
+    def get_stories_by_mode(self, game_mode: str) -> Dict[int | str, Story]:
         return {k: v for k, v in self.stories.items() if v.game_mode == game_mode}
 
-    def get_stories_by_world(self, world_type: str) -> Dict[int, Story]:
+    def get_stories_by_world(self, world_type: str) -> Dict[int | str, Story]:
         return {k: v for k, v in self.stories.items() if v.world_type == world_type}
 
     def get_world_categories(self, world_type: str) -> Dict[str, List[Story]]:

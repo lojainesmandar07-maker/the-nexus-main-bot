@@ -3,6 +3,8 @@ from discord import app_commands
 from discord.ext import commands
 import json
 import aiosqlite
+import random
+from copy import deepcopy
 from core.config import get_config, load_config
 
 DB_PATH = "data/nexus.db"
@@ -31,10 +33,10 @@ class QuestionView(discord.ui.View):
                 style=discord.ButtonStyle.primary,
                 custom_id=f"q_{question_index}_c_{i}"
             )
-            btn.callback = self._make_callback(choice["scores"])
+            btn.callback = self._make_callback(choice["scores"], choice.get("archetype"))
             self.add_item(btn)
 
-    def _make_callback(self, scores: dict):
+    def _make_callback(self, scores: dict, primary_archetype: str | None):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.session.user_id:
                 await interaction.response.send_message("❌ هذا الاختبار ليس لك!", ephemeral=True)
@@ -48,6 +50,8 @@ class QuestionView(discord.ui.View):
             # Add scores
             for arch, pts in scores.items():
                 self.session.scores[arch] = self.session.scores.get(arch, 0) + pts
+            if primary_archetype:
+                self.session.primary_picks[primary_archetype] = self.session.primary_picks.get(primary_archetype, 0) + 1
 
             # Advance to next question
             await self.session.next_question(interaction)
@@ -66,15 +70,25 @@ class QuestionView(discord.ui.View):
 class TestSession:
     """Tracks one user's test progress."""
 
-    def __init__(self, user_id: int, questions: list, archetypes: dict, followup, cog: "PersonalityCog"):
+    def __init__(
+        self,
+        user_id: int,
+        questions: list,
+        archetypes: dict,
+        followup,
+        cog: "PersonalityCog",
+        previous_archetype: str | None = None,
+    ):
         self.user_id = user_id
         self.questions = questions
         self.archetypes = archetypes
         self.followup = followup  # interaction.followup for sending next questions
         self.cog = cog
         self.scores: dict = {arch: 0 for arch in archetypes}
+        self.primary_picks: dict = {arch: 0 for arch in archetypes}
         self.current_index = 0
         self.cancelled = False
+        self.previous_archetype = previous_archetype
 
     async def next_question(self, interaction: discord.Interaction):
         self.current_index += 1
@@ -95,9 +109,18 @@ class TestSession:
 
     async def show_result(self, interaction: discord.Interaction):
         try:
-            # Find winning archetype
-            winner = max(self.scores, key=lambda k: self.scores[k])
+            ranked = sorted(self.scores.items(), key=lambda x: x[1], reverse=True)
+            top_score = ranked[0][1]
+            top_candidates = [arch for arch, score in ranked if score == top_score]
+            winner = random.choice(top_candidates)
+
+            second_pool = [(arch, score) for arch, score in ranked if arch != winner]
+            second_score = second_pool[0][1] if second_pool else 0
+            second_candidates = [arch for arch, score in second_pool if score == second_score] or [winner]
+            secondary = random.choice(second_candidates)
+
             archetype_data = self.archetypes.get(winner, {})
+            secondary_data = self.archetypes.get(secondary, {})
 
             color_str = archetype_data.get("color", "0x2E4057")
             try:
@@ -105,16 +128,58 @@ class TestSession:
             except Exception:
                 color = 0x2E4057
 
+            confidence_gap = max(0, top_score - second_score)
+            confidence_label = "مرتفعة" if confidence_gap >= 4 else "متوسطة" if confidence_gap >= 2 else "متقاربة"
+            role_status = await self._assign_role(interaction, winner)
+
+            pick_ranked = sorted(self.primary_picks.items(), key=lambda x: x[1], reverse=True)
+            top_pick_names = [
+                self.archetypes.get(k, {}).get("name", k)
+                for k, v in pick_ranked if v > 0
+            ][:2]
+            behavior_hint = " و ".join(top_pick_names) if top_pick_names else archetype_data.get("name", winner)
+
+            traits = archetype_data.get("traits", [])
+            traits_text = "\n".join([f"• {t}" for t in traits[:3]]) if traits else "• لا توجد سمات إضافية حالياً."
+            weakness_text = archetype_data.get("weakness", "قد تحتاج لمراجعة قرارك قبل الحسم.")
+            why_text = archetype_data.get("why", "هذا النمط ظهر بناءً على اختياراتك المتكررة.")
+
             embed = discord.Embed(
                 title=f"✨ نتيجة اختبارك: {archetype_data.get('name', winner)}",
-                description=archetype_data.get("description", ""),
+                description=f"{archetype_data.get('description', '')}\n\n**مستوى الثبات:** {confidence_label}",
                 color=color
             )
-            embed.set_footer(text="تم تحديد شخصيتك — ستُمنح الرتبة المناسبة تلقائياً")
-            await self.followup.send(embed=embed, ephemeral=True)
+            embed.add_field(
+                name="🔹 الشخصية الأساسية",
+                value=archetype_data.get("name", winner),
+                inline=True
+            )
+            embed.add_field(
+                name="🔸 التأثير الثانوي",
+                value=secondary_data.get("name", secondary),
+                inline=True
+            )
+            embed.add_field(
+                name="🧠 لماذا هذه النتيجة؟",
+                value=f"{why_text}\nاختياراتك مالت غالباً إلى نمط: **{behavior_hint}**.",
+                inline=False
+            )
+            embed.add_field(name="✅ 3 سمات سلوكية", value=traits_text, inline=False)
+            embed.add_field(name="⚠️ نقطة تحتاج انتباهاً", value=weakness_text, inline=False)
+            embed.add_field(name="🎖️ حالة الرتبة", value=role_status, inline=False)
 
-            # Assign role
-            await self._assign_role(interaction, winner)
+            if self.previous_archetype:
+                prev = self.archetypes.get(self.previous_archetype, {}).get("name", self.previous_archetype)
+                new = archetype_data.get("name", winner)
+                delta = "تغيّرت شخصيتك." if self.previous_archetype != winner else "النتيجة بقيت نفسها."
+                embed.add_field(
+                    name="🔁 مقارنة بالإعادة",
+                    value=f"السابق: **{prev}**\nالحالي: **{new}**\n{delta}",
+                    inline=False
+                )
+
+            embed.set_footer(text="يمكنك إعادة الاختبار لاحقاً إذا أردت مقارنة نتيجة جديدة.")
+            await self.followup.send(embed=embed, ephemeral=True)
 
             # Update DB
             try:
@@ -129,43 +194,38 @@ class TestSession:
         finally:
             self.cog.active_tests.pop(self.user_id, None)
 
-    async def _assign_role(self, interaction: discord.Interaction, archetype_key: str):
+    async def _assign_role(self, interaction: discord.Interaction, archetype_key: str) -> str:
         archetype_roles = get_config("archetype_roles", {})
         role_id = archetype_roles.get(archetype_key)
         if not role_id:
-            await self.followup.send(
-                "⚠️ لم يتم إعداد الرتب بعد. تواصل مع المشرفين.",
-                ephemeral=True
-            )
-            return
+            return "⚠️ لم يتم إعداد رتب الشخصيات بعد. تواصل مع المشرفين."
 
         guild = interaction.guild
         member = guild.get_member(self.user_id) or await guild.fetch_member(self.user_id)
         role = guild.get_role(int(role_id))
 
         if not role:
-            return
+            return "⚠️ الرتبة المرتبطة بهذه الشخصية غير موجودة حالياً."
 
         # Remove all other archetype roles first
         other_ids = {int(v) for k, v in archetype_roles.items() if k != archetype_key and v}
         to_remove = [r for r in member.roles if r.id in other_ids]
+        removed_names = []
         for r in to_remove:
             try:
                 await member.remove_roles(r)
+                removed_names.append(r.name)
             except Exception:
                 pass
 
         # Assign new role
         try:
             await member.add_roles(role)
-            await self.followup.send(
-                f"✅ تم منحك رتبة **{role.name}** بنجاح!", ephemeral=True
-            )
+            if removed_names:
+                return f"✅ تم منحك رتبة **{role.name}** بعد إزالة: {', '.join(removed_names)}."
+            return f"✅ تم منحك رتبة **{role.name}** بنجاح."
         except discord.Forbidden:
-            await self.followup.send(
-                "⚠️ لا يملك البوت صلاحية منح الرتب. تواصل مع المشرفين.",
-                ephemeral=True
-            )
+            return "⚠️ لا يملك البوت صلاحية منح الرتب. تواصل مع المشرفين."
 
     async def cancel(self, message: str):
         self.cancelled = True
@@ -198,13 +258,13 @@ class PersonalityCog(commands.Cog):
                 description=f"شخصيتك الحالية هي: **{arch_name}**\n\nهل تريد إعادة الاختبار وتغيير شخصيتك؟",
                 color=0x2E4057
             )
-            view = RetestConfirmView(interaction.user.id, self)
+            view = RetestConfirmView(interaction.user.id, self, existing)
             await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
             return
 
         await self._start_test(interaction)
 
-    async def _start_test(self, interaction: discord.Interaction):
+    async def _start_test(self, interaction: discord.Interaction, previous_archetype: str | None = None):
         """Begin the test — send intro then first question."""
         if interaction.user.id in self.active_tests:
             await interaction.response.send_message(
@@ -214,8 +274,11 @@ class PersonalityCog(commands.Cog):
             return
 
         test_data = load_test_data()
-        questions = test_data["questions"]
+        questions = deepcopy(test_data["questions"])
         archetypes = test_data["archetypes"]
+        random.shuffle(questions)
+        for q in questions:
+            random.shuffle(q["choices"])
 
         # Send intro embed
         intro_embed = discord.Embed(
@@ -237,6 +300,7 @@ class PersonalityCog(commands.Cog):
             archetypes=archetypes,
             followup=interaction.followup,
             cog=self,
+            previous_archetype=previous_archetype,
         )
         self.active_tests[interaction.user.id] = session
 
@@ -255,10 +319,11 @@ class PersonalityCog(commands.Cog):
 class RetestConfirmView(discord.ui.View):
     """Confirms user wants to retake the test."""
 
-    def __init__(self, user_id: int, cog: PersonalityCog):
+    def __init__(self, user_id: int, cog: PersonalityCog, previous_archetype: str | None = None):
         super().__init__(timeout=60)
         self.user_id = user_id
         self.cog = cog
+        self.previous_archetype = previous_archetype
 
     @discord.ui.button(label="نعم، أعد الاختبار", style=discord.ButtonStyle.danger,
                        custom_id="retest_confirm")
@@ -269,7 +334,7 @@ class RetestConfirmView(discord.ui.View):
         for item in self.children:
             item.disabled = True
         await interaction.response.edit_message(view=self)
-        await self.cog._start_test(interaction)
+        await self.cog._start_test(interaction, previous_archetype=self.previous_archetype)
 
     @discord.ui.button(label="لا، إبقَ على شخصيتي", style=discord.ButtonStyle.secondary,
                        custom_id="retest_cancel")

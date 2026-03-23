@@ -130,6 +130,44 @@ class ChallengeCog(commands.Cog):
         self.bot = bot
         asyncio.create_task(init_challenge_db())
 
+    async def single_story_autocomplete(
+        self,
+        interaction: discord.Interaction,
+        current: str,
+    ) -> list[app_commands.Choice[str]]:
+        stories = self.bot.story_manager.get_stories_by_mode("single").values()
+        needle = (current or "").strip().casefold()
+        out: list[app_commands.Choice[str]] = []
+        for story in stories:
+            sid = str(story.id)
+            label = f"{story.title} ({sid})"
+            if needle and needle not in label.casefold():
+                continue
+            out.append(app_commands.Choice(name=label[:100], value=sid))
+            if len(out) >= 25:
+                break
+        return out
+
+    async def ending_autocomplete(
+        self,
+        interaction: discord.Interaction,
+        current: str,
+    ) -> list[app_commands.Choice[str]]:
+        story_ref = getattr(interaction.namespace, "story_ref", None)
+        story = self.bot.story_manager.resolve_story(story_ref, game_mode="single") if story_ref else None
+        if not story:
+            return []
+        ending_ids = [scene.id for scene in story.scenes.values() if scene.is_ending]
+        needle = (current or "").strip().casefold()
+        out: list[app_commands.Choice[str]] = []
+        for ending_id in ending_ids:
+            if needle and needle not in ending_id.casefold():
+                continue
+            out.append(app_commands.Choice(name=ending_id[:100], value=ending_id))
+            if len(out) >= 25:
+                break
+        return out
+
     @app_commands.command(name="تحدي_الأسبوع", description="عرض التحدي الأسبوعي النشط")
     async def show_challenge(self, interaction: discord.Interaction):
         try:
@@ -141,7 +179,7 @@ class ChallengeCog(commands.Cog):
                 await interaction.response.send_message(
                     "❌ لا يوجد تحدي أسبوعي نشط حالياً.\n"
                     "💡 يمكنك متابعة تقدمك عبر `/بروفايل` والعودة لاحقاً إلى `/تحدي_الأسبوع`.",
-                    ephemeral=True,
+                    ephemeral=False,
                 )
                 return
 
@@ -157,7 +195,7 @@ class ChallengeCog(commands.Cog):
             if role_id:
                 embed.add_field(name="الجائزة", value=f"<@&{role_id}>", inline=False)
 
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(embed=embed)
         except Exception as e:
             print(f"Error in show_challenge: {e}")
             await interaction.response.send_message("⚠️ حدث خطأ أثناء تنفيذ الأمر.", ephemeral=True)
@@ -166,21 +204,34 @@ class ChallengeCog(commands.Cog):
     @app_commands.describe(
         title="عنوان التحدي",
         description="وصف التحدي",
-        story_id="رقم القصة المستهدفة",
+        story_ref="القصة المستهدفة (اسم أو معرف)",
         ending_id="معرف النهاية المستهدفة",
-        role_id="معرف الرتبة للجائزة (اختياري)"
+        role="رتبة الجائزة (اختياري)"
     )
     @app_commands.default_permissions(manage_guild=True)
-    async def create_challenge(self, interaction: discord.Interaction, title: str, description: str, story_id: int, ending_id: str, role_id: str = None):
+    @app_commands.autocomplete(story_ref=single_story_autocomplete, ending_id=ending_autocomplete)
+    async def create_challenge(
+        self,
+        interaction: discord.Interaction,
+        title: str,
+        description: str,
+        story_ref: str,
+        ending_id: str,
+        role: discord.Role | None = None,
+    ):
         try:
             if not interaction.user.guild_permissions.manage_guild:
                 await interaction.response.send_message("❌ هذا الأمر مخصص للإدارة فقط.", ephemeral=True)
                 return
 
             # Check if story exists
-            story = self.bot.story_manager.get_story(story_id)
+            story = self.bot.story_manager.resolve_story(story_ref, game_mode="single")
             if not story:
-                await interaction.response.send_message("❌ رقم القصة غير صحيح.", ephemeral=True)
+                await interaction.response.send_message("❌ القصة المختارة غير صحيحة.", ephemeral=True)
+                return
+
+            if ending_id not in story.scenes:
+                await interaction.response.send_message("❌ معرف النهاية غير موجود في القصة المحددة.", ephemeral=True)
                 return
 
             async with aiosqlite.connect(DB_PATH) as db:
@@ -191,7 +242,7 @@ class ChallengeCog(commands.Cog):
                 await db.execute("""
                     INSERT INTO weekly_challenges (title, description, target_story_id, target_ending_id, reward_role_id)
                     VALUES (?, ?, ?, ?, ?)
-                """, (title, description, story_id, ending_id, role_id))
+                """, (title, description, story.id, ending_id, str(role.id) if role else None))
                 await db.commit()
 
             embed = discord.Embed(

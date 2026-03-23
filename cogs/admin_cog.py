@@ -25,6 +25,10 @@ class AdminCog(commands.Cog):
         app_commands.Choice(name="المستقبل", value="future"),
         app_commands.Choice(name="الواقع البديل", value="alternate"),
     ]
+    MODE_CHOICES = [
+        app_commands.Choice(name="فردي", value="single"),
+        app_commands.Choice(name="جماعي", value="multi"),
+    ]
 
     # ─────────────────────────────────────────
     # /رسالة_البوت
@@ -251,6 +255,107 @@ class AdminCog(commands.Cog):
             file=file,
             ephemeral=True
         )
+
+    @app_commands.command(name="تشخيص_النيكسوس", description="فحص سريع لحالة الإعدادات والربط (للمشرفين)")
+    @app_commands.default_permissions(manage_guild=True)
+    async def debug_nexus(self, interaction: discord.Interaction):
+        if not self._is_admin(interaction):
+            await interaction.response.send_message("❌ هذا الأمر للمشرفين فقط.", ephemeral=True)
+            return
+
+        config = load_config()
+        world_channels = config.get("world_channels", {})
+        archetype_roles = config.get("archetype_roles", {})
+
+        single_count = len(self.bot.story_manager.get_stories_by_mode("single"))
+        multi_count = len(self.bot.story_manager.get_stories_by_mode("multi"))
+        pulse_mention = f"<#{config.get('pulse_channel_id')}>" if config.get("pulse_channel_id") else "غير محددة"
+
+        embed = discord.Embed(
+            title="🧪 تقرير تشخيص The Nexus",
+            description="ملخص سريع لحالة الإعدادات والبيانات التشغيلية.",
+            color=discord.Color.dark_teal(),
+        )
+        embed.add_field(
+            name="📚 القصص المحمّلة",
+            value=f"فردي: **{single_count}**\nجماعي: **{multi_count}**",
+            inline=True,
+        )
+        embed.add_field(
+            name="❤️‍🔥 النبضة اليومية",
+            value=(
+                f"الحالة: {'مفعّل ✅' if str(config.get('pulse_enabled', '0')) == '1' else 'معطّل ❌'}\n"
+                f"الوقت: {config.get('pulse_time') or 'غير محدد'}\n"
+                f"القناة: {pulse_mention}"
+            ),
+            inline=True,
+        )
+
+        if world_channels:
+            lines = []
+            for key, ch_id in world_channels.items():
+                mention = f"<#{ch_id}>" if ch_id else "غير محددة"
+                lines.append(f"• {key}: {mention}")
+            embed.add_field(name="🌍 ربط قنوات العوالم", value="\n".join(lines)[:1024], inline=False)
+        else:
+            embed.add_field(name="🌍 ربط قنوات العوالم", value="لا يوجد ربط محفوظ حالياً.", inline=False)
+
+        if interaction.guild and archetype_roles:
+            role_lines = []
+            for arch_key, role_id in archetype_roles.items():
+                role_obj = interaction.guild.get_role(int(role_id)) if role_id else None
+                status = role_obj.mention if role_obj else f"مفقودة ({role_id})"
+                role_lines.append(f"• {arch_key}: {status}")
+            embed.add_field(name="🧬 ربط رتب الشخصيات", value="\n".join(role_lines)[:1024], inline=False)
+        else:
+            embed.add_field(name="🧬 ربط رتب الشخصيات", value="لا توجد رتب مرتبطة حالياً.", inline=False)
+
+        # Basic DB health
+        try:
+            async with aiosqlite.connect(DB_PATH) as db:
+                row = await db.execute("SELECT COUNT(*) FROM sqlite_master WHERE type = 'table'")
+                table_count = (await row.fetchone())[0]
+            embed.set_footer(text=f"عدد جداول قاعدة البيانات: {table_count}")
+        except Exception:
+            embed.set_footer(text="تعذر قراءة قاعدة البيانات حالياً.")
+
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
+    @app_commands.command(name="قائمة_القصص", description="عرض القصص المتاحة مع المعرّفات (للمشرفين)")
+    @app_commands.default_permissions(manage_guild=True)
+    @app_commands.describe(mode="نوع القصة", world="العالم (اختياري عند الفردي)")
+    @app_commands.choices(mode=MODE_CHOICES, world=WORLD_CHOICES)
+    async def list_stories_admin(
+        self,
+        interaction: discord.Interaction,
+        mode: app_commands.Choice[str],
+        world: app_commands.Choice[str] | None = None,
+    ):
+        if not self._is_admin(interaction):
+            await interaction.response.send_message("❌ هذا الأمر للمشرفين فقط.", ephemeral=True)
+            return
+
+        stories = list(self.bot.story_manager.get_stories_by_mode(mode.value).values())
+        if world:
+            stories = [s for s in stories if s.world_type == world.value]
+
+        if not stories:
+            await interaction.response.send_message("ℹ️ لا توجد قصص مطابقة للفلاتر المختارة.", ephemeral=True)
+            return
+
+        stories.sort(key=lambda s: (str(s.world_type), s.theme, s.title))
+        preview_lines = [
+            f"• `{s.id}` — {s.title} ({s.theme})"
+            for s in stories[:25]
+        ]
+
+        embed = discord.Embed(
+            title="📚 قائمة القصص",
+            description="\n".join(preview_lines),
+            color=discord.Color.dark_blue(),
+        )
+        embed.set_footer(text=f"المعروض: {min(len(stories), 25)} من أصل {len(stories)}")
+        await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
 async def setup(bot):

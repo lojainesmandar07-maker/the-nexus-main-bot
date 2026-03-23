@@ -72,6 +72,7 @@ class BaseLibraryView(discord.ui.View):
         self.selected_story_id: Optional[str] = None
         self.page_size = 20
         self.story_page = 0
+        self.message: Optional[discord.Message] = None
         self._rebuild_components()
 
     @property
@@ -147,6 +148,15 @@ class BaseLibraryView(discord.ui.View):
         self._rebuild_components()
         embed = self.render_embed()
         await interaction.response.edit_message(embed=embed, view=self)
+
+    async def on_timeout(self) -> None:
+        for child in self.children:
+            child.disabled = True
+        if self.message:
+            try:
+                await self.message.edit(view=self)
+            except Exception:
+                pass
 
     def render_embed(self) -> discord.Embed:
         raise NotImplementedError

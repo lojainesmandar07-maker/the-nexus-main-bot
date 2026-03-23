@@ -315,6 +315,10 @@ class SoloCog(commands.Cog):
 
         view = SoloLibraryView(categories)
         await interaction.response.send_message(embed=view.render_embed(), view=view, ephemeral=True)
+        try:
+            view.message = await interaction.original_response()
+        except Exception:
+            pass
 
     @app_commands.command(name="ابدأ", description="ابدأ رحلتك عبر مستكشف العوالم")
     async def start_world_browser(self, interaction: discord.Interaction):

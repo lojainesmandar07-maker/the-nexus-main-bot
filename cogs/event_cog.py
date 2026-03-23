@@ -92,6 +92,10 @@ class EventCog(commands.Cog):
         embed = view.render_embed()
 
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        try:
+            view.message = await interaction.original_response()
+        except Exception:
+            pass
 
     @app_commands.command(name="تصنيفات_جماعية", description="عرض قائمة التصنيفات المقترحة للفعاليات الجماعية")
     async def list_multi_categories(self, interaction: discord.Interaction):

@@ -195,13 +195,13 @@ class ProfileCog(commands.Cog):
             else:
                 embed.set_footer(text="لتحسين ملفك: أكمل قصصاً أكثر وشارك في القرارات الاجتماعية.")
 
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(embed=embed)
 
         except Exception as e:
             import traceback
             print(f"[ProfileCog] Error: {traceback.format_exc()}")
             await interaction.response.send_message(
-                "⚠️ حدث خطأ أثناء تحميل ملفك الشخصي.", ephemeral=True
+                "⚠️ حدث خطأ أثناء تحميل ملفك الشخصي."
             )
 
 

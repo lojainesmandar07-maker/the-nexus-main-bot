@@ -162,9 +162,9 @@ class MysteryCog(commands.Cog):
     @app_commands.command(name="غرفة_جديدة", description="إنشاء لغز وغرفة غموض جديدة (للإدارة فقط)")
     @app_commands.default_permissions(manage_guild=True)
     @app_commands.describe(
-        story_ref="القصة الحصرية (اسم أو معرف)",
-        riddle="نص اللغز",
-        answer="الجواب الصحيح",
+        story_ref="القصة الحصرية (اختياري - سيتم جلبها من الملف)",
+        riddle="نص اللغز (اختياري)",
+        answer="الجواب الصحيح (اختياري)",
         days="عدد الأيام قبل فتح القصة للجميع",
         hint="تلميح اختياري",
     )
@@ -172,9 +172,9 @@ class MysteryCog(commands.Cog):
     async def new_mystery_room(
         self,
         interaction: discord.Interaction,
-        story_ref: str,
-        riddle: str,
-        answer: str,
+        story_ref: str | None = None,
+        riddle: str | None = None,
+        answer: str | None = None,
         days: app_commands.Range[int, 1, 30] = 7,
         hint: str | None = None,
     ):
@@ -183,7 +183,35 @@ class MysteryCog(commands.Cog):
                 await interaction.response.send_message("❌ هذا الأمر مخصص للإدارة فقط.", ephemeral=True)
                 return
 
-            story = self.bot.story_manager.resolve_story(story_ref, game_mode="single")
+            import json
+
+            try:
+                def _load_json():
+                    with open("data/mystery_rooms.json", "r", encoding="utf-8") as f:
+                        return json.load(f)
+                all_rooms = await asyncio.to_thread(_load_json)
+            except Exception as e:
+                print(f"[MysteryCog] error loading mystery_rooms.json: {e}")
+                await interaction.response.send_message("⚠️ تعذر تحميل ملف الغرف.", ephemeral=True)
+                return
+
+            if not all_rooms:
+                await interaction.response.send_message("❌ ملف غرف الغموض فارغ.", ephemeral=True)
+                return
+
+            async with aiosqlite.connect(DB_PATH) as db:
+                row = await db.execute("SELECT COUNT(*) FROM mystery_rooms")
+                count = (await row.fetchone())[0]
+
+            index = count % len(all_rooms)
+            room_data = all_rooms[index]
+
+            auto_riddle = room_data.get("riddle", riddle)
+            auto_answer = room_data.get("answer", answer)
+            auto_story_ref = room_data.get("exclusive_story_id", story_ref)
+            auto_hint = room_data.get("hint", hint)
+
+            story = self.bot.story_manager.resolve_story(auto_story_ref, game_mode="single")
             if not story or not isinstance(story.id, int):
                 await interaction.response.send_message("❌ القصة المختارة غير صالحة لغرفة الغموض.", ephemeral=True)
                 return
@@ -201,7 +229,7 @@ class MysteryCog(commands.Cog):
 
             embed = discord.Embed(
                 title="🚪 غرفة الغموض الجديدة",
-                description=f"**لقد ظهر لغز جديد في النيكسوس!**\n\n{riddle}\n\n*أول من يقوم بحل اللغز عبر `/حل` سيحصل على وصول حصري لقصة سرية!*",
+                description=f"**لقد ظهر لغز جديد في النيكسوس!**\n\n{auto_riddle}\n\n*أول من يقوم بحل اللغز عبر `/حل` سيحصل على وصول حصري لقصة سرية!*",
                 color=discord.Color.dark_magenta()
             )
             embed.set_footer(text="استخدم /تلميح إذا احتجت مساعدة لاحقاً")
@@ -211,7 +239,7 @@ class MysteryCog(commands.Cog):
                 await db.execute("""
                     INSERT INTO mystery_rooms (riddle, answer, hint, exclusive_story_id, opens_at, message_id)
                     VALUES (?, ?, ?, ?, ?, ?)
-                """, (riddle, answer, hint or "", story.id, opens_at, msg.id))
+                """, (auto_riddle, auto_answer, auto_hint or "", story.id, opens_at, msg.id))
                 await db.commit()
 
             await interaction.response.send_message(

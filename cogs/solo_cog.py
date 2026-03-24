@@ -161,6 +161,7 @@ async def start_solo_interaction_with_perspective(
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
         return
 
+    # Pass the actual solo_manager, not just implicitly using it
     session, error = cog.solo_manager.start_solo_game(interaction.user.id, story.id)
     if error:
         sender = interaction.response.send_message if force_new_response else interaction.followup.send
@@ -194,7 +195,7 @@ async def start_solo_interaction_with_perspective(
         cog.solo_manager.end_solo_game(interaction.user.id)
 
     if force_new_response:
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        await interaction.response.send_message(embed=embed, view=view, ephemeral=False)
         if view is not None:
             try:
                 view.message = await interaction.original_response()
@@ -295,30 +296,6 @@ class SoloCog(commands.Cog):
         self.bot = bot
         self.solo_manager = SoloGameManager(bot, bot.story_manager)
         asyncio.create_task(init_solo_db())
-
-    @app_commands.command(name="قصص_فردية", description="عرض مكتبة القصص الفردية")
-    async def list_solo_stories(self, interaction: discord.Interaction):
-        stories = self.bot.story_manager.get_stories_by_mode("single")
-        if not stories:
-            await interaction.response.send_message(
-                "❌ لا توجد قصص فردية متاحة حالياً.\n"
-                "💡 جرّب `/ابدأ` لاكتشاف عوالم أخرى أو عد لاحقاً.",
-                ephemeral=True,
-            )
-            return
-
-        from collections import defaultdict
-
-        categories = defaultdict(list)
-        for story in stories.values():
-            categories[story.theme].append(story)
-
-        view = SoloLibraryView(categories)
-        await interaction.response.send_message(embed=view.render_embed(), view=view)
-        try:
-            view.message = await interaction.original_response()
-        except Exception:
-            pass
 
     @app_commands.command(name="ابدأ", description="ابدأ رحلتك عبر مستكشف العوالم")
     async def start_world_browser(self, interaction: discord.Interaction):

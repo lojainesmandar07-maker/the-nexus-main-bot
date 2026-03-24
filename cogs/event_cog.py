@@ -45,6 +45,8 @@ class EventCog(commands.Cog):
         if not story:
             multi_stories = self.bot.story_manager.get_stories_by_mode("multi")
             available_stories = ", ".join([str(sid) for sid in multi_stories.keys()])
+            if not available_stories:
+                available_stories = "لا توجد قصص جماعية."
             await interaction.followup.send(f"❌ لم يتم العثور على قصة مطابقة لـ `{story_ref}`.\nالقصص الجماعية المتاحة: {available_stories}", ephemeral=True)
             return
 
@@ -75,44 +77,6 @@ class EventCog(commands.Cog):
         await self.bot.event_manager.stop_event(interaction.channel)
         await interaction.followup.send("✅ تم إصدار أمر إيقاف الحدث.", ephemeral=True)
 
-    @app_commands.command(name="قصص_جماعية", description="عرض القصص المخصصة للفعاليات الجماعية")
-    async def list_multi_stories(self, interaction: discord.Interaction):
-        stories = self.bot.story_manager.get_stories_by_mode("multi")
-        if not stories:
-            await interaction.response.send_message("❌ لا توجد قصص جماعية متاحة حالياً.", ephemeral=True)
-            return
-
-        from collections import defaultdict
-        categories = defaultdict(list)
-        for s in stories.values():
-            categories[s.theme].append(s)
-
-        from ui.listing_view import MultiLibraryView
-        view = MultiLibraryView(categories)
-        embed = view.render_embed()
-
-        await interaction.response.send_message(embed=embed, view=view)
-        try:
-            view.message = await interaction.original_response()
-        except Exception:
-            pass
-
-    @app_commands.command(name="تصنيفات_جماعية", description="عرض قائمة التصنيفات المقترحة للفعاليات الجماعية")
-    async def list_multi_categories(self, interaction: discord.Interaction):
-        embed = discord.Embed(
-            title="🗂️ تصنيفات الفعاليات الجماعية",
-            description="هذه التصنيفات تساعدكم على تنظيم قصص الأحداث وصناعة تصويتات أكثر تنوعاً.",
-            color=discord.Color.dark_blue(),
-        )
-
-        for index, category in enumerate(EVENT_CATEGORIES, start=1):
-            embed.add_field(
-                name=f"{index}. {category.name}",
-                value=category.description,
-                inline=False,
-            )
-
-        await interaction.response.send_message(embed=embed)
 
 
 async def setup(bot: StoryBot):

@@ -124,8 +124,25 @@ class DailyCog(commands.Cog):
             if existing:
                 return False
 
-        # 3. Pick a random question
-        q_data = random.choice(DAILY_QUESTIONS)
+        # 3. Fetch sequential question
+        try:
+            def _load_json():
+                with open("data/daily_pulse.json", "r", encoding="utf-8") as f:
+                    return json.load(f)
+            daily_questions = await asyncio.to_thread(_load_json)
+        except Exception as e:
+            print(f"[DailyCog] Failed to load daily_pulse.json: {e}")
+            return False
+
+        if not daily_questions:
+            return False
+
+        async with aiosqlite.connect(DB_PATH) as db:
+            row = await db.execute("SELECT COUNT(*) FROM daily_pulse")
+            count = (await row.fetchone())[0]
+
+        index = count % len(daily_questions)
+        q_data = daily_questions[index]
         question = q_data["q"]
         options = q_data["opts"]
         options_json = json.dumps(options, ensure_ascii=False)

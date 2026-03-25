@@ -131,6 +131,16 @@ class SocialCog(commands.Cog):
         self.bot = bot
         asyncio.create_task(init_social_db())
 
+    @app_commands.command(name="قصص_جماعية", description="تصفح واختر قصصاً متعددة اللاعبين")
+    async def multiplayer_stories(self, interaction: discord.Interaction):
+        # We will point this to the world browser, pre-filtered for multiplayer if possible,
+        # or just open the world browser as the central hub.
+        from ui.embeds import EmbedBuilder
+        from ui.world_browser import WorldSelectView
+        embed = EmbedBuilder.world_select_embed()
+        embed.description = "اختر عالم **القصص الجماعية 👥** من القائمة أدناه لبدء اللعب مع أصدقائك."
+        await interaction.response.send_message(embed=embed, view=WorldSelectView())
+
     @app_commands.command(name="إنشاء_قرار", description="إنشاء قرار جماعي جديد للتصويت (للإدارة فقط)")
     @app_commands.default_permissions(manage_guild=True)
     @app_commands.describe(

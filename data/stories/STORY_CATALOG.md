@@ -37,8 +37,8 @@ Auto-organized index for planning and generation continuity.
 - ID `201` | Series `1` | Scenes `36` | **ليلة بلا قمر: مصحة الأرواح المنسية** (`mp_survival_1.json`)
 
 ### الفانتازيا المظلمة (World Stories - Batch 1)
-- ID `fb1_mailman` | Series `1` | Scenes `23` | **ساعي البريد** (`fantasy.json`)
-- ID `fb1_usurper` | Series `1` | Scenes `15` | **المغتصب** (`fantasy.json`)
-- ID `fb1_blade` | Series `1` | Scenes `15` | **النصل الملعون** (`fantasy.json`)
-- ID `fb1_healer` | Series `1` | Scenes `16` | **المعالج** (`fantasy.json`)
-- ID `fb1_dragon` | Series `1` | Scenes `16` | **التنين** (`fantasy.json`)
+- ID `fb1_mailman` | Series `1` | Scenes `23` | **ساعي البريد** (`fantasy_mailman.json`)
+- ID `fb1_usurper` | Series `1` | Scenes `15` | **سارق التاج** (`fantasy_usurper.json`)
+- ID `fb1_blade` | Series `1` | Scenes `15` | **النصل الملعون** (`fantasy_blade.json`)
+- ID `fb1_healer` | Series `1` | Scenes `16` | **المعالج** (`fantasy_healer.json`)
+- ID `fb1_dragon` | Series `1` | Scenes `16` | **التنين** (`fantasy_dragon.json`)

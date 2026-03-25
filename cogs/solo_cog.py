@@ -158,10 +158,10 @@ async def start_solo_interaction_with_perspective(
                 value=(p.description or "بدون وصف")[:200],
                 inline=False,
             )
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        sender = interaction.response.send_message if force_new_response else interaction.followup.send
+        await sender(embed=embed, view=view, ephemeral=True)
         return
 
-    # Pass the actual solo_manager, not just implicitly using it
     session, error = cog.solo_manager.start_solo_game(interaction.user.id, story.id)
     if error:
         sender = interaction.response.send_message if force_new_response else interaction.followup.send

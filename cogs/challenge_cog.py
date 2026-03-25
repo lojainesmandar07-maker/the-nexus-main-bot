@@ -202,10 +202,10 @@ class ChallengeCog(commands.Cog):
 
     @app_commands.command(name="إنشاء_تحدي", description="إنشاء تحدي أسبوعي جديد (للإدارة فقط)")
     @app_commands.describe(
-        title="عنوان التحدي",
-        description="وصف التحدي",
-        story_ref="القصة المستهدفة (اسم أو معرف)",
-        ending_id="معرف النهاية المستهدفة",
+        title="عنوان التحدي (اختياري - سيتم جلبه من الملف)",
+        description="وصف التحدي (اختياري)",
+        story_ref="القصة المستهدفة (اختياري)",
+        ending_id="معرف النهاية المستهدفة (اختياري)",
         role="رتبة الجائزة (اختياري)"
     )
     @app_commands.default_permissions(manage_guild=True)
@@ -213,10 +213,10 @@ class ChallengeCog(commands.Cog):
     async def create_challenge(
         self,
         interaction: discord.Interaction,
-        title: str,
-        description: str,
-        story_ref: str,
-        ending_id: str,
+        title: str | None = None,
+        description: str | None = None,
+        story_ref: str | None = None,
+        ending_id: str | None = None,
         role: discord.Role | None = None,
     ):
         try:
@@ -224,13 +224,42 @@ class ChallengeCog(commands.Cog):
                 await interaction.response.send_message("❌ هذا الأمر مخصص للإدارة فقط.", ephemeral=True)
                 return
 
+            import json
+
+            try:
+                def _load_json():
+                    with open("data/challenges.json", "r", encoding="utf-8") as f:
+                        return json.load(f)
+                all_challenges = await asyncio.to_thread(_load_json)
+            except Exception as e:
+                print(f"[ChallengeCog] error loading challenges.json: {e}")
+                await interaction.response.send_message("⚠️ تعذر تحميل ملف التحديات.", ephemeral=True)
+                return
+
+            if not all_challenges:
+                await interaction.response.send_message("❌ ملف التحديات فارغ.", ephemeral=True)
+                return
+
+            async with aiosqlite.connect(DB_PATH) as db:
+                row = await db.execute("SELECT COUNT(*) FROM weekly_challenges")
+                count = (await row.fetchone())[0]
+
+            index = count % len(all_challenges)
+            challenge_data = all_challenges[index]
+
+            auto_title = challenge_data.get("title", title)
+            auto_desc = challenge_data.get("description", description)
+            auto_story_ref = challenge_data.get("target_story_id", story_ref)
+            auto_ending = challenge_data.get("target_ending_id", ending_id)
+            auto_role = challenge_data.get("reward_role_id") or (str(role.id) if role else None)
+
             # Check if story exists
-            story = self.bot.story_manager.resolve_story(story_ref, game_mode="single")
+            story = self.bot.story_manager.resolve_story(auto_story_ref, game_mode="single")
             if not story:
                 await interaction.response.send_message("❌ القصة المختارة غير صحيحة.", ephemeral=True)
                 return
 
-            if ending_id not in story.scenes:
+            if auto_ending not in story.scenes:
                 await interaction.response.send_message("❌ معرف النهاية غير موجود في القصة المحددة.", ephemeral=True)
                 return
 
@@ -242,12 +271,12 @@ class ChallengeCog(commands.Cog):
                 await db.execute("""
                     INSERT INTO weekly_challenges (title, description, target_story_id, target_ending_id, reward_role_id)
                     VALUES (?, ?, ?, ?, ?)
-                """, (title, description, story.id, ending_id, str(role.id) if role else None))
+                """, (auto_title, auto_desc, story.id, auto_ending, auto_role))
                 await db.commit()
 
             embed = discord.Embed(
                 title="✅ تم إنشاء التحدي الجديد",
-                description=f"**{title}**\nالقصة: {story.title}\nالنهاية: {ending_id}",
+                description=f"**{auto_title}**\nالقصة: {story.title}\nالنهاية: {auto_ending}",
                 color=discord.Color.green()
             )
             await interaction.response.send_message(embed=embed, ephemeral=True)

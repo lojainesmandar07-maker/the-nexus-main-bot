@@ -182,7 +182,7 @@ class StoryManager:
             if story and (game_mode is None or story.game_mode == game_mode):
                 return story
 
-        # Stringified ID fallback + exact-title fallback
+        # Stringified ID fallback + exact-title fallback + hash ID fallback
         ref_text = str(story_ref).strip()
         ref_fold = ref_text.casefold()
         for story in candidates:
@@ -190,6 +190,18 @@ class StoryManager:
                 return story
             if story.title.strip().casefold() == ref_fold:
                 return story
+
+        # Try to resolve by generated integer ID if they supplied the original string ID
+        import hashlib
+        try:
+            hashed_id = int(hashlib.sha256(ref_text.encode()).hexdigest(), 16) % 10**8
+            if hashed_id in self.stories:
+                story = self.stories[hashed_id]
+                if game_mode is None or story.game_mode == game_mode:
+                    return story
+        except Exception:
+            pass
+
         return None
 
     def get_all_stories(self) -> Dict[int | str, Story]:

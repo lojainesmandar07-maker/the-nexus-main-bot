@@ -39,6 +39,23 @@ class StoryManager:
             # Old format fallback
             else:
                  self._parse_and_add_old_story(data)
+                 story_id = self._resolve_story_id(data.get("id", 0))
+                 story = self.stories.get(story_id)
+                 if story:
+                     if filename == "solo.json" or filename.startswith("sp_"):
+                         story.world_type = "solo"
+                         story.game_mode = "single"
+                     elif filename.startswith("mp_"):
+                         story.world_type = "multi"
+                         story.game_mode = "multi"
+                     elif filename == "fantasy.json":
+                         story.world_type = "fantasy"
+                     elif filename == "past.json":
+                         story.world_type = "past"
+                     elif filename == "future.json":
+                         story.world_type = "future"
+                     elif filename == "alternate.json":
+                         story.world_type = "alternate"
 
         except Exception as e:
             print(f"Error loading story from {filepath}: {e}")
@@ -83,11 +100,13 @@ class StoryManager:
             # Use 'id' from JSON, but ensure it's converted to an int hash if it's a string, or require int IDs.
             # Assuming prompt IDs might be strings like "story_001", we hash them or extract integers.
             raw_id = data.get("id", 0)
-            if isinstance(raw_id, str):
-                import hashlib
-                story_id = int(hashlib.sha256(raw_id.encode()).hexdigest(), 16) % 10**8
-            else:
-                story_id = raw_id
+            story_id = self._resolve_story_id(raw_id)
+            if story_id in self.stories:
+                print(
+                    f"WARNING: Hash collision for story '{data.get('title')}' "
+                    f"(id={raw_id}, hash={story_id}). Skipping."
+                )
+                return
 
             nodes = data.get("nodes", {})
             default_start = "start" if "start" in nodes else (next(iter(nodes)) if nodes else "start")
@@ -225,39 +244,9 @@ class StoryManager:
         stories = self.get_stories_by_world(world_type)
         return [s for s in stories.values() if s.theme == category]
 
-    def apply_loading_rules(self):
-        if not os.path.exists(self.stories_dir):
-            return
-
-        for filename in os.listdir(self.stories_dir):
-            if filename.endswith(".json"):
-                filepath = os.path.join(self.stories_dir, filename)
-                try:
-                    with open(filepath, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-
-                    raw_id = data.get("id", 0)
-                    if isinstance(raw_id, str):
-                        import hashlib
-                        story_id = int(hashlib.sha256(raw_id.encode()).hexdigest(), 16) % 10**8
-                    else:
-                        story_id = raw_id
-
-                    if story_id in self.stories:
-                        story = self.stories[story_id]
-                        if filename == "solo.json" or filename.startswith("sp_"):
-                            story.world_type = "solo"
-                            story.game_mode = "single"
-                        elif filename.startswith("mp_"):
-                            story.world_type = "multi"
-                            story.game_mode = "multi"
-                        elif filename == "fantasy.json":
-                            story.world_type = "fantasy"
-                        elif filename == "past.json":
-                            story.world_type = "past"
-                        elif filename == "future.json":
-                            story.world_type = "future"
-                        elif filename == "alternate.json":
-                            story.world_type = "alternate"
-                except Exception as e:
-                    print(f"Error applying rules to {filepath}: {e}")
+    @staticmethod
+    def _resolve_story_id(raw_id: int | str) -> int | str:
+        if isinstance(raw_id, str):
+            import hashlib
+            return int(hashlib.sha256(raw_id.encode()).hexdigest(), 16) % 10**8
+        return raw_id

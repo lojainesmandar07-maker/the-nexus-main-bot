@@ -79,8 +79,8 @@ class WorldSelectView(View):
 
 
 class CategoryBrowserView(View):
-    def __init__(self, world_type: str, categories: dict):
-        super().__init__(timeout=None)
+    def __init__(self, world_type: str, categories: dict, timeout=None):
+        super().__init__(timeout=timeout)
         self.world_type = world_type
         self.categories = categories
 
@@ -199,7 +199,7 @@ class StorySelect(Select):
 
 
 class StartStoryButton(Button):
-    def __init__(self, story_id: int):
+    def __init__(self, story_id: int | str):
         super().__init__(
             style=discord.ButtonStyle.success,
             label="ابدأ القصة الآن",

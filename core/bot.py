@@ -14,16 +14,45 @@ class StoryBot(commands.Bot):
         super().__init__(command_prefix=commands.when_mentioned, intents=intents)
 
         self.story_manager = StoryManager()
-        self.story_manager.apply_loading_rules()
         self.event_manager = EventManager(self, self.story_manager)
 
     async def setup_hook(self):
         # Re-register persistent views BEFORE loading cogs
         from ui.listing_view import SoloLibraryView, MultiLibraryView
-        from ui.world_browser import WorldSelectView
+        from ui.world_browser import (
+            WORLD_CONFIG,
+            BackToCategoriesButton,
+            BackToWorldsButton,
+            CategoryBrowserView,
+            StartStoryButton,
+            StorySelect,
+            WorldSelectView,
+        )
         self.add_view(SoloLibraryView({}, timeout=None))
         self.add_view(MultiLibraryView({}, timeout=None))
         self.add_view(WorldSelectView())
+        self.add_view(BackToWorldsButton())
+
+        # Register persistent world-browser components that use dynamic custom_ids.
+        # We bind one lightweight view/item per known world/category/story so callbacks
+        # remain alive after bot restarts.
+        for world_type in WORLD_CONFIG.keys():
+            self.add_view(CategoryBrowserView(world_type, {}, timeout=None))
+            self.add_view(BackToCategoriesButton(world_type))
+
+            categories = self.story_manager.get_world_categories(world_type)
+            for category in categories.keys():
+                self.add_view(
+                    StorySelect(
+                        world_type=world_type,
+                        category=category,
+                        options=[discord.SelectOption(label="stub", value="0")],
+                    )
+                )
+
+            stories = self.story_manager.get_stories_by_world(world_type)
+            for story in stories.values():
+                self.add_view(StartStoryButton(story.id))
 
         # Load daily pulse views and decision views
         import aiosqlite

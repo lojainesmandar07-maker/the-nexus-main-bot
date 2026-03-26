@@ -157,6 +157,7 @@ class SoloView(discord.ui.View):
             self.add_item(SoloChoiceButton(choice, idx, solo_manager, user_id))
 
     async def on_timeout(self):
+        self.solo_manager.end_solo_game(self.user_id)
         for child in self.children:
             child.disabled = True
         if self.message:

@@ -20,24 +20,32 @@ _DEFAULT_CONFIG = {
     "archetype_roles": {},
     "npc_channels": {}
 }
+_config_cache: dict | None = None
 
 def load_config() -> dict:
+    global _config_cache
+    if _config_cache is not None:
+        return _config_cache
+
     if not os.path.exists(CONFIG_PATH):
-        save_config(_DEFAULT_CONFIG.copy())
-        return _DEFAULT_CONFIG.copy()
+        _config_cache = _DEFAULT_CONFIG.copy()
+        save_config(_config_cache)
+        return _config_cache
     try:
         with open(CONFIG_PATH, "r", encoding="utf-8") as f:
             raw = f.read().strip()
 
         # Empty file => safe defaults
         if not raw:
-            save_config(_DEFAULT_CONFIG.copy())
-            return _DEFAULT_CONFIG.copy()
+            _config_cache = _DEFAULT_CONFIG.copy()
+            save_config(_config_cache)
+            return _config_cache
 
         data = json.loads(raw)
         if not isinstance(data, dict):
-            save_config(_DEFAULT_CONFIG.copy())
-            return _DEFAULT_CONFIG.copy()
+            _config_cache = _DEFAULT_CONFIG.copy()
+            save_config(_config_cache)
+            return _config_cache
 
         # Merge with defaults and sanitize known dict fields
         for key, val in _DEFAULT_CONFIG.items():
@@ -46,11 +54,15 @@ def load_config() -> dict:
             if not isinstance(data.get(dict_key), dict):
                 data[dict_key] = {}
 
-        return data
+        _config_cache = data
+        return _config_cache
     except Exception:
-        return _DEFAULT_CONFIG.copy()
+        _config_cache = _DEFAULT_CONFIG.copy()
+        return _config_cache
 
 def save_config(config: dict) -> None:
+    global _config_cache
+    _config_cache = config
     os.makedirs(os.path.dirname(CONFIG_PATH), exist_ok=True)
     with open(CONFIG_PATH, "w", encoding="utf-8") as f:
         json.dump(config, f, ensure_ascii=False, indent=2)

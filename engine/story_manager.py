@@ -27,7 +27,14 @@ class StoryManager:
             # Check if this is the new nested format (world format)
             if "world" in data and "categories" in data:
                 world_name = data["world"]
-                world_type = filename.split('.')[0] # e.g. "fantasy"
+                world_aliases = {
+                    "الفانتازيا": "fantasy",
+                    "الماضي": "past",
+                    "المستقبل": "future",
+                    "الواقع البديل": "alternate",
+                    "القصص الفردية": "solo",
+                }
+                world_type = world_aliases.get(world_name, filename.split('.')[0])
 
                 for category in data["categories"]:
                     cat_name = category.get("name")

@@ -28,31 +28,41 @@ class StoryBot(commands.Bot):
             StorySelect,
             WorldSelectView,
         )
+
+        class _PersistentItemView(discord.ui.View):
+            """Wrap a single persistent UI item so discord.py can rebind callbacks on restart."""
+
+            def __init__(self, item: discord.ui.Item):
+                super().__init__(timeout=None)
+                self.add_item(item)
+
         self.add_view(SoloLibraryView({}, timeout=None))
         self.add_view(MultiLibraryView({}, timeout=None))
         self.add_view(WorldSelectView())
-        self.add_view(BackToWorldsButton())
+        self.add_view(_PersistentItemView(BackToWorldsButton()))
 
         # Register persistent world-browser components that use dynamic custom_ids.
         # We bind one lightweight view/item per known world/category/story so callbacks
         # remain alive after bot restarts.
         for world_type in WORLD_CONFIG.keys():
             self.add_view(CategoryBrowserView(world_type, {}, timeout=None))
-            self.add_view(BackToCategoriesButton(world_type))
+            self.add_view(_PersistentItemView(BackToCategoriesButton(world_type)))
 
             categories = self.story_manager.get_world_categories(world_type)
             for category in categories.keys():
                 self.add_view(
-                    StorySelect(
-                        world_type=world_type,
-                        category=category,
-                        options=[discord.SelectOption(label="stub", value="0")],
+                    _PersistentItemView(
+                        StorySelect(
+                            world_type=world_type,
+                            category=category,
+                            options=[discord.SelectOption(label="stub", value="0")],
+                        )
                     )
                 )
 
             stories = self.story_manager.get_stories_by_world(world_type)
             for story in stories.values():
-                self.add_view(StartStoryButton(story.id))
+                self.add_view(_PersistentItemView(StartStoryButton(story.id)))
 
         # Load daily pulse views and decision views
         import aiosqlite

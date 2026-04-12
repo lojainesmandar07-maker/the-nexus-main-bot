@@ -205,11 +205,6 @@
                     "label": "راقب الكاميرات أولاً",
                     "emoji": "👁️",
                     "next": "watch_cameras"
-                },
-                {
-                    "label": "افتح باب الطوارئ",
-                    "emoji": "🚪",
-                    "next": "open_emergency"
                 }
             ]
         },
@@ -270,12 +265,12 @@
             ]
         },
         "fake_exit": {
-            "text": "الخريطة تشير لبوابة خروج للطوارئ. تفتحها لتجد نفسك...",
+            "text": "الخريطة تشير لبوابة خروج للطوارئ. البوابة مقفلة إلكترونياً.",
             "choices": [
                 {
-                    "label": "اعبر البوابة",
-                    "emoji": "🚶",
-                    "next": "death_fake_exit"
+                    "label": "اكسر القفل",
+                    "emoji": "🔨",
+                    "next": "fake_exit_open"
                 }
             ]
         },
@@ -981,12 +976,17 @@
             ]
         },
         "open_emergency": {
-            "text": "الباب كان مفخخاً بالغاز السام كإجراء أمني روتيني.",
+            "text": "الباب كان مفخخاً بالغاز السام كإجراء أمني روتيني. تستطيع الوصول للوحة تحكم الباب.",
             "choices": [
                 {
-                    "label": "حاول الهرب",
-                    "emoji": "🏃",
-                    "next": "death_poison"
+                    "label": "حاول إغلاقه",
+                    "emoji": "🔧",
+                    "next": "close_door_try"
+                },
+                {
+                    "label": "ارفع صوت الإنذار",
+                    "emoji": "🔔",
+                    "next": "raise_alarm"
                 }
             ]
         },
@@ -1120,6 +1120,46 @@
                     "label": "انطلق للممر الان",
                     "emoji": "⏱️",
                     "next": "maintenance_corridor"
+                }
+            ]
+        },
+        "close_door_try": {
+            "text": "فشلت محاولة الإغلاق، والغاز بدأ ينتشر بسرعة.",
+            "choices": [
+                {
+                    "label": "حاول الهرب",
+                    "emoji": "🏃",
+                    "next": "death_poison"
+                }
+            ]
+        },
+        "raise_alarm": {
+            "text": "الإنذار أوقف ضخ الغاز، لكنه جلب دورية الحرس.",
+            "choices": [
+                {
+                    "label": "تظاهر بالموت",
+                    "emoji": "💀",
+                    "next": "play_dead_guard"
+                }
+            ]
+        },
+        "play_dead_guard": {
+            "text": "الحرس لم يلتفتوا إليك لأنهم مبرمجون لتجاهل الجثث.",
+            "choices": [
+                {
+                    "label": "اكمل زحفاً",
+                    "emoji": "🐛",
+                    "next": "maintenance_corridor"
+                }
+            ]
+        },
+        "fake_exit_open": {
+            "text": "البوابة تفتح ببطء، وتجد نفسك...",
+            "choices": [
+                {
+                    "label": "اعبر البوابة",
+                    "emoji": "🚶",
+                    "next": "death_fake_exit"
                 }
             ]
         }

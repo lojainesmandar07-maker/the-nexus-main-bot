@@ -109,12 +109,18 @@ class EventManager:
 
                 # 4. Tally votes and pick winner
                 results = view.get_results()
-                await message.edit(view=view) # Updates the view to disabled state (from on_timeout if needed)
+                try:
+                    await message.edit(view=view) # Updates the view to disabled state (from on_timeout if needed)
+                except (discord.NotFound, discord.Forbidden):
+                    pass # Ignore if the original message was deleted
 
                 # Dramatic Pause
                 loading_msg = await self.event_channel.send("⏳ يتم فرز الأصوات الآن...")
                 await asyncio.sleep(2)
-                await loading_msg.edit(content="🥁 يتم تحديد مصير القصة...")
+                try:
+                    await loading_msg.edit(content="🥁 يتم تحديد مصير القصة...")
+                except (discord.NotFound, discord.Forbidden):
+                    pass
                 await asyncio.sleep(2)
 
                 max_votes = -1
@@ -133,19 +139,31 @@ class EventManager:
                     choice_index = int(winning_id.split('_')[1])
                     winning_choice = self.current_scene.choices[choice_index]
 
-                    await loading_msg.edit(content="", embed=EmbedBuilder.tie_break_embed(
-                        winning_choice_text=winning_choice.text,
-                        total_votes=max_votes
-                    ))
+                    try:
+                        await loading_msg.edit(content="", embed=EmbedBuilder.tie_break_embed(
+                            winning_choice_text=winning_choice.text,
+                            total_votes=max_votes
+                        ))
+                    except (discord.NotFound, discord.Forbidden):
+                        await self.event_channel.send(embed=EmbedBuilder.tie_break_embed(
+                            winning_choice_text=winning_choice.text,
+                            total_votes=max_votes
+                        ))
                 else:
                     winning_id = winning_choices[0]
                     choice_index = int(winning_id.split('_')[1])
                     winning_choice = self.current_scene.choices[choice_index]
 
-                    await loading_msg.edit(content="", embed=EmbedBuilder.voting_result_embed(
-                        winning_choice_text=winning_choice.text,
-                        total_votes=max_votes
-                    ))
+                    try:
+                        await loading_msg.edit(content="", embed=EmbedBuilder.voting_result_embed(
+                            winning_choice_text=winning_choice.text,
+                            total_votes=max_votes
+                        ))
+                    except (discord.NotFound, discord.Forbidden):
+                        await self.event_channel.send(embed=EmbedBuilder.voting_result_embed(
+                            winning_choice_text=winning_choice.text,
+                            total_votes=max_votes
+                        ))
 
                 # 6. Advance to next scene
                 next_scene_id = winning_choice.next_scene

@@ -81,7 +81,10 @@ class StoryManager:
                         next_scene=next_scene,
                         color=choice_data.get("color", "primary"),
                         points_reward=choice_data.get("points_reward", 0),
-                        required_points=choice_data.get("required_points")
+                        required_points=choice_data.get("required_points"),
+                        sets_flag=choice_data.get("sets_flag"),
+                        requires_flag=choice_data.get("requires_flag"),
+                        reputation=choice_data.get("reputation")
                     ))
 
                 scenes[node_id] = Scene(
@@ -154,7 +157,10 @@ class StoryManager:
                     next_scene=choice_data["next_scene"],
                     color=choice_data.get("color", "primary"),
                     points_reward=choice_data.get("points_reward", 0),
-                    required_points=choice_data.get("required_points")
+                    required_points=choice_data.get("required_points"),
+                    sets_flag=choice_data.get("sets_flag"),
+                    requires_flag=choice_data.get("requires_flag"),
+                    reputation=choice_data.get("reputation")
                 ))
 
             scenes[scene_data["id"]] = Scene(

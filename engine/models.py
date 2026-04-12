@@ -8,6 +8,9 @@ class Choice:
     color: str = "primary" # primary, secondary, success, danger
     points_reward: int = 0
     required_points: Optional[int] = None
+    sets_flag: Optional[str] = None
+    requires_flag: Optional[str] = None
+    reputation: Optional[str] = None
 
 @dataclass
 class Scene:

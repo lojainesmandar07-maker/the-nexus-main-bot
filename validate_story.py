@@ -23,6 +23,8 @@ def validate(filepath: Path) -> bool:
             start_nodes.append(story_data["start_scene"])
         elif "perspectives" in story_data:
             start_nodes.extend([p["start_node"] for p in story_data["perspectives"]])
+        elif "perspective" in story_data:
+            start_nodes.append(story_data["perspective"]["start_node"])
         elif "start" in node_ids:
             start_nodes.append("start")
 
@@ -60,7 +62,7 @@ def validate(filepath: Path) -> bool:
              for s_data in category.get("stories", []):
                  if not check_story(s_data, cat_name, "single"):
                      all_valid = False
-    elif "id" in data and "perspectives" in data and "nodes" in data:
+    elif "id" in data and "nodes" in data and ("perspectives" in data or "perspective" in data):
          if not check_story(data, data.get("theme", "جرائم وتحقيقات"), "single"):
              all_valid = False
     else:

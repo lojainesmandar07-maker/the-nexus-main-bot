@@ -41,7 +41,7 @@ class StoryManager:
                     for s_data in category.get("stories", []):
                         self._parse_and_add_story(s_data, theme=cat_name, world_type=world_type)
             # Check if it's the new nested solo format
-            elif "id" in data and "perspectives" in data and "nodes" in data:
+            elif "id" in data and "nodes" in data and ("perspectives" in data or "perspective" in data):
                  self._parse_and_add_story(data, theme="قصص-فردية", world_type="solo")
             # Old format fallback
             else:
@@ -81,7 +81,10 @@ class StoryManager:
                         next_scene=next_scene,
                         color=choice_data.get("color", "primary"),
                         points_reward=choice_data.get("points_reward", 0),
-                        required_points=choice_data.get("required_points")
+                        required_points=choice_data.get("required_points"),
+                        sets_flag=choice_data.get("sets_flag"),
+                        requires_flag=choice_data.get("requires_flag"),
+                        reputation=choice_data.get("reputation")
                     ))
 
                 scenes[node_id] = Scene(
@@ -95,14 +98,24 @@ class StoryManager:
 
             # Extract perspectives if present
             perspectives = []
-            for p_data in data.get("perspectives", []):
-                 perspectives.append(Perspective(
+            if "perspectives" in data:
+                for p_data in data.get("perspectives", []):
+                     perspectives.append(Perspective(
+                         id=p_data.get("id", ""),
+                         label=p_data.get("label", ""),
+                         emoji=p_data.get("emoji", ""),
+                         description=p_data.get("description", ""),
+                         start_node=p_data.get("start_node", "")
+                     ))
+            elif "perspective" in data:
+                p_data = data["perspective"]
+                perspectives.append(Perspective(
                      id=p_data.get("id", ""),
                      label=p_data.get("label", ""),
                      emoji=p_data.get("emoji", ""),
                      description=p_data.get("description", ""),
                      start_node=p_data.get("start_node", "")
-                 ))
+                ))
 
             # Use 'id' from JSON, but ensure it's converted to an int hash if it's a string, or require int IDs.
             # Assuming prompt IDs might be strings like "story_001", we hash them or extract integers.
@@ -154,7 +167,10 @@ class StoryManager:
                     next_scene=choice_data["next_scene"],
                     color=choice_data.get("color", "primary"),
                     points_reward=choice_data.get("points_reward", 0),
-                    required_points=choice_data.get("required_points")
+                    required_points=choice_data.get("required_points"),
+                    sets_flag=choice_data.get("sets_flag"),
+                    requires_flag=choice_data.get("requires_flag"),
+                    reputation=choice_data.get("reputation")
                 ))
 
             scenes[scene_data["id"]] = Scene(

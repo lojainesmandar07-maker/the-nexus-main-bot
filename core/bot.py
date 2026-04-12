@@ -17,6 +17,10 @@ class StoryBot(commands.Bot):
         self.event_manager = EventManager(self, self.story_manager)
 
     async def setup_hook(self):
+        # Ensure daily pulse db is initialized before trying to read from it
+        from cogs.setup_cog import init_nexus_db
+        await init_nexus_db()
+
         # Re-register persistent views BEFORE loading cogs
         from ui.listing_view import SoloLibraryView, MultiLibraryView
         from ui.world_browser import (
@@ -40,6 +44,10 @@ class StoryBot(commands.Bot):
         self.add_view(MultiLibraryView({}, timeout=None))
         self.add_view(WorldSelectView())
         self.add_view(_PersistentItemView(BackToWorldsButton()))
+
+        from cogs.setup_cog import NexusSetupView, ChannelSetupView
+        self.add_view(NexusSetupView())
+        self.add_view(ChannelSetupView())
 
         # Register persistent world-browser components that use dynamic custom_ids.
         # We bind one lightweight view/item per known world/category/story so callbacks

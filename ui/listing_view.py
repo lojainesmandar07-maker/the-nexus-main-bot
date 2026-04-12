@@ -30,11 +30,21 @@ def _story_select_options(stories: List[Story], start_index: int, page_size: int
 class CategorySelect(discord.ui.Select):
     def __init__(self, parent_view: "BaseLibraryView"):
         self.parent_view = parent_view
+        # Slice to 25 to respect Discord limits
         options = [
             discord.SelectOption(label=category[:100], value=category, emoji="🗂️")
-            for category in parent_view.category_names
+            for category in parent_view.category_names[:25]
         ]
-        super().__init__(placeholder="1) اختر التصنيف", options=options, min_values=1, max_values=1)
+
+        # We assign a static custom_id so it persists. We differentiate by view type.
+        view_type = "solo" if isinstance(parent_view, SoloLibraryView) else "multi"
+        super().__init__(
+            placeholder="1) اختر التصنيف",
+            options=options,
+            min_values=1,
+            max_values=1,
+            custom_id=f"lib_cat_select_{view_type}"
+        )
 
     async def callback(self, interaction: discord.Interaction):
         self.parent_view.current_category = self.values[0]
@@ -50,12 +60,14 @@ class StorySelect(discord.ui.Select):
         start_index = parent_view.story_page * parent_view.page_size
         options = _story_select_options(stories, start_index, parent_view.page_size)
 
+        view_type = "solo" if isinstance(parent_view, SoloLibraryView) else "multi"
         super().__init__(
             placeholder="2) اختر القصة",
             options=options,
             min_values=1,
             max_values=1,
             disabled=not options,
+            custom_id=f"lib_story_select_{view_type}"
         )
 
     async def callback(self, interaction: discord.Interaction):

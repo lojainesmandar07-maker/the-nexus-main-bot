@@ -35,7 +35,7 @@ async def init_nexus_db():
 class SetupCog(commands.Cog):
     def __init__(self, bot: StoryBot):
         self.bot = bot
-        self.bot.loop.create_task(init_nexus_db())
+        # init_nexus_db is now awaited in setup_hook in bot.py
 
     @app_commands.command(name="إعداد_النيكسوس", description="لوحة تحكم الإدارة لتهيئة النظام (للمشرفين فقط)")
     @app_commands.default_permissions(manage_guild=True)

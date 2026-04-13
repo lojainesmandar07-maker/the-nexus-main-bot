@@ -38,8 +38,18 @@ Auto-organized index for planning and generation continuity.
 
 ### الفانتازيا المظلمة (World Stories - Batch 1)
 - ID `fb3_sentient_sword` | Series `1` | Scenes `66` | **النصل الحي** (`fb3_sentient_sword.json`)
+- ID `fb3_executioner` | Series `1` | Scenes `97` | **سيف العدالة الأعمى** (`fantasy_executioner.json`)
 - ID `fb1_mailman` | Series `1` | Scenes `23` | **ساعي البريد** (`fantasy_mailman.json`)
 - ID `fb1_usurper` | Series `1` | Scenes `15` | **سارق التاج** (`fantasy_usurper.json`)
 - ID `fb1_blade` | Series `1` | Scenes `15` | **النصل الملعون** (`fantasy_blade.json`)
 - ID `fb1_healer` | Series `1` | Scenes `16` | **المعالج** (`fantasy_healer.json`)
 - ID `fb1_dragon` | Series `1` | Scenes `16` | **التنين** (`fantasy_dragon.json`)
+- ID `fb3_sentient_sword` | Series `1` | Scenes `80` | **لعنة النصل النائم** (`fantasy_sentient_sword.json`)
+
+## Alt Reality (alternate)
+### الواقع يتكسر
+- ID `al_broken_mirrors` | Series `1` | Scenes `88` | **صدى المرايا المكسورة** (`al_broken_mirrors.json`)
+
+### جواسيس التاريخ
+- ID `p_shadow_spy` | Series `1` | Scenes `98` | **ظل القصر** (`past_shadow_spy.json`)
+- ID `fb3_sentient_sword` | Series `1` | Scenes `80` | **لعنة النصل النائم** (`fantasy_sentient_sword.json`)

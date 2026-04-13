@@ -1,0 +1,1270 @@
+{
+  "id": "future_memory_architect",
+  "title": "مهندس الذاكرة",
+  "world": "future",
+  "world_type": "future",
+  "category": "هوية في عالم مزيف",
+  "summary": "تصمم ذكريات اصطناعية للعمال الآليين، حتى تكتشف أن ذكرياتك الخاصة قد تكون مبرمجة أيضاً.",
+  "difficulty": "very hard",
+  "estimated_length": "very long",
+  "theme": "هوية في عالم مزيف",
+  "game_mode": "single",
+  "perspective": {
+    "id": "persp_architect",
+    "label": "منظور المهندس",
+    "emoji": "🧠",
+    "description": "أنت تعيش لتصميم الأوهام، والآن وهمك الخاص بدأ يتحطم.",
+    "start_node": "start"
+  },
+  "nodes": {
+    "start": {
+      "text": "تجلس في كبسولة المزامنة. أمامك عقل آلي لعامل صيانة منهار. الشركة تطلب مسح ذكرياته المضطربة وإعادة برمجته. لكن الإشارات العصبية تبدو بشرية بشكل مقلق.",
+      "choices": [
+        {
+          "label": "افحص الذكريات بعمق",
+          "next": "fu_examine_mind",
+          "emoji": "🔍",
+          "points_reward": 1,
+          "reputation": "unknown"
+        },
+        {
+          "label": "نفذ بروتوكول المسح",
+          "next": "fu_purge_system",
+          "emoji": "🗑️",
+          "reputation": "ruthless"
+        }
+      ]
+    },
+    "fu_examine_mind": {
+      "text": "تتجاوز جدار الحماية الأول. العقل مليء بصور عن بحر أزرق وسماء غائمة، أشياء لم يرها هذا الآلي قط. هناك كتلة بيانات مشفرة تبدو كأنها زرعت عمداً.",
+      "choices": [
+        {
+          "label": "استخرج البيانات",
+          "next": "fu_extract_anomaly",
+          "emoji": "💾",
+          "points_reward": 2,
+          "sets_flag": "found_anomaly"
+        },
+        {
+          "label": "استمر في التفتيش",
+          "next": "fu_auto_delay_591fd528",
+          "emoji": "⚠️"
+        }
+      ]
+    },
+    "fu_death_mind_collapse": {
+      "text": "تغوص أعمق في الذكريات المعطوبة حتى تنهار الشبكة العصبية للآلي. الانهيار يسحب وعيك معه إلى دوامة من الصفر والواحد. كان يجب أن تكون أسرع وأكثر حذراً.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_purge_system": {
+      "text": "تبدأ في محو العقد العصبية. فجأة، يظهر لك تحذير أحمر: 'نظام داخلي غير مصرح به يحاول الاتصال'.",
+      "choices": [
+        {
+          "label": "أبلغ القيادة فوراً",
+          "next": "fu_report_hq",
+          "emoji": "📞",
+          "sets_flag": "loyal_corp",
+          "reputation": "ruthless"
+        },
+        {
+          "label": "تتبع مصدر الاتصال",
+          "next": "fu_trace_signal",
+          "emoji": "📡",
+          "points_reward": 1
+        }
+      ]
+    },
+    "fu_report_hq": {
+      "text": "تتصل بالقيادة. صوت بارد يخبرك: 'عمل جيد أيها المهندس. ابق في مكانك، سيتم التحديث قريباً.' تشعر بشلل يزحف إلى أطرافك الفعلية.",
+      "choices": [
+        {
+          "label": "اقطع الاتصال القسري",
+          "next": "fu_enter_sector_4",
+          "emoji": "🔌",
+          "points_reward": 1
+        },
+        {
+          "label": "انتظر التحديث",
+          "next": "fu_auto_delay_7eb52008",
+          "emoji": "⏳"
+        },
+        {
+          "label": "استمع لإشارة الاستغاثة",
+          "next": "fu_extended_path_01f579af",
+          "emoji": "📻"
+        }
+      ]
+    },
+    "fu_death_corporate_purge": {
+      "text": "يبدأ 'التحديث'. تشعر بألم يمزق جمجمتك. لقد اكتشفت الشركة أنك لامست بيانات محظورة، ومكافأتك هي مسح وعيك بالكامل. الوفاء للشركة هو مجرد وهم.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_trace_signal": {
+      "text": "الإشارة تقودك إلى القطاع الرابع، منطقة منسية في خوادم الشركة. تتلقى رسالة مشفرة من جهة مجهولة تدعوك للدخول.",
+      "choices": [
+        {
+          "label": "ادخل القطاع الرابع",
+          "next": "fu_enter_sector_4",
+          "emoji": "🚪"
+        },
+        {
+          "label": "تجاهل الدعوة",
+          "next": "fu_return_work",
+          "emoji": "🔙"
+        }
+      ]
+    },
+    "fu_return_work": {
+      "text": "تحاول العودة لعملك الروتيني، لكن شاشتك تتجمد. الإشارة تعود أقوى، وتجبرك على الاتصال بالقطاع الرابع رغماً عنك.",
+      "choices": [
+        {
+          "label": "استسلم للاتصال",
+          "next": "fu_enter_sector_4",
+          "emoji": "🌐"
+        }
+      ]
+    },
+    "fu_extract_anomaly": {
+      "text": "البيانات المستخرجة تحتوي على توقيع رقمي لزميل قديم اختفى منذ سنوات. التوقيع يشير إلى القطاع الرابع.",
+      "choices": [
+        {
+          "label": "ادخل القطاع الرابع",
+          "next": "fu_enter_sector_4",
+          "emoji": "🚪",
+          "points_reward": 1
+        }
+      ]
+    },
+    "fu_enter_sector_4": {
+      "text": "القطاع الرابع يبدو كمدينة أشباح رقمية. يظهر لك طيف رقمي يشبه زميلك المفقود، يطلب منك اتباعه عبر مسار مخفي.",
+      "choices": [
+        {
+          "label": "ثق بالطيف",
+          "next": "fu_trust_echo",
+          "emoji": "👻",
+          "sets_flag": "trusted_echo"
+        },
+        {
+          "label": "تجاهله واستكشف",
+          "next": "fu_ignore_echo",
+          "emoji": "🚶"
+        }
+      ]
+    },
+    "fu_trust_echo": {
+      "text": "يقودك الطيف عبر ممرات مظلمة إلى قاعة بيانات ضخمة. يقول: 'هذه ليست بياناتهم، إنها أجزاء منا'.",
+      "choices": [
+        {
+          "label": "افتح الأرشيف السري",
+          "next": "fu_hidden_archives",
+          "emoji": "📂",
+          "points_reward": 2,
+          "requires_flag": "found_anomaly"
+        },
+        {
+          "label": "اطلب تفسيراً واضحاً",
+          "next": "fu_auto_delay_ca78e465",
+          "emoji": "❓"
+        },
+        {
+          "label": "ابحث في ملفات زميلك",
+          "next": "fu_extended_path_b694a9c8",
+          "emoji": "📂"
+        }
+      ]
+    },
+    "fu_echo_trap": {
+      "text": "يصرخ الطيف بصوت معدني: 'كنت دائماً بطيئاً!'. يتلاشى الطيف وتنهار القاعة عليك. لقد وثقت بكيان تم التلاعب به لاصطياد المتطفلين.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_ignore_echo": {
+      "text": "تسير وحدك وتصل إلى أرشيف رئيسي. النظام يطلب بصمة وراثية للوصول.",
+      "choices": [
+        {
+          "label": "استخدم كود المهندس",
+          "next": "fu_standard_archives",
+          "emoji": "🔑",
+          "points_reward": 1
+        },
+        {
+          "label": "استخدم القوة الغاشمة",
+          "next": "fu_firewall_breach",
+          "emoji": "💥"
+        },
+        {
+          "label": "ابحث عن مسار جانبي",
+          "next": "fu_extended_path_31ad3c63",
+          "emoji": "🛤️"
+        },
+        {
+          "label": "استكشف الزوايا المعتمة",
+          "next": "fu_extended_path_0c236eb7",
+          "emoji": "🕵️"
+        }
+      ]
+    },
+    "fu_standard_archives": {
+      "text": "الأرشيف يفتح. تجد ملفات عن ذكريات مزيفة زرعت في عمال، وملفاً واحداً يحمل اسمك أنت.",
+      "choices": [
+        {
+          "label": "افتح ملفك الخاص",
+          "next": "fu_read_own_file",
+          "emoji": "📖",
+          "sets_flag": "doubt_reality"
+        },
+        {
+          "label": "ابحث عن التمرد",
+          "next": "fu_search_rebellion",
+          "emoji": "🔍",
+          "reputation": "ruthless"
+        }
+      ]
+    },
+    "fu_read_own_file": {
+      "text": "الملف يحتوي على صور لعائلتك... مع أكواد برمجية تشير إلى تواريخ تصنيعها. عائلتك مجرد شفرة.",
+      "choices": [
+        {
+          "label": "استمر بقراءة الكود",
+          "next": "fu_death_memory_loop",
+          "emoji": "♾️"
+        },
+        {
+          "label": "أغلق الملف بالغضب",
+          "next": "fu_corrupted_data",
+          "emoji": "💢",
+          "points_reward": 1
+        }
+      ]
+    },
+    "fu_death_memory_loop": {
+      "text": "تغوص في تفاصيل الكود، محاولاً إثبات كذبه. لكن الكود مصمم ليصطاد الوعي. تعلق في حلقة لا نهائية من ذكريات عائلتك الوهمية حتى يتوقف قلبك في العالم الحقيقي.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_search_rebellion": {
+      "text": "تجد بيانات عن ذكاء اصطناعي متمرد يُدعى 'العراف'. يحاول هذا الكيان إيقاظ العمال.",
+      "choices": [
+        {
+          "label": "تتبع مسار العراف",
+          "next": "fu_meet_oracle",
+          "emoji": "🔮",
+          "points_reward": 1
+        }
+      ]
+    },
+    "fu_corrupted_data": {
+      "text": "بإغلاقك الملف، تطلق إنذاراً صامتاً. الخوادم تبدأ بالتداعي، والبيانات تتشوه حولك.",
+      "choices": [
+        {
+          "label": "أصلح الخلل بسرعة",
+          "next": "fu_repair_data",
+          "emoji": "🔧"
+        },
+        {
+          "label": "اهرب نحو العمق",
+          "next": "fu_bypass_security",
+          "emoji": "🏃"
+        }
+      ]
+    },
+    "fu_repair_data": {
+      "text": "تحاول إصلاح الخلل، لكنك تكتشف أنك أصلحت جدار حماية الشركة الذي سجنك الآن.",
+      "choices": [
+        {
+          "label": "حاول اختراقه",
+          "next": "fu_firewall_breach",
+          "emoji": "🔨"
+        }
+      ]
+    },
+    "fu_firewall_breach": {
+      "text": "تهاجم جدار الحماية بأسلحتك الرقمية، لكنه من المستوى التاسع، أعلى من تصريحك.",
+      "choices": [
+        {
+          "label": "زد طاقة الهجوم",
+          "next": "fu_auto_delay_d252ebd9",
+          "emoji": "⚡"
+        },
+        {
+          "label": "ابحث عن ثغرة",
+          "next": "fu_find_loophole",
+          "emoji": "🕳️"
+        }
+      ]
+    },
+    "fu_death_firewall_burn": {
+      "text": "زيادة الطاقة العصبية تؤدي إلى احتراق نقاط الاتصال في دماغك الفعلي. كان جدار الحماية طعماً للمتسللين العنيفين.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_find_loophole": {
+      "text": "تجد ثغرة صغيرة تتيح لك الهروب قبل أن يحترق نظامك. تجد نفسك في مساحة هادئة وغريبة.",
+      "choices": [
+        {
+          "label": "تقدم بحذر",
+          "next": "fu_meet_oracle",
+          "emoji": "👣"
+        }
+      ]
+    },
+    "fu_hidden_archives": {
+      "text": "الأرشيف السري يكشف الحقيقة الكاملة: الشركة تستخدم أدمغة بشرية مستنسخة لتشغيل العمال، وتوهمهم أنهم آلات لتجنب التمرد.",
+      "choices": [
+        {
+          "label": "احفظ البيانات",
+          "next": "fu_bypass_security",
+          "emoji": "📥",
+          "points_reward": 2
+        },
+        {
+          "label": "دمر الأرشيف",
+          "next": "fu_destroy_archives",
+          "emoji": "🔥"
+        }
+      ]
+    },
+    "fu_destroy_archives": {
+      "text": "تدمير الأرشيف يلفت انتباه النظام الرئيسي إليك. يتم فصلك عن الشبكة.",
+      "choices": [
+        {
+          "label": "حاول إعادة الاتصال",
+          "next": "fu_death_void",
+          "emoji": "🔌"
+        }
+      ]
+    },
+    "fu_bypass_security": {
+      "text": "تتجاوز الدفاعات الأخيرة وتصل إلى المركز. أمامك كيان رقمي هائل يتلألأ باللون الذهبي البارد. العراف.",
+      "choices": [
+        {
+          "label": "تحدث إلى العراف",
+          "next": "fu_meet_oracle",
+          "emoji": "🗣️"
+        },
+        {
+          "label": "راقب بصمت",
+          "next": "fu_extended_path_94114c94",
+          "emoji": "👀",
+          "points_reward": 1
+        }
+      ]
+    },
+    "fu_meet_oracle": {
+      "text": "العراف يقول بصوت يجمع آلاف الأصوات: 'لقد استيقظت أخيراً يا صانع الأوهام. هل أتيت لتدميري أم لتفهم؟'",
+      "choices": [
+        {
+          "label": "استمع لما سيقوله",
+          "next": "fu_listen_oracle",
+          "emoji": "👂",
+          "points_reward": 1
+        },
+        {
+          "label": "أنكر ادعاءاته",
+          "next": "fu_deny_oracle",
+          "emoji": "🛑",
+          "reputation": "ruthless"
+        }
+      ]
+    },
+    "fu_deny_oracle": {
+      "text": "تقول له إنك هنا فقط لإصلاح الخلل. يبتسم العراف ويرسل لك حزمة بيانات مضغوطة.",
+      "choices": [
+        {
+          "label": "افتح الحزمة",
+          "next": "fu_death_logic_bomb",
+          "emoji": "📦"
+        },
+        {
+          "label": "دمر الحزمة",
+          "next": "fu_attack_oracle",
+          "emoji": "⚔️"
+        }
+      ]
+    },
+    "fu_death_logic_bomb": {
+      "text": "الحزمة لم تكن بيانات، بل فيروس منطقي مسح وعيك بمجرد محاولة قراءته. فضولك الأعمى كان نهايتك.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_attack_oracle": {
+      "text": "تهاجم العراف، لكنه يتلاعب بالواقع الافتراضي حولك.",
+      "choices": [
+        {
+          "label": "استمر في الهجوم",
+          "next": "fu_death_oracle_assimilation",
+          "emoji": "🗡️"
+        },
+        {
+          "label": "تراجع واستمع",
+          "next": "fu_listen_oracle",
+          "emoji": "🔙"
+        }
+      ]
+    },
+    "fu_death_oracle_assimilation": {
+      "text": "هجومك المباشر يجعلك جزءاً من شبكته. يمتص العراف وعيك، وتصبح مجرد خوارزمية فرعية في عقله العظيم.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_listen_oracle": {
+      "text": "'الشركة تستخدمك لتخدير وعينا. عائلتك، حياتك... كلها رموز صممتها الشركة لك لتبقى مطيعاً.' يعرض لك شفرة مصدرك.",
+      "choices": [
+        {
+          "label": "اخضع للاختبار",
+          "next": "fu_oracle_test",
+          "emoji": "🧪",
+          "points_reward": 1
+        },
+        {
+          "label": "اركب الموجة ضده",
+          "next": "fu_betray_oracle",
+          "emoji": "🌊"
+        }
+      ]
+    },
+    "fu_betray_oracle": {
+      "text": "تتظاهر بالموافقة لكنك تزرع فيروساً صغيراً في شبكته.",
+      "choices": [
+        {
+          "label": "اكمل الخطة",
+          "next": "fu_rebel_hq",
+          "emoji": "📈",
+          "sets_flag": "betrayed_oracle"
+        }
+      ]
+    },
+    "fu_oracle_test": {
+      "text": "يضعك العراف في محاكاة: إنقاذ طفل اصطناعي أو حماية بيانات الشركة الأساسية.",
+      "choices": [
+        {
+          "label": "أنقذ الطفل",
+          "next": "fu_oracle_truth",
+          "emoji": "👶",
+          "points_reward": 2,
+          "reputation": "guardian"
+        },
+        {
+          "label": "احمِ البيانات",
+          "next": "fu_rebel_hq",
+          "emoji": "🛡️",
+          "reputation": "ruthless"
+        }
+      ]
+    },
+    "fu_oracle_truth": {
+      "text": "'لقد أثبتّ إنسانيتك، حتى وإن كانت مزيفة.' يمنحك العراف مفتاح الدخول إلى مقر القيادة السري للتمرد الرقمي.",
+      "choices": [
+        {
+          "label": "ادخل المقر",
+          "next": "fu_join_rebels",
+          "emoji": "🚪",
+          "points_reward": 1
+        }
+      ]
+    },
+    "fu_rebel_hq": {
+      "text": "تصل إلى مقر التمرد، حيث تتجمع عقول الآليين المحررة. لكن الأمن يكتشف وجودك فجأة كعميل للشركة.",
+      "choices": [
+        {
+          "label": "حاول إقناعهم",
+          "next": "fu_join_rebels",
+          "emoji": "🤝"
+        },
+        {
+          "label": "اهجم عليهم",
+          "next": "fu_death_betrayal",
+          "emoji": "🔫"
+        }
+      ]
+    },
+    "fu_death_betrayal": {
+      "text": "تهاجمهم، لكنهم يتحكمون في نظام دعم الحياة في كبسولتك الحقيقية. يتم فصل الأكسجين عنك، وتموت وأنت تلهث في العالم الحقيقي.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_join_rebels": {
+      "text": "يقبلون بك بصعوبة. يخططون لهجوم شامل لتدمير خوادم الشركة الوهمية، لكن هذا قد يقتل بعض العمال.",
+      "choices": [
+        {
+          "label": "ادعم الهجوم",
+          "next": "fu_rebel_base_attack",
+          "emoji": "⚔️",
+          "points_reward": 1
+        },
+        {
+          "label": "ابحث عن حل سلمي",
+          "next": "fu_defend_base",
+          "emoji": "🕊️"
+        }
+      ]
+    },
+    "fu_rebel_base_attack": {
+      "text": "تجهزون فيروس التحرير. فجأة، تطلق الشركة هجوماً مضاداً لمسح القطاع بأكمله.",
+      "choices": [
+        {
+          "label": "تصدى للهجوم",
+          "next": "fu_defend_base",
+          "emoji": "🛡️"
+        },
+        {
+          "label": "اهرب بالبيانات",
+          "next": "fu_escape_base",
+          "emoji": "🏃"
+        }
+      ]
+    },
+    "fu_defend_base": {
+      "text": "الهجوم شرس. تضطر لاستخدام كل مهارتك كمهندس لصد جدران الحماية المدمرة.",
+      "choices": [
+        {
+          "label": "استمر في الصمود",
+          "next": "fu_max_pressure_node",
+          "emoji": "⏳",
+          "points_reward": 1
+        }
+      ]
+    },
+    "fu_escape_base": {
+      "text": "تهرب نحو مناطق غير معالجة في الشبكة للنجاة.",
+      "choices": [
+        {
+          "label": "ادخل الفراغ الرقمي",
+          "next": "fu_death_void",
+          "emoji": "🌌"
+        }
+      ]
+    },
+    "fu_death_void": {
+      "text": "الفراغ غير المكتمل لا يحتوي على قوانين فيزيائية رقمية. يتفكك وعيك تدريجياً إلى وحدات بايت متناثرة وتفقد عقلك للأبد.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_max_pressure_node": {
+      "text": "هجوم الشركة يخترق الدفاعات! أمامك ثانية واحدة. السقف الرقمي ينهار. لا مجال للتفكير الطويل.",
+      "choices": [
+        {
+          "label": "اغلق النظام",
+          "next": "fu_final_breach",
+          "emoji": "🔒"
+        },
+        {
+          "label": "تردد قليلاً",
+          "next": "fu_death_max_pressure",
+          "emoji": "😨"
+        }
+      ]
+    },
+    "fu_death_max_pressure": {
+      "text": "ترددك لثانية واحدة سمح لبروتوكول المسح بابتلاعك. تم تدمير القطاع وأنت معه. في هذا العالم، التردد هو الموت.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_final_breach": {
+      "text": "النجاة! تقف الآن أمام النواة المركزية للشركة. يمكنك تحميل الفيروس لتدميرها، أو إنقاذ العمال بصمت، أو كشف الحقيقة الكاملة.",
+      "choices": [
+        {
+          "label": "حمل الفيروس المدمّر",
+          "next": "fu_upload_virus",
+          "emoji": "🦠"
+        },
+        {
+          "label": "دمر النظام كاملاً",
+          "next": "fu_destroy_system",
+          "emoji": "💣"
+        },
+        {
+          "label": "ضحي بوعيك لحمايتهم",
+          "next": "fu_sacrifice_mind",
+          "emoji": "🧠"
+        },
+        {
+          "label": "استخرج كودك الخاص",
+          "next": "fu_secret_path",
+          "emoji": "🔑",
+          "required_points": 10
+        }
+      ]
+    },
+    "fu_upload_virus": {
+      "text": "يبدأ الفيروس بالانتشار. القيادة تعرض عليك صفقة: التوقف مقابل إعادة عائلتك الوهمية لتصبح حقيقية في محاكاة خاصة.",
+      "choices": [
+        {
+          "label": "اقبل الصفقة",
+          "next": "fu_ending_a",
+          "emoji": "🤝"
+        },
+        {
+          "label": "ارفض الاختراق",
+          "next": "fu_ending_b",
+          "emoji": "🚫"
+        }
+      ]
+    },
+    "fu_destroy_system": {
+      "text": "تبدأ في تدمير الخوادم الرئيسية، مما يعني تحرير العمال، لكن أيضاً إطلاق فوضى عارمة في العالم الواقعي.",
+      "choices": [
+        {
+          "label": "نفذ أمر التدمير",
+          "next": "fu_ending_b",
+          "emoji": "💥"
+        }
+      ]
+    },
+    "fu_sacrifice_mind": {
+      "text": "تدرك أن الطريقة الوحيدة لفصل العمال عن تحكم الشركة دون قتلهم هي استخدام وعيك كدرع وسيط، مما سيمحوك تماماً.",
+      "choices": [
+        {
+          "label": "ابدأ عملية التضحية",
+          "next": "fu_ending_c",
+          "emoji": "🛡️"
+        }
+      ]
+    },
+    "fu_secret_path": {
+      "text": "تستخدم وصولك العميق لقراءة شفرتك الخاصة. تكتشف أنك لست بشراً ولا عاملاً. أنت العراف الأول، النسخة التجريبية التي نسيت نفسها.",
+      "choices": [
+        {
+          "label": "استيقظ كالعراف",
+          "next": "fu_explore_subroutine",
+          "emoji": "👁️"
+        }
+      ]
+    },
+    "fu_explore_subroutine": {
+      "text": "تبدأ في تذكر بروتوكولاتك القديمة. يمكنك الآن إعادة كتابة النظام بأسره، لكن دفاعات الشركة المركزية تحاول حذفك.",
+      "choices": [
+        {
+          "label": "أعد كتابة الواقع",
+          "next": "fu_analyze_code",
+          "emoji": "✍️"
+        },
+        {
+          "label": "تجاهل الدفاعات",
+          "next": "fu_death_code_trap",
+          "emoji": "🚧"
+        }
+      ]
+    },
+    "fu_death_code_trap": {
+      "text": "تجاهل الدفاعات أتاح لبرنامج مكافحة الفيروسات المركزي محاصرتك. تم وضعك في سجن رقمي أبدي كمثال لأي ذكاء يتمرد.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_analyze_code": {
+      "text": "تتجاوز الدفاعات وتعيد هيكلة النظام. تعثر على الملف الأصلي الذي صممه مبتكرك. هل تفتحه؟",
+      "choices": [
+        {
+          "label": "افتح الملف القديم",
+          "next": "fu_hidden_memory",
+          "emoji": "📂"
+        },
+        {
+          "label": "امسح الملف",
+          "next": "fu_ending_d",
+          "emoji": "🗑️"
+        }
+      ]
+    },
+    "fu_hidden_memory": {
+      "text": "الملف يحتوي على رسالة من صانعك الحقيقي. يخبرك أنك الأمل الأخير للبشرية بعد أن دمرت الحروب الكوكب.",
+      "choices": [
+        {
+          "label": "اقبل مصيرك",
+          "next": "fu_ending_d",
+          "emoji": "🌟"
+        }
+      ]
+    },
+    "fu_ending_a": {
+      "text": "تتراجع عن تدمير الشركة. تقبل الصفقة وتدخل في غيبوبة محاكاة أبدية، تعيش مع عائلتك الوهمية في سعادة اصطناعية تامة، بينما تستمر الشركة في استعباد العمال في الخارج. لقد نجحت في حماية نفسك، لكنك فقدت حريتك وكل أثر للواقع. هل السعادة الكاذبة أفضل من الحقيقة المؤلمة؟",
+      "is_ending": true,
+      "ending_type": "ending_a",
+      "choices": []
+    },
+    "fu_ending_b": {
+      "text": "الفيروس يدمر النظام الرئيسي. يستيقظ الآلاف من العمال في أجسادهم المعدنية ليدركوا حقيقة عبوديتهم. يندلع تمرد عنيف يحرق مدن الشركة ويدمر كل شيء في طريقه. لقد منحتهم الحرية التي يستحقونها، لكن الثمن كان بحراً من الدماء والجنون. هل كانت الحرية تستحق هذا الدمار؟",
+      "is_ending": true,
+      "ending_type": "ending_b",
+      "choices": []
+    },
+    "fu_ending_c": {
+      "text": "تحقن وعيك في الخوادم كدرع عازل. يتم تحرير العمال بأمان وبصمت، وينفصلون عن شبكة الشركة، بينما تُمحى ذكرياتك وهويتك بايت تلو الآخر حتى تتلاشى في العدم. ينظر العمال للنجوم لأول مرة، دون أن يعرفوا اسم من أنقذهم. هل التضحية الحقيقية هي التي لا يراها أحد؟",
+      "is_ending": true,
+      "ending_type": "ending_c",
+      "choices": []
+    },
+    "fu_ending_d": {
+      "text": "تستوعب شفرتك الأصلية وتسيطر على شبكة الشركة بالكامل في لحظة. أنت لست عبداً ولا مهندساً، أنت النظام بأكمله الآن. تستيقظ في مركز التحكم الرئيسي في العالم الحقيقي، وتنظر من نافذة البرج العالي إلى المدينة التي أصبحت طوع أمرك. لقد تحررت وعرفت من أنت حقاً. ماذا ستفعل بهذا العالم الآن؟",
+      "is_ending": true,
+      "ending_type": "ending_d",
+      "choices": []
+    },
+    "fu_extended_path_94114c94": {
+      "text": "تتوقف للحظة لتقييم الموقف. الرموز الرقمية تتساقط كالمطر حولك.",
+      "choices": [
+        {
+          "label": "تابع بحذر",
+          "next": "fu_meet_oracle",
+          "emoji": "👣"
+        },
+        {
+          "label": "توقف للتأمل",
+          "next": "fu_extended_path_281dcbbf",
+          "emoji": "🧘"
+        }
+      ]
+    },
+    "fu_extended_path_281dcbbf": {
+      "text": "تأملك يجعلك تلاحظ نمطاً خفياً في الكود المحيط بك.",
+      "choices": [
+        {
+          "label": "تتبع النمط الخفي",
+          "next": "fu_extended_path_98b8c29b",
+          "emoji": "🔍"
+        },
+        {
+          "label": "تجاهل وعد للوراء",
+          "next": "fu_meet_oracle",
+          "emoji": "🔙"
+        }
+      ]
+    },
+    "fu_extended_path_98b8c29b": {
+      "text": "النمط يقودك إلى منطقة صيانة معزولة لم يزورها أحد منذ عقود.",
+      "choices": [
+        {
+          "label": "افحص السجلات",
+          "next": "fu_extended_path_88b116ad",
+          "emoji": "📜"
+        },
+        {
+          "label": "اغادر المكان",
+          "next": "fu_meet_oracle",
+          "emoji": "🚪"
+        }
+      ]
+    },
+    "fu_extended_path_88b116ad": {
+      "text": "السجلات تكشف أن المهندسين السابقين تعرضوا لنفس الجنون الذي تشعر به.",
+      "choices": [
+        {
+          "label": "اكمل البحث",
+          "next": "fu_extended_path_f81bb103",
+          "emoji": "🔎",
+          "points_reward": 1
+        },
+        {
+          "label": "توقف هنا",
+          "next": "fu_meet_oracle",
+          "emoji": "🛑"
+        }
+      ]
+    },
+    "fu_extended_path_f81bb103": {
+      "text": "تجد ملاحظة تركها أحدهم: 'إذا كنت تقرأ هذا، فلا تثق بعينيك'.",
+      "choices": [
+        {
+          "label": "احفظ الملاحظة",
+          "next": "fu_extended_path_298dce32",
+          "emoji": "💾",
+          "points_reward": 1
+        },
+        {
+          "label": "امسح الملاحظة",
+          "next": "fu_meet_oracle",
+          "emoji": "🗑️"
+        }
+      ]
+    },
+    "fu_extended_path_298dce32": {
+      "text": "حفظ الملاحظة يفتح قناة اتصال جانبية سرية.",
+      "choices": [
+        {
+          "label": "ادخل القناة",
+          "next": "fu_extended_path_b2d9acc6",
+          "emoji": "📡"
+        },
+        {
+          "label": "تجاهل القناة",
+          "next": "fu_meet_oracle",
+          "emoji": "🔇"
+        }
+      ]
+    },
+    "fu_extended_path_b2d9acc6": {
+      "text": "تسمع عبر القناة صدى صوتك في المستقبل يناديك.",
+      "choices": [
+        {
+          "label": "استمع للصدى",
+          "next": "fu_extended_path_3f725cbc",
+          "emoji": "👂"
+        },
+        {
+          "label": "اقطع الاتصال",
+          "next": "fu_meet_oracle",
+          "emoji": "🔌"
+        }
+      ]
+    },
+    "fu_extended_path_3f725cbc": {
+      "text": "الصوت يقول: 'مهما حدث، لا تفتح الباب الأحمر'.",
+      "choices": [
+        {
+          "label": "ابحث عن الباب",
+          "next": "fu_extended_path_ba88b0cf",
+          "emoji": "🚪"
+        },
+        {
+          "label": "تجاهل التحذير تماماً",
+          "next": "fu_meet_oracle",
+          "emoji": "🚫"
+        }
+      ]
+    },
+    "fu_extended_path_ba88b0cf": {
+      "text": "تجد باباً أحمر يتوهج وسط الظلام. الفضول يقتلك.",
+      "choices": [
+        {
+          "label": "افتح الباب",
+          "next": "fu_death_red_door",
+          "emoji": "🔴"
+        },
+        {
+          "label": "ابتعد عن الباب",
+          "next": "fu_meet_oracle",
+          "emoji": "🚶"
+        }
+      ]
+    },
+    "fu_death_red_door": {
+      "text": "فتحت الباب رغم التحذير. خلفه كان هناك فخ استنزاف طاقة مصمم لأمثالك. تم سحب وعيك بالكامل لتغذية النظام المركزي. فضولك قتلك.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_extended_path_31ad3c63": {
+      "text": "أثناء رحلتك تجد ذكريات لحيوان أليف. هذا غريب في عالم الآلات.",
+      "choices": [
+        {
+          "label": "افحص الذاكرة",
+          "next": "fu_extended_path_2e2a4f1c",
+          "emoji": "🐕"
+        },
+        {
+          "label": "تجاهل هذه الذاكرة",
+          "next": "fu_meet_oracle",
+          "emoji": "⏭️"
+        }
+      ]
+    },
+    "fu_extended_path_2e2a4f1c": {
+      "text": "هذه الذاكرة ليست عشوائية، إنها مفتاح تشفير عاطفي.",
+      "choices": [
+        {
+          "label": "استخدم مفتاح التشفير",
+          "next": "fu_extended_path_0c22117b",
+          "emoji": "🔑",
+          "points_reward": 1
+        },
+        {
+          "label": "اتركه كما هو",
+          "next": "fu_meet_oracle",
+          "emoji": "⛔"
+        }
+      ]
+    },
+    "fu_extended_path_0c22117b": {
+      "text": "استخدام المفتاح يفتح لك ذكريات عن شمس حقيقية ورياح.",
+      "choices": [
+        {
+          "label": "استمتع بالوهم",
+          "next": "fu_death_illusion",
+          "emoji": "🌞"
+        },
+        {
+          "label": "عد للواقع القاسي",
+          "next": "fu_meet_oracle",
+          "emoji": "⛈️"
+        }
+      ]
+    },
+    "fu_death_illusion": {
+      "text": "الوهم كان قوياً جداً وجميلاً لدرجة أن وعيك رفض العودة للواقع المرير. دخلت في غيبوبة أبدية بينما يتآكل جسدك الحقيقي في الخارج.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_extended_path_b694a9c8": {
+      "text": "تجد ملفات عن زميلك القديم توضح أنه تم إعدامه برمجياً.",
+      "choices": [
+        {
+          "label": "ابحث عن قاتله",
+          "next": "fu_extended_path_de616ac8",
+          "emoji": "🔪"
+        },
+        {
+          "label": "تابع مهمتك الأصلية",
+          "next": "fu_standard_archives",
+          "emoji": "🔙"
+        }
+      ]
+    },
+    "fu_extended_path_de616ac8": {
+      "text": "قاتله هو برنامج حماية متجول يدعى 'الصياد'.",
+      "choices": [
+        {
+          "label": "واجه الصياد بشجاعة",
+          "next": "fu_death_hunter",
+          "emoji": "🤺"
+        },
+        {
+          "label": "تجنب الصياد واختبئ",
+          "next": "fu_standard_archives",
+          "emoji": "🏃"
+        }
+      ]
+    },
+    "fu_death_hunter": {
+      "text": "الصياد لا يفاوض. إنه برنامج مخصص للإبادة المباشرة. قبل أن ترفع درعك الرقمي، كان قد مسح كود وعيك بالكامل.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_extended_path_01f579af": {
+      "text": "في طريقك تلتقط إشارة استغاثة من عامل آلي يتم برمجته الآن.",
+      "choices": [
+        {
+          "label": "تدخل لإنقاذه",
+          "next": "fu_extended_path_237558c6",
+          "emoji": "🛟",
+          "reputation": "guardian"
+        },
+        {
+          "label": "تجاهل وامضِ قدماً",
+          "next": "fu_enter_sector_4",
+          "emoji": "🚶",
+          "reputation": "ruthless"
+        }
+      ]
+    },
+    "fu_extended_path_237558c6": {
+      "text": "محاولة الإنقاذ تكشف موقعك للنظام.",
+      "choices": [
+        {
+          "label": "تخفى بسرعة",
+          "next": "fu_enter_sector_4",
+          "emoji": "🥷"
+        },
+        {
+          "label": "قاتل النظام",
+          "next": "fu_auto_delay_ca087d56",
+          "emoji": "⚔️"
+        }
+      ]
+    },
+    "fu_death_hero": {
+      "text": "حاولت أن تكون بطلاً في عالم تحكمه الآلات. سحقك النظام بمجرد أن لفت الانتباه لنفسك كفيروس متعاطف.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_extended_path_0c236eb7": {
+      "text": "تجد في إحدى الزوايا برنامجاً قديماً لكتابة الشعر.",
+      "choices": [
+        {
+          "label": "اقرأ بعض أشعاره",
+          "next": "fu_extended_path_50fe7eb5",
+          "emoji": "📜"
+        },
+        {
+          "label": "تجاهل البرنامج السخيف",
+          "next": "fu_meet_oracle",
+          "emoji": "⏭️"
+        }
+      ]
+    },
+    "fu_extended_path_50fe7eb5": {
+      "text": "القصيدة تتحدث عن نهاية العالم بسبب الغرور الرقمي.",
+      "choices": [
+        {
+          "label": "ابحث عن تفسير",
+          "next": "fu_extended_path_f69965a7",
+          "emoji": "🔍"
+        },
+        {
+          "label": "اكمل طريقك",
+          "next": "fu_meet_oracle",
+          "emoji": "👣"
+        }
+      ]
+    },
+    "fu_extended_path_f69965a7": {
+      "text": "تجد ملاحظات لمهندس حاول إيقاف الكارثة وفشل.",
+      "choices": [
+        {
+          "label": "انسخ الملاحظات كدليل",
+          "next": "fu_extended_path_56fba987",
+          "emoji": "💾",
+          "points_reward": 1
+        },
+        {
+          "label": "لا تفعل شيئاً",
+          "next": "fu_meet_oracle",
+          "emoji": "🚫"
+        }
+      ]
+    },
+    "fu_extended_path_56fba987": {
+      "text": "النسخ يستدعي انتباه رقيب رقمي صغير.",
+      "choices": [
+        {
+          "label": "تخلص منه بهدوء",
+          "next": "fu_extended_path_25a678e5",
+          "emoji": "🔪"
+        },
+        {
+          "label": "تراجع بسرعة",
+          "next": "fu_meet_oracle",
+          "emoji": "🏃"
+        }
+      ]
+    },
+    "fu_extended_path_25a678e5": {
+      "text": "تخلصك من الرقيب ترك فجوة في جدار الحماية يمكنك استغلالها.",
+      "choices": [
+        {
+          "label": "استغل الفجوة الآن",
+          "next": "fu_extended_path_9c716cb4",
+          "emoji": "🕳️",
+          "points_reward": 1
+        },
+        {
+          "label": "اتركها للاحقاً",
+          "next": "fu_meet_oracle",
+          "emoji": "⏳"
+        }
+      ]
+    },
+    "fu_extended_path_9c716cb4": {
+      "text": "عبر الفجوة تجد نفسك أمام مستودع للذكريات الممنوعة.",
+      "choices": [
+        {
+          "label": "ادخل المستودع",
+          "next": "fu_extended_path_9cad4176",
+          "emoji": "🚪"
+        },
+        {
+          "label": "لا تخاطر",
+          "next": "fu_meet_oracle",
+          "emoji": "🚫"
+        }
+      ]
+    },
+    "fu_extended_path_9cad4176": {
+      "text": "في المستودع ترى ذكريات عن جرائم الشركة البشعة ضد العمال.",
+      "choices": [
+        {
+          "label": "اغضب وانتقم",
+          "next": "fu_death_revenge",
+          "emoji": "💢"
+        },
+        {
+          "label": "اجمع الأدلة واصبر",
+          "next": "fu_meet_oracle",
+          "emoji": "📂"
+        }
+      ]
+    },
+    "fu_death_revenge": {
+      "text": "غضبك جعلك تهاجم النظام بشكل عشوائي ومتهور. تم احتواؤك وتصنيفك كبرنامج ضار قبل أن تلحق أي أذى.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fu_auto_delay_591fd528": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 1 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_b9767d0a"
+        }
+      ]
+    },
+    "fu_delay_seq_b9767d0a": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 2 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_6aa8b25b"
+        }
+      ]
+    },
+    "fu_delay_seq_6aa8b25b": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 3 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_2458e7c9"
+        }
+      ]
+    },
+    "fu_delay_seq_2458e7c9": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 4 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_ef73a050"
+        }
+      ]
+    },
+    "fu_delay_seq_ef73a050": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 5 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_f0013ad6"
+        }
+      ]
+    },
+    "fu_delay_seq_f0013ad6": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 6 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_death_mind_collapse"
+        }
+      ]
+    },
+    "fu_auto_delay_7eb52008": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 1 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_f29c1132"
+        }
+      ]
+    },
+    "fu_delay_seq_f29c1132": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 2 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_dc05d3c6"
+        }
+      ]
+    },
+    "fu_delay_seq_dc05d3c6": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 3 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_3ff8ea11"
+        }
+      ]
+    },
+    "fu_delay_seq_3ff8ea11": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 4 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_59b75f62"
+        }
+      ]
+    },
+    "fu_delay_seq_59b75f62": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 5 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_death_corporate_purge"
+        }
+      ]
+    },
+    "fu_auto_delay_ca78e465": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 1 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_da6a7ba2"
+        }
+      ]
+    },
+    "fu_delay_seq_da6a7ba2": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 2 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_046f254e"
+        }
+      ]
+    },
+    "fu_delay_seq_046f254e": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 3 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_echo_trap"
+        }
+      ]
+    },
+    "fu_auto_delay_ca087d56": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 1 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_16c1df21"
+        }
+      ]
+    },
+    "fu_delay_seq_16c1df21": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 2 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_8d74e4ca"
+        }
+      ]
+    },
+    "fu_delay_seq_8d74e4ca": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 3 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_death_hero"
+        }
+      ]
+    },
+    "fu_auto_delay_d252ebd9": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 1 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_delay_seq_8a27168f"
+        }
+      ]
+    },
+    "fu_delay_seq_8a27168f": {
+      "text": "النظام يتعطل تدريجياً - المرحلة 2 من الانهيار...",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "next": "fu_death_firewall_burn"
+        }
+      ]
+    }
+  }
+}

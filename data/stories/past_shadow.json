@@ -862,7 +862,7 @@
           "label": "ابتزه إذا كنت تملك الدليل",
           "emoji": "📜",
           "next": "blackmail_minister",
-          "required_points": 10
+          "required_points": 5
         },
         {
           "label": "دافع عن نفسك واقتله",

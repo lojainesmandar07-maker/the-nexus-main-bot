@@ -70,7 +70,7 @@
                 {
                     "label": "تحمل الألم وأكمل",
                     "emoji": "😬",
-                    "next": "death_neural_fry",
+                    "next": "fall_unconscious",
                     "points_reward": 0,
                     "color": "primary"
                 },
@@ -78,18 +78,6 @@
                     "label": "افصل الاتصال فوراً",
                     "emoji": "❌",
                     "next": "disconnect_early",
-                    "points_reward": 0,
-                    "color": "primary"
-                }
-            ]
-        },
-        "death_neural_fry": {
-            "text": "البيانات ضخمة جداً. تشعر وكأن دماغك يحترق، لكن بدلاً من الموت، تفقد وعيك وتستيقظ في مكان مظلم.",
-            "choices": [
-                {
-                    "label": "افتح عينيك بصعوبة",
-                    "emoji": "👁️",
-                    "next": "wake_up_in_dumpster",
                     "points_reward": 0,
                     "color": "primary"
                 }
@@ -1036,7 +1024,7 @@
                 {
                     "label": "حاول طعنه",
                     "emoji": "🔪",
-                    "next": "death_hound_execution",
+                    "next": "hound_melee_struggle",
                     "points_reward": 0,
                     "color": "danger"
                 }
@@ -1089,6 +1077,37 @@
                     "next": "safe_house",
                     "points_reward": 0,
                     "color": "primary"
+                }
+            ]
+        },
+        "fall_unconscious": {
+            "text": "البيانات ضخمة جداً. تشعر وكأن دماغك يحترق، لكن بدلاً من الموت، تفقد وعيك وتستيقظ في مكان مظلم.",
+            "choices": [
+                {
+                    "label": "افتح عينيك بصعوبة",
+                    "emoji": "👁️",
+                    "next": "wake_up_in_dumpster",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "hound_melee_struggle": {
+            "text": "تشتبك معه في قتال يدوي. يمسك بمعصمك بقوة هائلة، محاولاً كسر ذراعك وتوجيه نصله نحوك.",
+            "choices": [
+                {
+                    "label": "قاوم بكل قوتك",
+                    "emoji": "💪",
+                    "next": "death_hound_execution",
+                    "points_reward": 0,
+                    "color": "danger"
+                },
+                {
+                    "label": "استسلم للضربة",
+                    "emoji": "💀",
+                    "next": "death_hound_execution",
+                    "points_reward": 0,
+                    "color": "danger"
                 }
             ]
         }

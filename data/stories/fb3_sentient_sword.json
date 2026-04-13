@@ -35,7 +35,6 @@
                     "next": "dungeon_cell",
                     "points_reward": 1,
                     "color": "primary",
-                    "sets_flag": "mercy",
                     "reputation": "guardian"
                 }
             ],
@@ -50,7 +49,6 @@
                     "next": "dungeon_guard_sleep",
                     "points_reward": 2,
                     "color": "danger",
-                    "requires_flag": "bloodlust",
                     "reputation": "ruthless"
                 },
                 {
@@ -80,7 +78,8 @@
                     "emoji": "💀",
                     "next": "death_starved",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -115,7 +114,8 @@
                     "emoji": "🧠",
                     "next": "death_shattered_mind",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 },
                 {
                     "label": "وجه ضربته القاضية",
@@ -136,7 +136,8 @@
                     "emoji": "🚶",
                     "next": "dungeon_corridor",
                     "color": "secondary",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -150,7 +151,6 @@
                     "next": "dungeon_stairs",
                     "points_reward": 2,
                     "color": "danger",
-                    "sets_flag": "jealousy",
                     "reputation": "ruthless"
                 },
                 {
@@ -222,9 +222,10 @@
                 {
                     "label": "دمره بنصلك",
                     "emoji": "⚔️",
-                    "next": "death_rust_trap",
+                    "next": "dungeon_stone_trap",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -237,7 +238,8 @@
                     "emoji": "🏃",
                     "next": "dungeon_stairs",
                     "color": "secondary",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -294,7 +296,8 @@
                     "emoji": "🪟",
                     "next": "death_abandoned",
                     "color": "danger",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 },
                 {
                     "label": "اختبئ وانتظر",
@@ -315,7 +318,8 @@
                     "emoji": "🔥",
                     "next": "death_melted",
                     "color": "danger",
-                    "reputation": "guardian"
+                    "reputation": "guardian",
+                    "points_reward": 0
                 },
                 {
                     "label": "اغرس نفسك بقلبه",
@@ -359,7 +363,8 @@
                     "emoji": "🏃",
                     "next": "prison_priest_encounter",
                     "color": "secondary",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -402,7 +407,8 @@
                     "emoji": "✨",
                     "next": "death_exorcised",
                     "color": "danger",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -438,7 +444,8 @@
                     "emoji": "🚶",
                     "next": "prison_armory",
                     "color": "secondary",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -459,7 +466,8 @@
                     "emoji": "💀",
                     "next": "prison_courtyard",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -472,7 +480,8 @@
                     "emoji": "🌳",
                     "next": "prison_courtyard",
                     "color": "secondary",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -507,7 +516,8 @@
                     "emoji": "🗡️",
                     "next": "death_overwhelmed_monster",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 },
                 {
                     "label": "تراجع وابحث عن مخرج",
@@ -558,7 +568,8 @@
                     "emoji": "🐕",
                     "next": "ascend_stairs",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -579,7 +590,8 @@
                     "emoji": "🏃",
                     "next": "ascend_ambush",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -600,7 +612,8 @@
                     "emoji": "🏹",
                     "next": "death_betrayed_ally",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -621,7 +634,8 @@
                     "emoji": "⚔️",
                     "next": "death_overwhelmed",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -684,7 +698,8 @@
                     "emoji": "✂️",
                     "next": "death_rust_trap",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 },
                 {
                     "label": "اذهب لمنتصف المتاهة",
@@ -728,7 +743,6 @@
                     "next": "garden_patrol",
                     "points_reward": 2,
                     "color": "danger",
-                    "sets_flag": "corrupted",
                     "reputation": "ruthless"
                 },
                 {
@@ -743,14 +757,15 @@
             "is_ending": false
         },
         "death_rust_trap": {
-            "text": "الكروم والفخاخ كانت تنضح بحمض كيميائي مركز. تناثر الحمض عليك وعلى الشاب. تأذى الشاب بشدة وتشوهت أجزاء من جسده، لكنكم تمكنتم من الهرب بالكاد من الفخ.",
+            "text": "الكروم السحرية كانت تنضح بحمض كيميائي مركز. تناثر الحمض عليك وعلى الشاب. تأذى الشاب بشدة وتشوهت أجزاء من جسده، لكنكم تمكنتم من الهرب بالكاد نحو المتاهة.",
             "choices": [
                 {
                     "label": "تحمل الألم وتقدم",
                     "emoji": "🚶",
-                    "next": "prison_yard",
+                    "next": "garden_maze_center",
                     "color": "primary",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -771,7 +786,8 @@
                     "emoji": "💥",
                     "next": "garden_patrol",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -792,7 +808,8 @@
                     "emoji": "🗡️",
                     "next": "death_betrayed_ally_puzzle",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -847,7 +864,8 @@
                     "emoji": "🌱",
                     "next": "death_frozen",
                     "color": "danger",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -868,7 +886,8 @@
                     "emoji": "🔥",
                     "next": "death_burned_alive",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -909,7 +928,8 @@
                     "emoji": "⚔️",
                     "next": "palace_hall_fight",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 },
                 {
                     "label": "اركض نحو المكتبة",
@@ -930,7 +950,8 @@
                     "emoji": "💥",
                     "next": "death_new_master_fight",
                     "color": "danger",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 },
                 {
                     "label": "اسحب طاقة الحرس",
@@ -959,7 +980,8 @@
                     "emoji": "🤺",
                     "next": "death_fallen",
                     "color": "danger",
-                    "reputation": "guardian"
+                    "reputation": "guardian",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -1024,7 +1046,8 @@
                     "emoji": "🤝",
                     "next": "death_new_master",
                     "color": "danger",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -1045,7 +1068,8 @@
                     "emoji": "🛡️",
                     "next": "death_obliterated",
                     "color": "primary",
-                    "reputation": "guardian"
+                    "reputation": "guardian",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -1088,7 +1112,8 @@
                     "emoji": "🏃",
                     "next": "prison_sewer_exit",
                     "color": "secondary",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -1124,21 +1149,24 @@
                     "next": "ending_a",
                     "color": "danger",
                     "requires_flag": "bloodlust",
-                    "reputation": "ruthless"
+                    "reputation": "ruthless",
+                    "points_reward": 0
                 },
                 {
                     "label": "اقبل عرض السلام",
                     "emoji": "🕊️",
                     "next": "ending_b",
                     "color": "primary",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 },
                 {
                     "label": "اضح بنفسك لإنقاذه",
                     "emoji": "💔",
                     "next": "ending_c",
                     "color": "success",
-                    "reputation": "guardian"
+                    "reputation": "guardian",
+                    "points_reward": 0
                 },
                 {
                     "label": "أيقظ قوتك المطلقة",
@@ -1146,7 +1174,8 @@
                     "next": "ending_d",
                     "required_points": 10,
                     "color": "secondary",
-                    "reputation": "unknown"
+                    "reputation": "unknown",
+                    "points_reward": 0
                 }
             ],
             "is_ending": false
@@ -1174,6 +1203,20 @@
             "choices": [],
             "is_ending": true,
             "ending_type": "story_ending"
+        },
+        "dungeon_stone_trap": {
+            "text": "ضربت الحجر البارز بنصلك، مما أدى إلى تفعيل فخ قديم أطلق شظايا حادة وغازاً ساماً. تأذى الشاب بشدة، لكنكم تمكنتم من الهرب بالكاد من النفق.",
+            "choices": [
+                {
+                    "label": "تحمل الألم وتقدم",
+                    "emoji": "🚶",
+                    "next": "prison_yard",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
         }
     }
 }

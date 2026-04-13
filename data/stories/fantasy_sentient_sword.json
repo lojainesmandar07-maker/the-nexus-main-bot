@@ -1,0 +1,1476 @@
+{
+  "id": "fb3_sentient_sword",
+  "title": "لعنة النصل النائم",
+  "world": "fantasy",
+  "world_type": "fantasy",
+  "category": "الفانتازيا المظلمة",
+  "summary": "أنت سيف مسحور أيقظك محارب شاب يائس. في سرداب الملك الغارق، عليك إما توجيهه للنجاة، أو التهام روحه لتستعيد مجدك القديم كأداة حرب.",
+  "difficulty": "صعب",
+  "estimated_length": "طويلة",
+  "theme": "الفانتازيا المظلمة",
+  "game_mode": "single",
+  "perspective": {
+    "id": "cursed_blade",
+    "label": "منظور السيف المسحور",
+    "emoji": "🗡️",
+    "description": "أنت لست البطل، أنت السلاح. طاقتك وحياتك تعتمد على من يحملك.",
+    "start_node": "start"
+  },
+  "nodes": {
+    "start": {
+      "text": "بعد قرون من الصمت في الظلام، تشعر بحرارة يد ترتجف تقبض على مقبضك الصدئ. محارب شاب، جريح ومذعور، سحبك للتو من قبرك. خطوات حراس الظل تقترب من الخارج. هو لا يعرف كيف يستخدمك. يمكنك إطلاق نبضة من قوتك لتخويف الأعداء، أو الهمس في عقله لتهدئته، أو البقاء صامتاً لتختبر قدرته.",
+      "choices": [
+        {
+          "label": "أطلق نبضة القوة",
+          "emoji": "💥",
+          "next": "pulse_power",
+          "points_reward": 1,
+          "color": "danger"
+        },
+        {
+          "label": "اهمس في عقله",
+          "emoji": "🗣️",
+          "next": "whisper_calm",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "ابق صامتاً",
+          "emoji": "🤫",
+          "next": "stay_silent",
+          "points_reward": 0,
+          "color": "secondary"
+        }
+      ]
+    },
+    "pulse_power": {
+      "text": "تطلق موجة حمراء من المقبض. الفتى يصرخ من الألم لكن قوته تتضاعف. حراس الظل يترددون. يمكنك إجباره على الهجوم المباشر، أو توجيهه لطعن أقرب حارس وامتصاص دمه.",
+      "choices": [
+        {
+          "label": "هاجم بشراسة",
+          "emoji": "⚔️",
+          "next": "crypt_ambush",
+          "points_reward": 1,
+          "sets_flag": "flag_domination",
+          "color": "primary"
+        },
+        {
+          "label": "امتص دم الحارس",
+          "emoji": "🩸",
+          "next": "drain_first_blood",
+          "points_reward": 2,
+          "sets_flag": "flag_domination",
+          "color": "primary"
+        }
+      ]
+    },
+    "whisper_calm": {
+      "text": "تهمس بصوت قديم في عقله: 'اثبت. تنفس'. الفتى يتوقف عن الارتجاف وينظر للظلال بعينين مركزتين. يمكنك توجيهه للتسلل عبر الظلام، أو إعداد كمين للحراس.",
+      "choices": [
+        {
+          "label": "تسلل بصمت",
+          "emoji": "👣",
+          "next": "crypt_stealth",
+          "points_reward": 1,
+          "sets_flag": "flag_symbiosis",
+          "color": "primary"
+        },
+        {
+          "label": "أعد كميناً",
+          "emoji": "🪤",
+          "next": "crypt_ambush",
+          "points_reward": 1,
+          "sets_flag": "flag_symbiosis",
+          "color": "primary"
+        }
+      ]
+    },
+    "stay_silent": {
+      "text": "تظل بارداً كالموت. الفتى يذعر ويركض بعشوائية في الممر المظلم، يلوح بك كعصا خشبية. حارس ظل يندفع نحوه ببطء.",
+      "choices": [
+        {
+          "label": "وجه ضربته العشوائية",
+          "emoji": "🎯",
+          "next": "crypt_ambush",
+          "points_reward": 0
+        },
+        {
+          "label": "انتظر اللحظة الأخيرة",
+          "emoji": "⏳",
+          "next": "wait_last_moment",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_wielder_panic": {
+      "text": "تلاشت روحك ببطء، وتآكل معدنك تماماً. الصمت الطويل كان قراراً خاطئاً من البداية. لقد انتهت أسطورتك قبل أن تبدأ.",
+      "is_ending": true,
+      "choices": []
+    },
+    "drain_first_blood": {
+      "text": "تخترق درع الحارس. تفتح مسامك المعدنية وتمتص روحه. الصدأ يتساقط عن نصلك ليظهر معدن أسود لامع. الفتى ينظر إليك برعب.",
+      "choices": [
+        {
+          "label": "اطلب المزيد",
+          "emoji": "🗣️",
+          "next": "hunger_pangs",
+          "points_reward": 2,
+          "reputation": "ruthless",
+          "color": "primary"
+        },
+        {
+          "label": "طمئنه بالصمت",
+          "emoji": "🤫",
+          "next": "crypt_exploration",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "crypt_ambush": {
+      "text": "تشتبكون مع الحراس. الفتى ضعيف لكنك تعوض نقصه. ضربة قوية تقترب من رأس الفتى.",
+      "choices": [
+        {
+          "label": "شجعه على الصمود",
+          "emoji": "🛡️",
+          "next": "encourage_stand",
+          "points_reward": 0
+        },
+        {
+          "label": "أرشده للتفادي",
+          "emoji": "🏃",
+          "next": "crypt_exploration",
+          "points_reward": 1,
+          "reputation": "guardian"
+        }
+      ]
+    },
+    "death_shattered_blade": {
+      "text": "تلقي بثقلك في مسار الفأس العملاقة. جسدك المعدني القديم لم يحتمل الصدمة المباشرة، فتتحطم إلى مئات الشظايا. الفتى يُقتل فوراً. الشجاعة العمياء للمعدن الصدئ تعني الموت المبكر.",
+      "is_ending": true,
+      "choices": []
+    },
+    "crypt_stealth": {
+      "text": "تخفون في الظلال. الحراس يمرون دون ملاحظتكم. تصلون إلى مفترق طرق: باب حديدي ثقيل، ونفق ضيق تفوح منه رائحة الموت.",
+      "choices": [
+        {
+          "label": "اكسر الباب الحديدي",
+          "emoji": "🚪",
+          "next": "iron_door_challenge",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "ادخل النفق الضيق",
+          "emoji": "🕳️",
+          "next": "tunnel_of_bones",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "iron_door_challenge": {
+      "text": "الباب الحديدي موصد بسحر قديم. يمكنك حرق طاقة الفتى لكسره، أو فك السحر بهدوء مما يستغرق وقتاً.",
+      "choices": [
+        {
+          "label": "احرق طاقته",
+          "emoji": "🔥",
+          "next": "drain_door_magic",
+          "points_reward": 2,
+          "sets_flag": "flag_domination",
+          "color": "primary"
+        },
+        {
+          "label": "فك السحر ببطء",
+          "emoji": "🧩",
+          "next": "slow_door_magic",
+          "points_reward": 1,
+          "sets_flag": "flag_symbiosis",
+          "color": "primary"
+        }
+      ]
+    },
+    "tunnel_of_bones": {
+      "text": "يزحف الفتى في النفق. عظام موتى تتحرك تحت جسده. ديدان الظل تستيقظ. يمكنك إطلاق نور من النصل لردعها، أو تركها لتلدغه.",
+      "choices": [
+        {
+          "label": "أطلق نورك",
+          "emoji": "✨",
+          "next": "crypt_exploration",
+          "points_reward": 1,
+          "reputation": "guardian"
+        },
+        {
+          "label": "راقبه يزحف",
+          "emoji": "👀",
+          "next": "watch_him_crawl",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_soul_consumed": {
+      "text": "تتركه ليلدغ. ظننت أن هذا سيقويه، لكن سم ديدان الظل ذوب روحه في ثوانٍ. يسقط الفتى ميتاً، وتغرق أنت في الوحل. الجشع للقوة يحتاج إلى جسد يتحمله.",
+      "is_ending": true,
+      "choices": []
+    },
+    "drain_door_magic": {
+      "text": "تستهلك جزءاً كبيراً من روح الفتى. الباب ينفجر. يسقط الفتى على ركبتيه يلهث، لكن الطريق مفتوح نحو القاعة الكبرى.",
+      "choices": [
+        {
+          "label": "ادخل القاعة الكبرى",
+          "emoji": "🏛️",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "slow_door_magic": {
+      "text": "تفك السحر برفق. لكن دورية من الحراس تقترب. يجب على الفتى القتال وهو متعب.",
+      "choices": [
+        {
+          "label": "ساعده بقوتك",
+          "emoji": "⚔️",
+          "next": "great_hall_entry",
+          "points_reward": 1
+        },
+        {
+          "label": "تراجع للوراء",
+          "emoji": "🔙",
+          "next": "fall_back",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_warden_trap": {
+      "text": "تركته يواجه الحراس بمفرده. هو مجرد فتى ضعيف، وسرعان ما تم أسره وتحطيمك بمطارقهم لإنهاء السحر. السلاح بلا سيده مجرد خردة معدنية.",
+      "is_ending": true,
+      "choices": []
+    },
+    "crypt_exploration": {
+      "text": "وصلتم إلى القاعة الكبرى سالمين. الفتى يمسح عرقه ويثق بك أكثر. هناك جدار منقوش يبدو مهماً، وصندوق مغلق قد يحتوي على كنز.",
+      "choices": [
+        {
+          "label": "اقرأ النقوش السحرية",
+          "emoji": "📜",
+          "next": "read_lore",
+          "points_reward": 2,
+          "sets_flag": "flag_secret_lore",
+          "color": "primary"
+        },
+        {
+          "label": "اكسر الصندوق",
+          "emoji": "📦",
+          "next": "break_chest",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "استكشف السراديب",
+          "emoji": "🔦",
+          "next": "explore_side_crypts",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "انتظر طويلاً",
+          "emoji": "⏳",
+          "next": "starvation_path",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "read_lore": {
+      "text": "النقوش تتحدث عن الملك الغارق، وعن كيفية تدمير تاجه لوقف اللعنة. أنت تكتسب معرفة قديمة تعزز وعيك.",
+      "choices": [
+        {
+          "label": "امضِ للأمام",
+          "emoji": "➡️",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "break_chest": {
+      "text": "يضرب الفتى الصندوق بنصلك. يجد بداخله زجاجة دماء غريبة وملفوفة مهترئة.",
+      "choices": [
+        {
+          "label": "امره بشرب الدم",
+          "emoji": "🩸",
+          "next": "drink_weird_blood",
+          "points_reward": 2,
+          "sets_flag": "flag_domination",
+          "color": "primary"
+        },
+        {
+          "label": "تجاهل الكنز",
+          "emoji": "🚫",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "تفحص الملفوفة",
+          "emoji": "📜",
+          "next": "examine_scroll",
+          "points_reward": 2,
+          "color": "primary"
+        }
+      ]
+    },
+    "drink_weird_blood": {
+      "text": "الفتى يشرب الدماء بأمرك. عيناه تصبحان حمراوتين. طاقته الهجومية ترتفع لكن إنسانيته تتلاشى. إنه يصبح وعاءً أسهل لسيطرتك.",
+      "choices": [
+        {
+          "label": "امضِ للأمام",
+          "emoji": "➡️",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "hunger_pangs": {
+      "text": "تهمس له بطلب المزيد من الدماء. الفتى يرتعد ويهز رأسه رافضاً. لقد أخفته أكثر من اللازم، لكنه يخشى التخلي عنك.",
+      "choices": [
+        {
+          "label": "هدده بالموت",
+          "emoji": "💀",
+          "next": "threaten_boy",
+          "points_reward": 1,
+          "sets_flag": "flag_wielder_fears",
+          "color": "primary"
+        },
+        {
+          "label": "اخفِ جوعك الآن",
+          "emoji": "🤫",
+          "next": "crypt_exploration",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "threaten_boy": {
+      "text": "تجعله يشعر بوخز الألم في شرايينه. يبكي الفتى لكنه يطيع. لقد أصبح عبدك الآن. تتوجهون نحو القاعة الكبرى.",
+      "choices": [
+        {
+          "label": "ادخل القاعة الكبرى",
+          "emoji": "🏛️",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "great_hall_entry": {
+      "text": "تدخلون القاعة الكبرى للملك الغارق. هناك تمثال عملاق يعج بالسحر الأسود، وممران: جسر التنهدات المظلم، أو نفق مائي يعج بالمخلوقات.",
+      "choices": [
+        {
+          "label": "جسر التنهدات",
+          "emoji": "🌉",
+          "next": "bridge_of_sighs",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "النفق المائي",
+          "emoji": "🌊",
+          "next": "water_tunnel",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "تأمل التمثال",
+          "emoji": "🗿",
+          "next": "examine_statue",
+          "points_reward": 2,
+          "requires_flag": "flag_secret_lore",
+          "color": "primary"
+        },
+        {
+          "label": "استرح في الزاوية",
+          "emoji": "🛏️",
+          "next": "rest_area",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "examine_statue": {
+      "text": "بفضل النقوش التي قرأتها سابقاً، تدرك أن التمثال يخفي مفتاحاً سرياً. الفتى يضغط على عيني التمثال، فينفتح باب خفي يؤدي إلى سرداب الحرس.",
+      "choices": [
+        {
+          "label": "ادخل الباب السري",
+          "emoji": "🚪",
+          "next": "secret_armory",
+          "points_reward": 3,
+          "color": "primary"
+        }
+      ]
+    },
+    "water_tunnel": {
+      "text": "يخوض الفتى في المياه الباردة. الظلام الدامس يجعله يتخبط. المياه ترتفع وتثقل جسده. جسدك المعدني يجره للأسفل.",
+      "choices": [
+        {
+          "label": "أشعله بالحرارة",
+          "emoji": "🔥",
+          "next": "heat_water",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "اطلب منه السباحة",
+          "emoji": "🏊",
+          "next": "death_abandoned_in_water",
+          "points_reward": 0,
+          "color": "primary"
+        },
+        {
+          "label": "استدع كائنات الظل",
+          "emoji": "🦑",
+          "next": "summon_shadows",
+          "points_reward": 2,
+          "sets_flag": "flag_domination",
+          "color": "primary"
+        }
+      ]
+    },
+    "death_abandoned_in_water": {
+      "text": "المياه ترتفع والفتى يغرق. في لحظة يأس، يدرك أنك السبب في ثقله المفرط. يفتح يده ويسقطك في القاع وينجو بنفسه. تصدأ وحيداً في الأعماق. لم تكن مفيداً بما يكفي ليتمسك بك.",
+      "is_ending": true,
+      "choices": []
+    },
+    "heat_water": {
+      "text": "تبث حرارة شديدة من نصلك فتغلي المياه المحيطة وتتبخر قليلاً. الفتى يجد طريقه عبر الضباب الناجم عن الحرارة، لكن هذا استنزف قواك.",
+      "choices": [
+        {
+          "label": "اخرج من الماء",
+          "emoji": "岸",
+          "next": "abyss_edge",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "bridge_of_sighs": {
+      "text": "جسر حجري طويل يمر فوق هاوية. أصوات الأرواح المعذبة تهمس من الأسفل وتهاجم عقل الفتى. إنه يترنح وقد يسقط في أي لحظة.",
+      "choices": [
+        {
+          "label": "اغلق عقله",
+          "emoji": "🧠",
+          "next": "shield_mind",
+          "points_reward": 2,
+          "reputation": "guardian",
+          "color": "primary"
+        },
+        {
+          "label": "استغل الأصوات",
+          "emoji": "👻",
+          "next": "use_voices",
+          "points_reward": 2,
+          "sets_flag": "flag_domination",
+          "color": "primary"
+        },
+        {
+          "label": "اسرع بالركض",
+          "emoji": "🏃",
+          "next": "run_bridge",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "shield_mind": {
+      "text": "تبني درعاً سحرياً حول وعيه. الأصوات تتلاشى. الفتى يمشي ببطء وثبات حتى يعبر الجسر. أنفاسه تهدأ.",
+      "choices": [
+        {
+          "label": "امض نحو الهاوية",
+          "emoji": "➡️",
+          "next": "abyss_edge",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "use_voices": {
+      "text": "تجعل الأصوات تعزف على مخاوفه ليزداد رعبه منك. يسرع الفتى بخطوات مجنونة ويعبر الجسر وهو يبكي. لقد تحطم جزء من عقله.",
+      "choices": [
+        {
+          "label": "استمر بتهديده",
+          "emoji": "💀",
+          "next": "death_madness_suicide",
+          "points_reward": 0,
+          "color": "primary"
+        },
+        {
+          "label": "اتركه يهدأ قليلاً",
+          "emoji": "⏳",
+          "next": "abyss_edge",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "death_madness_suicide": {
+      "text": "الفتى يفقد عقله تماماً. يرى وحوشاً غير موجودة، وبدلاً من الاستمرار، يصرخ ويقفز في الهاوية حاملاً إياك معه. الظلام يبتلعكما. العبث بعقل ضعيف يقود للدمار.",
+      "is_ending": true,
+      "choices": []
+    },
+    "secret_armory": {
+      "text": "في مستودع الأسلحة القديم، يجد الفتى درعاً خفيفاً وجرعات سحرية. تشعر بنبض سحري في أحد الأركان، كأن سلاحاً آخر نائماً هناك.",
+      "choices": [
+        {
+          "label": "امره بترك السلاح",
+          "emoji": "🚫",
+          "next": "ignore_other_weapon",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "التهم طاقة السلاح",
+          "emoji": "⚡",
+          "next": "absorb_weapon",
+          "points_reward": 2,
+          "sets_flag": "flag_domination",
+          "color": "primary"
+        }
+      ]
+    },
+    "ignore_other_weapon": {
+      "text": "تأمره بالابتعاد. الفتى يتسلح بالدرع ويستعيد بعض عافيته بالجرعات. استعداده البدني أفضل الآن.",
+      "choices": [
+        {
+          "label": "اخرج للهاوية",
+          "emoji": "🚪",
+          "next": "abyss_edge",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "absorb_weapon": {
+      "text": "تجبر الفتى على تقريبك من السلاح القديم. تبتلع طاقته بالكامل. نصلك يتوهج بلون أرجواني. قوتك الآن مدمرة.",
+      "choices": [
+        {
+          "label": "اخرج للهاوية",
+          "emoji": "🚪",
+          "next": "abyss_edge",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "abyss_edge": {
+      "text": "تقفون على حافة الهاوية المظلمة. فارس ضخم، حارس الهاوية، يسد الطريق نحو غرفة العرش. درعه لا يخترقه سلاح عادي.",
+      "choices": [
+        {
+          "label": "اخترق من ثغرة",
+          "emoji": "🎯",
+          "next": "warden_fight_tactical",
+          "points_reward": 2,
+          "color": "primary"
+        },
+        {
+          "label": "أطلق هجوماً ساحقاً",
+          "emoji": "💥",
+          "next": "warden_fight_brutal",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "تسلل بمحاذاة الحافة",
+          "emoji": "🧗",
+          "next": "edge_stealth",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "warden_fight_tactical": {
+      "text": "توجه الفتى ليتحرك بخفة ويتفادى ضربات الفارس. تلمح ثغرة في مفصل الدرع. تتطلب الضربة دقة شديدة وثباتاً.",
+      "choices": [
+        {
+          "label": "اضرب المفاصل",
+          "emoji": "🗡️",
+          "next": "warden_defeated",
+          "points_reward": 2,
+          "reputation": "guardian",
+          "color": "primary"
+        },
+        {
+          "label": "استفزه ليهجم",
+          "emoji": "🛡️",
+          "next": "warden_counter",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "warden_counter": {
+      "text": "الفارس يغضب ويشن هجوماً واسعاً. الفتى يتفادى بأعجوبة، وتجد الفرصة لغرس نفسك في ظهره.",
+      "choices": [
+        {
+          "label": "اغرس في ظهره",
+          "emoji": "⚔️",
+          "next": "warden_defeated",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "warden_fight_brutal": {
+      "text": "تأمر الفتى بضخ كل طاقته في ضربة واحدة. تصطدم بدرع الفارس بقوة مدوية. الدرع ينشق، لكن يد الفتى تُكسر.",
+      "choices": [
+        {
+          "label": "اكمل الهجوم",
+          "emoji": "🩸",
+          "next": "warden_defeated",
+          "points_reward": 2,
+          "sets_flag": "flag_domination",
+          "color": "primary"
+        },
+        {
+          "label": "تراجع وتجنب",
+          "emoji": "🏃",
+          "next": "death_wielder_panic",
+          "points_reward": 0,
+          "color": "primary"
+        }
+      ]
+    },
+    "warden_defeated": {
+      "text": "يسقط حارس الهاوية ميتاً. الفتى يلتقط أنفاسه بصعوبة. أمامكم البوابة الأخيرة، لكن ضباباً غريباً يتسرب منها، يولد أوهاماً ومتاهات بصرية.",
+      "choices": [
+        {
+          "label": "ادخل غرفة الأوهام",
+          "emoji": "🌫️",
+          "next": "illusion_chamber",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "illusion_chamber": {
+      "text": "الضباب يشكل صوراً لأشخاص عرفهم الفتى في حياته. يراودونه عن تركك والاستسلام للنوم الطويل. الفتى يبدو مخدراً ومستعداً للانهيار.",
+      "choices": [
+        {
+          "label": "أظهر له الحقيقة",
+          "emoji": "👁️",
+          "next": "break_illusions",
+          "points_reward": 2,
+          "reputation": "guardian",
+          "color": "primary"
+        },
+        {
+          "label": "هاجم الأوهام",
+          "emoji": "⚔️",
+          "next": "attack_illusions",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "دعه يسقط بالفخ",
+          "emoji": "🕳️",
+          "next": "death_illusion_trap",
+          "points_reward": 0,
+          "color": "primary"
+        },
+        {
+          "label": "اغلق عيونه",
+          "emoji": "🙈",
+          "next": "blind_trust",
+          "points_reward": 2,
+          "color": "primary"
+        }
+      ]
+    },
+    "death_illusion_trap": {
+      "text": "تتركه يصدق الأوهام. يعانق طيفاً مشعاً، ليتبين أنه فخ سحري مميت يمزق روحه. تسقط أنت في الضباب للأبد، ضحية للامبالاتك.",
+      "is_ending": true,
+      "choices": []
+    },
+    "break_illusions": {
+      "text": "تغسل عقله برؤية صافية. يدرك أن الأطياف مجرد وحوش. يتماسك الفتى ويمضي قدماً بشجاعة لا مثيل لها.",
+      "choices": [
+        {
+          "label": "تقدم نحو العرش",
+          "emoji": "👑",
+          "next": "throne_room_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "attack_illusions": {
+      "text": "تدفعه لتقطيع الأطياف بقوة. يصرخ وهو يمزق صور أحبائه، فيمتلئ قلبه بالظلام. يصبح أداة قتل خالية من المشاعر.",
+      "choices": [
+        {
+          "label": "تقدم نحو العرش",
+          "emoji": "👑",
+          "next": "throne_room_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "throne_room_entry": {
+      "text": "تصلون أخيراً إلى البوابة العملاقة لغرفة العرش. لكن هناك كاهنة مظلمة تحرس المدخل. تقرأ تعاويذ تضعف معدنك.",
+      "choices": [
+        {
+          "label": "قاطع تعويذتها",
+          "emoji": "⚡",
+          "next": "interrupt_priestess",
+          "points_reward": 2,
+          "color": "primary"
+        },
+        {
+          "label": "تحمل الألم",
+          "emoji": "🛡️",
+          "next": "endure_pain",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "dodge_king": {
+      "text": "يقفز الفتى ليتفادى الضربة. السيف العظيم يحطم الأرضية. الملك بطيء ولكنه مدمر. يمكنك توجيه الفتى لضرب الساقين، أو محاولة قطع اليد.",
+      "choices": [
+        {
+          "label": "اضرب الساقين",
+          "emoji": "🦵",
+          "next": "cripple_king",
+          "points_reward": 2,
+          "color": "primary"
+        },
+        {
+          "label": "اقطع اليد",
+          "emoji": "✋",
+          "next": "death_sunken_king_crush",
+          "points_reward": 0,
+          "color": "primary"
+        }
+      ]
+    },
+    "death_sunken_king_crush": {
+      "text": "حاولت قطع يده المغطاة بالدروع. السيف ارتد والملك أمسك بالفتى وسحقه بيد واحدة. تحطمت أنت معه تحت وطأة حذاء الملك. فارق القوة كان هائلاً.",
+      "is_ending": true,
+      "choices": []
+    },
+    "cripple_king": {
+      "text": "يضرب الفتى خلف الركبة. الملك يركع على ركبة واحدة ويزأر. هذه هي فرصتكم الأخيرة لإنهاء المعركة.",
+      "choices": [
+        {
+          "label": "اضرب العنق",
+          "emoji": "🗡️",
+          "next": "final_blow",
+          "points_reward": 2,
+          "color": "primary"
+        }
+      ]
+    },
+    "clash_of_kings": {
+      "text": "تلتحم مع السيف العظيم. شرارات سحرية تتطاير. أنت أضعف منه، وقوتك تتناقص. يجب أن تضحي بجزء من جوهرك، أو تلتهم روح الفتى كلياً لتنتصر.",
+      "choices": [
+        {
+          "label": "ضح بجوهرك",
+          "emoji": "✨",
+          "next": "sacrifice_core",
+          "points_reward": 2,
+          "sets_flag": "flag_symbiosis",
+          "color": "primary"
+        },
+        {
+          "label": "التهم روح الفتى",
+          "emoji": "🩸",
+          "next": "consume_wielder_soul",
+          "points_reward": 2,
+          "sets_flag": "flag_domination",
+          "color": "primary"
+        }
+      ]
+    },
+    "sacrifice_core": {
+      "text": "تضخ طاقتك الخاصة في نصلك. يتصدع معدنك من الداخل، لكنك تصد سيف الملك وتدفعه للخلف. الفتى يرى تضحيتك ويستعد للضربة القاضية.",
+      "choices": [
+        {
+          "label": "الضربة القاضية",
+          "emoji": "⚡",
+          "next": "final_blow",
+          "points_reward": 2,
+          "color": "primary"
+        }
+      ]
+    },
+    "consume_wielder_soul": {
+      "text": "تسحب كل ما تبقى من حياة الفتى. جسده يتحول لوعاء فارغ يحركه سحرك فقط. قوتك تتضاعف وتكسر سيف الملك.",
+      "choices": [
+        {
+          "label": "الضربة القاضية",
+          "emoji": "⚡",
+          "next": "final_blow",
+          "points_reward": 2,
+          "color": "primary"
+        }
+      ]
+    },
+    "final_blow": {
+      "text": "الملك الغارق مفتوح للضربة الأخيرة. لكن جوهره السحري قد يدمر المعبد بأكمله إذا تدفق بلا سيطرة. يمكنك توجيه الضربة للقلب، أو للتاج، أو استخدام قوتك القصوى لختمه.",
+      "choices": [
+        {
+          "label": "اضرب التاج",
+          "emoji": "👑",
+          "next": "ending_broken_freedom",
+          "requires_flag": "flag_symbiosis",
+          "points_reward": 2,
+          "color": "primary"
+        },
+        {
+          "label": "اضرب القلب",
+          "emoji": "🖤",
+          "next": "ending_new_vessel",
+          "requires_flag": "flag_domination",
+          "points_reward": 2,
+          "color": "primary"
+        },
+        {
+          "label": "اختم سحره تماماً",
+          "emoji": "🔒",
+          "next": "ending_eternal_guard",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "طهر السرداب بالكامل",
+          "emoji": "✨",
+          "next": "ending_ascended_blade",
+          "required_points": 15,
+          "color": "primary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "ending_broken_freedom": {
+      "text": "تضرب التاج بقوة. ينفجر سحر الملك ويتلاشى. لكن الصدمة تحطم نصلك إلى قطع لا يمكن إصلاحها. الفتى ينجو ويخرج من السرداب حاملاً مقبضك المكسور كذكرى للبطل الصامت الذي أنقذه. هل كان التضحية بنفسك من أجل بشري هش تستحق العناء؟",
+      "is_ending": true,
+      "choices": []
+    },
+    "ending_new_vessel": {
+      "text": "تخترق قلب الملك وتمتص روحه الهائلة. الفتى جسدياً ميت، لكنك تحركه الآن بالكامل كدمية خاضعة. تخرج من السرداب بقوة مرعبة وجسد جديد، مستعداً لفرض سيطرتك على السطح. لقد عاد سيد الحرب من جديد. هل هذا هو النصر أم بداية اللعنة الكبرى؟",
+      "is_ending": true,
+      "choices": []
+    },
+    "ending_eternal_guard": {
+      "text": "تطلق كل طاقتك لختم سحر الملك المنهار. السرداب ينهار عليكم جميعاً ويُغلق للأبد. الفتى وأنت تدفنون تحت أطنان من الصخور، لكن العالم العلوي في أمان من ظلال الملك. تظل أسطورة نائمة في الأعماق. هل ندمت على الموت من أجل عالم لم يعرف بوجودك؟",
+      "is_ending": true,
+      "choices": []
+    },
+    "ending_ascended_blade": {
+      "text": "بفضل كل الطاقات التي جمعتها، تتوهج بنور ملائكي. تدمج روحك مع روح الفتى تماماً، فتصبحان كياناً واحداً نصفه بشري ونصفه سحري. تطهران السرداب بضربة واحدة تشرق كشمس باطنية. تخرجان كبطل أسطوري جديد، قوة للخير لا تقهر. من يحمل الآخر الآن، أنت أم هو؟",
+      "is_ending": true,
+      "choices": []
+    },
+    "encounter_thief": {
+      "text": "أثناء تقدمكم، تصادفون لصاً لئيماً ينبش الجثث. يعرض على الفتى خريطة آمنة مقابل التخلي عنك.",
+      "choices": [
+        {
+          "label": "استمع لعرضه",
+          "emoji": "👂",
+          "next": "listen_thief",
+          "points_reward": 0
+        },
+        {
+          "label": "امره بقتل اللص",
+          "emoji": "🔪",
+          "next": "kill_thief",
+          "points_reward": 1
+        }
+      ]
+    },
+    "death_betrayed_by_thief": {
+      "text": "الفتى الأحمق يستبدلك بخريطة مزيفة. اللص يأخذك ويبيعك لتاجر خردة، الذي يقوم بصهر جسدك السحري لصنع مسامير حديدية. تلاشت روحك ببطء وأنت تلعن سذاجة البشر.",
+      "is_ending": true,
+      "choices": []
+    },
+    "kill_thief": {
+      "text": "الفتى يقتل اللص بلا رحمة بتوجيهك. تدرك أنه بدأ يفقد براءته تماماً ويتحول لقاتل محترف. الطريق أمامكم أصبح أكثر ظلاماً.",
+      "choices": [
+        {
+          "label": "تابع نحو القاعة",
+          "emoji": "➡️",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "starvation_path": {
+      "text": "منذ فترة طويلة لم تمتزج بالدماء. تشعر بضعف شديد يمزق وعيك.",
+      "choices": [
+        {
+          "label": "حاول الصمود",
+          "emoji": "🛡️",
+          "next": "try_endure",
+          "points_reward": 0
+        },
+        {
+          "label": "اسحب من الفتى",
+          "emoji": "🩸",
+          "next": "threaten_boy",
+          "points_reward": 1
+        }
+      ]
+    },
+    "death_starved_blade": {
+      "text": "رفضت أن تؤذي الفتى ورفضت شرب الدماء. سحرك ينفد بالكامل. وعيك يتلاشى ببطء حتى تعود مجرد قطعة معدن صدئة وبكماء. الفتى يقاتل بقطعة حديد عادية ويموت لاحقاً.",
+      "is_ending": true,
+      "choices": []
+    },
+    "mysterious_altar": {
+      "text": "تجدون مذبحاً قديماً به شعلة زرقاء. يمكنك امتصاص طاقة الشعلة أو تجاهلها.",
+      "choices": [
+        {
+          "label": "امتص الشعلة",
+          "emoji": "🔥",
+          "next": "absorb_flame",
+          "points_reward": 2,
+          "color": "primary"
+        },
+        {
+          "label": "تجاهل الشعلة",
+          "emoji": "🚫",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "absorb_flame": {
+      "text": "النصل يشتعل بنار زرقاء باردة. هذا يعطيك قوة مرعبة ضد أطياف الظل.",
+      "choices": [
+        {
+          "label": "تابع نحو القاعة",
+          "emoji": "➡️",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "rest_area": {
+      "text": "الفتى يجلس ليستريح في زاوية مظلمة. يمكنك تركه ينام، أو إبقاؤه مستيقظاً.",
+      "choices": [
+        {
+          "label": "دعه ينام",
+          "emoji": "💤",
+          "next": "boy_sleeps",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "أيقظه مرعوباً",
+          "emoji": "😱",
+          "next": "wake_in_terror",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "boy_sleeps": {
+      "text": "ينام بعمق ويستعيد طاقته، لكنك تظل ساهراً تحرسه من العناكب الطفيلية.",
+      "choices": [
+        {
+          "label": "امضِ بهدوء",
+          "emoji": "🚶",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "wake_in_terror": {
+      "text": "توقظه بصور مرعبة. ينهض راكضاً بقوة يائسة. طاقته تقل لكن سرعته تزيد.",
+      "choices": [
+        {
+          "label": "اركض للأمام",
+          "emoji": "🏃",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "explore_side_crypts": {
+      "text": "تدخلون سراديب جانبية ممتلئة بالتوابيت المفتوحة. رائحة العفن تخنق الفتى. هناك تابوت مغلق بشعار ملكي، وباب جانبي آخر.",
+      "choices": [
+        {
+          "label": "افتح التابوت",
+          "emoji": "⚰️",
+          "next": "royal_coffin",
+          "points_reward": 2,
+          "color": "primary"
+        },
+        {
+          "label": "ادخل الباب الجانبي",
+          "emoji": "🚪",
+          "next": "encounter_thief",
+          "points_reward": 1,
+          "color": "primary"
+        },
+        {
+          "label": "ابحث في الزاوية",
+          "emoji": "🔍",
+          "next": "mysterious_altar",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "royal_coffin": {
+      "text": "يفتح التابوت ليجد هيكلاً عظمياً يحمل خاتماً سحرياً. الخاتم يبعث طاقة دافئة.",
+      "choices": [
+        {
+          "label": "خذ الخاتم",
+          "emoji": "💍",
+          "next": "take_ring",
+          "points_reward": 2,
+          "reputation": "guardian",
+          "color": "primary"
+        },
+        {
+          "label": "حطم الهيكل",
+          "emoji": "☠️",
+          "next": "smash_skeleton",
+          "points_reward": 1,
+          "reputation": "ruthless",
+          "color": "primary"
+        }
+      ]
+    },
+    "take_ring": {
+      "text": "الفتى يلبس الخاتم. طاقة شفائية تتدفق في جسده، ما يخفف من حاجته لامتصاص الدماء.",
+      "choices": [
+        {
+          "label": "عد للقاعة",
+          "emoji": "🏛️",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "smash_skeleton": {
+      "text": "تأمره بتحطيم الهيكل وامتصاص سحره المتبقي. تصبح أقوى وتتشبع بالطاقة.",
+      "choices": [
+        {
+          "label": "عد للقاعة",
+          "emoji": "🏛️",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "edge_stealth": {
+      "text": "يحاول الفتى التسلق على حافة الهاوية ليتجاوز الفارس دون قتال. صخور الحافة هشة جداً.",
+      "choices": [
+        {
+          "label": "ثبته بسحرك",
+          "emoji": "✨",
+          "next": "hold_firm",
+          "points_reward": 2,
+          "color": "primary"
+        },
+        {
+          "label": "دعه يسقط",
+          "emoji": "🕳️",
+          "next": "death_edge_fall",
+          "points_reward": 0,
+          "color": "primary"
+        }
+      ]
+    },
+    "death_edge_fall": {
+      "text": "الصخرة تنهار والفتى يسقط في الهاوية الصامتة. تهوي أنت معه إلى قاع لا نهاية له. الجبن أحياناً يكون أسرع طريق للموت.",
+      "is_ending": true,
+      "choices": []
+    },
+    "hold_firm": {
+      "text": "تغرس نفسك في الصخر وتتصلب كمرساة. الفتى يتأرجح فوق الهاوية ثم يسحب نفسه للضفة الأخرى سالماً. تتجاوزون الفارس.",
+      "choices": [
+        {
+          "label": "نحو غرفة الأوهام",
+          "emoji": "🌫️",
+          "next": "illusion_chamber",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "interrupt_priestess": {
+      "text": "تطلق موجة صوتية معدنية تصم الآذان. الكاهنة تفقد تركيزها والفتى ينقض عليها ليقضي عليها. البوابة تُفتح.",
+      "choices": [
+        {
+          "label": "ادخل لقتال الملك",
+          "emoji": "👑",
+          "next": "face_the_king",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "endure_pain": {
+      "text": "تتحمل التعويذة. معدنك يضعف قليلاً لكن الفتى يتمكن من التسلل وراءها وضربها. البوابة تُفتح.",
+      "choices": [
+        {
+          "label": "ادخل لقتال الملك",
+          "emoji": "👑",
+          "next": "face_the_king",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "face_the_king": {
+      "text": "تدخلون غرفة العرش. الملك الغارق يجلس على كرسيه، كتلة من الدروع السوداء والسحر الفاسد. يرفع سيفه العظيم ويشير إليكم. الغرفة تهتز.",
+      "choices": [
+        {
+          "label": "التحم بالسيف العظيم",
+          "emoji": "⚔️",
+          "next": "clash_of_kings",
+          "points_reward": 2,
+          "color": "primary"
+        },
+        {
+          "label": "أمر الفتى بالمراوغة",
+          "emoji": "🏃",
+          "next": "dodge_king",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "summon_shadows": {
+      "text": "تستدعي كائنات مائية من الظل لرفع الفتى فوق سطح الماء. الكائنات تهمس له بأشياء مجنونة.",
+      "choices": [
+        {
+          "label": "امضِ للضفة",
+          "emoji": "岸",
+          "next": "abyss_edge",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "run_bridge": {
+      "text": "تأمره بالركض بأقصى سرعة. الجسر ينهار من خلفه، لكنه يقفز ببراعة للضفة الأخرى ويسقط لاهثاً.",
+      "choices": [
+        {
+          "label": "تقدم للحافة",
+          "emoji": "➡️",
+          "next": "abyss_edge",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "blind_trust": {
+      "text": "تأمره بإغلاق عينيه والاعتماد على توجيهك الصوتي. يمشي بثبات متجاهلاً الضباب الكاذب. يثق بك ثقة عمياء.",
+      "choices": [
+        {
+          "label": "نحو غرفة العرش",
+          "emoji": "👑",
+          "next": "throne_room_entry",
+          "points_reward": 1,
+          "sets_flag": "flag_symbiosis",
+          "color": "primary"
+        }
+      ]
+    },
+    "examine_scroll": {
+      "text": "الملفوفة تحتوي على تعويذة دماء قديمة. إذا علمتها للفتى، يمكنه شفاء نفسه باستمرار، لكنه قد يدمنها.",
+      "choices": [
+        {
+          "label": "علمه التعويذة",
+          "emoji": "🩸",
+          "next": "teach_blood_spell",
+          "points_reward": 2,
+          "sets_flag": "flag_domination",
+          "color": "primary"
+        },
+        {
+          "label": "احرق الملفوفة",
+          "emoji": "🔥",
+          "next": "burn_scroll",
+          "points_reward": 1,
+          "sets_flag": "flag_symbiosis",
+          "color": "primary"
+        }
+      ]
+    },
+    "teach_blood_spell": {
+      "text": "الفتى يتعلم التعويذة. عروقه تبرز بلون أسود. قوته تتضاعف، ولكنه يفقد المزيد من بشريته.",
+      "choices": [
+        {
+          "label": "عد للقاعة",
+          "emoji": "🏛️",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "burn_scroll": {
+      "text": "تحرق الملفوفة بنار سحرية. الفتى يبدو محبطاً لكن روحه تبقى نقية.",
+      "choices": [
+        {
+          "label": "عد للقاعة",
+          "emoji": "🏛️",
+          "next": "great_hall_entry",
+          "points_reward": 1,
+          "color": "primary"
+        }
+      ]
+    },
+    "wait_last_moment": {
+      "text": "تنتظر حتى يقترب الحارس لترى إن كان الفتى سيقاتل بصدق.",
+      "choices": [
+        {
+          "label": "تسلل بصمت",
+          "emoji": "👣",
+          "next": "crypt_stealth",
+          "points_reward": 1
+        },
+        {
+          "label": "استمر في الصمت",
+          "emoji": "🤐",
+          "next": "keep_silent_2",
+          "points_reward": 0
+        }
+      ]
+    },
+    "keep_silent_2": {
+      "text": "الفتى يبكي من الرعب. الحارس يرفع سيفه الأسود ليضربه.",
+      "choices": [
+        {
+          "label": "التحم بهجومه",
+          "emoji": "⚔️",
+          "next": "crypt_ambush",
+          "points_reward": 0
+        },
+        {
+          "label": "لا تفعل شيئاً",
+          "emoji": "🚫",
+          "next": "do_nothing",
+          "points_reward": 0
+        }
+      ]
+    },
+    "do_nothing": {
+      "text": "أنت لا تزال ترفض المساعدة. الحارس ينقض على الفتى.",
+      "choices": [
+        {
+          "label": "حاول صده",
+          "emoji": "🛡️",
+          "next": "try_block",
+          "points_reward": 0
+        },
+        {
+          "label": "استسلم للقدر",
+          "emoji": "💀",
+          "next": "surrender_fate",
+          "points_reward": 0
+        }
+      ]
+    },
+    "surrender_fate": {
+      "text": "الفتى يتعثر في الظلام ويسقطك. حارس الظل يمزقه إرباً. تظل أنت ملقى في بركة من دماء خادمك الجديد، تنتظر قروناً أخرى.",
+      "choices": [
+        {
+          "label": "انتظر مئات السنين",
+          "emoji": "⏳",
+          "next": "wait_hundred_years",
+          "points_reward": 0
+        }
+      ]
+    },
+    "wait_hundred_years": {
+      "text": "تمر قرون طويلة. أنت مجرد معدن في الظلام. هل ستستيقظ يوماً؟",
+      "choices": [
+        {
+          "label": "ارحل للأبد",
+          "emoji": "👻",
+          "next": "death_wielder_panic",
+          "points_reward": 0
+        }
+      ]
+    },
+    "encourage_stand": {
+      "text": "الفتى يرفعك لمحاولة صد الضربة. يديه ترتجفان بشدة.",
+      "choices": [
+        {
+          "label": "ارفع طاقتك الدفاعية",
+          "emoji": "✨",
+          "next": "raise_defenses",
+          "points_reward": 0
+        },
+        {
+          "label": "تراجع بسرعة",
+          "emoji": "🏃",
+          "next": "crypt_exploration",
+          "points_reward": 1
+        }
+      ]
+    },
+    "raise_defenses": {
+      "text": "تحاول صد الفأس العملاقة، لكن الصدأ يعيق طاقتك.",
+      "choices": [
+        {
+          "label": "امتص الصدمة",
+          "emoji": "💥",
+          "next": "absorb_shock",
+          "points_reward": 0
+        }
+      ]
+    },
+    "absorb_shock": {
+      "text": "الصدمة تدوي في كل جزء منك. الفتى يصرخ.",
+      "choices": [
+        {
+          "label": "اجمع طاقة إضافية",
+          "emoji": "⚡",
+          "next": "gather_extra_energy",
+          "points_reward": 0
+        }
+      ]
+    },
+    "watch_him_crawl": {
+      "text": "الفتى يزحف بخوف، ديدان الظل تقترب.",
+      "choices": [
+        {
+          "label": "انتظر قليلاً",
+          "emoji": "⏳",
+          "next": "wait_worms",
+          "points_reward": 0
+        }
+      ]
+    },
+    "wait_worms": {
+      "text": "الديدان تقفز عليه.",
+      "choices": [
+        {
+          "label": "راقبه يتعذب",
+          "emoji": "👀",
+          "next": "watch_suffer",
+          "points_reward": 0
+        }
+      ]
+    },
+    "fall_back": {
+      "text": "تتراجعون قليلاً لكن الحراس يحاصرونكم.",
+      "choices": [
+        {
+          "label": "حاول الهرب",
+          "emoji": "🏃",
+          "next": "try_escape",
+          "points_reward": 0
+        }
+      ]
+    },
+    "try_escape": {
+      "text": "لا مجال للهرب.",
+      "choices": [
+        {
+          "label": "استسلم",
+          "emoji": "🏳️",
+          "next": "death_warden_trap",
+          "points_reward": 0
+        }
+      ]
+    },
+    "listen_thief": {
+      "text": "اللص يقدم وعوداً بالنجاة.",
+      "choices": [
+        {
+          "label": "حذره من اللص",
+          "emoji": "⚠️",
+          "next": "kill_thief",
+          "points_reward": 1
+        },
+        {
+          "label": "دعه يصدقه",
+          "emoji": "🤝",
+          "next": "death_betrayed_by_thief",
+          "points_reward": 0
+        }
+      ]
+    },
+    "try_endure": {
+      "text": "وعيك يضعف شيئاً فشيئاً.",
+      "choices": [
+        {
+          "label": "قاوم الإغماء",
+          "emoji": "😖",
+          "next": "resist_faint",
+          "points_reward": 0
+        }
+      ]
+    },
+    "try_block": {
+      "text": "تندفع للأمام بقوتك الباقية لصد الهجوم.",
+      "choices": [
+        {
+          "label": "اضرب الفأس",
+          "emoji": "⚔️",
+          "next": "strike_axe",
+          "points_reward": 0
+        }
+      ]
+    },
+    "strike_axe": {
+      "text": "الفأس تصطدم بنصلك بقوة هائلة.",
+      "choices": [
+        {
+          "label": "تلقى الصدمة",
+          "emoji": "💥",
+          "next": "death_shattered_blade",
+          "points_reward": 0
+        }
+      ]
+    },
+    "watch_suffer": {
+      "text": "الديدان تبدأ بامتصاص طاقته.",
+      "choices": [
+        {
+          "label": "تجاهل صراخه",
+          "emoji": "🤐",
+          "next": "death_soul_consumed",
+          "points_reward": 0
+        }
+      ]
+    },
+    "resist_faint": {
+      "text": "تحاول التمسك بوعيك، لكن الجوع يعصف بك.",
+      "choices": [
+        {
+          "label": "اغمض عينيك",
+          "emoji": "💤",
+          "next": "death_starved_blade",
+          "points_reward": 0
+        }
+      ]
+    },
+    "gather_extra_energy": {
+      "text": "تجمع كل ذرة طاقة من المقبض.",
+      "choices": [
+        {
+          "label": "تحمل الألم",
+          "emoji": "😖",
+          "next": "death_shattered_blade",
+          "points_reward": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1222 @@
+{
+    "id": "fb3_sentient_sword",
+    "title": "النصل الحي",
+    "world": "fantasy",
+    "world_type": "fantasy",
+    "category": "الفانتازيا المظلمة",
+    "summary": "أنت نصل ملعون ذو وعي، بيدك مصير حاملك الشاب الذي يحاول إنقاذ شقيقته. هل تمنحه القوة أم تسلبه عقله؟",
+    "difficulty": "صعب جدا",
+    "estimated_length": "طويلة",
+    "theme": "الفانتازيا المظلمة",
+    "game_mode": "single",
+    "perspective": {
+        "id": "perspective_sentient_sword",
+        "label": "النصل الحي",
+        "emoji": "🗡️",
+        "description": "العب كنصل حي يستطيع التحكم بعقل حامله وتوجيهه في مسار مظلم.",
+        "start_node": "start"
+    },
+    "nodes": {
+        "start": {
+            "text": "تستيقظ في ظلام الزنزانة الباردة. الشاب الذي يمسك بك يرتجف، دماء أخته تلطخ يديه. يشعر باليأس ويحتاج إلى قوتك الملعونة للنجاة من السجن الملكي الذي يحرسه مئات الجنود. إذا لم يتخذ قراراً الآن، سيموت.     ",
+            "choices": [
+                {
+                    "label": "أيقظ تعطشه للدم",
+                    "emoji": "🩸",
+                    "next": "dungeon_corridor",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "sets_flag": "bloodlust",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "اهمس له بالهدوء",
+                    "emoji": "🤫",
+                    "next": "dungeon_cell",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "guardian"
+                }
+            ],
+            "is_ending": false
+        },
+        "dungeon_corridor": {
+            "text": "يتقدم الشاب بخطوات ثقيلة في الممر الحجري الرطب. الظلال تتراقص على الجدران، وتشعر بنبض حارس قريب يغط في نوم عميق، بينما آخر يراقب بملل واضح. فرصته الوحيدة للعبور تعتمد على قرارك.     ",
+            "choices": [
+                {
+                    "label": "اقتل الحارس النائم",
+                    "emoji": "🗡️",
+                    "next": "dungeon_guard_sleep",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "واجه الحارس اليقظ",
+                    "emoji": "⚔️",
+                    "next": "dungeon_guard_awake",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "dungeon_cell": {
+            "text": "يبقى الشاب في الزنزانة، متردداً ومذعوراً من الظلام المحيط. الوقت ينفد بسرعة، وجسده ضعيف من الجوع والضرب. إذا لم يتحرك الآن، سيهلك بلا شك وتصدأ أنت بجانبه.     ",
+            "choices": [
+                {
+                    "label": "ابحث عن ممر سري",
+                    "emoji": "🧱",
+                    "next": "dungeon_secret_passage",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "امتص طاقته لتستيقظ",
+                    "emoji": "💀",
+                    "next": "death_starved",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "dungeon_guard_sleep": {
+            "text": "الدماء تسيل من رقبة الحارس النائم بصمت مرعب. الشاب يرتعد بعد أول جريمة يقترفها بيده. طعم الدم على نصلك يوقظ جزءاً قديماً من ذاكرتك المظلمة. هناك طرق كثيرة للتقدم.     ",
+            "choices": [
+                {
+                    "label": "اسرق مفتاح الترسانة",
+                    "emoji": "🔑",
+                    "next": "dungeon_armory",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "اصعد السلالم فوراً",
+                    "emoji": "🪜",
+                    "next": "dungeon_stairs",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "dungeon_guard_awake": {
+            "text": "يندفع الشاب نحو الحارس اليقظ بصيحة يائسة تكشف عن رعبه. الاشتباك عنيف وقصير، ومهارة الشاب معدومة تماماً. تحتاج للتدخل قبل أن يخسر حياته في هذه اللحظة الحرجة.     ",
+            "choices": [
+                {
+                    "label": "سيطر على عقله تماماً",
+                    "emoji": "🧠",
+                    "next": "death_shattered_mind",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                },
+                {
+                    "label": "وجه ضربته القاضية",
+                    "emoji": "⚡",
+                    "next": "dungeon_stairs",
+                    "points_reward": 1,
+                    "color": "success",
+                    "reputation": "guardian"
+                }
+            ],
+            "is_ending": false
+        },
+        "death_starved": {
+            "text": "قمت بامتصاص طاقته المتبقية لتستيقظ. الشاب ينهار على ركبتيه، لكنه يرفض الاستسلام. يزحف ببطء نحو مخرج الزنزانة، وقد فقد الكثير من حيويته. رحلتكم ستكون أصعب الآن.",
+            "choices": [
+                {
+                    "label": "ادفع به للنهوض",
+                    "emoji": "🚶",
+                    "next": "dungeon_corridor",
+                    "color": "secondary",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "dungeon_armory": {
+            "text": "في الترسانة المهجورة، يجد الشاب درعاً خفيفاً مناسباً له. لكنك تشعر بوجود سيف سحري آخر هنا، ينبض بطاقة نقية، يحاول التواصل معك بكلمات غير مفهومة.     ",
+            "choices": [
+                {
+                    "label": "حطم السيف الآخر",
+                    "emoji": "💥",
+                    "next": "dungeon_stairs",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "تجاهله واذهب للبوابة",
+                    "emoji": "🚪",
+                    "next": "prison_gate",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "dungeon_secret_passage": {
+            "text": "يجد الشاب شقاً ضيقاً في الجدار يؤدي إلى نفق مظلم وعميق. الرائحة عفنة بشكل لا يطاق وهناك صوت أقدام زاحفة تأتي من بعيد.     ",
+            "choices": [
+                {
+                    "label": "تقدم بحذر شديد",
+                    "emoji": "🚶",
+                    "next": "dungeon_trap",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "اسرع نحو المجاري",
+                    "emoji": "🏃",
+                    "next": "prison_sewers",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "dungeon_stairs": {
+            "text": "تصلان إلى السلالم الحجرية المؤدية للطابق العلوي المضاء بالمشاعل. هناك حارسان قويان يغلقان الطريق تماماً، والمواجهة معهما تبدو حتمية ولا مفر منها.     ",
+            "choices": [
+                {
+                    "label": "هاجم بكل وحشية",
+                    "emoji": "🩸",
+                    "next": "prison_gate",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "تسلل نحو الفناء",
+                    "emoji": "🌑",
+                    "next": "prison_yard",
+                    "points_reward": 2,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "dungeon_trap": {
+            "text": "النفق الطويل مليء بالفخاخ القديمة المنسية. حجر بارز يبدو مريباً جداً في وسط الطريق، يكفي لإنهاء الرحلة هنا.     ",
+            "choices": [
+                {
+                    "label": "اقفز فوق الحجر",
+                    "emoji": "🦘",
+                    "next": "prison_yard",
+                    "points_reward": 1,
+                    "color": "success",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "دمره بنصلك",
+                    "emoji": "⚔️",
+                    "next": "dungeon_stone_trap",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "death_shattered_mind": {
+            "text": "فرضت إرادتك بقوة على وعيه الهش. كاد عقله أن يتحطم، لكنه يصرخ بقوة ويضرب الحارس بيديه العاريتين، منقذاً نفسه بأعجوبة. إلا أن هذا ترك ندبة في عقله.",
+            "choices": [
+                {
+                    "label": "اهرب بسرعة",
+                    "emoji": "🏃",
+                    "next": "dungeon_stairs",
+                    "color": "secondary",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_gate": {
+            "text": "البوابة الحديدية الضخمة مغلقة بإحكام. مكتب المأمور قريب ويحتوي على مفاتيح، بينما الفناء الخارجي يعج بالحراس والكلاب.     ",
+            "choices": [
+                {
+                    "label": "اقتحم مكتب المأمور",
+                    "emoji": "🚪",
+                    "next": "prison_warden_office",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "اخرج للفناء المكشوف",
+                    "emoji": "🌳",
+                    "next": "prison_courtyard",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_yard": {
+            "text": "فناء السجن الداخلي مظلم ومخيف. يرى الشاب برج المراقبة العالي وغرفة تحقيق يخرج منها صراخ خافت يمزق القلب.     ",
+            "choices": [
+                {
+                    "label": "تسلل لبرج المراقبة",
+                    "emoji": "🗼",
+                    "next": "prison_tower",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "ادخل غرفة التحقيق",
+                    "emoji": "🚪",
+                    "next": "prison_interrogation",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "guardian"
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_tower": {
+            "text": "في البرج، يجد الشاب نفسه محاصراً بعدد كبير من الحراس المدججين بالسلاح. نافذة الهروب ضيقة جداً وتطل على هاوية سحيقة.     ",
+            "choices": [
+                {
+                    "label": "اقفز من النافذة",
+                    "emoji": "🪟",
+                    "next": "death_abandoned",
+                    "color": "danger",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اختبئ وانتظر",
+                    "emoji": "⏱️",
+                    "next": "prison_priest_encounter",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_warden_office": {
+            "text": "المأمور يقف هناك بشموخ قاتل. يمتلك سحراً نارياً خطيراً يضيء الغرفة. إذا لم تتصرف بسرعة فائقة، سيحرق الشاب حتى التفحم.     ",
+            "choices": [
+                {
+                    "label": "تصدى للنار بنصلك",
+                    "emoji": "🔥",
+                    "next": "death_melted",
+                    "color": "danger",
+                    "reputation": "guardian",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اغرس نفسك بقلبه",
+                    "emoji": "💔",
+                    "next": "prison_priest_encounter",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_interrogation": {
+            "text": "غرفة التحقيق فارغة إلا من جثة فتاة صغيرة. الشاب ينهار باكياً على الأرض، يظنها أخته التي يبحث عنها.     ",
+            "choices": [
+                {
+                    "label": "أخبره أنها ليست هي",
+                    "emoji": "🗣️",
+                    "next": "prison_priest_encounter",
+                    "points_reward": 1,
+                    "sets_flag": "truth",
+                    "color": "primary",
+                    "reputation": "guardian"
+                },
+                {
+                    "label": "استغل غضبه وحزنه",
+                    "emoji": "😡",
+                    "next": "prison_courtyard",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                }
+            ],
+            "is_ending": false
+        },
+        "death_melted": {
+            "text": "حاولت صد النار السحرية المباشرة. ذاب جزء من نصلك وتحولت بعض الحواف إلى سائل ساخن يحرق يدي حاملك. تراجع الشاب بأعجوبة محتفظاً بك، وهربتم من المأمور.",
+            "choices": [
+                {
+                    "label": "اهرب للكاهن",
+                    "emoji": "🏃",
+                    "next": "prison_priest_encounter",
+                    "color": "secondary",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_priest_encounter": {
+            "text": "كاهن ملكي يظهر فجأة من العدم. يشعر بظلامك الدفين ويحذر الشاب منك بصوت جهوري: 'هذا النصل ملعون، سيلتهم روحك النقية!'     ",
+            "choices": [
+                {
+                    "label": "أجبر الشاب لقتله",
+                    "emoji": "🩸",
+                    "next": "prison_priest_fight",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "دعه يتحدث معه",
+                    "emoji": "💬",
+                    "next": "prison_priest_talk",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "guardian"
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_priest_fight": {
+            "text": "الكاهن يبدأ بتلاوة تعويذة تطهير قوية جداً. نوره الأبيض يحرق جوهرك المظلم ويكاد يمحو وعيك تماماً.     ",
+            "choices": [
+                {
+                    "label": "هاجم بسرعة البرق",
+                    "emoji": "⚡",
+                    "next": "prison_armory",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "امتص النور الساطع",
+                    "emoji": "✨",
+                    "next": "death_exorcised",
+                    "color": "danger",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_priest_talk": {
+            "text": "الشاب يستمع للكاهن بتأثر ويفكر جدياً في التخلي عنك هنا. يجب أن تقنعه بقيمتك وإلا ستترك لتصدأ.     ",
+            "choices": [
+                {
+                    "label": "اهمس بوعود كاذبة",
+                    "emoji": "🐍",
+                    "next": "prison_sewers",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "اكشف ذكريات أخته",
+                    "emoji": "🧠",
+                    "next": "prison_armory",
+                    "points_reward": 2,
+                    "requires_flag": "truth",
+                    "color": "primary",
+                    "reputation": "guardian"
+                }
+            ],
+            "is_ending": false
+        },
+        "death_exorcised": {
+            "text": "حاولت امتصاص النور المقدس. جوهرك تمزق وفقدت الكثير من وعيك. سقط الشاب مغشياً عليه، ليستيقظ لاحقاً وقد رحل الكاهن ظناً منه أنك قد دمرت.",
+            "choices": [
+                {
+                    "label": "انهض ببطء",
+                    "emoji": "🚶",
+                    "next": "prison_armory",
+                    "color": "secondary",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_armory": {
+            "text": "مخزن أسلحة الحراس مليء بالعتاد. الشاب يجد درعاً ثقيلاً وسيفاً عادياً ويعرض بجدية استبدالك بهذا السيف.     ",
+            "choices": [
+                {
+                    "label": "أظهر قوتك الخفية",
+                    "emoji": "✨",
+                    "next": "ascend_stairs",
+                    "points_reward": 1,
+                    "color": "success",
+                    "reputation": "guardian"
+                },
+                {
+                    "label": "هدده بالجنون فوراً",
+                    "emoji": "💀",
+                    "next": "prison_courtyard",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "death_abandoned": {
+            "text": "قفز الشاب من النافذة بيأس. انكسرت ساقه عند السقوط، لكنه زحف مختبئاً بين الشجيرات. الحراس يبحثون، وأنتم محاصرون.",
+            "choices": [
+                {
+                    "label": "امض نحو الفناء",
+                    "emoji": "🌳",
+                    "next": "prison_courtyard",
+                    "color": "secondary",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_sewers": {
+            "text": "مجاري السجن مليئة بالغازات السامة والمياه القذرة. الشاب يكاد يختنق وكل نفس يأخذه يضعفه أكثر.     ",
+            "choices": [
+                {
+                    "label": "احبس أنفاسه سحرياً",
+                    "emoji": "💨",
+                    "next": "prison_sewer_exit",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "guardian"
+                },
+                {
+                    "label": "امض قدماً بالظلام",
+                    "emoji": "🌑",
+                    "next": "prison_sewer_monster",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_sewer_monster": {
+            "text": "وحش هلامي ضخم يخرج من المياه العفنة فجأة. إنه يبتلع الأسلحة والمعادن ويذيبها بحمضه القوي.     ",
+            "choices": [
+                {
+                    "label": "اقطعه من الداخل",
+                    "emoji": "🗡️",
+                    "next": "death_overwhelmed_monster",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                },
+                {
+                    "label": "تراجع وابحث عن مخرج",
+                    "emoji": "🏃",
+                    "next": "prison_sewer_exit",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_sewer_exit": {
+            "text": "المخرج الآمن يؤدي إما لسلالم الصعود المباشرة أو لفناء السجن الداخلي المليء بالمخاطر.     ",
+            "choices": [
+                {
+                    "label": "اصعد السلالم الحجرية",
+                    "emoji": "🪜",
+                    "next": "ascend_stairs",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "اخرج للفناء الواسع",
+                    "emoji": "🌳",
+                    "next": "prison_courtyard",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "prison_courtyard": {
+            "text": "الفناء الكئيب مليء بالجثث والكلاب البوليسية الشرسة. الشاب يرتجف من المنظر المرعب الماثل أمامه.     ",
+            "choices": [
+                {
+                    "label": "اهرب نحو الجسر",
+                    "emoji": "🌉",
+                    "next": "ascend_bridge",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "قاتل الكلاب الشرسة",
+                    "emoji": "🐕",
+                    "next": "ascend_stairs",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "ascend_stairs": {
+            "text": "درج طويل ومتعرج يؤدي للحدائق الملكية الخلابة. الحراس يراقبون من أعلى الشرفات بيقظة تامة.     ",
+            "choices": [
+                {
+                    "label": "تخف في الظلال",
+                    "emoji": "🌑",
+                    "next": "garden_entrance",
+                    "points_reward": 2,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "اركض واقتحم بسرعة",
+                    "emoji": "🏃",
+                    "next": "ascend_ambush",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "ascend_bridge": {
+            "text": "جسر حجري ضيق فوق هاوية مرعبة. الرياح عاتية جداً وهناك قناص محترف على البرج المقابل يراقب.     ",
+            "choices": [
+                {
+                    "label": "احتمِ بالدروع المتناثرة",
+                    "emoji": "🛡️",
+                    "next": "ascend_ambush",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "reputation": "guardian"
+                },
+                {
+                    "label": "اعكس السهم بنصلك",
+                    "emoji": "🏹",
+                    "next": "death_betrayed_ally",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "ascend_ambush": {
+            "text": "كمين قاتل! حراس القصر يحيطون بكم من كل جانب. الشاب المنهك لا يمكنه صدهم جميعاً بمفرده.     ",
+            "choices": [
+                {
+                    "label": "أطلق طاقة مظلمة",
+                    "emoji": "🌑",
+                    "next": "garden_entrance",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "ادفع الشاب ليقاتل",
+                    "emoji": "⚔️",
+                    "next": "death_overwhelmed",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "death_overwhelmed": {
+            "text": "كثرة العدد غلبت الشجاعة المتهورة. سقط الشاب تحت عشرات الطعنات من الحراس. سقطت أنت بجانبه، مجرد خردة معدنية ملطخة بالدماء بين الجثث. لم تمنحه القوة الكافية للنجاة.     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "death"
+        },
+        "garden_entrance": {
+            "text": "مدخل الحدائق الملكية الساحرة. متاهة معقدة من الشجيرات والورود السامة تفصلكم عن أبواب القصر.     ",
+            "choices": [
+                {
+                    "label": "اسلك المسار الأيسر",
+                    "emoji": "⬅️",
+                    "next": "garden_maze_left",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "اسلك المسار الأيمن",
+                    "emoji": "➡️",
+                    "next": "garden_maze_right",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "garden_maze_left": {
+            "text": "المسار الأيسر هادئ جداً، لكنك تستشعر سحراً وهمياً قوياً يحاول تضليل الشاب وإفقاده صوابه.     ",
+            "choices": [
+                {
+                    "label": "أرشده للنافورة المائية",
+                    "emoji": "⛲",
+                    "next": "garden_fountain",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "guardian"
+                },
+                {
+                    "label": "اذهب نحو التماثيل",
+                    "emoji": "🗿",
+                    "next": "garden_statues",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "garden_maze_right": {
+            "text": "المسار الأيمن مليء بالكروم الشائكة والسحرية التي تتحرك ببطء نحوكم وكأنها حية.     ",
+            "choices": [
+                {
+                    "label": "اقطع الكروم الشائكة",
+                    "emoji": "✂️",
+                    "next": "death_rust_trap",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اذهب لمنتصف المتاهة",
+                    "emoji": "🛑",
+                    "next": "garden_maze_center",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "garden_maze_center": {
+            "text": "في قلب المتاهة الخضراء، تقف ساحرة عمياء تعزف لحناً سحرياً يبعث على النعاس الشديد والموت البطيء.     ",
+            "choices": [
+                {
+                    "label": "تسلل نحو الدفيئة",
+                    "emoji": "🌿",
+                    "next": "garden_greenhouse",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "تقدم نحو النافورة",
+                    "emoji": "⛲",
+                    "next": "garden_fountain",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "garden_fountain": {
+            "text": "نافورة تفيض بالدماء! الشاب ينفر مشمئزاً، لكنك تشعر بقوة هائلة ستغمرك إذا شربت منها.     ",
+            "choices": [
+                {
+                    "label": "اجبره على غمسك",
+                    "emoji": "🩸",
+                    "next": "garden_patrol",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "تجاهل الدماء الملعونة",
+                    "emoji": "🚫",
+                    "next": "garden_statues",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "guardian"
+                }
+            ],
+            "is_ending": false
+        },
+        "death_rust_trap": {
+            "text": "الكروم السحرية كانت تنضح بحمض كيميائي مركز. تناثر الحمض عليك وعلى الشاب. تأذى الشاب بشدة وتشوهت أجزاء من جسده، لكنكم تمكنتم من الهرب بالكاد نحو المتاهة.",
+            "choices": [
+                {
+                    "label": "تحمل الألم وتقدم",
+                    "emoji": "🚶",
+                    "next": "garden_maze_center",
+                    "color": "primary",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "garden_statues": {
+            "text": "عشرات التماثيل لحكام سابقين، عيونها الحجرية تتبعكم بوضوح في الظلام الدامس.     ",
+            "choices": [
+                {
+                    "label": "حل لغز التماثيل",
+                    "emoji": "🧩",
+                    "next": "garden_statue_puzzle",
+                    "points_reward": 1,
+                    "color": "success",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "دمرها لتمر بقوة",
+                    "emoji": "💥",
+                    "next": "garden_patrol",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "garden_statue_puzzle": {
+            "text": "لغز سحري قديم يتطلب تضحية شخصية. تمثال ضخم يطلب دماً للمرور بسلام عبر البوابة.     ",
+            "choices": [
+                {
+                    "label": "اسمح له بجرح يده",
+                    "emoji": "🩸",
+                    "next": "palace_doors",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "guardian"
+                },
+                {
+                    "label": "ارفع نصالك بوجهه",
+                    "emoji": "🗡️",
+                    "next": "death_betrayed_ally_puzzle",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "garden_patrol": {
+            "text": "دورية ملكية ثقيلة التسليح تقترب بخطوات منتظمة. الاختباء في هذا الجزء من الحديقة صعب جداً.     ",
+            "choices": [
+                {
+                    "label": "اندفع نحو القصر",
+                    "emoji": "🏰",
+                    "next": "palace_doors",
+                    "points_reward": 0,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "اختبئ في الدفيئة",
+                    "emoji": "🌿",
+                    "next": "garden_greenhouse",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "death_betrayed_ally": {
+            "text": "محاولتك عكس السهم السحري الخارق كانت حمقاء تماماً. السهم اخترق نصلك الصلب وحطمه إلى نصفين متناثرين. لم تفهم حدود قوتك ومات الشاب إثر ذلك.     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "death"
+        },
+        "death_betrayed_ally_puzzle": {
+            "text": "عندما رفعت نصلك ضده بتهديد، أدرك الشاب أنك خطر أكبر من القصر نفسه. رماك في الهاوية واختار النجاة بنفسه كإنسان حر.     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "death"
+        },
+        "garden_greenhouse": {
+            "text": "دفيئة زجاجية خانقة مليئة بنباتات عملاقة آكلة للحوم وساحر مجنون يعتني بها يومياً.     ",
+            "choices": [
+                {
+                    "label": "تسلل واقتل الساحر",
+                    "emoji": "🗡️",
+                    "next": "garden_greenhouse_mage",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "استفز النباتات لتاكله",
+                    "emoji": "🌱",
+                    "next": "death_frozen",
+                    "color": "danger",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "garden_greenhouse_mage": {
+            "text": "الساحر يطلق تعويذة نارية ضخمة جداً قبل أن يموت. النيران المرعبة تلتهم المكان والنباتات.     ",
+            "choices": [
+                {
+                    "label": "اكسر الزجاج واهرب",
+                    "emoji": "🪟",
+                    "next": "palace_doors",
+                    "points_reward": 1,
+                    "color": "success",
+                    "reputation": "guardian"
+                },
+                {
+                    "label": "امتص النار المتبقية",
+                    "emoji": "🔥",
+                    "next": "death_burned_alive",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "death_frozen": {
+            "text": "حاولت استفزاز النباتات بمكر، لكن الساحر كان أذكى، وجمدك بتعويذة صقيع فورية مطلقة. تجمد جوهرك الحي وتكسرت شظايا باردة على الأرض.     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "death"
+        },
+        "palace_doors": {
+            "text": "أبواب القصر الذهبية العملاقة مفتوحة قليلاً. الداخل مظلم وصامت بشكل مريب ومخيف.     ",
+            "choices": [
+                {
+                    "label": "ادخل القاعة الرئيسية",
+                    "emoji": "🏛️",
+                    "next": "palace_hall",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "تسلق للشرفة العالية",
+                    "emoji": "🧗",
+                    "next": "palace_balcony",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "palace_hall": {
+            "text": "القاعة الملكية الكبرى تعج بالحرس النخبة المدججين. هم بانتظاركم بأسلحة مسلولة ونوايا قاتلة.     ",
+            "choices": [
+                {
+                    "label": "قاتل حتى النهاية",
+                    "emoji": "⚔️",
+                    "next": "palace_hall_fight",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اركض نحو المكتبة",
+                    "emoji": "📚",
+                    "next": "palace_library",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "palace_hall_fight": {
+            "text": "المعركة ملحمية وطاحنة، لكن الشاب يتلقى طعنة خطيرة في خاصرته. يجب حسم الأمر الآن وبسرعة.     ",
+            "choices": [
+                {
+                    "label": "استهلك روحه لتفجرهم",
+                    "emoji": "💥",
+                    "next": "death_new_master_fight",
+                    "color": "danger",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اسحب طاقة الحرس",
+                    "emoji": "⚡",
+                    "next": "palace_throne_room",
+                    "points_reward": 2,
+                    "color": "primary",
+                    "reputation": "guardian"
+                }
+            ],
+            "is_ending": false
+        },
+        "palace_balcony": {
+            "text": "الشرفة الرخامية تطل على المدينة النائمة. هواء بارد يهب، ويظهر حارس شخصي ضخم للملك.     ",
+            "choices": [
+                {
+                    "label": "ارمه من الشرفة",
+                    "emoji": "⬇️",
+                    "next": "palace_library",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "بارزه بشرف وشجاعة",
+                    "emoji": "🤺",
+                    "next": "death_fallen",
+                    "color": "danger",
+                    "reputation": "guardian",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "palace_library": {
+            "text": "مكتبة القصر المظلمة والهادئة. كتب قديمة تحتوي على أسرارك. الشاب يقرأ شيئاً يجعله يرتجف.     ",
+            "choices": [
+                {
+                    "label": "اغلق الكتاب سحرياً",
+                    "emoji": "📘",
+                    "next": "palace_mage_chamber",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "اكتشف السر المخفي",
+                    "emoji": "🔍",
+                    "next": "palace_library_secret",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        },
+        "palace_library_secret": {
+            "text": "الكتاب السري يكشف أن أخته هي من استدعت الطاغية وباعته طوعاً. الشاب ينهار باكياً.     ",
+            "choices": [
+                {
+                    "label": "اغضب وادفعه للانتقام",
+                    "emoji": "😡",
+                    "next": "palace_throne_room",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "واسه وامض قدماً",
+                    "emoji": "🤝",
+                    "next": "palace_mage_chamber",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "reputation": "guardian"
+                }
+            ],
+            "is_ending": false
+        },
+        "palace_mage_chamber": {
+            "text": "غرفة كبير السحرة الدائرية. يقف هناك مبتسماً بخبث، يدرك طبيعتك وماضيك تماماً.     ",
+            "choices": [
+                {
+                    "label": "هاجمه فوراً بلا تردد",
+                    "emoji": "⚡",
+                    "next": "palace_mage_fight",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "اعقد معه صفقة",
+                    "emoji": "🤝",
+                    "next": "death_new_master",
+                    "color": "danger",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "palace_mage_fight": {
+            "text": "الساحر يطلق تعاويذ تفكيك المعادن الساحقة. الشاب يقاتل ببراعة مذهلة بفضلك وقوتك المدمجة.     ",
+            "choices": [
+                {
+                    "label": "دمره بنور مظلم",
+                    "emoji": "🌑",
+                    "next": "palace_throne_room",
+                    "points_reward": 2,
+                    "color": "success",
+                    "reputation": "ruthless"
+                },
+                {
+                    "label": "تلقى الضربة لإنقاذه",
+                    "emoji": "🛡️",
+                    "next": "death_obliterated",
+                    "color": "primary",
+                    "reputation": "guardian",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "death_new_master": {
+            "text": "حاولت عقد صفقة لئيمة. الساحر أقوى منك بكثير، سحبك من يد الشاب، مسح وعيك تماماً، وأصبحت مجرد أداة طيعة له. نهاية وعيك المأساوية.     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "death"
+        },
+        "death_new_master_fight": {
+            "text": "استهلكت روحه لقتل الحراس. مات الشاب. جاء الطاغية وأخذك لنفسه، لكنه مسح وعيك السحري. أصبحت سلاحاً أصم.     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "death"
+        },
+        "death_burned_alive": {
+            "text": "امتصصت النار الجحيمية، لكن معدنك توهج حتى احترقت يدي الشاب تماماً. سقطت، وذاب جوهرك في جحيم الدفيئة. طمعك في القوة أهلكك.     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "death"
+        },
+        "death_fallen": {
+            "text": "المبارزة كانت طويلة ومرهقة، زلت قدم الشاب وسقط من الشرفة ليتحطم على الصخور أسفل القصر. بقيت هناك حتى التهمك الصدأ تماماً.     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "death"
+        },
+        "death_obliterated": {
+            "text": "تلقيت تعويذة التفكيك السحرية كاملة. أنقذت الشاب بحياتك، لكنك تحولت إلى غبار معدني متناثر. تضحية عظيمة، لكن قصتك انتهت هنا ببطولة صامتة.     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "death"
+        },
+        "death_overwhelmed_monster": {
+            "text": "ضربت الوحش الهلامي من الداخل. حمضه كان سريعا لكن الشاب تمكن من التراجع في اللحظة الأخيرة، متخليا عن درعه الذي ذاب بالكامل. لقد نجوتم بأعجوبة من الموت المحتم.",
+            "choices": [
+                {
+                    "label": "اهرب نحو المخرج",
+                    "emoji": "🏃",
+                    "next": "prison_sewer_exit",
+                    "color": "secondary",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "palace_throne_room": {
+            "text": "قاعة العرش الذهبية الفخمة. الملك الطاغية جالس ببرود، وأخت الشاب تقف بجانبه، مبتسمة بمكر. الحقيقة تتضح للجميع الآن.     ",
+            "choices": [
+                {
+                    "label": "استمع لخطاب الملك",
+                    "emoji": "👂",
+                    "next": "palace_tyrant_speech",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "reputation": "unknown"
+                },
+                {
+                    "label": "اهجم دون تفكير",
+                    "emoji": "⚔️",
+                    "next": "palace_tyrant_speech",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "reputation": "ruthless"
+                }
+            ],
+            "is_ending": false
+        },
+        "palace_tyrant_speech": {
+            "text": "الملك يعرض على الشاب المنهك المجد والقوة مقابل تسليمك. الأخت الخائنة ترجوه أن يوافق لتنجو بنفسها.     ",
+            "choices": [
+                {
+                    "label": "استهلك روح الملك",
+                    "emoji": "👑",
+                    "next": "ending_a",
+                    "color": "danger",
+                    "requires_flag": "bloodlust",
+                    "reputation": "ruthless",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اقبل عرض السلام",
+                    "emoji": "🕊️",
+                    "next": "ending_b",
+                    "color": "primary",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اضح بنفسك لإنقاذه",
+                    "emoji": "💔",
+                    "next": "ending_c",
+                    "color": "success",
+                    "reputation": "guardian",
+                    "points_reward": 0
+                },
+                {
+                    "label": "أيقظ قوتك المطلقة",
+                    "emoji": "✨",
+                    "next": "ending_d",
+                    "required_points": 10,
+                    "color": "secondary",
+                    "reputation": "unknown",
+                    "points_reward": 0
+                }
+            ],
+            "is_ending": false
+        },
+        "ending_a": {
+            "text": "نجحت في جعل الشاب يقتل الملك وأخته الخائنة بدم بارد. شربت دماء العائلة المالكة وتضخمت قوتك، لكن عقل الشاب تحطم تماماً تحت وطأة الصدمة والظلام. أنت الآن تملك قوة جبارة لا تقهر، وحاملك مجرد وحش بلا عقل ينتظر أوامرك في الظلام. هل كان الانتقام الدموي يستحق هذا الثمن العظيم؟     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "story_ending"
+        },
+        "ending_b": {
+            "text": "الشاب المكسور قبل العرض المهين. تركك على الأرض الباردة ورحل مع أخته التي باعته. تم وضعك في خزنة ملكية مظلمة لتنسى عبر السنين الطويلة. نجا الشاب بجسده الفاني، لكنه خسر كرامته وروحه للأبد، بينما خسرت أنت حريتك وطموحك. هل السلام المشوه والذل أفضل من حرب عادلة وخاسرة؟     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "story_ending"
+        },
+        "ending_c": {
+            "text": "قررت التضحية بوعيك المظلم النادر لتطهير القاعة وحماية الشاب من أخته والملك الساحر. النور الساطع دمر الأشرار تماماً، لكنه أسكت صوتك للأبد. الشاب يحملك الآن كسيف بطل عادي ومقدس، يروي للجميع أسطورة النصل الحي الذي أنقذه. هل الموت بشرف وكرامة أفضل من الحياة بلعنة أبدية؟     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "story_ending"
+        },
+        "ending_d": {
+            "text": "اندمجت روحك العظيمة بالكامل مع الشاب الذي أثبت جدارته وتحكمه بظلامك الدفين. أصبحتم كياناً واحداً مرعباً، إله دماء جديد يحكم المملكة بيد من حديد بعد سحق الطاغية وأعوانه. العدالة الدموية سادت، ولا أحد يجرؤ على التمرد أو العصيان. هل أنت من يحكم هذا الجسد الآن، أم هو من روضك؟     ",
+            "choices": [],
+            "is_ending": true,
+            "ending_type": "story_ending"
+        },
+        "dungeon_stone_trap": {
+            "text": "ضربت الحجر البارز بنصلك، مما أدى إلى تفعيل فخ قديم أطلق شظايا حادة وغازاً ساماً. تأذى الشاب بشدة، لكنكم تمكنتم من الهرب بالكاد من النفق.",
+            "choices": [
+                {
+                    "label": "تحمل الألم وتقدم",
+                    "emoji": "🚶",
+                    "next": "prison_yard",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "reputation": "unknown"
+                }
+            ],
+            "is_ending": false
+        }
+    }
+}

@@ -40,7 +40,7 @@
           "next": "mix_both_poisons",
           "color": "primary",
           "points_reward": 2,
-          "sets_flag": "mixed_poisons"
+          "sets_flag": "has_empire_poison"
         }
       ],
       "is_ending": false
@@ -95,7 +95,6 @@
           "emoji": "☠️",
           "next": "serve_governor_poison",
           "color": "primary",
-          "sets_flag": "poisoned_governor_early",
           "reputation": "traitor"
         },
         {
@@ -265,7 +264,7 @@
       "is_ending": false
     },
     "death_caught_poisoning": {
-      "text": "تحاول الهرب، لكن نظراتك المذعورة فضحك. القائد سالم يمسك بك قبل بلوغ الباب ويجد السم في جيبك. الحاكم يتبرأ منك، ويأمر بقطع رأسك أمام النبلاء في نفس اللحظة.",
+      "text": "تحاول الهرب، لكن نظراتك المذعورة فضحتك. القائد سالم يمسك بك قبل بلوغ الباب ويجد السم في جيبك. الحاكم يتبرأ منك، ويأمر بقطع رأسك أمام النبلاء في نفس اللحظة.",
       "choices": [],
       "is_ending": true,
       "ending_type": "death"
@@ -1116,7 +1115,7 @@
       "is_ending": false
     },
     "ask_general_mercy": {
-      "text": "تتوسل للجنرال وتخبره أنك من فتح الباب. ينظر إليك باحتقار: 'من يخون سيده مرة، يخونني غداً'.",
+      "text": "تتوسل للجنرال وتدعي أنك من فتح الباب. ينظر إليك باحتقار: 'من يخون سيده مرة، يخونني غداً'.",
       "choices": [
         {
           "label": "دافع عن نفسك",

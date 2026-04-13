@@ -75,6 +75,7 @@
                     "emoji": "🎒",
                     "next": "take_core",
                     "points_reward": 1,
+                    "reputation": "selfish",
                     "color": "primary"
                 },
                 {
@@ -82,6 +83,8 @@
                     "emoji": "👁️",
                     "next": "listen_core",
                     "points_reward": 2,
+                    "sets_flag": "flag_core_whispers",
+                    "reputation": "unknown",
                     "color": "primary"
                 }
             ]
@@ -145,6 +148,7 @@
                     "emoji": "⛺",
                     "next": "search_resistance",
                     "points_reward": 1,
+                    "reputation": "idealist",
                     "color": "primary"
                 }
             ]
@@ -164,6 +168,7 @@
                     "emoji": "⛺",
                     "next": "search_resistance",
                     "points_reward": 1,
+                    "reputation": "idealist",
                     "color": "primary"
                 }
             ]
@@ -201,6 +206,7 @@
                     "label": "ارفع سلاحك وهدده",
                     "emoji": "🔫",
                     "next": "threaten_merchant",
+                    "reputation": "ruthless",
                     "points_reward": 1,
                     "color": "primary"
                 }
@@ -346,6 +352,7 @@
                     "emoji": "🤲",
                     "next": "give_core_free",
                     "points_reward": 2,
+                    "reputation": "idealist",
                     "color": "primary"
                 },
                 {
@@ -427,6 +434,7 @@
                     "label": "استمع للنواة واسرقها",
                     "emoji": "🥷",
                     "next": "steal_core_back",
+                    "reputation": "selfish",
                     "color": "primary",
                     "points_reward": 0
                 }
@@ -446,6 +454,7 @@
                     "emoji": "🏃",
                     "next": "steal_core_back",
                     "points_reward": 1,
+                    "reputation": "unknown",
                     "color": "primary"
                 },
                 {
@@ -478,6 +487,7 @@
                     "emoji": "🤫",
                     "next": "keep_secret_listen",
                     "points_reward": 1,
+                    "sets_flag": "flag_know_truth",
                     "color": "primary"
                 }
             ]
@@ -489,6 +499,7 @@
                     "label": "اسمح لهم بتدميرها",
                     "emoji": "🔨",
                     "next": "let_destroy_core",
+                    "reputation": "idealist",
                     "color": "primary",
                     "points_reward": 0
                 },
@@ -497,6 +508,7 @@
                     "emoji": "🛑",
                     "next": "save_core_fight",
                     "points_reward": 1,
+                    "reputation": "unknown",
                     "color": "primary"
                 }
             ]
@@ -652,6 +664,7 @@
                     "label": "اقبل عرض الحاكم",
                     "emoji": "🥂",
                     "next": "accept_governor_offer",
+                    "reputation": "selfish",
                     "color": "primary",
                     "points_reward": 0
                 },
@@ -671,6 +684,7 @@
                     "label": "اقترح تدمير النواة",
                     "emoji": "🔨",
                     "next": "suggest_destroy_core",
+                    "reputation": "idealist",
                     "color": "primary",
                     "points_reward": 0
                 },
@@ -921,6 +935,7 @@
                     "label": "استمع لعمر ودمرها",
                     "emoji": "🛑",
                     "next": "destroy_core_with_omar",
+                    "reputation": "idealist",
                     "color": "primary",
                     "points_reward": 0
                 },
@@ -943,6 +958,7 @@
                     "label": "سلمها للمجمع",
                     "emoji": "🏛️",
                     "next": "ending_selfish_survival",
+                    "reputation": "selfish",
                     "color": "primary",
                     "points_reward": 0
                 }
@@ -962,6 +978,7 @@
                     "label": "هاجم عمر وأدخلها",
                     "emoji": "⚔️",
                     "next": "attack_omar_insert",
+                    "reputation": "selfish",
                     "color": "primary",
                     "points_reward": 0
                 }
@@ -1069,7 +1086,7 @@
             "choices": []
         },
         "ending_the_new_dawn": {
-            "text": "في اللحظة الأخيرة، تذكرت ملفات تجاوز النظام التي وجدتها. قمت بتعديل الشفرة قبل إدخال النواة، عازلاً الذكاء الاصطناعي عن التحكم الكامل بالبرج. البرج يبدأ بالعمل، ينقي الهواء ببطء دون مسح البشر. عمر ينظر لك بذهول. لقد روضت الآلة وأنقذت الجميع. أنت حارس الفجر الجديد. ماذا ستفعل بهذا العالم؟",
+            "text": "في اللحظة الأخيرة، تمكنت من اختراق النظام مستخدماً براعتك كنباش. قمت بتعديل الشفرة قبل إدخال النواة، عازلاً الذكاء الاصطناعي عن التحكم الكامل بالبرج. البرج يبدأ بالعمل، ينقي الهواء ببطء دون مسح البشر. عمر ينظر لك بذهول. لقد روضت الآلة وأنقذت الجميع. أنت حارس الفجر الجديد. ماذا ستفعل بهذا العالم؟",
             "is_ending": true,
             "choices": []
         },

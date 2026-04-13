@@ -427,6 +427,14 @@
           "emoji": "🌾",
           "color": "primary",
           "points_reward": 2
+        },
+        {
+          "label": "استخدم السم للهروب",
+          "next": "p_escape_with_poison",
+          "emoji": "🧪",
+          "color": "success",
+          "requires_flag": "flag_found_poison",
+          "points_reward": 2
         }
       ]
     },
@@ -768,6 +776,13 @@
           "emoji": "👑",
           "color": "primary",
           "points_reward": 2
+        },
+        {
+          "label": "ادع الإصابة لدخولهم",
+          "next": "p_fake_injury",
+          "emoji": "🩸",
+          "color": "secondary",
+          "requires_flag": "flag_wounded"
         }
       ]
     },
@@ -1193,6 +1208,40 @@
       "choices": [],
       "is_ending": true,
       "ending_type": "ending_d"
+    },
+    "p_escape_with_poison": {
+      "text": "تلقي زجاجة السم على الأرض. ينتشر الغاز بسرعة، ويسعل القتلة بشدة حتى يسقطوا صرعى. طريقك أصبح سالكاً بفضل ما وجدته.",
+      "choices": [
+        {
+          "label": "اهرب للحديقة",
+          "next": "p_wall_stealth",
+          "emoji": "🌳",
+          "color": "primary"
+        },
+        {
+          "label": "اذهب للمتمردين",
+          "next": "p_rebel_approach",
+          "emoji": "⛺",
+          "color": "secondary"
+        }
+      ]
+    },
+    "p_fake_injury": {
+      "text": "تستغل جراحك الحقيقية وتتظاهر بالإغماء. ينقلك الحرس لمشفى القصر، ومن هناك تتسلل بسهولة إلى الداخل.",
+      "choices": [
+        {
+          "label": "ابحث عن الجنرال",
+          "next": "p_demand_general",
+          "emoji": "🔍",
+          "color": "primary"
+        },
+        {
+          "label": "تسلل للحدائق",
+          "next": "p_wall_stealth",
+          "emoji": "🌳",
+          "color": "secondary"
+        }
+      ]
     }
   },
   "world": "الماضي",

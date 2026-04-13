@@ -25,9 +25,10 @@ def _start_health_server(port: int) -> None:
 
 
 def main() -> None:
+    print("Booting Discord bot service...")
     if not DISCORD_TOKEN:
         raise RuntimeError(
-            "Discord token is missing. Set one of DISCORD_TOKEN, BOT_TOKEN, or TOKEN in the environment."
+            "Discord token is missing. Set one of: DISCORD_TOKEN, BOT_TOKEN, TOKEN, DISCORD_BOT_TOKEN, TOKEN_BOT."
         )
 
     # Render Web Services require a bound port; Render Workers do not.
@@ -35,6 +36,7 @@ def main() -> None:
     port_value = os.getenv("PORT")
     if port_value:
         port = int(port_value)
+        print(f"Detected Render PORT={port}; starting health server thread.")
         server_thread = threading.Thread(target=_start_health_server, args=(port,), daemon=True)
         server_thread.start()
 

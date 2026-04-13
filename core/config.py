@@ -8,7 +8,17 @@ load_dotenv()
 # Primary key for this project is DISCORD_TOKEN, but BOT_TOKEN/TOKEN are
 # supported to reduce deployment misconfiguration issues.
 def _resolve_discord_token() -> str:
-    for env_key in ("DISCORD_TOKEN", "BOT_TOKEN", "TOKEN"):
+    # Ordered by preference.
+    candidate_keys = (
+        "DISCORD_TOKEN",
+        "BOT_TOKEN",
+        "TOKEN",
+        "DISCORD_BOT_TOKEN",
+        "TOKEN_BOT",
+        "token",
+        "bot_token",
+    )
+    for env_key in candidate_keys:
         value = os.getenv(env_key, "").strip()
         if value:
             return value

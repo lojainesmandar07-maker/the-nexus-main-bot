@@ -26,7 +26,9 @@ def _start_health_server(port: int) -> None:
 
 def main() -> None:
     if not DISCORD_TOKEN:
-        raise RuntimeError("DISCORD_TOKEN is missing. Set it in environment or core/config.py before startup.")
+        raise RuntimeError(
+            "Discord token is missing. Set one of DISCORD_TOKEN, BOT_TOKEN, or TOKEN in the environment."
+        )
 
     # Render Web Services require a bound port; Render Workers do not.
     # Start health server only when a PORT is explicitly provided.

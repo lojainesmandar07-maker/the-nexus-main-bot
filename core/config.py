@@ -4,11 +4,18 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Direct token-in-code setup requested by user.
-DISCORD_TOKEN = ""
-# Optional fallback if you clear DISCORD_TOKEN above:
-if not DISCORD_TOKEN.strip():
-    DISCORD_TOKEN = os.getenv("DISCORD_TOKEN", "")
+# Resolve the Discord token from common environment variable names.
+# Primary key for this project is DISCORD_TOKEN, but BOT_TOKEN/TOKEN are
+# supported to reduce deployment misconfiguration issues.
+def _resolve_discord_token() -> str:
+    for env_key in ("DISCORD_TOKEN", "BOT_TOKEN", "TOKEN"):
+        value = os.getenv(env_key, "").strip()
+        if value:
+            return value
+    return ""
+
+
+DISCORD_TOKEN = _resolve_discord_token()
 GUILD_ID = os.getenv("GUILD_ID") # Optional, for testing sync commands faster
 
 # --- New config helpers ---

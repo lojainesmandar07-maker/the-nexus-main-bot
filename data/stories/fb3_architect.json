@@ -1,0 +1,1358 @@
+{
+  "id": "fb3_architect",
+  "title": "مهندس السجن الأبدي",
+  "world": "fantasy",
+  "world_type": "fantasy",
+  "category": "الفانتازيا المظلمة",
+  "summary": "لقد بنيت هذا السجن ليكون بلا مخرج. والآن، الملك الذي خدمته ألقى بك في أعماقه. هل تنجو من فخاخك؟",
+  "difficulty": "صعب جداً",
+  "estimated_length": "طويلة",
+  "theme": "الفانتازيا المظلمة",
+  "game_mode": "single",
+  "nodes": {
+    "start": {
+      "text": "برودة الحجر تحتك مألوفة، رائحة العفن في الهواء صممتها بنفسك لكسر الأرواح. أنت في 'دمعة الصمت'، السجن الذي بنيته والذي لا يمكن الهروب منه. باب الزنزانة يغلق خلفك، والظلام يبتلع كل شيء. في هذا القاع، لا يوجد حراس، فقط وحوش العقل والمساجين المنسيين.",
+      "choices": [
+        {
+          "label": "تحسس الجدار ببطء",
+          "emoji": "🧱",
+          "next": "feel_wall",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "نادِ في الظلام",
+          "emoji": "🗣️",
+          "next": "call_out",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "feel_wall": {
+      "text": "تتذكر أن الحجر السابع من الأسفل رخو في جميع الزنازين السفلية كعيب هندسي تركته عمداً. تجد الحجر وتسحبه، كاشفاً عن فجوة ضيقة تؤدي إلى مجاري الهواء. لكنك تشم رائحة لوز مر خفيفة جداً.",
+      "choices": [
+        {
+          "label": "ادخل المجاري بسرعة",
+          "emoji": "🏃",
+          "next": "death_poison_gas",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "انتظر تبدد الغاز",
+          "emoji": "⏳",
+          "next": "wait_gas",
+          "points_reward": 2,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اضرب الجدار بغضب",
+          "emoji": "💢",
+          "next": "death_wall_collapse",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "call_out": {
+      "text": "صوتك يتردد في الظلام. بعد لحظات، يأتيك همس أجش من الزنزانة المجاورة: 'من هناك؟ هل أنت لحم جديد للوحوش أم أنك تحمل أملاً؟'.",
+      "choices": [
+        {
+          "label": "أخبره أنك المهندس",
+          "emoji": "👤",
+          "next": "death_betrayed_by_shadow",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اكذب بشأن هويتك",
+          "emoji": "🤥",
+          "next": "lie_to_shadow",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "ابكِ بصمت",
+          "emoji": "😢",
+          "next": "cry_silently",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_poison_gas": {
+      "text": "تندفع داخل الفجوة، وتملأ رئتيك بالهواء. رائحة اللوز المر تشتد. إنه الغاز السام! تكافح للخروج وتسقط في غرفة سفلية مجهولة، فاقداً للوعي مؤقتاً.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "استيقظ في الظلام",
+          "emoji": "🌑",
+          "next": "dark_room_wakeup",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "wait_gas": {
+      "text": "تنتظر بضع دقائق. الغاز السام مصمم ليتبدد بسرعة بعد تنشيطه ليسمح للحراس بالدخول لاحقاً. تدخل الفجوة بأمان وتزحف حتى تصل إلى صالة ميكانيكية قديمة. أمامك باب خشبي وباب معدني ثقيل.",
+      "choices": [
+        {
+          "label": "افتح الباب الخشبي",
+          "emoji": "🚪",
+          "next": "wooden_door",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "افحص الباب المعدني",
+          "emoji": "⚙️",
+          "next": "metal_door",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_betrayed_by_shadow": {
+      "text": "'المهندس؟' يهمس الصوت، وتسمع خشخشة سلاسل. ينفجر الجدار، لكن السلاسل تقيده في اللحظة الأخيرة. تفر هارباً في الممر.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "اركض في الممر",
+          "emoji": "🏃",
+          "next": "wooden_door",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "lie_to_shadow": {
+      "text": "تدعي أنك سارق بسيط أخطأ الهدف. السجين يصدقك ويهمس: 'الجدار بيننا ضعيف، ساعدني وسنخرج معاً'.",
+      "choices": [
+        {
+          "label": "ساعده في الهدم",
+          "emoji": "🤝",
+          "next": "help_shadow",
+          "points_reward": 2,
+          "sets_flag": "flag_helped_shadow",
+          "reputation": "guardian",
+          "color": "primary",
+          "required_points": null,
+          "requires_flag": null
+        },
+        {
+          "label": "انتظر في الظلام",
+          "emoji": "🚶",
+          "next": "wait_gas",
+          "points_reward": 0,
+          "reputation": "ruthless",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        }
+      ]
+    },
+    "help_shadow": {
+      "text": "تركلان الجدار معاً حتى ينهار. تجد رجلاً هزيلاً بعينين تلمعان وحشية. يدعى 'كال'. 'هناك ممر تهوية، لكنني أشم رائحة غريبة'، يقول كال.",
+      "choices": [
+        {
+          "label": "ادفعه ليدخل أولاً",
+          "emoji": "😠",
+          "next": "push_kal",
+          "points_reward": 1,
+          "sets_flag": "flag_betrayed_ally",
+          "reputation": "ruthless",
+          "color": "primary",
+          "required_points": null,
+          "requires_flag": null
+        },
+        {
+          "label": "أخبره بالانتظار قليلاً",
+          "emoji": "⏳",
+          "next": "wait_gas_kal",
+          "points_reward": 2,
+          "reputation": "guardian",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        }
+      ]
+    },
+    "push_kal": {
+      "text": "تدفعه بقوة داخل الفجوة. يشهق ويسقط ميتاً بسبب الغاز السام. لقد تخلصت من الغاز ومن عبء رفيق في آن واحد. تزحف فوق جثته للوصول إلى الصالة الميكانيكية القديمة.",
+      "choices": [
+        {
+          "label": "افتح الباب الخشبي",
+          "emoji": "🚪",
+          "next": "wooden_door",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "افحص الباب المعدني",
+          "emoji": "⚙️",
+          "next": "metal_door",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "wait_gas_kal": {
+      "text": "تنتظران حتى يتبدد الغاز. تنزلقان معاً وتصلان إلى الصالة الميكانيكية. كال ينظر إليك بامتنان. أمامكما باب خشبي وباب معدني ثقيل.",
+      "choices": [
+        {
+          "label": "افتح الباب الخشبي",
+          "emoji": "🚪",
+          "next": "wooden_door",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "افحص الباب المعدني",
+          "emoji": "⚙️",
+          "next": "metal_door",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "wooden_door": {
+      "text": "تفتح الباب الخشبي ليقابلك ظلام دامس. إنها غرفة الحرس القديمة. تجد حارساً نائماً على كرسي، وهناك مفتاح معلق على حزامه، وبجواره سيف قصير.",
+      "choices": [
+        {
+          "label": "اسرق المفتاح بخفة",
+          "emoji": "🔑",
+          "next": "steal_key",
+          "points_reward": 2,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اقتل الحارس بالسيف",
+          "emoji": "🗡️",
+          "next": "kill_guard",
+          "points_reward": 0,
+          "reputation": "ruthless",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        },
+        {
+          "label": "أيقظ الحارس وتوسل",
+          "emoji": "🥺",
+          "next": "beg_guard",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "kill_guard": {
+      "text": "تلتقط السيف وتطعن الحارس. يطلق صرخة مكتومة قبل أن يموت. لكن الصرخة كانت كافية لتفعيل فخ صوتي في الغرفة. تنطلق سهام من الجدران.",
+      "choices": [
+        {
+          "label": "احتمِ بجثة الحارس",
+          "emoji": "🛡️",
+          "next": "shield_body",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اركض نحو الممر",
+          "emoji": "🏃",
+          "next": "death_arrows",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_arrows": {
+      "text": "تركض نحو الممر محاولاً الهرب، والسهام تخترق ساقك. تنجو بأعجوبة وتصل إلى الباب المعدني.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "استمر زحفاً",
+          "emoji": "🧎",
+          "next": "metal_door",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "steal_key": {
+      "text": "تخطف المفتاح بمهارة. الحارس يتحرك قليلاً لكنه لا يستيقظ. تخرج من الغرفة بهدوء. في الممر، تجد لوحة تحكم التروس القديمة.",
+      "choices": [
+        {
+          "label": "عبث بتروس الممر",
+          "emoji": "⚙️",
+          "next": "death_crushed_by_gears",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "استخدم المفتاح للمرور",
+          "emoji": "🔑",
+          "next": "use_key",
+          "points_reward": 2,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "shield_body": {
+      "text": "ترفع جثة الحارس كدرع. السهام تنغرس في لحمه. تنجو من الفخ وتأخذ المفتاح. تخرج إلى الممر وتجد لوحة تحكم التروس القديمة.",
+      "choices": [
+        {
+          "label": "عبث بتروس الممر",
+          "emoji": "⚙️",
+          "next": "death_crushed_by_gears",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "استخدم المفتاح للمرور",
+          "emoji": "🔑",
+          "next": "use_key",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_crushed_by_gears": {
+      "text": "تحاول استخدام القوة الغاشمة. تنزلق التروس وتنهار الجدران، لكنك تقفز في اللحظة الأخيرة.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "استمر زحفاً",
+          "emoji": "🧎",
+          "next": "enter_120",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "metal_door": {
+      "text": "تفحص الباب المعدني. هناك لغز أرقام. تتذكر أن الرمز هو عدد الطوابق في السجن مضروباً في عدد الزنازين. 12 طابقاً، 10 زنازين لكل طابق.",
+      "choices": [
+        {
+          "label": "أدخل الرقم 120",
+          "emoji": "🔢",
+          "next": "enter_120",
+          "points_reward": 2,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "حاول كسر القفل",
+          "emoji": "🔨",
+          "next": "break_lock",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "break_lock": {
+      "text": "تضرب القفل بشدة. الباب ينفتح بصعوبة، والانفجار يمزق ذراعك. تنزف لكنك تعبر.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "اسحب نفسك للداخل",
+          "emoji": "🩸",
+          "next": "enter_120",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "enter_120": {
+      "text": "يفتح الباب ببطء كاشفاً عن ممر طويل مضاء بمشاعل خافتة. هذا هو 'متاهة الأصداء'، الطبقة الثانية من السجن. تسمع خطوات دورية حراسة تقترب.",
+      "choices": [
+        {
+          "label": "اختبئ في الظل",
+          "emoji": "🌑",
+          "next": "hide_shadow",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "واجه الدورية بشجاعة",
+          "emoji": "⚔️",
+          "next": "face_patrol",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "use_key": {
+      "text": "تستخدم المفتاح بحذر فتتوقف التروس ويتسع الممر. تدخل 'متاهة الأصداء'. الممر مضاء، لكن خطوات دورية حراسة تتردد بوضوح.",
+      "choices": [
+        {
+          "label": "اختبئ في الظل",
+          "emoji": "🌑",
+          "next": "hide_shadow",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "واجه الدورية بشجاعة",
+          "emoji": "⚔️",
+          "next": "face_patrol",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "face_patrol": {
+      "text": "تخرج لمواجهة الدورية. حارسان مدرعان يرفعان رماحهما. تتفادى الهجوم بأعجوبة وتركض.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "اركض نحو التهوية",
+          "emoji": "🏃",
+          "next": "hide_shadow",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "hide_shadow": {
+      "text": "تنكمش في الظل. تمر الدورية دون أن تلاحظك. بعد مرورهم، تجد فتحة تهوية صغيرة يمكن الزحف فيها، وباباً قديماً لغرفة الأرشيف السري.",
+      "choices": [
+        {
+          "label": "ادخل غرفة الأرشيف",
+          "emoji": "📜",
+          "next": "enter_archive",
+          "points_reward": 2,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "ازحف في التهوية",
+          "emoji": "🕳️",
+          "next": "crawl_vent",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "enter_archive": {
+      "text": "الغرفة مليئة بالمخطوطات. تجد جزءاً من خريطة السجن الأصلية ومذكرة كتبها 'المدير' الحالي يذكر فيها أنه عدل بعض الفخاخ. هناك أيضاً زجاجة نبيذ.",
+      "choices": [
+        {
+          "label": "خذ الخريطة والمذكرة",
+          "emoji": "🗺️",
+          "next": "take_map",
+          "points_reward": 2,
+          "sets_flag": "flag_found_blueprint_piece",
+          "color": "primary",
+          "required_points": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اشرب النبيذ واسترح",
+          "emoji": "🍷",
+          "next": "death_poison_wine",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_poison_wine": {
+      "text": "تشرب النبيذ بحثاً عن لحظة راحة. طعمه غريب. تسقط مشلولاً لعدة ساعات قبل أن تستيقظ في الظلام.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "استمر زحفاً",
+          "emoji": "🧎",
+          "next": "crawl_vent",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "crawl_vent": {
+      "text": "تزحف في التهوية وتصل إلى مفترق. طريق يؤدي إلى 'جسر التنهدات'، والآخر يؤدي إلى 'قاعة المرايا'. كلاهما خطير.",
+      "choices": [
+        {
+          "label": "اذهب إلى الجسر",
+          "emoji": "🌉",
+          "next": "bridge_sighs",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اذهب إلى قاعة المرايا",
+          "emoji": "🪞",
+          "next": "mirror_hall",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "take_map": {
+      "text": "تأخذ الخريطة والمذكرة. المذكرة تشير إلى أن 'جسر التنهدات' تم تفخيخه بآلية جديدة. تخرج من الغرفة وتصل إلى مفترق التهوية.",
+      "choices": [
+        {
+          "label": "اذهب إلى الجسر مفخخ",
+          "emoji": "🌉",
+          "next": "bridge_sighs_trap",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اذهب إلى قاعة المرايا",
+          "emoji": "🪞",
+          "next": "mirror_hall",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "bridge_sighs": {
+      "text": "تصل إلى جسر حجري معلق فوق هاوية. يبدو آمناً كما صممته. تخطو خطوة فتنقلب الحجارة فجأة لتسقط في الظلام... لكنك تتشبث بالحافة.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "اسحب نفسك",
+          "emoji": "🧗",
+          "next": "mirror_hall",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "bridge_sighs_trap": {
+      "text": "بفضل المذكرة، تعلم أن الجسر مفخخ. تقفز بمهارة لتجنب الحجارة المنقلبة. تصل إلى الجانب الآخر لتجد سجيناً مقيداً يطلب الماء.",
+      "choices": [
+        {
+          "label": "اعطه بعض الماء",
+          "emoji": "💧",
+          "next": "give_water",
+          "points_reward": 2,
+          "reputation": "guardian",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        },
+        {
+          "label": "تجاهله واستمر",
+          "emoji": "🚶",
+          "next": "ignore_prisoner",
+          "points_reward": 0,
+          "reputation": "ruthless",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        },
+        {
+          "label": "ادفع السجين للهاوية",
+          "emoji": "🫸",
+          "next": "death_push_prisoner",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": "ruthless",
+          "color": "primary"
+        }
+      ]
+    },
+    "mirror_hall": {
+      "text": "تدخل قاعة المرايا. المرايا تعكس أوهاماً مخيفة عن ماضيك. ترى السجناء الذين عذبتهم. صوت يهمس: 'انظر إلينا، انظر إلى عملك'.",
+      "choices": [
+        {
+          "label": "أغمض عينيك وامش",
+          "emoji": "🙈",
+          "next": "eyes_closed",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "واجه أوهام المرايا",
+          "emoji": "👁️",
+          "next": "face_mirrors",
+          "points_reward": 2,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اكسر إحدى المرايا",
+          "emoji": "🔨",
+          "next": "death_break_mirror",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "give_water": {
+      "text": "يشرب السجين بلهفة ويقول: 'شكراً لك. احذر من الغرفة الزرقاء، الأرضية فيها مكهربة ببلورات الطاقة'. تتركه وتكمل طريقك.",
+      "choices": [
+        {
+          "label": "ادخل الغرفة الزرقاء",
+          "emoji": "🔵",
+          "next": "blue_room_safe",
+          "points_reward": 2,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اسلك ممر الظلام",
+          "emoji": "⬛",
+          "next": "dark_corridor",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "ignore_prisoner": {
+      "text": "تتركه يئن وتكمل طريقك. تصل إلى مفترق. باب أزرق زاهي وممر مظلم تفوح منه رائحة دم.",
+      "choices": [
+        {
+          "label": "ادخل الغرفة الزرقاء",
+          "emoji": "🔵",
+          "next": "death_blue_room",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اسلك ممر الظلام",
+          "emoji": "⬛",
+          "next": "dark_corridor",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_blue_room": {
+      "text": "تدخل الغرفة الزرقاء بدون علم مسبق. تطأ قدماك الأرضية فتصعقك بلورات الطاقة بقوة هائلة حتى تتفحم. القسوة لم تنفعك هنا.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "blue_room_safe": {
+      "text": "تدخل الغرفة الزرقاء وتقفز بحذر فوق البلاط الآمن متجنباً البلورات كما أخبرك السجين. تعبر الغرفة بسلام.",
+      "choices": [
+        {
+          "label": "استمر نحو الآلية",
+          "emoji": "⚙️",
+          "next": "mechanism_start",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "dark_corridor": {
+      "text": "تمشي في الممر المظلم. الرائحة تشتد. تجد وحشاً أعمى يعتمد على السمع. يجب أن تمر بهدوء.",
+      "choices": [
+        {
+          "label": "تسلل ببطء شديد",
+          "emoji": "🤫",
+          "next": "sneak_monster",
+          "points_reward": 2,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "ارمه بحجر لتشتيته",
+          "emoji": "🪨",
+          "next": "throw_stone",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "eyes_closed": {
+      "text": "تغمض عينيك وتمشي. الأوهام لا تضرك، لكنك تتعثر بخيط رفيع غير مرئي، مطلقاً فخاً حارقاً يحولك إلى رماد. الجهل ليس حلاً هنا.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "face_mirrors": {
+      "text": "تواجه المرايا وتتحمل رؤية خطاياك. تلاحظ انعكاس الخيط الرفيع وتتجنبه. تخرج من القاعة وأنت تحمل عبء الماضي، لتجد ممر الظلام.",
+      "choices": [
+        {
+          "label": "ادخل ممر الظلام",
+          "emoji": "⬛",
+          "next": "dark_corridor",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "sneak_monster": {
+      "text": "تتسلل ببطء. قلبك يخفق بشدة. الوحش يشتم الهواء لكنه لا يسمعك. تتجاوزه بسلام وتصل إلى غرفة 'آلية الحكم'.",
+      "choices": [
+        {
+          "label": "ادخل غرفة الآلية",
+          "emoji": "⚙️",
+          "next": "mechanism_start",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "throw_stone": {
+      "text": "ترمي الحجر بعيداً. الوحش ينقض على مصدر الصوت بلمح البصر، لكنك تركض بسرعة نحو ممر جانبي وتغلق الباب. الوحش يضرب الباب بقوة لكنه يصمد.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "التقط أنفاسك وتقدم",
+          "emoji": "😮‍💨",
+          "next": "mechanism_start",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "mechanism_start": {
+      "text": "أنت الآن في قلب 'آلية الحكم'، مركز التحكم الرئيسي. المدير يقف هناك، يراقبك بابتسامة باردة. 'المهندس عاد إلى صنيعته، لكنني قمت بتحديثها.'",
+      "choices": [
+        {
+          "label": "هاجمه فوراً",
+          "emoji": "⚔️",
+          "next": "attack_warden",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "استمع لحديثه",
+          "emoji": "👂",
+          "next": "listen_warden",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "attack_warden": {
+      "text": "تندفع نحوه، لكنه يضغط زراً بسيطاً. تنفتح الأرض تحتك لتسقط في حوض من الحمض. لقد نسي المهندس أن المدير يمتلك السيطرة الآن.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "listen_warden": {
+      "text": "يقول المدير: 'الملك أراد التخلص منك لأنك تعرف سر الممر السري للمدينة. لقد غيرت كلمة المرور. لن تخرج حياً.' ثم يهرب تاركاً إياك مع لغز قنبلة غاز.",
+      "choices": [
+        {
+          "label": "حاول قطع الأسلاك",
+          "emoji": "✂️",
+          "next": "cut_wires",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "استخدم كلمة مرور الطوارئ",
+          "emoji": "🔑",
+          "next": "use_emergency_code",
+          "points_reward": 2,
+          "requires_flag": "flag_found_blueprint_piece",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "cut_wires": {
+      "text": "تحاول قطع الأسلاك بناءً على تصميمك القديم، لكن المدير غير الألوان. ينفجر الغاز السام وتختنق ببطء وأنت تلعن تعديلاته.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "use_emergency_code": {
+      "text": "بفضل الخريطة القديمة، تتذكر رمز تجاوز الطوارئ المخفي خلف لوحة المفاتيح. تكتبه فيتوقف العد التنازلي. تفتح بوابة خلفية نحو 'برج اليأس'.",
+      "choices": [
+        {
+          "label": "اصعد نحو البرج",
+          "emoji": "🗼",
+          "next": "tower_despair",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "tower_despair": {
+      "text": "تصعد درجات البرج الطويلة. تجد مجموعة من السجناء المتمردين يتقاتلون مع بعض الحراس. القائد هو 'كال' الذي ساعدته سابقاً (إذا كنت قد فعلت).",
+      "choices": [
+        {
+          "label": "انضم للمساجين للقتال",
+          "emoji": "🤝",
+          "next": "join_prisoners",
+          "points_reward": 2,
+          "requires_flag": "flag_helped_shadow",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "استغل الفوضى للهرب",
+          "emoji": "🏃",
+          "next": "escape_chaos",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "ساعد الحراس",
+          "emoji": "🛡️",
+          "next": "help_guards",
+          "points_reward": 0,
+          "reputation": "ruthless",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        }
+      ]
+    },
+    "join_prisoners": {
+      "text": "كال يتعرف عليك ويأمر المساجين بحمايتك. تقاتلون معاً وتنتصرون. كال يقول: 'أنت المهندس، أخرجنا من هنا!'.",
+      "choices": [
+        {
+          "label": "عدهم بالخروج معاً",
+          "emoji": "🤝",
+          "next": "promise_escape",
+          "points_reward": 2,
+          "reputation": "guardian",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        },
+        {
+          "label": "استخدمهم كدروع",
+          "emoji": "🛡️",
+          "next": "use_as_shields",
+          "points_reward": 0,
+          "reputation": "ruthless",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        }
+      ]
+    },
+    "help_guards": {
+      "text": "تساعد الحراس في قتل المساجين المتمردين. بعد انتهاء المعركة، ينظر إليك قائد الحراس بازدراء ويطعنك قائلاً: 'لا نثق بخائن'.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "escape_chaos": {
+      "text": "تستغل المعركة للهروب. تصل إلى قمة البرج، لكنك تجد الباب مغلقاً بآلية تتطلب وزن شخصين لفتحها. أنت وحدك الآن. تموت جوعاً أمام الباب.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "promise_escape": {
+      "text": "كال والمساجين يساعدونك في فتح باب قمة البرج بفضل أوزانهم. تصلون إلى السطح. المطر ينهمر والرياح تعصف. المدير يقف هناك بسيف مسلول.",
+      "choices": [
+        {
+          "label": "واجه المدير",
+          "emoji": "⚔️",
+          "next": "final_confrontation",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اغدر بهم الآن",
+          "emoji": "🗡️",
+          "next": "death_betray_late",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": "ruthless",
+          "color": "primary"
+        }
+      ]
+    },
+    "use_as_shields": {
+      "text": "تدفع المساجين نحو فخاخ الباب الأخير ليفتح لك الطريق. يموتون جميعاً وتصعد وحدك إلى السطح. المدير يقف هناك، يضحك على قسوتك.",
+      "choices": [
+        {
+          "label": "واجه المدير",
+          "emoji": "⚔️",
+          "next": "final_confrontation",
+          "points_reward": 1,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "final_confrontation": {
+      "text": "المدير يصرخ: 'أنت لست سوى سجين الآن!' يهاجمك بشراسة. هذه هي عقدة الضغط القصوى. هجومه قادم نحو صدرك، ولكن هناك زر طوارئ بجانبك.",
+      "choices": [
+        {
+          "label": "راوغ واطعن",
+          "emoji": "🗡️",
+          "next": "dodge_stab",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اضغط زر الطوارئ",
+          "emoji": "🔴",
+          "next": "press_emergency",
+          "points_reward": 2,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "dodge_stab": {
+      "text": "تحاول المراوغة، لكن سيفه مسموم وأسرع منك. يخترق قلبك. تموت تحت المطر على قمة سجنك الأبدي.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "press_emergency": {
+      "text": "تضغط الزر. الأرضية تحت المدير تنهار ويسقط في هاوية السجن مصارخاً. أنت الآن حر على السطح، أمامك لوحة التحكم الرئيسية المطلقة للسجن، وهناك قارب نجاة مجهز. لكن هناك خيارات لإنهاء كل شيء.",
+      "choices": [
+        {
+          "label": "فعل بروتوكول التطهير",
+          "emoji": "🔥",
+          "next": "ending_a_ruthless",
+          "points_reward": 1,
+          "reputation": "ruthless",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        },
+        {
+          "label": "اهرب بسرعة فقط",
+          "emoji": "🚤",
+          "next": "ending_b_incomplete",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "عطل السجن نهائياً",
+          "emoji": "🔧",
+          "next": "ending_c_honorable",
+          "points_reward": 2,
+          "reputation": "guardian",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        },
+        {
+          "label": "اكتشف سر الملك",
+          "emoji": "👑",
+          "next": "secret_king_truth",
+          "points_reward": 3,
+          "required_points": 10,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "ending_a_ruthless": {
+      "text": "قمت بتفعيل 'بروتوكول التطهير'. السجن الأبدي يمتلئ بالغازات الخانقة والنيران المشتعلة. السجناء، بمن فيهم أولئك الذين ساعدوك، يموتون جميعاً. تهرب بقارب النجاة، ناجياً ولكن كوحش حقيقي. لقد أثبتت أن قسوتك تفوق قسوة الملك. لكن، هل يمكنك النوم وأصوات احتراقهم في أذنيك؟",
+      "is_ending": true,
+      "ending_type": "ending",
+      "choices": []
+    },
+    "ending_b_incomplete": {
+      "text": "تقفز في قارب النجاة وتهرب تاركاً السجن خلفك يعمل كما هو. نجوت، لكنك تكتشف لاحقاً أن المدير لم يمت، بل استعان بتصميماتك لبناء سجن أسوأ. لقد أطلقت شرارة لا يمكن إخمادها، واكتفيت بنجاتك الشخصية. هل كانت حريتك تستحق ترك العالم يحترق بعبقريتك؟",
+      "is_ending": true,
+      "ending_type": "ending",
+      "choices": []
+    },
+    "ending_c_honorable": {
+      "text": "تختار تدمير النواة الرئيسية لمنع السجن من العمل مجدداً وإطلاق سراح من تبقى. لكن تعطيل النواة يتطلب بقاءك لضغط المفتاح النهائي بينما ينهار المبنى. تموت بشرف، دافناً خطاياك مع جدران إبداعك المظلم. المساجين يهربون، واسمك يذكر كمنقذ لا كجلاد. هل يكفي موتك للتكفير عن أرواح من عذبتهم؟",
+      "is_ending": true,
+      "ending_type": "ending",
+      "choices": []
+    },
+    "secret_king_truth": {
+      "text": "بفضل ذكائك وجمعك للأدلة، تفتح الملف السري الأخير في اللوحة. تكتشف أن الملك سجنك لأنك الوحيد الذي يعرف أن 'دمعة الصمت' هو في الواقع سلاح دمار شامل. تبتسم في الظلام. تستخدم اللوحة لإعادة توجيه طاقة السجن لاستهداف قصر الملك نفسه.",
+      "choices": [
+        {
+          "label": "دمر قصر الملك",
+          "emoji": "💥",
+          "next": "ending_d_secret",
+          "points_reward": 0,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "ending_d_secret": {
+      "text": "تضغط زر الإطلاق. شعاع من الطاقة يمزق السماء ويمحو قصر الملك من الوجود. أنت الآن لست سجيناً ولا مهندساً، أنت الحاكم الجديد في الظل. لقد تفوقت على صانعك، والسجن الآن هو قلعتك الحصينة. لكن، عندما تصبح أنت الملك الطاغية، من سيبني السجن لك؟",
+      "is_ending": true,
+      "ending_type": "ending",
+      "choices": []
+    },
+    "death_wall_collapse": {
+      "text": "تضرب الجدار الحجري الهش بقوة هائلة. الصخور تسقط، وتكشف ممراً سرياً إلى الأسفل.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "استمر زحفاً",
+          "emoji": "🧎",
+          "next": "wooden_door",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "cry_silently": {
+      "text": "تستسلم لليأس وتبكي في الزاوية، حتى تسمع صوتاً يناديك من فتحة تهوية. إنه كال.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "استمر زحفاً",
+          "emoji": "🧎",
+          "next": "help_shadow",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "beg_guard": {
+      "text": "توقظ الحارس وتتوسل إليه. يضحك بسخرية ويركلك بقوة لتدحرج في الممر المظلم.",
+      "is_ending": false,
+      "choices": [
+        {
+          "label": "قفز نحو الممر",
+          "emoji": "🏃",
+          "next": "dark_corridor",
+          "points_reward": 0,
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null,
+          "color": "primary"
+        }
+      ]
+    },
+    "dark_room_wakeup": {
+      "text": "تستيقظ. رأسك يؤلمك. أنت في غرفة الحرس القديمة. تجد حارساً نائماً على كرسي، وهناك مفتاح معلق على حزامه، وبجواره سيف قصير.",
+      "choices": [
+        {
+          "label": "اسرق المفتاح بخفة",
+          "emoji": "🔑",
+          "next": "steal_key",
+          "points_reward": 2,
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اقتل الحارس بالسيف",
+          "emoji": "🗡️",
+          "next": "kill_guard",
+          "points_reward": 0,
+          "reputation": "ruthless",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
+        }
+      ],
+      "is_ending": false
+    },
+    "death_break_mirror": {
+      "text": "تكسر المرآة بغضب. تتناثر الشظايا وتتحول إلى كائنات زجاجية صغيرة تمزق جسدك قطعة قطعة. لقد دمرت انعكاسك ودمرت نفسك.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "death_push_prisoner": {
+      "text": "تدفعه بقسوة. يسقط السجين، لكنه يمسك بقدمك فيسحبك معه إلى الهاوية المظلمة. قسوتك المفرطة كانت نهايتك.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "death_betray_late": {
+      "text": "تحاول طعن كال من الخلف، لكنه يتوقع ذلك. يصرخ 'خائن!' والمساجين يمزقونك إرباً قبل أن تصل للمدير. لا أحد يثق بالمهندس.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    }
+  },
+  "perspective": {
+    "id": "architect",
+    "label": "المهندس",
+    "emoji": "👤",
+    "description": "أنت من صمم هذا المكان.",
+    "start_node": "start"
+  }
+}

@@ -1,0 +1,1747 @@
+{
+    "id": "fb3_sentient_sword",
+    "title": "نصل الخطايا",
+    "world": "الفانتازيا",
+    "world_type": "fantasy",
+    "theme": "الظلام يحكم",
+    "category": "الظلام يحكم",
+    "summary": "أنت وعي محبوس في نصل ملعون. مصيرك يتأرجح بين التحرر، أو السيطرة على العالم، أو الاندثار كقطعة خردة.",
+    "difficulty": "very hard",
+    "estimated_length": "very long",
+    "game_mode": "single",
+    "perspective": {
+        "id": "sentient_blade",
+        "label": "السيف الملعون",
+        "emoji": "🗡️",
+        "description": "نصل واعٍ يبحث عن الحرية أو القوة",
+        "start_node": "start"
+    },
+    "nodes": {
+        "start": {
+            "text": "تستيقظ من سبات عميق، نصلك البارد مغروس في الطين. يد مرتعشة تمتد إليك. شاب، ربما خادم فارس مات للتو في هذه المعركة. عيناه مليئتان بالخوف، لكن يده تبحث عن سلاح.",
+            "choices": [
+                {
+                    "label": "امنحه القوة المظلمة",
+                    "emoji": "🔥",
+                    "next": "empower_squire",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "sets_flag": "squire_corrupted"
+                },
+                {
+                    "label": "اسحب طاقته الضعيفة",
+                    "emoji": "🧛",
+                    "next": "drain_squire",
+                    "points_reward": 1,
+                    "color": "danger"
+                },
+                {
+                    "label": "ابق ساكنا وعاديا",
+                    "emoji": "🗡️",
+                    "next": "stay_silent",
+                    "points_reward": 0,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "empower_squire": {
+            "text": "بمجرد أن يلمس مقبضك، تبث في عروقه قوة خارقة. يصرخ الشاب بينما تشتعل عيناه بنور أحمر. ينهض ويذبح جنديين يقتربان منه بضربة واحدة.",
+            "choices": [
+                {
+                    "label": "ادفعه لمطاردة القائد",
+                    "emoji": "👑",
+                    "next": "hunt_leader",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "أمره بالهرب للغابة",
+                    "emoji": "🌲",
+                    "next": "flee_woods",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "drain_squire": {
+            "text": "تمتص حرارة جسده في ثوان. يسقط الشاب ميتا بجوارك. طعم روحه الضعيفة يوقظ حواسك، لكنك الآن بلا حامل في ساحة معركة تعج بالنهابين.",
+            "choices": [
+                {
+                    "label": "انتظر قدوم الناهبين",
+                    "emoji": "💰",
+                    "next": "wait_looters",
+                    "points_reward": 1,
+                    "color": "secondary"
+                },
+                {
+                    "label": "أصدر طنينا سحريا",
+                    "emoji": "✨",
+                    "next": "magic_hum",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "stay_silent": {
+            "text": "يتناولك الشاب كأي سيف عادي. يحاول الدفاع عن نفسه ضد مرتزق ضخم يقترب، لكن يده ترتعش بشدة ولا يجيد القتال.",
+            "choices": [
+                {
+                    "label": "تدخل في اللحظة الأخيرة",
+                    "emoji": "⚔️",
+                    "next": "intervene",
+                    "points_reward": 1,
+                    "color": "success"
+                },
+                {
+                    "label": "ارفع وزنك ليعجز",
+                    "emoji": "⚖️",
+                    "next": "heavy_weight",
+                    "points_reward": 0,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "hunt_leader": {
+            "text": "الشاب يندفع كالمجنون نحو قائد المرتزقة. قوتك تجعل ضرباته مدمرة، لكن جسد الشاب لا يتحمل هذه الطاقة. عروقه تتمزق مع كل ضربة.",
+            "choices": [
+                {
+                    "label": "اسحب قوتك للتمويه",
+                    "emoji": "📉",
+                    "next": "withdraw_power",
+                    "points_reward": 1,
+                    "color": "success"
+                },
+                {
+                    "label": "زد الطاقة للقصوى",
+                    "emoji": "⚡",
+                    "next": "max_power",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "flee_woods": {
+            "text": "يهرب الشاب إلى الغابة المظلمة. يعسكر هناك وهو يلهث، ينظر إليك برعب وإعجاب. يهمس: 'من أنت؟ ماذا تكون؟'",
+            "choices": [
+                {
+                    "label": "تحدث في عقله",
+                    "emoji": "🧠",
+                    "next": "speak_mind",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "اعرض له رؤيا",
+                    "emoji": "👁️",
+                    "next": "show_vision",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "wait_looters": {
+            "text": "يقترب ناهب جثث. يرى مقبضك المزخرف وعينيه تلمعان جشعا. يلتقطك، تشعر بنواياه الدنيئة. إنه ينوي بيعك في سوق سوداء.",
+            "choices": [
+                {
+                    "label": "سيطر على عقله",
+                    "emoji": "🕸️",
+                    "next": "control_looter",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "انتظر الوصول للسوق",
+                    "emoji": "🛒",
+                    "next": "black_market",
+                    "points_reward": 0,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "magic_hum": {
+            "text": "تصدر طنينا خافتا. ساحر يمر بالصدفة يلاحظك. يرفعك بحذر، يدرك أنك لست سيفا عاديا، بل وعي محبوس.",
+            "choices": [
+                {
+                    "label": "اخدعه بنور ملائكي",
+                    "emoji": "👼",
+                    "next": "angelic_light",
+                    "points_reward": 1,
+                    "color": "success"
+                },
+                {
+                    "label": "أظهر طبيعتك المظلمة",
+                    "emoji": "😈",
+                    "next": "dark_nature",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "intervene": {
+            "text": "تعدل مسار الضربة بوزنك وتصد سيف المرتزق. الشاب يكتسب ثقة مفاجئة ويهزم خصمه، لكنه يلاحظ أنك تتحرك من تلقاء نفسك.",
+            "choices": [
+                {
+                    "label": "اجعله يظنها مهارته",
+                    "emoji": "🤥",
+                    "next": "fake_skill",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "اكشف وعيك له",
+                    "emoji": "👁️",
+                    "next": "reveal",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "heavy_weight": {
+            "text": "تزيد وزنك فجأة، فيسقطك الشاب عاجزا عن رفعك. يقتله المرتزق ويأخذك متعجبا من ثقلك المفاجئ، ويقرر اصطحابك كغنيمة.",
+            "choices": [
+                {
+                    "label": "اصبح خفيفا له",
+                    "emoji": "🪶",
+                    "next": "light_for_merc",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "ابق ثقيلا لتعذيبه",
+                    "emoji": "🏋️",
+                    "next": "heavy_torture",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "withdraw_power": {
+            "text": "تسحب قوتك. القائد يستغل اللحظة ويهزم الشاب، ثم يأخذك لنفسه متعجبا من جودتك، ويقرر تنظيفك بدم الشاب.",
+            "choices": [
+                {
+                    "label": "تسميم دم القائد",
+                    "emoji": "☠️",
+                    "next": "poison",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "اخدم القائد بصمت",
+                    "emoji": "🛡️",
+                    "next": "serve",
+                    "points_reward": 0,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "max_power": {
+            "text": "الجسد يتمزق. الشاب يقتل القائد لكنه ينفجر من شدة الطاقة. أنت الآن مرمي بين جثتين قويتين والدماء تغمرك.",
+            "choices": [
+                {
+                    "label": "استحوذ على القائد الميت",
+                    "emoji": "🧟",
+                    "next": "possess_corpse",
+                    "points_reward": 3,
+                    "color": "danger"
+                },
+                {
+                    "label": "تغذى على الدماء",
+                    "emoji": "🩸",
+                    "next": "feed_blood",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "speak_mind": {
+            "text": "تهمس في عقله بأنك سيف الأبطال القدماء. الشاب يصدقك ويقسم على خدمتك ويتوجه نحو قلعة النور القريبة.",
+            "choices": [
+                {
+                    "label": "شجعه بمزيد من الأكاذيب",
+                    "emoji": "🤥",
+                    "next": "encourage_lies",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "وجهه نحو الأطلال",
+                    "emoji": "🏰",
+                    "next": "redirect_ruins",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "show_vision": {
+            "text": "تعرض له رؤيا لمجد زائف، ملوك يسجدون له. يمتلئ بالغرور ويتجه نحو معسكر قطاع الطرق ليختبر قوته الجديدة.",
+            "choices": [
+                {
+                    "label": "ساعده في المعركة",
+                    "emoji": "⚔️",
+                    "next": "help_bandit",
+                    "points_reward": 1,
+                    "color": "danger"
+                },
+                {
+                    "label": "اخذله ليتواضع",
+                    "emoji": "📉",
+                    "next": "fail_bandit",
+                    "points_reward": 2,
+                    "color": "primary"
+                }
+            ]
+        },
+        "control_looter": {
+            "text": "عقل الناهب ضعيف. تكسر إرادته بسهولة وتحوله إلى دمية طيعة مستعدا لتنفيذ أوامرك في الظلام.",
+            "choices": [
+                {
+                    "label": "امره بقتل رفاقه",
+                    "emoji": "🩸",
+                    "next": "order_kill",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "امره بالتوجه للحداد",
+                    "emoji": "🔨",
+                    "next": "go_blacksmith",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "black_market": {
+            "text": "تباع لتاجر أسلحة ثري. يعرضك في متجره المنيع. في الليل، يقتحم لص محترف المتجر لسرقتك.",
+            "choices": [
+                {
+                    "label": "سهل له السرقة",
+                    "emoji": "🔓",
+                    "next": "help_thief",
+                    "points_reward": 1,
+                    "color": "secondary"
+                },
+                {
+                    "label": "أيقظ التاجر بقوة",
+                    "emoji": "🔔",
+                    "next": "wake_merchant",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "angelic_light": {
+            "text": "يقتنع الساحر أنك قطعة مقدسة. يأخذك إلى طائفة النور، يقرر الكهنة إدخالك قبو التجلي المقدس.",
+            "choices": [
+                {
+                    "label": "أظهر نقوشا مقدسة מזيفة",
+                    "emoji": "📜",
+                    "next": "fake_runes",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "ارفع طاقة النور الزائفة",
+                    "emoji": "✨",
+                    "next": "fake_light_burst",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "dark_nature": {
+            "text": "يدرك الساحر خطورتك، يحاول تدميرك. يلقي تعويذة تفكيك نارية، معدنك يبدأ في الانصهار ببطء.",
+            "choices": [
+                {
+                    "label": "سيطر على عقله سريعا",
+                    "emoji": "🧠",
+                    "next": "mind_control_mage",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "امتص طاقة التعويذة",
+                    "emoji": "🌪️",
+                    "next": "absorb_spell",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "fake_skill": {
+            "text": "يعتقد الشاب أنه عبقري سيف. يزداد تهوره، يتحدى فارسا مدرعا في الطريق السريع.",
+            "choices": [
+                {
+                    "label": "اقطع درع الفارس",
+                    "emoji": "⚔️",
+                    "next": "cut_armor",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "دعه يتلقى ضربة",
+                    "emoji": "🤕",
+                    "next": "punish_hit",
+                    "points_reward": 1,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "reveal": {
+            "text": "يرى الشاب وجهك في انعكاس النصل. يرتعب ويرميك في بئر قديم مظلم ويهرب.",
+            "choices": [
+                {
+                    "label": "نادي في الأعماق",
+                    "emoji": "🗣️",
+                    "next": "call_depths",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "اقذف نفسك للحافة",
+                    "emoji": "🧗",
+                    "next": "jump_ledge",
+                    "points_reward": 2,
+                    "color": "success"
+                }
+            ]
+        },
+        "light_for_merc": {
+            "text": "يذهل المرتزق من خفتك المفاجئة، يعتقد أنك سيف سحري يمنح السرعة، ويستخدمك في الغارات.",
+            "choices": [
+                {
+                    "label": "تعطش لدم الأبرياء",
+                    "emoji": "🩸",
+                    "next": "thirst_innocents",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "عزز سرعته أكثر",
+                    "emoji": "⚡",
+                    "next": "boost_speed",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "heavy_torture": {
+            "text": "المرتزق يجدك ثقيلا جدا، يغضب ويرميك في بركة طينية ويغادر شاتما.",
+            "choices": [
+                {
+                    "label": "نادي على المارة",
+                    "emoji": "🗣️",
+                    "next": "call_passersby",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "انتظر جفاف البركة",
+                    "emoji": "☀️",
+                    "next": "wait_dry",
+                    "points_reward": 0,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "poison": {
+            "text": "يسري سمك في عروقه. يقتل رجاله في نوبة جنون ثم يهرب إلى الكهوف العميقة ليموت وحيدا.",
+            "choices": [
+                {
+                    "label": "امتص روحه",
+                    "emoji": "👻",
+                    "next": "absorb_soul_cave",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "أمره باستدعاء وحش",
+                    "emoji": "👹",
+                    "next": "summon_monster",
+                    "points_reward": 3,
+                    "color": "primary"
+                }
+            ]
+        },
+        "serve": {
+            "text": "تخدم القائد لسنوات. يصبح سفاحا معروفا، يواجه بطلا شجاعا في مبارزة ملحمية.",
+            "choices": [
+                {
+                    "label": "اخن القائد",
+                    "emoji": "🗡️",
+                    "next": "betray_leader",
+                    "points_reward": 2,
+                    "color": "primary"
+                },
+                {
+                    "label": "اقتل البطل فورا",
+                    "emoji": "☠️",
+                    "next": "kill_hero",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "possess_corpse": {
+            "text": "الجثة تنهض وأنت تتحكم بها. حركاتها بطيئة، تتجه نحو المدينة لتجد جسدا أفضل أو حدادا ماهرا.",
+            "choices": [
+                {
+                    "label": "اذهب للحداد السري",
+                    "emoji": "🔨",
+                    "next": "secret_blacksmith",
+                    "points_reward": 2,
+                    "color": "primary",
+                    "sets_flag": "forge_secret"
+                },
+                {
+                    "label": "هاجم حراس المدينة",
+                    "emoji": "🛡️",
+                    "next": "attack_guards",
+                    "points_reward": 1,
+                    "color": "danger"
+                }
+            ]
+        },
+        "feed_blood": {
+            "text": "تمتص الدماء، تزيد صلابتك لمعانك. طائر غراب ضخم يهبط، يلتقطك بمنقاره محلقا بك بعيدا ليعطيك لساحرة الجبل.",
+            "choices": [
+                {
+                    "label": "اغوي الساحرة",
+                    "emoji": "🧙‍♀️",
+                    "next": "seduce_witch",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "دمر قفصها السحري",
+                    "emoji": "💥",
+                    "next": "break_cage",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "encourage_lies": {
+            "text": "في قلعة النور، يشعر الكهنة بظلامك. يقررون صهرك في نار مقدسة لتطهير الشاب من تأثيرك.",
+            "choices": [
+                {
+                    "label": "هاجم الكهنة بالظلام",
+                    "emoji": "🌑",
+                    "next": "attack_priests",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "استعطف الشاب للمساعدة",
+                    "emoji": "🥺",
+                    "next": "beg_squire",
+                    "points_reward": 1,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "redirect_ruins": {
+            "text": "في الأطلال الملعونة، يجد الشاب مذبح طقوس قديم. القوة تتسرب منه إليك، الشاب يطلب منك أن تمنحه الخلود.",
+            "choices": [
+                {
+                    "label": "حوله إلى خادم زومبي",
+                    "emoji": "🧟",
+                    "next": "turn_zombie",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "ارفض وامتص الطقس",
+                    "emoji": "🚫",
+                    "next": "absorb_ritual",
+                    "points_reward": 3,
+                    "color": "primary",
+                    "sets_flag": "ritual_power"
+                }
+            ]
+        },
+        "help_bandit": {
+            "text": "الشاب يقتل قطاع الطرق واحدا تلو الآخر بقسوة ويصبح زعيمهم المطلق. يبني إمبراطورية إجرامية في الجبال.",
+            "choices": [
+                {
+                    "label": "شجعه على الغزو",
+                    "emoji": "🏙️",
+                    "next": "attack_city",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "اطلب منه بناء معبد لك",
+                    "emoji": "🏛️",
+                    "next": "build_temple",
+                    "points_reward": 2,
+                    "color": "primary"
+                }
+            ]
+        },
+        "fail_bandit": {
+            "text": "تخذله عمدا. يكسر القطاع ذراعه ويأخذونك كسكين جزار في معسكرهم لاستخدامك في تقطيع اللحم.",
+            "choices": [
+                {
+                    "label": "سمم لحومهم",
+                    "emoji": "🍲",
+                    "next": "poison_food",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "ابحث عن خائن بينهم",
+                    "emoji": "🕵️",
+                    "next": "find_traitor",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "order_kill": {
+            "text": "يقوم الناهب الممسوس بقتل رفاقه وهم نيام. تستمتع بطعم دمائهم. في الصباح، تكتشف السلطات الجثث ويبدأ الحراس بمطاردته.",
+            "choices": [
+                {
+                    "label": "اجعله يقاتل الحراس",
+                    "emoji": "⚔️",
+                    "next": "fight_guards",
+                    "points_reward": 1,
+                    "color": "danger"
+                },
+                {
+                    "label": "اجعله يتسلل للميناء",
+                    "emoji": "🚢",
+                    "next": "sneak_port",
+                    "points_reward": 2,
+                    "color": "primary"
+                }
+            ]
+        },
+        "go_blacksmith": {
+            "text": "يتوجه الناهب لحداد مشبوه لبيعك. الحداد يلاحظ أنك لست مجرد سيف، بل قطعة فنية ملعونة، يعرض على الناهب قتله أو تسليمه السيف.",
+            "choices": [
+                {
+                    "label": "اقتل الحداد بالناهب",
+                    "emoji": "🩸",
+                    "next": "kill_blacksmith_early",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "اترك الحداد يأخذك",
+                    "emoji": "🔨",
+                    "next": "blacksmith_takes",
+                    "points_reward": 1,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "help_thief": {
+            "text": "اللص يسرقك ويهرب ببراعة. يبيعك لنبيل مختل يعشق جمع الأسلحة الملعونة في قبو قصره الواسع.",
+            "choices": [
+                {
+                    "label": "اهمس للنبيل بالجنون",
+                    "emoji": "🗣️",
+                    "next": "whisper_madness",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "اسر وعي السلاح المجاور",
+                    "emoji": "🗡️",
+                    "next": "steal_weapon_soul",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "wake_merchant": {
+            "text": "التاجر يستيقظ ويطلق النار من بندقيته السحرية. اللص يسقط، لكن التعويذة تصيبك بالخطأ، مما يسبب شرخا صغيرا في نصلك.",
+            "choices": [
+                {
+                    "label": "امتص دم اللص للشفاء",
+                    "emoji": "🩸",
+                    "next": "heal_with_blood",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "تحمل الألم واصمت",
+                    "emoji": "🤐",
+                    "next": "endure_pain",
+                    "points_reward": 1,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "fake_runes": {
+            "text": "الكهنة يقرأون النقوش المزيفة ويعتقدون أنك مفتاح الجنة المفقودة، ويحفظونك في برج زجاجي.",
+            "choices": [
+                {
+                    "label": "حطم البرج الزجاجي",
+                    "emoji": "💥",
+                    "next": "shatter_glass",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "تلاعب بأحلام الكاهن الأعظم",
+                    "emoji": "😴",
+                    "next": "dream_manipulation",
+                    "points_reward": 2,
+                    "color": "primary"
+                }
+            ]
+        },
+        "fake_light_burst": {
+            "text": "ترفع طاقة نور زائفة قوية، تدمع لها عيون الكهنة. يصل فارس نبيل ليأخذك كسلاح لحملته الصليبية المقدسة.",
+            "choices": [
+                {
+                    "label": "قد حملته للخراب",
+                    "emoji": "💀",
+                    "next": "ruin_crusade",
+                    "points_reward": 3,
+                    "color": "danger"
+                },
+                {
+                    "label": "دعمه ليصبح طاغية عادل",
+                    "emoji": "👑",
+                    "next": "tyrant_ruler",
+                    "points_reward": 2,
+                    "color": "success"
+                }
+            ]
+        },
+        "mind_control_mage": {
+            "text": "تسيطر عليه، لكن عقله السحري يقاومك. يهرب إلى الصحراء هائما، وتبدأ طاقته السحرية بالاضطراب.",
+            "choices": [
+                {
+                    "label": "استهلك عقله بالكامل",
+                    "emoji": "🧠",
+                    "next": "consume_mind",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "اجبره على بناء واحة سحرية",
+                    "emoji": "🌴",
+                    "next": "build_oasis",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "absorb_spell": {
+            "text": "تمتص التعويذة النارية. نصلك يتوهج بحرارة الجحيم. الساحر يصرخ محترقا، ويمسك بك محارب متمرد رأى المشهد.",
+            "choices": [
+                {
+                    "label": "امنحه قوة النار",
+                    "emoji": "🔥",
+                    "next": "grant_fire_power",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "احرق يده لترهيبه",
+                    "emoji": "♨️",
+                    "next": "burn_hand",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "cut_armor": {
+            "text": "تقطع درع الفارس لكن سيفه يضربك بقوة، تتصدع، الشاب يهرب مصابا ويختبئ في قبو نبيذ قديم.",
+            "choices": [
+                {
+                    "label": "عاقبه على جبنه",
+                    "emoji": "💢",
+                    "next": "punish_cowardice",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "أرشده لمخرج سري",
+                    "emoji": "🚪",
+                    "next": "secret_exit",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "punish_hit": {
+            "text": "الفارس يضربه ويكسر ساقه ويتركه ليتعلم درسا. الشاب يزحف باكيا في الوحل يحملك بصعوبة.",
+            "choices": [
+                {
+                    "label": "منحه قوة تحمل الألم",
+                    "emoji": "🛡️",
+                    "next": "grant_pain_resist",
+                    "points_reward": 1,
+                    "color": "success"
+                },
+                {
+                    "label": "تخلى عنه واصبح ثقيلا",
+                    "emoji": "🏋️",
+                    "next": "abandon_cripple",
+                    "points_reward": 0,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "call_depths": {
+            "text": "صوتك يتردد في الأعماق. وحش مائي أعمى يبتلعك، تسافر في بطنه المظلم نحو مجرى مائي تحت الأرض.",
+            "choices": [
+                {
+                    "label": "مزق أحشاء الوحش",
+                    "emoji": "🩸",
+                    "next": "tear_monster",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "اخرج سلميا في النهر الجوفي",
+                    "emoji": "🌊",
+                    "next": "exit_peacefully",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "jump_ledge": {
+            "text": "تقذف نفسك للحافة المعلقة، تعلق هناك مئات السنين يلفك الغبار والصمت، بانتظار مغامر جريء.",
+            "choices": [
+                {
+                    "label": "غني بأغنية حزينة لجذبهم",
+                    "emoji": "🎵",
+                    "next": "sing_sad",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "انتظر قدوم الحظ",
+                    "emoji": "🍀",
+                    "next": "wait_luck",
+                    "points_reward": 0,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "thirst_innocents": {
+            "text": "طموحك للدم يجعله لا يشبع، يغزو قرى مسالمة ويقتل سكانها جميعا، مما يجذب انتباه ملك الظلال.",
+            "choices": [
+                {
+                    "label": "تحالف مع ملك الظلال",
+                    "emoji": "🤝",
+                    "next": "shadow_alliance",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "تحدى ملك الظلال",
+                    "emoji": "⚔️",
+                    "next": "defy_shadows",
+                    "points_reward": 3,
+                    "color": "primary"
+                }
+            ]
+        },
+        "boost_speed": {
+            "text": "تسرع حركته، يقتحم معاقل الأعداء كبرق الخاطف، ويجمع ثروات هائلة لكنه يهمل صيانتك.",
+            "choices": [
+                {
+                    "label": "طالبه بتلميعك بالدماء",
+                    "emoji": "🩸",
+                    "next": "demand_polishing",
+                    "points_reward": 1,
+                    "color": "danger"
+                },
+                {
+                    "label": "تآكل بصمت لترهقه",
+                    "emoji": "rust",
+                    "next": "rust_silently",
+                    "points_reward": 1,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "call_passersby": {
+            "text": "يسمعك طفل مشرد، يسحبك من الطين وينظفك. يجد فيك صديقه الوحيد الذي لم يتخلى عنه.",
+            "choices": [
+                {
+                    "label": "كن حارسه الأمين",
+                    "emoji": "🛡️",
+                    "next": "guard_child",
+                    "points_reward": 2,
+                    "reputation": "guardian",
+                    "color": "primary"
+                },
+                {
+                    "label": "افسد براءته ببطء",
+                    "emoji": "🐍",
+                    "next": "corrupt_child",
+                    "points_reward": 2,
+                    "reputation": "ruthless",
+                    "color": "primary"
+                }
+            ]
+        },
+        "wait_dry": {
+            "text": "تجف البركة. يجدك مزارع عجوز ويستخدمك كوتد للخيمة في حقله القاحل.",
+            "choices": [
+                {
+                    "label": "اكسر الخيمة لإرعابه",
+                    "emoji": "⛺",
+                    "next": "break_tent",
+                    "points_reward": 1,
+                    "color": "danger"
+                },
+                {
+                    "label": "تحدث إليه ليلا بحكمة",
+                    "emoji": "🌙",
+                    "next": "talk_farmer",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "absorb_soul_cave": {
+            "text": "المرحلة الخامسة: تمتص الروح وتشعر بقوة هائلة تنقلك لوعي أعمق.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "summon_monster": {
+            "text": "المرحلة الخامسة: يظهر الوحش ويأخذك لزعيمه في الأعماق.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "betray_leader": {
+            "text": "المرحلة الخامسة: تغدر بالقائد وينتصر البطل، يأخذك كغنيمة خطرة.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "kill_hero": {
+            "text": "المرحلة الخامسة: البطل يموت وتصبح أنت السلاح الأكثر رعبا.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "secret_blacksmith": {
+            "text": "المرحلة الخامسة: الحداد يعرض صفقة لصناعة جسدك.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "attack_guards": {
+            "text": "المرحلة الخامسة: الجثة تهاجم الحراس ويتم القبض عليها.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "seduce_witch": {
+            "text": "المرحلة الخامسة: الساحرة تعشقك وتستخدمك في طقوسها.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "break_cage": {
+            "text": "المرحلة الخامسة: تكسر القفص وتهرب في الغابة السحرية.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "attack_priests": {
+            "text": "المرحلة الخامسة: الكهنة يُهزمون والشاب يصبح هاربا.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "beg_squire": {
+            "text": "المرحلة الخامسة: الشاب يبكي ويهرب بك من المعبد.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "turn_zombie": {
+            "text": "المرحلة الخامسة: الزومبي يسير بك نحو العاصمة بخطى بطيئة.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "absorb_ritual": {
+            "text": "المرحلة الخامسة: قوة الطقوس تجعلك تطفو في الهواء.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "attack_city": {
+            "text": "المرحلة الخامسة: يبدأ الهجوم على المدينة، الدماء تملأ الشوارع.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "build_temple": {
+            "text": "المرحلة الخامسة: يبدأون ببناء معبد لعبادتك.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "poison_food": {
+            "text": "المرحلة الخامسة: قطاع الطرق يموتون وتنتظر من يأخذك.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "find_traitor": {
+            "text": "المرحلة الخامسة: الخائن يأخذك ويهرب تحت جنح الظلام.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "fight_guards": {
+            "text": "المرحلة الخامسة: معركة ضارية مع الحراس تتركك غارقا بالدماء.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "sneak_port": {
+            "text": "المرحلة الخامسة: الناهب يتسلل للسفينة وتغادرون المملكة.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "kill_blacksmith_early": {
+            "text": "المرحلة الخامسة: الحداد ميت وتستقر في المحل منتظرا زبونا.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "blacksmith_takes": {
+            "text": "المرحلة الخامسة: الحداد يفحصك ويكتشف طبيعتك الملعونة.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "whisper_madness": {
+            "text": "المرحلة الخامسة: النبيل يغرق بالجنون ويحضر طقس استدعاء.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "steal_weapon_soul": {
+            "text": "المرحلة الخامسة: تكتسب قوة السلاح الآخر وتصبح مزدوج الطاقة.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "heal_with_blood": {
+            "text": "المرحلة الخامسة: تلتئم شقوقك بدماء اللص، التاجر يرتعب.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "endure_pain": {
+            "text": "المرحلة الخامسة: تتحمل الألم وتصبح شظاياك حادة وخطيرة.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "shatter_glass": {
+            "text": "المرحلة الخامسة: الزجاج يتحطم وتخرج حرا كالطيف.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "dream_manipulation": {
+            "text": "المرحلة الخامسة: الكاهن يرى كوابيس تجعله يعبدك سرا.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "ruin_crusade": {
+            "text": "المرحلة الخامسة: الحملة الصليبية تنهار وتعم الفوضى.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "tyrant_ruler": {
+            "text": "المرحلة الخامسة: الفارس يصبح ملكا طاغية وأنت سيف العدالة الزائفة.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "consume_mind": {
+            "text": "المرحلة الخامسة: عقل الساحر يصبح ملكك، تتحكم به كالدمية.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "build_oasis": {
+            "text": "المرحلة الخامسة: الواحة تجذب مسافرين، وأنت السيد المخفي.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "grant_fire_power": {
+            "text": "المرحلة الخامسة: المتمرد يقود ثورة نارية ضد الملك.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "burn_hand": {
+            "text": "المرحلة الخامسة: المتمرد يرميك في النهر هربا من الحرارة.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "punish_cowardice": {
+            "text": "المرحلة الخامسة: الشاب يموت من الخوف وتنتظر في القبو.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "secret_exit": {
+            "text": "المرحلة الخامسة: يخرج الشاب لغابة آمنة ويبدأ حياة جديدة.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "grant_pain_resist": {
+            "text": "المرحلة الخامسة: الشاب يزحف ويصل لقرية معالجين.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "abandon_cripple": {
+            "text": "المرحلة الخامسة: يتركك الشاب لثقلك، يأخذك مزارع عابر.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "tear_monster": {
+            "text": "المرحلة الخامسة: تخرج من الوحش لشاطئ مدينة غارقة.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "exit_peacefully": {
+            "text": "المرحلة الخامسة: النهر الجوفي يقودك لقلب الجبل السحري.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "sing_sad": {
+            "text": "المرحلة الخامسة: أغنيتك تجذب فارسة شجاعة تتسلق لأجلك.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "wait_luck": {
+            "text": "المرحلة الخامسة: بعد قرون، زلزال يسقطك في منجم أقزام.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "shadow_alliance": {
+            "text": "المرحلة الخامسة: تصبح القائد الثاني لجيوش الظلال.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "defy_shadows": {
+            "text": "المرحلة الخامسة: حرب طاحنة بينك وبين جيش الظلال تبدأ.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "demand_polishing": {
+            "text": "المرحلة الخامسة: دموع الأعداء تزيد من حدتك وسحرك.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "rust_silently": {
+            "text": "المرحلة الخامسة: الصدأ ينخر قواك حتى تنهار إرادته.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_1",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "guard_child": {
+            "text": "المرحلة الخامسة: الطفل يكبر ليصبح محاربا مقدسا.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "corrupt_child": {
+            "text": "المرحلة الخامسة: الطفل يصبح لصا محترفا لا يرحم أحدا.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_2",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "break_tent": {
+            "text": "المرحلة الخامسة: المزارع يفر رعبا، وتستقر في الحقل.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "talk_farmer": {
+            "text": "المرحلة الخامسة: المزارع يستمع لكلماتك ويصبح عرافا.",
+            "choices": [
+                {
+                    "label": "تقدم للعمق",
+                    "emoji": "➡️",
+                    "next": "hub_6_3",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "hub_6_1": {
+            "text": "المرحلة السادسة: الظلام يكثف من حولك. مسارات الماضي تتلاشى وأنت الآن تقف على أعتاب مصيرك الحقيقي.",
+            "choices": [
+                {
+                    "label": "امض نحو المجهول",
+                    "emoji": "🚶",
+                    "next": "hub_7",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "تحدى القدر",
+                    "emoji": "⚡",
+                    "next": "hub_7",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "hub_6_2": {
+            "text": "المرحلة السادسة: ذكريات كل من حملك تتراقص أمامك كأشباح. كل قرار اتخذته جلبك إلى هذا المفترق.",
+            "choices": [
+                {
+                    "label": "امض نحو المجهول",
+                    "emoji": "🚶",
+                    "next": "hub_7",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "تحدى القدر",
+                    "emoji": "⚡",
+                    "next": "hub_7",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "hub_6_3": {
+            "text": "المرحلة السادسة: القوة التي جمعتها تتأجج، تكاد تكسر نصلك. عليك أن تجد الملاذ الأخير قبل فوات الأوان.",
+            "choices": [
+                {
+                    "label": "امض نحو المجهول",
+                    "emoji": "🚶",
+                    "next": "hub_7",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "تحدى القدر",
+                    "emoji": "⚡",
+                    "next": "hub_7",
+                    "points_reward": 2,
+                    "color": "danger"
+                }
+            ]
+        },
+        "hub_7": {
+            "text": "المرحلة السابعة: تصل أخيرا إلى مفترق الطرق الأخير. كل من حملك مات أو قادك إلى هنا. القلعة القديمة أمامك، حيث يوجد الحداد الأسطوري ومذبح الجحيم.",
+            "choices": [
+                {
+                    "label": "اسع للحرية السماوية",
+                    "emoji": "🦅",
+                    "next": "freedom_trial",
+                    "points_reward": 2,
+                    "color": "success"
+                },
+                {
+                    "label": "اسع للسلطة الشيطانية",
+                    "emoji": "👑",
+                    "next": "power_trial",
+                    "points_reward": 2,
+                    "color": "danger"
+                },
+                {
+                    "label": "ضحي بنفسك لحمايتهم",
+                    "emoji": "🛡️",
+                    "next": "ending_c_eternal_guardian",
+                    "points_reward": 4,
+                    "color": "primary"
+                },
+                {
+                    "label": "استعد جسدك البشري",
+                    "emoji": "👤",
+                    "next": "ending_d_human_again",
+                    "points_reward": 5,
+                    "required_points": 12,
+                    "color": "primary"
+                },
+                {
+                    "label": "استسلم لليأس الأبدي",
+                    "emoji": "💀",
+                    "next": "death_hub",
+                    "points_reward": 0,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "freedom_trial": {
+            "text": "المرحلة الثامنة: تواجه حراس الحرية، كيانات من نور ونار ترفض إطلاق سراح سلاح ملعون مثلك. يهاجمونك بأسلحة سماوية.",
+            "choices": [
+                {
+                    "label": "حارب للنهاية بشرف",
+                    "emoji": "⚔️",
+                    "next": "ending_a_broken_chains",
+                    "points_reward": 2,
+                    "color": "success"
+                },
+                {
+                    "label": "ارفع درع الظلام",
+                    "emoji": "🛡️",
+                    "next": "death_shattered_holy",
+                    "points_reward": 0,
+                    "color": "danger"
+                }
+            ]
+        },
+        "power_trial": {
+            "text": "المرحلة الثامنة: تدخـل قاعة العرش الشيطانية. أمراء الجحيم يطلبون منك الخضوع لتصبح مجرد أداة في يدهم إلى الأبد.",
+            "choices": [
+                {
+                    "label": "اقتل أمراء الجحيم",
+                    "emoji": "🩸",
+                    "next": "ending_b_dark_god",
+                    "points_reward": 3,
+                    "color": "danger"
+                },
+                {
+                    "label": "أقسم لهم بالولاء التام",
+                    "emoji": "🤝",
+                    "next": "death_slave",
+                    "points_reward": 0,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "death_hub": {
+            "text": "المرحلة الثامنة: تستسلم لليأس. طاقتك تتبدد في الهواء تدريجيا. تتراكم حولك الأتربة وصدأ السنين وعزلة الماضي.",
+            "choices": [
+                {
+                    "label": "تقبل التآكل بصمت",
+                    "emoji": "🍂",
+                    "next": "death_rusty_grave",
+                    "points_reward": 0,
+                    "color": "secondary"
+                },
+                {
+                    "label": "حاول الصراخ أخيرا",
+                    "emoji": "🗣️",
+                    "next": "death_silent_scream",
+                    "points_reward": 0,
+                    "color": "danger"
+                },
+                {
+                    "label": "اغرق في المحيط",
+                    "emoji": "🌊",
+                    "next": "death_ocean_bottom",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "اقفز في الحمم",
+                    "emoji": "🌋",
+                    "next": "death_dragon_fire",
+                    "points_reward": 0,
+                    "color": "danger"
+                },
+                {
+                    "label": "انتظر المصهر",
+                    "emoji": "🔥",
+                    "next": "death_melted_down",
+                    "points_reward": 0,
+                    "color": "danger"
+                },
+                {
+                    "label": "اقبل الدفن حيا",
+                    "emoji": "🪦",
+                    "next": "death_buried_alive",
+                    "points_reward": 0,
+                    "color": "secondary"
+                },
+                {
+                    "label": "استسلم للشيطان الجائع",
+                    "emoji": "👿",
+                    "next": "death_devoured_by_demon",
+                    "points_reward": 0,
+                    "color": "danger"
+                }
+            ]
+        },
+        "death_shattered_holy": {
+            "text": "النور السماوي يخترق معدنك الملعون. تتصدع، ثم تنفجر إلى آلاف الشظايا الدقيقة. تنتهي رحلتك كغبار مضيء في الرياح. لو كنت أكثر حذرا ومستعدا للتضحية، لربما نجوت.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "death_slave": {
+            "text": "بمجرد أن تقسم الولاء، يختمون وعيك في أعماق السيف للأبد. تصبح مجرد أداة صماء بيد شيطان قاسي. العبودية أسوأ من الموت المباشر، لو أنك قاومت قليلا.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "death_rusty_grave": {
+            "text": "تمر القرون والصدأ يأكل معدنك ببطء. وعيك يتلاشى قطرة بقطرة حتى تصبح مجرد خردة منسية. كان عليك أن تكون أكثر طموحا وتتمسك بالحياة.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "death_silent_scream": {
+            "text": "تصرخ ذهنيا بكل قوتك، لكن صرختك تمزق وعيك من الداخل. تفقد عقلك تدريجيا وتتحول إلى نصل مجنون لا يستطيع التفكير. اليأس كان عدوك الحقيقي.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "death_ocean_bottom": {
+            "text": "تسقط في هاوية بحرية عميقة. الضغط يسحق نصلك في الظلام البارد. لا نور، لا دفء، ولا أحد لإنقاذك. عزلة أبدية كان يمكن تجنبها بشجاعة أكبر.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "death_dragon_fire": {
+            "text": "تغمرك النيران الأسطورية. معدنك ينصهر فورا ويختلط بالصخر البركاني. وعيك يتبخر في الدخان الأبيض. القوة المفرطة تحرق صاحبها أحيانا.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "death_melted_down": {
+            "text": "يتم إلقاؤك في فرن صهر ضخم. الحديد السائل يبتلعك. تفقد هويتك وتصبح جزءا من سيف عادي لا وعي له. الاستسلام للنار خطأ لا يغتفر.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "death_buried_alive": {
+            "text": "تُدفن حيا تحت أطنان من الأنقاض المظلمة. صراخك العقلي لا يصل لأحد. ظلام دائم يسجنك إلى نهاية الزمان. الاختباء لا ينقذ أحدا للأبد.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "death_devoured_by_demon": {
+            "text": "شيطان جائع يبتلعك. أسنان أسيدية تمزق معدنك ببطء داخل معدته. عذابك أبدي في أحشاء وحش جحيمي. التردد في مواجهة الظلام ثمنه غالٍ.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "ending_a_broken_chains": {
+            "text": "نجحت أخيرا في تحطيم القيود التي ربطت وعيك بهذا المعدن الملعون. روحك تصعد، تاركة وراءها سيفا فارغا يتهاوى على الأرض. لقد حققت النصر والحرية التي طالما حلمت بها، لكن العالم فقد أداة كانت قادرة على تغيير التاريخ بأكمله. هل الحرية الشخصية تستحق ترك العالم لمصيره المجهول؟",
+            "is_ending": true,
+            "choices": []
+        },
+        "ending_b_dark_god": {
+            "text": "لقد استهلكت أرواح الملوك والمحاربين، وأصبحت أنت الحاكم الفعلي للعالم متخفيا كسلاح أسطوري. من يحملك يظن أنه سيدك، بينما هو مجرد بيدق طيع في يدك الدموية. حققت مبتغاك في السيطرة المطلقة، لكن هل هذا هو الخلود الذي كنت تتمناه، أم مجرد سجن بحجم العالم بأكمله؟",
+            "is_ending": true,
+            "choices": []
+        },
+        "ending_c_eternal_guardian": {
+            "text": "ضحيت بقوتك وطموحك لحماية الأبرياء من شرور العالم المظلم. لقد صهرت طاقتك المظلمة لتصبح درعا أبديا يصد قوى الشر وتتبناه الأجيال. لم تعد وعيا مستقلا، بل صرخة صامتة للحماية والعدالة. لقد أنقذت العالم من الهلاك، ولكن من سينقذك أنت من صمت الأبدية البارد؟",
+            "is_ending": true,
+            "choices": []
+        },
+        "ending_d_human_again": {
+            "text": "في نار الحداد الأسطوري السري، تشكل لك جسد من الفولاذ الحي واللحم السحري بفضل النقاط التي جمعتها بحكمة طوال رحلتك. لأول مرة منذ ألف عام، تتنفس بعمق، تشعر بنسيم الريح البارد، وتنزف دما أحمرا. لقد عدت إنسانا، خاسرا خلود السلاح وقوته القاهرة، لكنك اكتسبت شيئا أعظم بكثير وهو إنسانيتك. هل ستستخدم حياتك الجديدة للخير، أم أن قلبك الفولاذي سيقودك للشر مجددا؟",
+            "is_ending": true,
+            "choices": []
+        }
+    }
+}

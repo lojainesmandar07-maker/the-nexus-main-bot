@@ -42,3 +42,6 @@ Auto-organized index for planning and generation continuity.
 - ID `fb1_blade` | Series `1` | Scenes `15` | **النصل الملعون** (`fantasy_blade.json`)
 - ID `fb1_healer` | Series `1` | Scenes `16` | **المعالج** (`fantasy_healer.json`)
 - ID `fb1_dragon` | Series `1` | Scenes `16` | **التنين** (`fantasy_dragon.json`)
+
+### جواسيس التاريخ
+- ID `p_shadow_spy` | Series `1` | Scenes `98` | **ظل القصر** (`past_shadow_spy.json`)

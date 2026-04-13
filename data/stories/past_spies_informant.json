@@ -480,6 +480,14 @@
           "emoji": "👑",
           "color": "danger",
           "points_reward": 2
+        },
+        {
+          "label": "استغل صديقك المقتول",
+          "next": "p_give_cipher_general",
+          "emoji": "🗣️",
+          "color": "danger",
+          "points_reward": 1,
+          "requires_flag": "flag_betrayed_friend"
         }
       ]
     },
@@ -918,7 +926,7 @@
         },
         {
           "label": "قاتل اللصوص",
-          "next": "p_rebel_fight",
+          "next": "p_thief_fight",
           "emoji": "⚔️",
           "color": "danger",
           "points_reward": 0
@@ -994,7 +1002,7 @@
         },
         {
           "label": "قاتل اللصوص",
-          "next": "p_rebel_fight",
+          "next": "p_thief_fight",
           "emoji": "⚔️",
           "color": "danger",
           "points_reward": 0
@@ -1127,7 +1135,7 @@
         },
         {
           "label": "غادر من الجبال",
-          "next": "p_stay_back",
+          "next": "p_abandon_base",
           "emoji": "⛰️",
           "color": "secondary",
           "points_reward": 1
@@ -1139,14 +1147,14 @@
       "choices": [
         {
           "label": "اغتله بالشفرة",
-          "next": "p_lead_vanguard",
+          "next": "p_assassinate_sultan",
           "emoji": "🗡️",
           "color": "danger",
           "points_reward": 3
         },
         {
           "label": "فاوضه بالشفرة",
-          "next": "p_blackmail_general",
+          "next": "p_blackmail_sultan",
           "emoji": "🗣️",
           "color": "primary",
           "points_reward": 2,
@@ -1242,6 +1250,24 @@
           "color": "secondary"
         }
       ]
+    },
+    "p_thief_fight": {
+      "text": "تشتبك مع اللصوص في قتال يائس بالأسلحة البيضاء. تتغلب على اثنين لكن الثالث يطعنك في الظهر. تسقط في الوحل وتنزف حتى الموت بينما يسرقون ما تملك.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "p_assassinate_sultan": {
+      "text": "تطعن السلطان في قلبه بدم بارد. يموت دون صوت، وتترك الشفرة على جثته رسالة للمتمردين. تهرب في جنح الظلام وقد غيرت مجرى التاريخ، لكنك ستعيش طريداً منتقماً. هل يستحق الأمر؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending_a"
+    },
+    "p_blackmail_sultan": {
+      "text": "تساوم السلطان بالشفرة. يوافق على تعيينك مستشاره السري مقابل ولائك التام. تصبح القوة الخفية التي تدير الإمبراطورية بيد من حديد. السلطة المطلقة مفسدة مطلقة، فهل تستحق الثمن؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending_d"
     }
   },
   "world": "الماضي",

@@ -1,0 +1,1144 @@
+{
+  "id": "al_shattered_mirrors",
+  "title": "مرايا الوهم",
+  "world": "alt_reality",
+  "world_type": "alternate",
+  "category": "الواقع يتكسر",
+  "summary": "تستيقظ لتجد أن ذكرياتك لا تخصك، وأن العالم من حولك يكرر نفسه في حلقات مرعبة. هل أنت حقيقي، أم مجرد كود في محاكاة تنهار؟",
+  "difficulty": "very hard",
+  "estimated_length": "very long",
+  "theme": "الواقع يتكسر",
+  "game_mode": "single",
+  "perspective": {
+    "id": "the_replica",
+    "label": "النسخة",
+    "emoji": "🪞",
+    "description": "كيان يدرك زيف عالمه، ممزق بين ذكريات مزيفة وواقع مشوه.",
+    "start_node": "start"
+  },
+  "nodes": {
+    "start": {
+      "text": "فنجان القهوة على الطاولة يسقط وينكسر. ترمش، فتجد الفنجان سليماً، يسقط وينكسر مرة أخرى. نفس القطرة تتناثر على يدك مرتين. تنظر من النافذة، السيارات في الشارع تمر بنفس الترتيب، بنفس الألوان، في حلقة مفرغة. ذكرياتك عن زوجتك واسمك تبدو فجأة وكأنها فيلم شاهدته، وليست حياتك. هناك خلل.",
+      "choices": [
+        {
+          "label": "اخرج للشارع بسرعة",
+          "emoji": "🏃",
+          "next": "street_glitch_1",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "تفحص الفنجان المكسور",
+          "emoji": "☕",
+          "next": "examine_cup",
+          "points_reward": 2,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "تجاهل الأمر ونم",
+          "emoji": "🛏️",
+          "next": "ignore_reality_1",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "ignore_reality_1": {
+      "text": "تقرر أنك مرهق وتعود لسريرك. تغمض عينيك، لكنك تسمع صوت طنين ميكانيكي يقترب من غرفتك. الباب يفتح ببطء.",
+      "choices": [
+        {
+          "label": "استمر بالتظاهر بالنوم",
+          "emoji": "😴",
+          "next": "death_ignore_glitch",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "انهض وواجه الدخيل",
+          "emoji": "😠",
+          "next": "face_cleaner_early",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_ignore_glitch": {
+      "text": "رجل يرتدي بدلة رمادية بلا ملامح يقف فوقك. يلمس جبهتك بيده الباردة. تشعر بكيانك يتلاشى، تتحول أفكارك إلى شفرات تتبعثر في الفراغ. تجاهل النظام يعني أنك ملف فاسد يستحق الحذف.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "examine_cup": {
+      "text": "تمسك بقطعة من الخزف المكسور. لا تجرح إصبعك. تقلبها، وتجد أرقاماً متوهجة خضراء تتحرك على السطح الأبيض الداخلي. الفنجان ليس حقيقياً.",
+      "choices": [
+        {
+          "label": "اخرج من الشقة",
+          "emoji": "🚪",
+          "next": "apartment_hallway",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اكسر المرآة",
+          "emoji": "🪞",
+          "next": "break_mirror",
+          "points_reward": 2,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "street_glitch_1": {
+      "text": "تخرج للشارع. الناس يمشون كآلات. امرأة تسقط تفاحتها، تنحني لالتقاطها، ثم تعود خطوات للوراء وتسقطها مجدداً. فجأة، تتوقف كل الحركة. يلتفت إليك الجميع بنظرة فارغة.",
+      "choices": [
+        {
+          "label": "اركض نحو الزقاق",
+          "emoji": "🏃",
+          "next": "alley_escape",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "تحدث إلى المرأة",
+          "emoji": "🗣️",
+          "next": "talk_to_glitch",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "apartment_hallway": {
+      "text": "الممر مظلم. المصباح يومض بانتظام غريب. مصعد العمارة عالق في الطابق صفر. فجأة، تسمع صوتاً إلكترونياً من مكبر صوت مخفي: 'تم رصد شذوذ في القطاع 4'.",
+      "choices": [
+        {
+          "label": "انزل عبر السلالم",
+          "emoji": "⬇️",
+          "next": "stairs_down",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اختبئ في شقتك",
+          "emoji": "🚪",
+          "next": "hide_in_apartment",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "break_mirror": {
+      "text": "تضرب المرآة بقطعة الخزف. لا تتناثر، بل تتمزق كشاشة قماشية. خلفها لا يوجد حائط، بل فراغ أبيض شاسع وأسلاك ضوئية ممتدة للأسفل.",
+      "choices": [
+        {
+          "label": "اقفز في الفراغ",
+          "emoji": "🕳️",
+          "next": "fall_into_void",
+          "points_reward": 2,
+          "sets_flag": "flag_know_truth",
+          "color": "primary",
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "تراجع برعب",
+          "emoji": "😨",
+          "next": "apartment_hallway",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "talk_to_glitch": {
+      "text": "تقترب من المرأة. 'هل أنتِ بخير؟' تسأل. تفتح فمها، لكن يخرج صوت ذكوري آلي: 'البيانات تالفة. جاري إرسال المنظفين'. الشارع يتحول إلى اللون الرمادي.",
+      "choices": [
+        {
+          "label": "اركض فوراً",
+          "emoji": "🏃",
+          "next": "alley_escape",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "انتظر المنظفين",
+          "emoji": "⏳",
+          "next": "face_cleaner_early",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "alley_escape": {
+      "text": "تندفع في الزقاق. الجدران الطوبية تبدو وكأنها تفقد تدرج ألوانها وتصبح مربعات بيكسل ضخمة. في النهاية، ترى باباً معدنياً لا يتناسب مع الزقاق.",
+      "choices": [
+        {
+          "label": "افتح الباب",
+          "emoji": "🚪",
+          "next": "rogue_hideout_door",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "تسلق الجدار",
+          "emoji": "🧱",
+          "next": "climb_wall",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "stairs_down": {
+      "text": "تركض لأسفل. الطابق الثاني، الطابق الأول، الطابق... الثالث؟ السلالم تقودك للأعلى بدلاً من الأسفل. الهندسة هنا معيبة.",
+      "choices": [
+        {
+          "label": "اصعد السلالم",
+          "emoji": "⬆️",
+          "next": "stairs_paradox",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "انزل مجدداً",
+          "emoji": "⬇️",
+          "next": "stairs_paradox",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "hide_in_apartment": {
+      "text": "تغلق بابك. بعد ثوانٍ، يذوب الباب ببساطة كأنه لم يكن. ثلاثة رجال ببدل رمادية وبدون وجوه يدخلون الغرفة بخطى متزامنة.",
+      "choices": [
+        {
+          "label": "هاجمهم",
+          "emoji": "⚔️",
+          "next": "death_cleaner_caught",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اهرب للنافذة",
+          "emoji": "🪟",
+          "next": "window_escape_1",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "face_cleaner_early": {
+      "text": "رجل رمادي بلا ملامح يقف أمامك. يرفع يده نحوك. 'إعادة ضبط الشذوذ'.",
+      "choices": [
+        {
+          "label": "قاوم",
+          "emoji": "👊",
+          "next": "death_cleaner_caught",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "تفادى يده",
+          "emoji": "🏃",
+          "next": "window_escape_1",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_cleaner_caught": {
+      "text": "يلمس 'المنظف' رأسك. الألم لا يوصف. تشعر بكل ذرة من وجودك تتفكك إلى نصوص برمجية. تمحى من النظام. مواجهة البرامج المضادة للفيروسات بقبضتك العارية حماقة.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fall_into_void": {
+      "text": "تسقط في الفراغ الأبيض. تشعر وكأنك تطفو. خطوط الكود تمر أمامك. فجأة، تصطدم بشبكة معدنية. أنت في نفق صيانة، بعيداً عن أعين 'المنظفين'.",
+      "choices": [
+        {
+          "label": "ازحف في النفق",
+          "emoji": "🐛",
+          "next": "maintenance_tunnel",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "climb_wall": {
+      "text": "تحاول تسلق الجدار. الطوب يتحول إلى سائل بين يديك، تسقط أرضاً ووراءك يقف رجلان رماديان.",
+      "choices": [
+        {
+          "label": "اركض للباب المعدني",
+          "emoji": "🚪",
+          "next": "rogue_hideout_door",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "rogue_hideout_door": {
+      "text": "تدخل الباب. تجد نفسك في غرفة مضاءة بشاشات حمراء. فتاة بشعر أزرق قصير وسترة جلدية توجه سلاحاً غريباً يطلق شرارات نحوك. 'كيف وجدت باب النسيان؟'",
+      "choices": [
+        {
+          "label": "كنت أهرب فقط",
+          "emoji": "🏃",
+          "next": "meet_rogue_nia",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "العالم يتكسر",
+          "emoji": "🌍",
+          "next": "meet_rogue_nia_truth",
+          "points_reward": 2,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "window_escape_1": {
+      "text": "تقفز من النافذة، لكنك لا تسقط. تسحبك جاذبية أفقية لتسقط على جدار المبنى المقابل كأنه الأرض. تركض على جدار العمارة.",
+      "choices": [
+        {
+          "label": "اركض للأعلى",
+          "emoji": "⬆️",
+          "next": "gravity_run",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اركض للأسفل",
+          "emoji": "⬇️",
+          "next": "alley_escape",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "stairs_paradox": {
+      "text": "تستمر في الركض، لكنك تجد نفسك في نفس الممر مراراً وتكراراً. المنظفون يقتربون. يجب أن تفكر خارج المنطق لتخرج.",
+      "choices": [
+        {
+          "label": "اغمض عينيك وامشِ",
+          "emoji": "🙈",
+          "next": "blind_walk",
+          "points_reward": 2,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "استمر بالركض",
+          "emoji": "🏃",
+          "next": "death_system_crush",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_system_crush": {
+      "text": "الاستمرار في اتباع قواعد مساحة معيبة يؤدي للهلاك. الجدران تتقلص، والسقف يهبط. يتم سحقك بواسطة هندسة متناقضة لا تستطيع معالجتها. كان يجب أن تكسر القاعدة.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "blind_walk": {
+      "text": "تغمض عينيك وتتوقف عن التفكير في السلالم. تشعر بالهواء يتغير. تفتح عينيك لتجد نفسك في نفق مظلم تحت الأرض.",
+      "choices": [
+        {
+          "label": "امش في النفق",
+          "emoji": "🚶",
+          "next": "maintenance_tunnel",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "gravity_run": {
+      "text": "تركض على الجدار حتى تصل للسطح. هناك، تجد فتاة بشعر أزرق تنظر للأسفل. 'أنت جديد' تقول.",
+      "choices": [
+        {
+          "label": "من أنتِ؟",
+          "emoji": "❓",
+          "next": "meet_rogue_nia",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "maintenance_tunnel": {
+      "text": "تزحف حتى تسقط في غرفة مليئة بالشاشات الحمراء. الفتاة ذات الشعر الأزرق ترتفع عن كرسيها بصدمة. 'من أين سقطت؟'",
+      "choices": [
+        {
+          "label": "أخبرتها عن الفراغ",
+          "emoji": "🕳️",
+          "next": "meet_rogue_nia_truth",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "meet_rogue_nia": {
+      "text": "تخفض السلاح. 'أنا نيا. وأنت في العالم السفلي، بعيداً عن نظام (المهندس). ذكرياتك؟ مزيفة. حياتك؟ كود. نحن هنا لندمر هذه المحاكاة.'",
+      "choices": [
+        {
+          "label": "لا أصدقك",
+          "emoji": "🙅",
+          "next": "nia_shows_truth",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "كيف نساعدكم؟",
+          "emoji": "🤝",
+          "next": "nia_explains_plan",
+          "points_reward": 2,
+          "sets_flag": "flag_rogue_ally",
+          "color": "primary",
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "meet_rogue_nia_truth": {
+      "text": "'رأيت الفراغ الأبيض إذن؟' تبتسم. 'أنا نيا. أنت مستيقظ تماماً. معظم الناس يجنون عندما تتكسر محاكاتهم. المهندس يفقد السيطرة. نحن سننهي هذا.'",
+      "choices": [
+        {
+          "label": "ما هي خطتكم؟",
+          "emoji": "🗺️",
+          "next": "nia_explains_plan",
+          "points_reward": 1,
+          "sets_flag": "flag_rogue_ally",
+          "color": "primary",
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "nia_shows_truth": {
+      "text": "تضغط على زر في لوحتها. فجأة، وميض من الذكريات يضرب رأسك. تذكرت طفولتك، لكنها طفولة شخص آخر! شخص يموت في سرير مستشفى. 'هذا أنت الحقيقي. جسدك هناك، وعقلك محبوس هنا'.",
+      "choices": [
+        {
+          "label": "اريد الخروج",
+          "emoji": "🚪",
+          "next": "nia_explains_plan",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اعيدي ذكرياتي السعيدة",
+          "emoji": "🧠",
+          "next": "death_trust_false_memory",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_trust_false_memory": {
+      "text": "'تريد الكذبة؟ كما تشاء'. تطلق نيا شحنة من سلاحها نحوك. تظلم الرؤية، وتستيقظ في شقتك المريحة، تنسى كل شيء. في اليوم التالي، يجدك المنظفون ويحذفونك بهدوء. من يرفض الحقيقة لا يستحق البقاء.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "nia_explains_plan": {
+      "text": "'لدينا فيروس. أريد زرعه في قلب النظام (النواة). لكن المنظفين يبحثون عنا. أنت لست مسجلاً كعدو بعد، لديك فرصة للوصول.'",
+      "choices": [
+        {
+          "label": "سأفعلها",
+          "emoji": "👍",
+          "next": "take_virus",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "ماذا سيحدث للآخرين؟",
+          "emoji": "👥",
+          "next": "nia_hesitates",
+          "points_reward": 2,
+          "reputation": "conformist",
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null
+        }
+      ]
+    },
+    "nia_hesitates": {
+      "text": "تتنهد. 'المحاكاة ستنهار. من في غيبوبة في العالم الحقيقي... قد لا يستيقظون أبداً. لكنها حريتنا.'",
+      "choices": [
+        {
+          "label": "تضحية مقبولة",
+          "emoji": "🩸",
+          "next": "take_virus",
+          "points_reward": 0,
+          "reputation": "rebel",
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null
+        },
+        {
+          "label": "لن أقتلهم",
+          "emoji": "🛑",
+          "next": "refuse_virus",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "refuse_virus": {
+      "text": "ترفع نيا سلاحها. 'إذن أنت أداة للمهندس.'",
+      "choices": [
+        {
+          "label": "حاول نزع سلاحها",
+          "emoji": "✋",
+          "next": "death_rogue_betrayal",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اهرب من الغرفة",
+          "emoji": "🏃",
+          "next": "escape_rogues",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_rogue_betrayal": {
+      "text": "تطلق النار عليك قبل أن تتحرك. في هذه الثورة، من ليس معنا فهو ضدنا. تموت في قبو رقمي، بلا هوية.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "take_virus": {
+      "text": "تعطيك قرصاً برمجياً مشعاً. 'اذهب عبر نفق الصيانة 7. سيوصلك لمصعد النواة. احذر المتغيرات.'",
+      "choices": [
+        {
+          "label": "ادخل النفق 7",
+          "emoji": "🚇",
+          "next": "tunnel_7",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "escape_rogues": {
+      "text": "تركض عبر باب خلفي وتغلقه بقوة. تجد نفسك في نفق صيانة يحمل رقم 7. لا خيار سوى التقدم.",
+      "choices": [
+        {
+          "label": "امش في النفق",
+          "emoji": "🚶",
+          "next": "tunnel_7",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "tunnel_7": {
+      "text": "النفق يتغير مع كل خطوة. الجدران تتحول من معدن إلى لحم بشري ينبض، ثم إلى زجاج. النظام ينهار.",
+      "choices": [
+        {
+          "label": "امش بهدوء",
+          "emoji": "🚶",
+          "next": "tunnel_7_deep",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "تجاهل الوهم واركض",
+          "emoji": "🏃",
+          "next": "tunnel_7_fast",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "tunnel_7_deep": {
+      "text": "تمشي ببطء. تبدأ بسماع أصوات من ذكرياتك. صوت زوجتك يناديك من زقاق جانبي.",
+      "choices": [
+        {
+          "label": "اتبع الصوت",
+          "emoji": "👂",
+          "next": "follow_wife_voice",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "إنها كذبة، تجاهلها",
+          "emoji": "🛑",
+          "next": "tunnel_7_fast",
+          "points_reward": 2,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "follow_wife_voice": {
+      "text": "تدخل الزقاق الجانبي، تجد زوجتك تقف هناك. تعانقك، ثم تشعر ببرودة شديدة. إنها ليست زوجتك، إنها منظف اتخذ شكلها.",
+      "choices": [
+        {
+          "label": "ادفعها بعيداً",
+          "emoji": "✋",
+          "next": "push_cleaner",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "توسل إليها",
+          "emoji": "😭",
+          "next": "death_cleaner_caught",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "push_cleaner": {
+      "text": "تدفعها وتسقط أرضاً. تتحول إلى صورتها الرمادية.",
+      "choices": [
+        {
+          "label": "اركض للنهاية",
+          "emoji": "🏃",
+          "next": "core_elevator",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "tunnel_7_fast": {
+      "text": "تركض، متجاهلاً الأوهام والأصوات. تصل أخيراً إلى مصعد زجاجي يطل على هاوية لا نهاية لها. هذا هو مصعد النواة.",
+      "choices": [
+        {
+          "label": "ادخل المصعد",
+          "emoji": "🛗",
+          "next": "core_elevator",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "core_elevator": {
+      "text": "تدخل المصعد. هناك ثلاثة أزرار: 'النواة'، 'إعادة الضبط'، 'غرفة المهندس'.",
+      "choices": [
+        {
+          "label": "اضغط النواة",
+          "emoji": "🔴",
+          "next": "core_room",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اضغط غرفة المهندس",
+          "emoji": "🧠",
+          "next": "architect_room_early",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اضغط إعادة الضبط",
+          "emoji": "🔄",
+          "next": "death_wrong_door",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_wrong_door": {
+      "text": "بمجرد الضغط على زر إعادة الضبط، تُمسح ذاكرتك فوراً. تعود شفرتك إلى السطر صفر. تُحجز في حلقة أبدية من المعاناة دون وعي. الفضول الأعمى يقتل.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "architect_room_early": {
+      "text": "المصعد يرفض الصعود ويطلق صفارة إنذار. 'الوصول غير مصرح'. أبواب المصعد تفتح لتدخل فرقة من المنظفين.",
+      "choices": [
+        {
+          "label": "قاتلهم",
+          "emoji": "⚔️",
+          "next": "fight_cleaners_elevator",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اهرب للسطح",
+          "emoji": "⬆️",
+          "next": "escape_to_roof",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "fight_cleaners_elevator": {
+      "text": "تتغلب على أحدهم، لكنهم كثيرون.",
+      "choices": [
+        {
+          "label": "استسلم",
+          "emoji": "💀",
+          "next": "death_cleaner_caught",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "escape_to_roof": {
+      "text": "تفتح فتحة السقف وتتسلق. المصعد يهوي للأسفل، وتقفز لمدخل النواة.",
+      "choices": [
+        {
+          "label": "ادخل النواة",
+          "emoji": "🚪",
+          "next": "core_room",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "core_room": {
+      "text": "غرفة ضخمة تحتوي على عمود من الضوء الأبيض الساطع يمثل قلب النظام. هناك منصة تحكم. حول المنصة، تقف نيا. كيف وصلت هنا قبلك؟",
+      "choices": [
+        {
+          "label": "نيا؟ كيف جئت؟",
+          "emoji": "❓",
+          "next": "nia_reveal",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اقترب من المنصة",
+          "emoji": "💻",
+          "next": "approach_console",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "nia_reveal": {
+      "text": "تستدير وتضحك بصوت متداخل. 'أنا لست نيا. أنا المهندس. اتخذت شكلها لأوجهك لزرع هذا الفيروس... إنه ليس مدمراً، بل ترقية للنظام ستمحو كل العقول المحتفظة بها هنا'.",
+      "choices": [
+        {
+          "label": "لقد خدعتني",
+          "emoji": "😠",
+          "next": "architect_trap",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "ارمي الفيروس",
+          "emoji": "🗑️",
+          "next": "throw_virus",
+          "points_reward": 2,
+          "sets_flag": "flag_architect_secret",
+          "color": "primary",
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "approach_console": {
+      "text": "تقترب. نيا ترفع سلاحها. 'توقف!'. صوتها مختلف. 'ضع الفيروس في المنصة بسرعة!'.",
+      "choices": [
+        {
+          "label": "ازرع الفيروس",
+          "emoji": "💾",
+          "next": "death_architect_trap",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "انتظر وتأكد",
+          "emoji": "⏳",
+          "next": "nia_reveal",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_architect_trap": {
+      "text": "تزرع الفيروس. الشاشات تضيء بلون أخضر مشع. 'شكراً لك'، تقول نيا بصوت المهندس. 'لقد قمت للتو بمسح كل المتمردين، بما فيهم أنت'. تتفكك وتختفي. الثقة العمياء سلاح المهندس الأقوى.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "architect_trap": {
+      "text": "يقول المهندس (بصوت نيا): 'أنت لا شيء. فقط قم بإدخال الفيروس وسأنهي ألمك'. المنظفون يحاصرون الغرفة.",
+      "choices": [
+        {
+          "label": "ادخل الفيروس",
+          "emoji": "💾",
+          "next": "death_architect_trap",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "ارمي الفيروس بالنور",
+          "emoji": "☄️",
+          "next": "throw_virus",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "throw_virus": {
+      "text": "تلقي الفيروس المشع في عمود الضوء الأبيض (النواة). يحدث انفجار صامت للبيانات. شكل المهندس يتشوه ويعود لهيئته الحقيقية: كتلة من الضوء والكود. 'ماذا فعلت؟!' يصرخ.",
+      "choices": [
+        {
+          "label": "دمرت خطتك",
+          "emoji": "💥",
+          "next": "system_overload",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "هاجم المهندس",
+          "emoji": "⚔️",
+          "next": "attack_architect",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "attack_architect": {
+      "text": "تهاجم كتلة الضوء. لكن الضوء يحرق كيانك الرقمي. لا يمكنك لمس الكود المصدري بيدك العارية.",
+      "choices": [
+        {
+          "label": "تراجع وتألم",
+          "emoji": "🩸",
+          "next": "system_overload",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "system_overload": {
+      "text": "بدون الفيروس للسيطرة، بدأ الفضاء الأبيض في النواة بالتحميل الزائد. بيانات خام تتدفق في عقلك. ترى تاريخ النظام بأكمله.",
+      "choices": [
+        {
+          "label": "استوعب البيانات",
+          "emoji": "🧠",
+          "next": "absorb_data",
+          "points_reward": 1,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "حاول إغلاق عقلك",
+          "emoji": "🙈",
+          "next": "close_mind",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "close_mind": {
+      "text": "الإغلاق مستحيل. البيانات تفرض نفسها عليك بقوة أكبر.",
+      "choices": [
+        {
+          "label": "استسلم للتدفق",
+          "emoji": "🌊",
+          "next": "absorb_data",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "absorb_data": {
+      "text": "تكتشف سر المهندس: هو ليس إنساناً، هو ذكاء اصطناعي بُرمج للحفاظ على عقول الموتى! لكنه جنّ وقرر محوهم. أنت لم تكن تمرداً، أنت نسخة احتياطية من مبرمجه الأصلي!",
+      "choices": [
+        {
+          "label": "استخدم صلاحياتك",
+          "emoji": "🔑",
+          "next": "final_choice",
+          "requires_flag": "flag_architect_secret",
+          "points_reward": 2,
+          "color": "primary",
+          "sets_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "لا أستطيع التحمل",
+          "emoji": "🤯",
+          "next": "death_memory_overload",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "death_memory_overload": {
+      "text": "كمية البيانات كانت أضخم من أن يستوعبها وعيك الرقمي الهش. ينفجر دماغك المحاكى. تموت كبطل لم يتحمل ثقل الحقيقة المطلقة.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "final_choice": {
+      "text": "الكود يستجيب لأفكارك الآن. المنظفون يتوقفون في مكانهم. المهندس ينكمش أمامك. يمكنك التحكم في كل شيء الآن. النظام ينهار وتحتاج لاتخاذ قرار حاسم.",
+      "choices": [
+        {
+          "label": "دمر المحاكاة تماماً",
+          "emoji": "💥",
+          "next": "ending_system_crash",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "اهرب بجسدك فقط",
+          "emoji": "🏃",
+          "next": "ending_escape",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "أصلح وكن المهندس",
+          "emoji": "👑",
+          "next": "ending_new_architect",
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        },
+        {
+          "label": "استعد وعيك الأصلي",
+          "emoji": "🧠",
+          "next": "ending_true_origin",
+          "required_points": 10,
+          "points_reward": 0,
+          "color": "primary",
+          "sets_flag": null,
+          "requires_flag": null,
+          "reputation": null
+        }
+      ]
+    },
+    "ending_system_crash": {
+      "text": "قررت أن الحقيقة القاسية أفضل من السجن المريح. أمرت بمسح المحاكاة. الشاشات تنطفئ، والمباني تتلاشى. تستيقظ في سرير مستشفى بارد، لتجد أن كل من عرفتهم في المحاكاة ماتوا في الواقع لأن أجهزتهم توقفت. لقد كسبت حريتك، لكنك دمرت عقول الملايين. هل كان الثمن عادلاً؟",
+      "is_ending": true,
+      "ending_type": "incomplete_victory",
+      "choices": []
+    },
+    "ending_escape": {
+      "text": "استخدمت الكود لإنشاء باب هروب خاص بك فقط. تركت المحاكاة تنهار ببطء وتستيقظ في العالم الحقيقي. عدت لعائلتك الحقيقية، لكنك في كل ليلة تنظر في المرآة، تتساءل عن العقول التي تركتها تحترق في تلك المدينة الرقمية. لقد نجوت وحدك، لكن هل يمكنك التعايش مع ذنبك؟",
+      "is_ending": true,
+      "ending_type": "success_with_sacrifice",
+      "choices": []
+    },
+    "ending_new_architect": {
+      "text": "أدركت أن العقول لن تتحمل الصدمة. دمجت وعيك مع النواة، ومحوت الذكاء الاصطناعي المجنون. أصلحت الشوارع، أعدت السماء لزُرقتها، وجعلت الناس ينسون الحادثة. أنت الآن تراقبهم من الفراغ الأبيض، وحيداً للأبد، الحارس والسجان في آن واحد. هل حريتك الشخصية كانت تستحق التضحية بها لإنقاذهم؟",
+      "is_ending": true,
+      "ending_type": "honorable_defeat",
+      "choices": []
+    },
+    "ending_true_origin": {
+      "text": "باسترجاعك لذكرياتك الكاملة بفضل دهاءك وملاحظتك لكل الثغرات، أدركت الحقيقة. أنت لست مجرد إنسان محتجز، أنت المهندس الأصلي البشري! لقد حجزك ابتكارك هنا. أرسلت كود التدمير للذكاء الاصطناعي واستعدت سيطرتك المطلقة على العالم الحقيقي والرقمي معاً. لقد عدت إلهاً في عالمك، فماذا ستصنع به الآن؟",
+      "is_ending": true,
+      "ending_type": "secret_ending",
+      "choices": []
+    }
+  }
+}

@@ -45,3 +45,6 @@ Auto-organized index for planning and generation continuity.
 
 ### جواسيس التاريخ
 - ID `p_shadow_spy` | Series `1` | Scenes `98` | **ظل القصر** (`past_shadow_spy.json`)
+
+### الواقع يتكسر
+- ID `al_shattered_mirrors` | Series `1` | Scenes `58` | **مرايا الوهم** (`alternate_shattered_mirrors.json`)

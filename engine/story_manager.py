@@ -42,7 +42,9 @@ class StoryManager:
                         self._parse_and_add_story(s_data, theme=cat_name, world_type=world_type)
             # Check if it's the new nested solo format
             elif "id" in data and "nodes" in data and ("perspectives" in data or "perspective" in data):
-                 self._parse_and_add_story(data, theme="قصص-فردية", world_type="solo")
+                 story_theme = data.get("theme", "قصص-فردية")
+                 story_world = data.get("world_type", "solo")
+                 self._parse_and_add_story(data, theme=story_theme, world_type=story_world)
             # Old format fallback
             else:
                  self._parse_and_add_old_story(data)

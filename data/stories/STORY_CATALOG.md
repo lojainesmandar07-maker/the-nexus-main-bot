@@ -37,6 +37,7 @@ Auto-organized index for planning and generation continuity.
 - ID `201` | Series `1` | Scenes `36` | **ليلة بلا قمر: مصحة الأرواح المنسية** (`mp_survival_1.json`)
 
 ### الفانتازيا المظلمة (World Stories - Batch 1)
+- ID `fb3_executioner` | Series `1` | Scenes `97` | **سيف العدالة الأعمى** (`fantasy_executioner.json`)
 - ID `fb1_mailman` | Series `1` | Scenes `23` | **ساعي البريد** (`fantasy_mailman.json`)
 - ID `fb1_usurper` | Series `1` | Scenes `15` | **سارق التاج** (`fantasy_usurper.json`)
 - ID `fb1_blade` | Series `1` | Scenes `15` | **النصل الملعون** (`fantasy_blade.json`)
@@ -45,3 +46,12 @@ Auto-organized index for planning and generation continuity.
 
 ### الحاكم والشعب
 - ID `p_poisoner` | Series `1` | Scenes `88` | **ساقي الموت الصامت** (`past_poisoner.json`)
+- ID `fb3_sentient_sword` | Series `1` | Scenes `80` | **لعنة النصل النائم** (`fantasy_sentient_sword.json`)
+
+## Alt Reality (alternate)
+### الواقع يتكسر
+- ID `al_broken_mirrors` | Series `1` | Scenes `88` | **صدى المرايا المكسورة** (`al_broken_mirrors.json`)
+
+### جواسيس التاريخ
+- ID `p_shadow_spy` | Series `1` | Scenes `98` | **ظل القصر** (`past_shadow_spy.json`)
+- ID `fb3_sentient_sword` | Series `1` | Scenes `80` | **لعنة النصل النائم** (`fantasy_sentient_sword.json`)

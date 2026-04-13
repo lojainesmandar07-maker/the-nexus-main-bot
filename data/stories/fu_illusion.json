@@ -229,7 +229,7 @@
                     "color": "primary",
                     "required_points": null,
                     "sets_flag": null,
-                    "requires_flag": null,
+                    "requires_flag": "has_fragment",
                     "reputation": null
                 },
                 {
@@ -665,6 +665,17 @@
                     "sets_flag": null,
                     "requires_flag": null,
                     "reputation": null
+                },
+                {
+                    "label": "اتجه للتهوية",
+                    "emoji": "🕳️",
+                    "next": "vent_escape",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
                 }
             ]
         },
@@ -919,6 +930,28 @@
                     "required_points": null,
                     "sets_flag": null,
                     "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "استغل ثغرة الأمن",
+                    "emoji": "🔓",
+                    "next": "sneak_core",
+                    "points_reward": 2,
+                    "color": "success",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": "disabled_security",
+                    "reputation": "seeker"
+                },
+                {
+                    "label": "استخدم البطاقة الرئيسية",
+                    "emoji": "💳",
+                    "next": "search_power",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": "has_card",
                     "reputation": null
                 }
             ]

@@ -1,0 +1,1429 @@
+{
+  "id": "al_broken_reflections",
+  "title": "مهندس الانعكاسات",
+  "world": "alternate",
+  "category": "الواقع يتكسر",
+  "summary": "أنت مفتش في مكتب الإجماع، وظيفتك إصلاح شقوق الواقع. لكن عندما تجد شقاً يؤدي إلى حياة لم تعشها قط، تكتشف أن واقعك الحالي مبني على إبادة الأكوان الأخرى.",
+  "difficulty": "صعب جداً",
+  "estimated_length": "طويلة جداً",
+  "theme": "الواقع يتكسر",
+  "world_type": "alternate",
+  "game_mode": "single",
+  "perspective": {
+    "id": "architect_view",
+    "label": "منظور المهندس",
+    "emoji": "🔧",
+    "description": "مهندس واقع يواجه حقيقة أن ذكرياته أصبحت مجرد شقوق يجب إصلاحها.",
+    "start_node": "start"
+  },
+  "nodes": {
+    "start": {
+      "text": "أنت مفتش في 'مكتب الإجماع'. وظيفتك إصلاح شقوق الواقع—تلك اللحظات التي يشعر فيها الناس بالديجا فو أو يتذكرون أحداثاً لم تقع. اليوم، في مقهى قديم، تجد شقاً ينزف ضوءاً أزرق. داخل الشق، ترى صورة فوتوغرافية لك مع امرأة لا تعرفها، تبتسمان. جهاز الإجماع في معصمك يحذر من انهيار وشيك.",
+      "choices": [
+        {
+          "label": "أغلق الشق فوراً",
+          "emoji": "🔧",
+          "next": "seal_rift",
+          "color": "danger",
+          "points_reward": 1,
+          "reputation": "ruthless"
+        },
+        {
+          "label": "اسحب الصورة بسرعة",
+          "emoji": "📸",
+          "next": "take_photo",
+          "color": "primary",
+          "points_reward": 2,
+          "sets_flag": "has_photo",
+          "reputation": "seeker"
+        },
+        {
+          "label": "راقب الشق بهدوء",
+          "emoji": "👁️",
+          "next": "observe_rift",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "observe_rift": {
+      "text": "تتجاهل تحذيرات جهازك وتحدق في الضوء الأزرق. تشعر بدوار خفيف، وتبدأ ذكريات مشوشة بالتسرب إلى عقلك.",
+      "choices": [
+        {
+          "label": "استمر في المراقبة",
+          "emoji": "⏳",
+          "next": "delay_observe_1",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_observe_1": {
+      "text": "الضوء يزداد سطوعاً. رواد المقهى يتوقفون عن الحركة تماماً وكأن الزمن تجمد.",
+      "choices": [
+        {
+          "label": "حاول لمس الضوء",
+          "emoji": "✋",
+          "next": "delay_observe_2",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_observe_2": {
+      "text": "بمجرد أن تقترب يدك، تشعر ببرودة شديدة. جهاز الإجماع يطلق صفيراً عالياً.",
+      "choices": [
+        {
+          "label": "تجاهل الجهاز",
+          "emoji": "🔇",
+          "next": "delay_observe_3",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_observe_3": {
+      "text": "الصورة في الشق تبدو وكأنها تتحرك. المرأة تلتفت وتنظر إليك مباشرة.",
+      "choices": [
+        {
+          "label": "انظر في عينيها",
+          "emoji": "👁️",
+          "next": "delay_observe_4",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_observe_4": {
+      "text": "الشق يتسع ليبتلع الطاولة التي أمامك. حواف الواقع تبدأ بالتفتت كالزجاج.",
+      "choices": [
+        {
+          "label": "قف مكانك مذهولا",
+          "emoji": "🧍",
+          "next": "delay_observe_5",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_observe_5": {
+      "text": "الضوء الأزرق يغمرك بالكامل. تسمع صوتاً همسياً يقول: 'لقد تأخرت'.",
+      "choices": [
+        {
+          "label": "انتظر ما سيحدث",
+          "emoji": "⏳",
+          "next": "delay_observe_6",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_observe_6": {
+      "text": "أنت الآن داخل الشق تماماً. لا يوجد مقهى، ولا شارع، فقط فراغ أزرق لا نهائي.",
+      "choices": [
+        {
+          "label": "استسلم للضوء",
+          "emoji": "💀",
+          "next": "death_rift_consume",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_rift_consume": {
+      "text": "يبتلعك الشق بالكامل، ويتم محوك من سجلات الإجماع. لا أحد يتذكر أنك كنت موجوداً يوماً. التردد في التعامل مع التناقضات يؤدي دائماً إلى العدم.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "seal_rift": {
+      "text": "تضغط على زر المحو في جهازك. يتبخر الشق والصورة معه، ويعود المقهى لطبيعته. لكن في تلك اللحظة، تدخل 'المراقبة'، عميلة من المكتب الأعلى، تنظر إليك بشك.",
+      "choices": [
+        {
+          "label": "قدم تقريرا روتينيا",
+          "emoji": "📋",
+          "next": "report_routine",
+          "color": "primary",
+          "points_reward": 0
+        },
+        {
+          "label": "تجاهلها واغادر",
+          "emoji": "🚶",
+          "next": "ignore_censor",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "report_routine": {
+      "text": "تخبر المراقبة أن كل شيء تم إصلاحه بنجاح. تطلب فحص جهازك للتحقق من السجلات.",
+      "choices": [
+        {
+          "label": "سلمها الجهاز",
+          "emoji": "📱",
+          "next": "delay_report_1",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_report_1": {
+      "text": "تأخذ الجهاز وتفحصه ببرود. 'هناك تذبذب غريب في القراءة،' تقول وهي تقترب منك.",
+      "choices": [
+        {
+          "label": "برر ذلك بالعطل",
+          "emoji": "🗣️",
+          "next": "delay_report_2",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_report_2": {
+      "text": "عيناها تضيقان. 'نحن لا نخطئ يا مفتش. الأخطاء تنتمي للواقع الآخر.'",
+      "choices": [
+        {
+          "label": "التزم الصمت",
+          "emoji": "🤐",
+          "next": "delay_report_3",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_report_3": {
+      "text": "تستدعي اثنين من المحققين للقبض عليك للتحقيق في التذبذب.",
+      "choices": [
+        {
+          "label": "لا تقاوم",
+          "emoji": "👐",
+          "next": "delay_report_4",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_report_4": {
+      "text": "يتم اقتيادك إلى غرف الاستجواب البيضاء الساطعة في المكتب.",
+      "choices": [
+        {
+          "label": "انتظر المحقق",
+          "emoji": "⏳",
+          "next": "delay_report_5",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_report_5": {
+      "text": "يدخل محقق بلا ملامح تقريباً، يحمل إبرة فضية طويلة.",
+      "choices": [
+        {
+          "label": "حاول التحدث",
+          "emoji": "🗣️",
+          "next": "delay_report_6",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_report_6": {
+      "text": "لا يستمع إليك. يقترب ببطء ليقوم بعملية 'تنظيف الذكريات'.",
+      "choices": [
+        {
+          "label": "تقبل العملية",
+          "emoji": "💀",
+          "next": "death_mind_wiped",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_mind_wiped": {
+      "text": "يتم محو عقلك بالكامل وإعادة برمجتك. تصبح عميلاً بلا روح، تنفذ أوامر الإجماع دون سؤال حتى نهاية حياتك البائسة. الطاعة العمياء هي انتحار بطيء.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "ignore_censor": {
+      "text": "تستدير وتغادر المقهى. تشعر بخطواتها تتبعك في الشارع المزدحم. يجب أن تختفي.",
+      "choices": [
+        {
+          "label": "اهرب للأنفاق",
+          "emoji": "🚇",
+          "next": "run_subway",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اختبئ في زقاق",
+          "emoji": "🏙️",
+          "next": "hide_alley",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "hide_alley": {
+      "text": "تدخل زقاقاً مظلماً وتختبئ خلف حاوية قمامة.",
+      "choices": [
+        {
+          "label": "انتظر مرورها",
+          "emoji": "⏳",
+          "next": "delay_alley_1",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_alley_1": {
+      "text": "تسمع صوت كعب حذائها يتردد في الزقاق، يقترب ببطء شديد.",
+      "choices": [
+        {
+          "label": "احبس أنفاسك",
+          "emoji": "🤐",
+          "next": "delay_alley_2",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_alley_2": {
+      "text": "تتوقف خطواتها تماماً. الصمت يصبح خانقاً.",
+      "choices": [
+        {
+          "label": "اختلس النظر",
+          "emoji": "👁️",
+          "next": "delay_alley_3",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_alley_3": {
+      "text": "تطل برأسك فلا تجد أحداً. الزقاق فارغ تماماً.",
+      "choices": [
+        {
+          "label": "اخرج من المخبأ",
+          "emoji": "🚶",
+          "next": "delay_alley_4",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_alley_4": {
+      "text": "بمجرد خروجك، تشعر بظل ضخم يغطي السماء فوقك.",
+      "choices": [
+        {
+          "label": "انظر للأعلى",
+          "emoji": "⬆️",
+          "next": "delay_alley_5",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_alley_5": {
+      "text": "ترى صدعاً هائلاً في السماء ينزل منه كيان زجاجي.",
+      "choices": [
+        {
+          "label": "حاول الهرب",
+          "emoji": "🏃",
+          "next": "delay_alley_6",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_alley_6": {
+      "text": "الكيان الزجاجي يحيط بك من كل جانب كالمرايا المكسورة.",
+      "choices": [
+        {
+          "label": "اغمض عينيك",
+          "emoji": "💀",
+          "next": "death_glass_entity",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_glass_entity": {
+      "text": "المرايا الزجاجية تغوص في لحمك وتعكس نسخاً مشوهة منك حتى يتفتت وعيك إلى ألف قطعة. الهروب من المراقبة يتطلب حركة مستمرة، لا اختباء.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "take_photo": {
+      "text": "تسحب الصورة بسرعة من الضوء وتخبئها في معطفك، ثم تغلق الشق. المقهى يعود لطبيعته. تدخل المراقبة وتنظر إليك بشك.",
+      "choices": [
+        {
+          "label": "قدم تقريرا روتينيا",
+          "emoji": "📋",
+          "next": "report_routine",
+          "color": "primary",
+          "points_reward": 0
+        },
+        {
+          "label": "اهرب للأنفاق",
+          "emoji": "🚇",
+          "next": "run_subway",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "run_subway": {
+      "text": "تركض نحو محطة قطار الأنفاق. الزحام شديد. تتلفت خلفك فلا ترى المراقبة، لكنك تلاحظ أن وجوه بعض الناس تتغير وتتكرر، كأن المصفوفة تفتقر للبيانات.",
+      "choices": [
+        {
+          "label": "اركب القطار القادم",
+          "emoji": "🚆",
+          "next": "board_train",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "افحص الصورة سرا",
+          "emoji": "📸",
+          "next": "check_photo",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "check_photo": {
+      "text": "تنزوي في زاوية وتخرج الصورة. الصورة تنبض بضوء خافت. تلاحظ وجود عنوان مكتوب بخط اليد على ظهرها: 'المبنى 7، الشقة المنسية'.",
+      "choices": [
+        {
+          "label": "اذهب للعنوان فوراً",
+          "emoji": "🏢",
+          "next": "open_gateway",
+          "color": "primary",
+          "points_reward": 2,
+          "sets_flag": "knows_address"
+        },
+        {
+          "label": "اركب القطار",
+          "emoji": "🚆",
+          "next": "board_train",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "board_train": {
+      "text": "تصعد إلى القطار. الأضواء تومض بشكل متقطع. تلاحظ أن الركاب جميعهم يقرأون نفس الصحيفة، بنفس العنوان، بنفس التاريخ... من عام مضى.",
+      "choices": [
+        {
+          "label": "استجوب أحد الركاب",
+          "emoji": "🗣️",
+          "next": "question_passenger",
+          "color": "danger",
+          "points_reward": 0
+        },
+        {
+          "label": "انتظر محطتك بصمت",
+          "emoji": "🚉",
+          "next": "wait_station",
+          "color": "primary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "question_passenger": {
+      "text": "تسأل رجلاً بجانبك عن التاريخ. يلتفت إليك وعيناه بيضاوان بالكامل. 'أنت خارج التزامن،' يهمس بصوت معدني.",
+      "choices": [
+        {
+          "label": "تراجع للخلف",
+          "emoji": "🔙",
+          "next": "delay_train_1",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_train_1": {
+      "text": "جميع الركاب يلتفتون إليك في نفس اللحظة بعيون بيضاء.",
+      "choices": [
+        {
+          "label": "حاول فتح الباب",
+          "emoji": "🚪",
+          "next": "delay_train_2",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_train_2": {
+      "text": "الأبواب موصدة. القطار يسرع بشكل جنوني في الظلام.",
+      "choices": [
+        {
+          "label": "استخدم جهازك لفتحها",
+          "emoji": "📱",
+          "next": "delay_train_3",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_train_3": {
+      "text": "جهاز الإجماع لا يعمل، يظهر رسالة: 'تم رفض الوصول'.",
+      "choices": [
+        {
+          "label": "حطم النافذة",
+          "emoji": "🪟",
+          "next": "delay_train_4",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_train_4": {
+      "text": "تضرب النافذة بقوة، لكنها لا تنكسر، بل تتموج كالماء.",
+      "choices": [
+        {
+          "label": "استسلم للركاب",
+          "emoji": "👐",
+          "next": "delay_train_5",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_train_5": {
+      "text": "الركاب يمسكون بك بأيدٍ باردة كالثلج.",
+      "choices": [
+        {
+          "label": "اصرخ طلبا للمساعدة",
+          "emoji": "🗣️",
+          "next": "delay_train_6",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_train_6": {
+      "text": "لا أحد يسمعك. الأيدي تسحبك نحو أرضية القطار التي بدأت تذوب.",
+      "choices": [
+        {
+          "label": "اغرق في الظلام",
+          "emoji": "💀",
+          "next": "death_train_assimilation",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_train_assimilation": {
+      "text": "يتم استيعابك في بروتوكول التصحيح التلقائي للقطار. تتحول إلى مجرد راكب آخر بعيون بيضاء يقرأ نفس الصحيفة للأبد. لفت الانتباه في مناطق غير مستقرة هو خطأ قاتل.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "wait_station": {
+      "text": "تتجاهل الغرابة وتنتظر حتى يفتح القطار أبوابه. تخرج بسرعة. تقرر التوجه إلى مقر المكتب للبحث في الأرشيف المركزي عن معنى الصورة والشق.",
+      "choices": [
+        {
+          "label": "اقتحم الأرشيف السري",
+          "emoji": "🏛️",
+          "next": "infiltrate_archive",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "ابحث في السجلات العامة",
+          "emoji": "🗂️",
+          "next": "public_records",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "public_records": {
+      "text": "تجلس أمام شاشات السجلات العامة. تبحث عن اسم المرأة في الصورة، لكن لا تجد شيئاً. النظام يبدأ بتتبع استعلامك.",
+      "choices": [
+        {
+          "label": "استمر في البحث",
+          "emoji": "🔍",
+          "next": "delay_public_1",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_public_1": {
+      "text": "تتجاهل التحذيرات الحمراء على الشاشة وتواصل البحث بعمق أكبر.",
+      "choices": [
+        {
+          "label": "ابحث عن العنوان",
+          "emoji": "🏢",
+          "next": "delay_public_2",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_public_2": {
+      "text": "شاشات الحواسيب المحيطة بك تنطفئ فجأة.",
+      "choices": [
+        {
+          "label": "حاول الخروج",
+          "emoji": "🚪",
+          "next": "delay_public_3",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_public_3": {
+      "text": "تجد باب غرفة السجلات مغلقاً من الخارج.",
+      "choices": [
+        {
+          "label": "استخدم بطاقتك",
+          "emoji": "💳",
+          "next": "delay_public_4",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_public_4": {
+      "text": "البطاقة غير مصرح بها. فتحة التكييف تبدأ بضخ غاز أبيض.",
+      "choices": [
+        {
+          "label": "غطِ فمك",
+          "emoji": "😷",
+          "next": "delay_public_5",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_public_5": {
+      "text": "الغاز يحرق عينيك ورئتيك. الرؤية تتلاشى بسرعة.",
+      "choices": [
+        {
+          "label": "اسقط على الأرض",
+          "emoji": "⬇️",
+          "next": "delay_public_6",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_public_6": {
+      "text": "تسمع صوت فتح الباب ودخول أفراد أمن ببدلات واقية.",
+      "choices": [
+        {
+          "label": "استسلم للظلام",
+          "emoji": "💀",
+          "next": "death_public_records",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_public_records": {
+      "text": "يتم القبض عليك بسبب استعلامات غير مصرح بها عن واقع محذوف. الإعدام كان سريعاً وصامتاً. النظام لا يتسامح مع من يسأل الأسئلة الخاطئة في العلن.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "infiltrate_archive": {
+      "text": "تستخدم تصريحك المتقدم لدخول الأرشيف السري في الطابق السالب 4. الغرفة مليئة بخوادم ضخمة تبرد بماء متجمد. تجد محطة طرفية قديمة.",
+      "choices": [
+        {
+          "label": "ابحث عن 'المبنى 7'",
+          "emoji": "🏢",
+          "next": "search_building_7",
+          "color": "primary",
+          "points_reward": 2,
+          "requires_flag": "knows_address"
+        },
+        {
+          "label": "ابحث عن مشروع 'المرآة'",
+          "emoji": "🪞",
+          "next": "search_mirror_project",
+          "color": "secondary",
+          "points_reward": 1
+        },
+        {
+          "label": "ابحث عن ملفك الشخصي",
+          "emoji": "👤",
+          "next": "search_own_file",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "search_own_file": {
+      "text": "تفتح ملفك وتجد تناقضات مرعبة. تواريخ توظيفك تتغير أمام عينيك. هناك إشارة إلى أنك خضعت لعملية 'إعادة ضبط' 14 مرة.",
+      "choices": [
+        {
+          "label": "ابحث عن مشروع المرآة",
+          "emoji": "🪞",
+          "next": "search_mirror_project",
+          "color": "primary",
+          "points_reward": 0
+        },
+        {
+          "label": "استخرج بياناتك واهرب",
+          "emoji": "💾",
+          "next": "escape_with_data",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "escape_with_data": {
+      "text": "تنسخ البيانات وتهرب من المكتب متجهاً إلى الشارع.",
+      "choices": [
+        {
+          "label": "اذهب لمخبأك السري",
+          "emoji": "🏠",
+          "next": "go_safehouse",
+          "color": "primary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "search_building_7": {
+      "text": "تكتشف أن 'المبنى 7' ليس مكاناً في مدينتك، بل هو إحداثية لواقع بديل تم عزله من قبل المكتب. هناك تعليمات لفتح معبر إليه عبر استخدام جهازك.",
+      "choices": [
+        {
+          "label": "افتح المعبر فورا",
+          "emoji": "🌀",
+          "next": "open_gateway",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اجمع المزيد من المعلومات",
+          "emoji": "🪞",
+          "next": "search_mirror_project",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "search_mirror_project": {
+      "text": "تقرأ أن 'محرك المرآة' هو قلب المكتب. إنه جهاز يستهلك العوالم البديلة لتثبيت 'الإجماع'. واقعك الحالي مبني على أنقاض مليارات العوالم المحذوفة.",
+      "choices": [
+        {
+          "label": "تسلل لمحرك المرآة",
+          "emoji": "⚙️",
+          "next": "go_mirror_engine",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اهرب من المكتب",
+          "emoji": "🏃",
+          "next": "escape_with_data",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "go_safehouse": {
+      "text": "تصل إلى مخبأك السري. تجلس في الظلام وتفكر. هل يجب أن تعود وتدمر النظام، أم تبحث عن العالم الذي تنتمي إليه الصورة؟",
+      "choices": [
+        {
+          "label": "اذهب لتدمير المحرك",
+          "emoji": "⚙️",
+          "next": "go_mirror_engine",
+          "color": "primary",
+          "points_reward": 0
+        },
+        {
+          "label": "ابحث عن المبنى 7",
+          "emoji": "🏢",
+          "next": "find_building_7",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "find_building_7": {
+      "text": "تستخدم مهاراتك لفتح معبر غير مستقر بناءً على الحدس والبيانات المسروقة.",
+      "choices": [
+        {
+          "label": "تتبع الإحداثيات",
+          "emoji": "🗺️",
+          "next": "extra_corridor_1",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "go_mirror_engine": {
+      "text": "تتجه إلى أعمق نقطة في المكتب. غرفة محرك المرآة تحرسها آلات ميكانيكية ضخمة تسمى 'المنظفين'. قلب المحرك ينبض بضوء أزرق مرعب.",
+      "choices": [
+        {
+          "label": "ازرع عبوة ناسفة",
+          "emoji": "💣",
+          "next": "plant_bomb",
+          "color": "danger",
+          "points_reward": 0
+        },
+        {
+          "label": "تلاعب برموز التشغيل",
+          "emoji": "💻",
+          "next": "hack_engine",
+          "color": "primary",
+          "points_reward": 3
+        },
+        {
+          "label": "ابدأ الاختراق المعقد",
+          "emoji": "🔒",
+          "next": "extra_hack_11",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "plant_bomb": {
+      "text": "تضع عبوة ناسفة ارتجالية محاولاً تدمير المحرك.",
+      "choices": [
+        {
+          "label": "قم بتفعيل المؤقت",
+          "emoji": "⏱️",
+          "next": "delay_bomb_1",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_bomb_1": {
+      "text": "المؤقت يبدأ بالعد التنازلي. لكن المحرك يبدأ في امتصاص طاقة العبوة.",
+      "choices": [
+        {
+          "label": "تراجع بسرعة",
+          "emoji": "🔙",
+          "next": "delay_bomb_2",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_bomb_2": {
+      "text": "تكتشف أن العبوة لم تنفجر، بل اندمجت مع المحرك، مما زاد من عدم استقراره محليا.",
+      "choices": [
+        {
+          "label": "حاول إصلاح الأمر",
+          "emoji": "🔧",
+          "next": "delay_bomb_3",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_bomb_3": {
+      "text": "تقترب من العبوة المندمجة. المحرك يرسل نبضة طاقة تجميدك في مكانك.",
+      "choices": [
+        {
+          "label": "اطلب المساعدة",
+          "emoji": "🗣️",
+          "next": "delay_bomb_4",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_bomb_4": {
+      "text": "أجهزة الإنذار تبدأ في الصراخ. 'المنظفون' يلتفتون نحوك.",
+      "choices": [
+        {
+          "label": "حاول تحريك يدك",
+          "emoji": "✋",
+          "next": "delay_bomb_5",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_bomb_5": {
+      "text": "أنت مشلول تماماً. المنظفون يقتربون ببطء، أذرعهم الميكانيكية مجهزة بشفرات ليزرية.",
+      "choices": [
+        {
+          "label": "اغمض عينيك",
+          "emoji": "👁️",
+          "next": "delay_bomb_6",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_bomb_6": {
+      "text": "الشفرات تخترق جسدك ببطء شديد، تفصل وعيك عن جسدك.",
+      "choices": [
+        {
+          "label": "استسلم للألم",
+          "emoji": "💀",
+          "next": "death_engine_burn",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_engine_burn": {
+      "text": "يتم تقطيعك وتذويب بقاياك داخل المحرك لتصبح وقوداً للحفاظ على واقع لا تؤمن به. القوة الغاشمة لا تفلح مع أجهزة تتغذى على الفوضى.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "hack_engine": {
+      "text": "تستخدم جهاز الإجماع لاختراق المحرك. تتدفق ملايين الرؤى إلى عقلك. ترى العوالم التي تم محوها. النظام يطلب منك إدخال أمر الإدارة الأخير.",
+      "choices": [
+        {
+          "label": "اغلق المحرك تماما",
+          "emoji": "🛑",
+          "next": "shutdown_engine",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اكسر حواجز العوالم",
+          "emoji": "💥",
+          "next": "break_barriers",
+          "color": "secondary",
+          "points_reward": 2
+        },
+        {
+          "label": "سلم نفسك للقيادة",
+          "emoji": "🏳️",
+          "next": "surrender_bureau",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "shutdown_engine": {
+      "text": "تقوم بإيقاف تشغيل المحرك. تنطلق صفارات الإنذار. ينهار الإجماع ويبدأ الواقع من حولك بالتشقق، مئات العوالم تتدفق إلى بعضها البعض.",
+      "choices": [
+        {
+          "label": "اقفز في الفراغ",
+          "emoji": "🕳️",
+          "next": "jump_void_ending",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "jump_void_ending": {
+      "text": "تقفز في الفراغ بين العوالم لتنجو من الانفجار. لقد دمرت المكتب وأعطيت تريليونات الأرواح في العوالم البديلة حق الوجود المتزامن. أنت الآن محتجز في الفضاء بين الأبعاد، تراقب الأكوان تتمدد بلا نهاية. هل الحرية الحقيقية تستحق التواجد في الفراغ الأبدي؟",
+      "is_ending": true,
+      "ending_type": "ending_a",
+      "choices": []
+    },
+    "break_barriers": {
+      "text": "تفتح جميع بوابات العوالم في وقت واحد. المكتب ينهار فوقك، وتتدفق طاقة لا نهائية في جسدك. لقد أصبحت أنت المحرك.",
+      "choices": [
+        {
+          "label": "سيطر على الطاقتين",
+          "emoji": "🌌",
+          "next": "absorb_all",
+          "color": "primary",
+          "points_reward": 0,
+          "required_points": 10
+        }
+      ]
+    },
+    "absorb_all": {
+      "text": "بفضل المعرفة العميقة التي جمعتها (10 نقاط)، تنجح في دمج واقع الإجماع الميت مع العوالم الفوضوية الحية. تخلق كوناً جديداً يجمع بين النظام الجميل والفوضى الخلاقة. أنت المهندس الأعظم الآن، تراقب هذا المزيج المعقد. هل يمكنك حقاً التحكم في التناقضات دون أن تتمزق؟",
+      "is_ending": true,
+      "ending_type": "ending_d",
+      "choices": []
+    },
+    "surrender_bureau": {
+      "text": "تشعر بثقل المسؤولية وتقرر التراجع. تخبر القيادة عن الثغرة. يتم ترقيتك وتنسى تماماً كل ما رأيته من عوالم بديلة. تعود لعملك كآلة باردة. هل النظام الميت أفضل من الفوضى الحية؟",
+      "is_ending": true,
+      "ending_type": "ending_c",
+      "choices": []
+    },
+    "open_gateway": {
+      "text": "تقوم بضبط ترددات جهازك لتطابق الشقة المنسية. يظهر باب من الضوء الأزرق الساطع أمامك. تعبر الباب، وتجد نفسك في شقة دافئة. المرأة التي في الصورة تنظر إليك وتبكي: 'لقد عدت أخيراً'.",
+      "choices": [
+        {
+          "label": "عانقها وابقى",
+          "emoji": "🫂",
+          "next": "stay_family",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اخبرها بالحقيقة",
+          "emoji": "🗣️",
+          "next": "tell_truth",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "tell_truth": {
+      "text": "تخبرها أنك لا تتذكرها، وأن العالم الذي هم فيه على وشك أن يمحى بواسطة المكتب.",
+      "choices": [
+        {
+          "label": "حاول إنقاذهم ونقلهم",
+          "emoji": "🛡️",
+          "next": "save_family",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "عد لإيقاف المكتب",
+          "emoji": "⚙️",
+          "next": "go_mirror_engine",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "save_family": {
+      "text": "تحاول استخدام جهازك لفتح بوابة تنقلهم إلى ملاذ آمن، لكن المراقبة تظهر فجأة من صدع في الحائط، ومعها فرقة الإعدام.",
+      "choices": [
+        {
+          "label": "قاتلهم لحماية العائلة",
+          "emoji": "⚔️",
+          "next": "fight_censors",
+          "color": "danger",
+          "points_reward": 0
+        },
+        {
+          "label": "استسلم لحماية العائلة",
+          "emoji": "🏳️",
+          "next": "surrender_censors",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "surrender_censors": {
+      "text": "تلقي سلاحك وتتوسل إليهم لترك العائلة. المراقبة تبتسم ببرود، وتطلق النار على المرأة أمام عينيك.",
+      "choices": [
+        {
+          "label": "اصرخ في رعب",
+          "emoji": "😱",
+          "next": "delay_surrender_1",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_surrender_1": {
+      "text": "تسقط المرأة على الأرض. الأطفال يصرخون. المراقبة توجه مسدسها نحوهم.",
+      "choices": [
+        {
+          "label": "اندفع نحوها",
+          "emoji": "🏃",
+          "next": "delay_surrender_2",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_surrender_2": {
+      "text": "يضربك أحد أفراد فرقة الإعدام بعقب بندقيته على رأسك. تسقط على ركبتيك.",
+      "choices": [
+        {
+          "label": "حاول النهوض",
+          "emoji": "⬆️",
+          "next": "delay_surrender_3",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_surrender_3": {
+      "text": "الدماء تسيل من رأسك. المراقبة تطلق النار مرتين أخريين. الصمت يعم الغرفة.",
+      "choices": [
+        {
+          "label": "انظر إلى الجثث",
+          "emoji": "👁️",
+          "next": "delay_surrender_4",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_surrender_4": {
+      "text": "كل ما حاولت إنقاذه ضاع. المراقبة تقترب منك وتضع فوهة المسدس على جبهتك.",
+      "choices": [
+        {
+          "label": "اغمض عينيك",
+          "emoji": "😔",
+          "next": "delay_surrender_5",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_surrender_5": {
+      "text": "تسمع صوت طقطقة الزناد. 'واقع آخر تم تنظيفه،' تقول المراقبة.",
+      "choices": [
+        {
+          "label": "تلقى الرصاصة",
+          "emoji": "💀",
+          "next": "death_family_killed",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_family_killed": {
+      "text": "رصاصة المراقبة تنهي حياتك. الثقة في رحمة الأنظمة القمعية هي سذاجة تؤدي إلى هلاك كل ما تحب. كان يجب أن تقاتل.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "fight_censors": {
+      "text": "تستل سلاحك الميداني وتتبادل إطلاق النار معهم. تقتل اثنين، لكن شعاع طاقة يصيبك في صدرك.",
+      "choices": [
+        {
+          "label": "استمر في القتال",
+          "emoji": "⚔️",
+          "next": "delay_fight_1",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_fight_1": {
+      "text": "الألم يمزق صدرك، لكنك تواصل إطلاق النار بشراسة.",
+      "choices": [
+        {
+          "label": "اسحب المرأة للغطاء",
+          "emoji": "🛡️",
+          "next": "delay_fight_2",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_fight_2": {
+      "text": "تحاول سحب المرأة خلف أريكة، لكن شعاعاً آخر يصيب ساقك. تسقطان معاً.",
+      "choices": [
+        {
+          "label": "حاول حمايتها بجسدك",
+          "emoji": "🫂",
+          "next": "delay_fight_3",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_fight_3": {
+      "text": "فرقة الإعدام تحيط بكم من كل جانب. أسلحتهم موجهة لأسفل.",
+      "choices": [
+        {
+          "label": "انظر للمراقبة متحديا",
+          "emoji": "😠",
+          "next": "delay_fight_4",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_fight_4": {
+      "text": "المراقبة تعطي الإشارة الكاسحة. الأسلحة تبدأ في الشحن.",
+      "choices": [
+        {
+          "label": "قل وداعا",
+          "emoji": "👋",
+          "next": "delay_fight_5",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "delay_fight_5": {
+      "text": "المرأة تمسك بيدك بقوة للمرة الأخيرة. شعاع متوهج يغمر الغرفة.",
+      "choices": [
+        {
+          "label": "استقبل الموت",
+          "emoji": "💀",
+          "next": "death_overwhelmed",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_overwhelmed": {
+      "text": "تم تدمير الغرفة ومن فيها بالكامل. شجاعتك كانت بلا فائدة ضد قوة الإجماع الساحقة. محاربة النظام مباشرة وجهاً لوجه هي محاولة يائسة.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "stay_family": {
+      "text": "تعانق المرأة وتجلس مع الأطفال. تقرر أن هذا الواقع، حتى لو كان وهماً سينهار قريباً، هو أجمل ما عشته. تجلسون معاً بينما السماء خارج النافذة تبدأ في التشقق والانهيار كقطع زجاجية تسقط في العدم. أنت تبتسم فقط وتنتظر. هل الوهم السعيد أفضل من الحقيقة المؤلمة؟",
+      "is_ending": true,
+      "ending_type": "ending_b",
+      "choices": []
+    },
+    "extra_corridor_1": {
+      "text": "تستمر في الجري في الممرات المتشعبة والمظلمة لواقع يتهاوى. الجاذبية تنحرف، والألوان تبهت. (الممر 1)",
+      "choices": [
+        {
+          "label": "استمر في الركض",
+          "emoji": "🏃",
+          "next": "extra_corridor_2",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_corridor_2": {
+      "text": "تستمر في الجري في الممرات المتشعبة والمظلمة لواقع يتهاوى. الجاذبية تنحرف، والألوان تبهت. (الممر 2)",
+      "choices": [
+        {
+          "label": "استمر في الركض",
+          "emoji": "🏃",
+          "next": "extra_corridor_3",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_corridor_3": {
+      "text": "تستمر في الجري في الممرات المتشعبة والمظلمة لواقع يتهاوى. الجاذبية تنحرف، والألوان تبهت. (الممر 3)",
+      "choices": [
+        {
+          "label": "استمر في الركض",
+          "emoji": "🏃",
+          "next": "extra_corridor_4",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_corridor_4": {
+      "text": "تستمر في الجري في الممرات المتشعبة والمظلمة لواقع يتهاوى. الجاذبية تنحرف، والألوان تبهت. (الممر 4)",
+      "choices": [
+        {
+          "label": "استمر في الركض",
+          "emoji": "🏃",
+          "next": "extra_corridor_5",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_corridor_5": {
+      "text": "تستمر في الجري في الممرات المتشعبة والمظلمة لواقع يتهاوى. الجاذبية تنحرف، والألوان تبهت. (الممر 5)",
+      "choices": [
+        {
+          "label": "استمر في الركض",
+          "emoji": "🏃",
+          "next": "extra_corridor_6",
+          "color": "primary",
+          "points_reward": 0
+        },
+        {
+          "label": "افتح الباب الجانبي",
+          "emoji": "🚪",
+          "next": "death_void_door",
+          "color": "danger"
+        }
+      ]
+    },
+    "extra_corridor_6": {
+      "text": "تستمر في الجري في الممرات المتشعبة والمظلمة لواقع يتهاوى. الجاذبية تنحرف، والألوان تبهت. (الممر 6)",
+      "choices": [
+        {
+          "label": "استمر في الركض",
+          "emoji": "🏃",
+          "next": "extra_corridor_7",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_corridor_7": {
+      "text": "تستمر في الجري في الممرات المتشعبة والمظلمة لواقع يتهاوى. الجاذبية تنحرف، والألوان تبهت. (الممر 7)",
+      "choices": [
+        {
+          "label": "استمر في الركض",
+          "emoji": "🏃",
+          "next": "extra_corridor_8",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_corridor_8": {
+      "text": "تستمر في الجري في الممرات المتشعبة والمظلمة لواقع يتهاوى. الجاذبية تنحرف، والألوان تبهت. (الممر 8)",
+      "choices": [
+        {
+          "label": "استمر في الركض",
+          "emoji": "🏃",
+          "next": "extra_corridor_9",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_corridor_9": {
+      "text": "تستمر في الجري في الممرات المتشعبة والمظلمة لواقع يتهاوى. الجاذبية تنحرف، والألوان تبهت. (الممر 9)",
+      "choices": [
+        {
+          "label": "استمر في الركض",
+          "emoji": "🏃",
+          "next": "extra_corridor_10",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_corridor_10": {
+      "text": "تستمر في الجري في الممرات المتشعبة والمظلمة لواقع يتهاوى. الجاذبية تنحرف، والألوان تبهت. (الممر 10)",
+      "choices": [
+        {
+          "label": "استمر في الركض",
+          "emoji": "🏃",
+          "next": "open_gateway",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_hack_11": {
+      "text": "تقوم بفك تشفير طبقات الحماية المتعددة لمحرك المرآة. الرموز تتطاير في الهواء المحيط بك، كل رمز يحمل ذكرى منسية. (الطبقة 11)",
+      "choices": [
+        {
+          "label": "اختراق أعمق",
+          "emoji": "💻",
+          "next": "extra_hack_12",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_hack_12": {
+      "text": "تقوم بفك تشفير طبقات الحماية المتعددة لمحرك المرآة. الرموز تتطاير في الهواء المحيط بك، كل رمز يحمل ذكرى منسية. (الطبقة 12)",
+      "choices": [
+        {
+          "label": "اختراق أعمق",
+          "emoji": "💻",
+          "next": "extra_hack_13",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_hack_13": {
+      "text": "تقوم بفك تشفير طبقات الحماية المتعددة لمحرك المرآة. الرموز تتطاير في الهواء المحيط بك، كل رمز يحمل ذكرى منسية. (الطبقة 13)",
+      "choices": [
+        {
+          "label": "اختراق أعمق",
+          "emoji": "💻",
+          "next": "extra_hack_14",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_hack_14": {
+      "text": "تقوم بفك تشفير طبقات الحماية المتعددة لمحرك المرآة. الرموز تتطاير في الهواء المحيط بك، كل رمز يحمل ذكرى منسية. (الطبقة 14)",
+      "choices": [
+        {
+          "label": "اختراق أعمق",
+          "emoji": "💻",
+          "next": "extra_hack_15",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_hack_15": {
+      "text": "تقوم بفك تشفير طبقات الحماية المتعددة لمحرك المرآة. الرموز تتطاير في الهواء المحيط بك، كل رمز يحمل ذكرى منسية. (الطبقة 15)",
+      "choices": [
+        {
+          "label": "اختراق أعمق",
+          "emoji": "💻",
+          "next": "extra_hack_16",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_hack_16": {
+      "text": "تقوم بفك تشفير طبقات الحماية المتعددة لمحرك المرآة. الرموز تتطاير في الهواء المحيط بك، كل رمز يحمل ذكرى منسية. (الطبقة 16)",
+      "choices": [
+        {
+          "label": "اختراق أعمق",
+          "emoji": "💻",
+          "next": "extra_hack_17",
+          "color": "primary",
+          "points_reward": 0
+        },
+        {
+          "label": "حاول تخطي الجدار",
+          "emoji": "🛑",
+          "next": "death_firewall_burn",
+          "color": "danger"
+        }
+      ]
+    },
+    "extra_hack_17": {
+      "text": "تقوم بفك تشفير طبقات الحماية المتعددة لمحرك المرآة. الرموز تتطاير في الهواء المحيط بك، كل رمز يحمل ذكرى منسية. (الطبقة 17)",
+      "choices": [
+        {
+          "label": "اختراق أعمق",
+          "emoji": "💻",
+          "next": "extra_hack_18",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_hack_18": {
+      "text": "تقوم بفك تشفير طبقات الحماية المتعددة لمحرك المرآة. الرموز تتطاير في الهواء المحيط بك، كل رمز يحمل ذكرى منسية. (الطبقة 18)",
+      "choices": [
+        {
+          "label": "اختراق أعمق",
+          "emoji": "💻",
+          "next": "extra_hack_19",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_hack_19": {
+      "text": "تقوم بفك تشفير طبقات الحماية المتعددة لمحرك المرآة. الرموز تتطاير في الهواء المحيط بك، كل رمز يحمل ذكرى منسية. (الطبقة 19)",
+      "choices": [
+        {
+          "label": "اختراق أعمق",
+          "emoji": "💻",
+          "next": "extra_hack_20",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "extra_hack_20": {
+      "text": "تقوم بفك تشفير طبقات الحماية المتعددة لمحرك المرآة. الرموز تتطاير في الهواء المحيط بك، كل رمز يحمل ذكرى منسية. (الطبقة 20)",
+      "choices": [
+        {
+          "label": "اختراق أعمق",
+          "emoji": "💻",
+          "next": "hack_engine",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "death_firewall_burn": {
+      "text": "تحاول تجاوز الجدار الناري لمحرك المرآة بالقوة. ترتد الطاقة السيبرانية عبر جهازك وتصعق جهازك العصبي بالكامل. يموت جسدك بينما يبقى وعيك محاصراً كفيروس صغير في النظام للأبد.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "death_void_door": {
+      "text": "تفتح الباب الجانبي هرباً من الانهيار، لكن لا يوجد شيء خلفه سوى الفراغ المطلق. تفقد توازنك وتسقط في اللاشيء، جسدك يتحلل إلى بيانات غير قابلة للقراءة.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    }
+  }
+}

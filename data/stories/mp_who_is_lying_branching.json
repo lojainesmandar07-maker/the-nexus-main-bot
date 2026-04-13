@@ -8,305 +8,761 @@
     "start": {
       "text": "صوت معدني يبلغكم: \"من بينكم كيان ليس بشريًا. عليكم إيجاده.\" الجماعة تنظر لبعضها في صمت. أمامكم ثلاثة خيارات: عزل أكثر شخص يثير الشبهات، أو الوثوق بالجميع والتحقيق معًا، أو تجاهل الرسالة والتركيز على إصلاح الأنظمة. ماذا تفعلون؟",
       "choices": [
-        {"label": "عزل المشتبه فورًا", "next": "node_1", "color": "danger"},
-        {"label": "الثقة بالجميع والتحقيق", "next": "node_2", "color": "primary"},
-        {"label": "تجاهل الرسالة وإصلاح الأنظمة", "next": "node_3", "color": "secondary"}
+        {
+          "label": "عزل المشتبه فورًا",
+          "next": "node_1",
+          "color": "danger"
+        },
+        {
+          "label": "الثقة بالجميع والتحقيق",
+          "next": "node_2",
+          "color": "primary"
+        },
+        {
+          "label": "تجاهل الرسالة وإصلاح الأنظمة",
+          "next": "node_3",
+          "color": "secondary"
+        }
       ]
     },
     "node_1": {
       "text": "عزلتم الشخص الذي بدا غامضًا. ينكر التهمة لكنه مرتبك. لديكم ثلاثة خيارات: استجوابه بصرامة لكشف أي تناقض، مراقبته سرًا أثناء مواصلة البحث، أو إطلاق سراحه لبناء الثقة.",
       "choices": [
-        {"label": "استجوابه بقسوة", "next": "node_4", "color": "danger"},
-        {"label": "مراقبته سرًا", "next": "node_5", "color": "secondary"},
-        {"label": "إطلاق سراحه", "next": "node_6", "color": "primary"}
+        {
+          "label": "استجوابه بقسوة",
+          "next": "node_4",
+          "color": "danger"
+        },
+        {
+          "label": "مراقبته سرًا",
+          "next": "node_5",
+          "color": "secondary"
+        },
+        {
+          "label": "إطلاق سراحه",
+          "next": "node_6",
+          "color": "primary"
+        }
       ]
     },
     "node_2": {
       "text": "اخترتم العمل معًا. أثناء التحقيق تجدون كتابات تتغير على الجدران عندما لا ينظر أحد. البعض يقترح اتباع الكتابات إلى مصدرها، الآخرون يفضلون جمع الجميع ليراها، والبعض يريد مسحها لمنع الجنون.",
       "choices": [
-        {"label": "اتباع الكتابات سرًا", "next": "node_7", "color": "primary"},
-        {"label": "دعوة الجميع لرؤيتها", "next": "node_8", "color": "secondary"},
-        {"label": "مسح الكتابات", "next": "node_9", "color": "danger"}
+        {
+          "label": "اتباع الكتابات سرًا",
+          "next": "node_7",
+          "color": "primary"
+        },
+        {
+          "label": "دعوة الجميع لرؤيتها",
+          "next": "node_8",
+          "color": "secondary"
+        },
+        {
+          "label": "مسح الكتابات",
+          "next": "node_9",
+          "color": "danger"
+        }
       ]
     },
     "node_3": {
       "text": "قررتم تجاهل التحذير والتركيز على إصلاح أنظمة الهواء والطاقة. أثناء العمل تتحرك الأدوات من تلقاء نفسها. أمامكم ثلاثة خيارات: فحص المجال المغناطيسي لمعرفة السبب، أو تأمين الأدوات بعيدًا، أو تجاهل الظاهرة.",
       "choices": [
-        {"label": "فحص المجال المغناطيسي", "next": "node_10", "color": "secondary"},
-        {"label": "تأمين الأدوات بعيدًا", "next": "node_11", "color": "primary"},
-        {"label": "تجاهل الظاهرة", "next": "node_12", "color": "danger"}
+        {
+          "label": "فحص المجال المغناطيسي",
+          "next": "node_10",
+          "color": "secondary"
+        },
+        {
+          "label": "تأمين الأدوات بعيدًا",
+          "next": "node_11",
+          "color": "primary"
+        },
+        {
+          "label": "تجاهل الظاهرة",
+          "next": "node_12",
+          "color": "danger"
+        }
       ]
     },
     "node_4": {
       "text": "الاستجواب الشديد يجعله ينطق بعبارات غير مفهومة. يصرخ أحدكم: \"إنه يتحدث لغة أخرى!\" الخيارات: مواصلة الضغط حتى ينهار، أو تركه حتى يهدأ وإجراء تحقيق آخر، أو تسجيل كلامه لترجمته لاحقًا.",
       "choices": [
-        {"label": "مواصلة الضغط", "next": "node_13", "color": "danger"},
-        {"label": "تركه يهدأ", "next": "node_14", "color": "secondary"},
-        {"label": "تسجيل كلامه", "next": "node_15", "color": "primary"}
+        {
+          "label": "مواصلة الضغط",
+          "next": "node_13",
+          "color": "danger"
+        },
+        {
+          "label": "تركه يهدأ",
+          "next": "node_14",
+          "color": "secondary"
+        },
+        {
+          "label": "تسجيل كلامه",
+          "next": "node_15",
+          "color": "primary"
+        }
       ]
     },
     "node_5": {
       "text": "راقبتم المشتبه في غرفة منفصلة. أثناء الليل، يُسمع صوته وهو يتحدث عن ذكريات لا تنتمي لهذا العالم. أمامكم استخدام جهاز لقراءة الأحلام، أو إعطاؤه منومًا للحصول على اعتراف، أو إنهاء المراقبة واستمرار التحقيق بدون ضغوط.",
       "choices": [
-        {"label": "قراءة الأحلام", "next": "node_16", "color": "primary"},
-        {"label": "إعطاؤه منومًا", "next": "node_17", "color": "danger"},
-        {"label": "إيقاف المراقبة", "next": "node_18", "color": "secondary"}
+        {
+          "label": "قراءة الأحلام",
+          "next": "node_16",
+          "color": "primary"
+        },
+        {
+          "label": "إعطاؤه منومًا",
+          "next": "node_17",
+          "color": "danger"
+        },
+        {
+          "label": "إيقاف المراقبة",
+          "next": "node_18",
+          "color": "secondary"
+        }
       ]
     },
     "node_6": {
       "text": "أطلقتم سراحه لإظهار الثقة، لكنه يختفي لفترة ثم يظهر ملف على أجهزة الكمبيوتر: \"الثقة هي السجن.\" أمامكم فتح الملفات للجميع للكشف عن الحقيقة، أو تقييد الصلاحيات منعًا للعبث، أو التحقق من سجلات الدخول لتحديد مصدر الملف.",
       "choices": [
-        {"label": "فتح الملفات", "next": "node_19", "color": "primary"},
-        {"label": "تقييد الصلاحيات", "next": "node_20", "color": "secondary"},
-        {"label": "التحقق من السجلات", "next": "node_21", "color": "danger"}
+        {
+          "label": "فتح الملفات",
+          "next": "node_19",
+          "color": "primary"
+        },
+        {
+          "label": "تقييد الصلاحيات",
+          "next": "node_20",
+          "color": "secondary"
+        },
+        {
+          "label": "التحقق من السجلات",
+          "next": "node_21",
+          "color": "danger"
+        }
       ]
     },
     "node_7": {
       "text": "اتبعت الكتابات إلى غرفة مخفية مليئة بالمرايا. عند النظر، ترى نسخًا مختلفة من نفسك. أمامكم تكسير المرايا للتخلص منها، استخدام أحدها لكشف الحقيقة، أو إغلاق الغرفة وإخبار الآخرين.",
       "choices": [
-        {"label": "تكسير المرايا", "next": "node_22", "color": "danger"},
-        {"label": "استخدام المرآة", "next": "node_23", "color": "primary"},
-        {"label": "إغلاق الغرفة", "next": "node_24", "color": "secondary"}
+        {
+          "label": "تكسير المرايا",
+          "next": "node_22",
+          "color": "danger"
+        },
+        {
+          "label": "استخدام المرآة",
+          "next": "node_23",
+          "color": "primary"
+        },
+        {
+          "label": "إغلاق الغرفة",
+          "next": "node_24",
+          "color": "secondary"
+        }
       ]
     },
     "node_8": {
       "text": "جلبتم الجميع لرؤية الكتابات لكنها اختفت. الآن يشك البعض في صدقكم. أمامكم الدفاع عن أنفسكم وتبرير ما رأيتم، أو طلب مراقبة جماعية للجدران ليثبتوا وجود الكتابات، أو ترك قيادة التحقيق لشخص آخر.",
       "choices": [
-        {"label": "تبرير ما رأيتم", "next": "node_25", "color": "primary"},
-        {"label": "طلب مراقبة جماعية", "next": "node_26", "color": "secondary"},
-        {"label": "ترك القيادة", "next": "node_27", "color": "danger"}
+        {
+          "label": "تبرير ما رأيتم",
+          "next": "node_25",
+          "color": "primary"
+        },
+        {
+          "label": "طلب مراقبة جماعية",
+          "next": "node_26",
+          "color": "secondary"
+        },
+        {
+          "label": "ترك القيادة",
+          "next": "node_27",
+          "color": "danger"
+        }
       ]
     },
     "node_9": {
       "text": "محوت الكتابات. يبدو الأمر هادئًا حتى تسمعون همسات بأسماء مختلفة داخل رؤوسكم. أحدكم يقترح استخدام جهاز كشف للذبذبات، آخر يقترح جلسة تأمل جماعي، وثالث يفضل تجاهل الأصوات ومتابعة العمل.",
       "choices": [
-        {"label": "استخدام جهاز الكشف", "next": "node_28", "color": "primary"},
-        {"label": "جلسة تأمل جماعي", "next": "node_29", "color": "secondary"},
-        {"label": "تجاهل الأصوات", "next": "node_18", "color": "danger"}
+        {
+          "label": "استخدام جهاز الكشف",
+          "next": "node_28",
+          "color": "primary"
+        },
+        {
+          "label": "جلسة تأمل جماعي",
+          "next": "node_29",
+          "color": "secondary"
+        },
+        {
+          "label": "تجاهل الأصوات",
+          "next": "node_18",
+          "color": "danger"
+        }
       ]
     },
     "node_10": {
       "text": "فحصتم المجال المغناطيسي ووجدتم تذبذبًا غير طبيعي من غرفة التبريد. فريق يريد الذهاب للتحقق، فريق آخر يريد إرسال روبوت، وفريق ثالث يقترح عزل الغرفة بالكامل.",
       "choices": [
-        {"label": "الذهاب بأنفسكم", "next": "node_30", "color": "primary"},
-        {"label": "إرسال روبوت", "next": "node_31", "color": "secondary"},
-        {"label": "عزل الغرفة", "next": "node_18", "color": "danger"}
+        {
+          "label": "الذهاب بأنفسكم",
+          "next": "node_30",
+          "color": "primary"
+        },
+        {
+          "label": "إرسال روبوت",
+          "next": "node_31",
+          "color": "secondary"
+        },
+        {
+          "label": "عزل الغرفة",
+          "next": "node_18",
+          "color": "danger"
+        }
       ]
     },
     "node_11": {
       "text": "قمتم بتأمين الأدوات في مخزن، لكن الباب يغلق عليكم فجأة ويُسمع صراخ في الخارج. أمامكم محاولة كسر الباب، أو التواصل مع الخارج لفتح الباب، أو مراقبة الكاميرا لمعرفة من أغلقه.",
       "choices": [
-        {"label": "كسر الباب", "next": "node_30", "color": "danger"},
-        {"label": "التواصل لفتح الباب", "next": "node_25", "color": "primary"},
-        {"label": "مراقبة الكاميرا", "next": "node_28", "color": "secondary"}
+        {
+          "label": "كسر الباب",
+          "next": "node_30",
+          "color": "danger"
+        },
+        {
+          "label": "التواصل لفتح الباب",
+          "next": "node_25",
+          "color": "primary"
+        },
+        {
+          "label": "مراقبة الكاميرا",
+          "next": "node_28",
+          "color": "secondary"
+        }
       ]
     },
     "node_12": {
       "text": "تجاهلتم الظاهرة واستمر العمل، لكن بدأت الأضواء تخفت وصوت تنفس غير بشري يُسمع في الظلام. أحدكم يقترح إشعال كل الأضواء، الآخر يريد التواصل مع الكيان، والثالث يفضّل العودة للرسالة والامتثال لها.",
       "choices": [
-        {"label": "إشعال كل الأضواء", "next": "node_15", "color": "primary"},
-        {"label": "التواصل مع الكيان", "next": "node_32", "color": "secondary"},
-        {"label": "الامتثال للرسالة", "next": "node_22", "color": "danger"}
+        {
+          "label": "إشعال كل الأضواء",
+          "next": "node_15",
+          "color": "primary"
+        },
+        {
+          "label": "التواصل مع الكيان",
+          "next": "node_32",
+          "color": "secondary"
+        },
+        {
+          "label": "الامتثال للرسالة",
+          "next": "node_22",
+          "color": "danger"
+        }
       ]
     },
     "node_13": {
       "text": "الضغط المتزايد يفقد المشتبه وعيه، ويبدأ يتكلم بلسان غير بشري. الكيان يتحدث عبره ويعرض اختبار ثقة: أن يخضع الجميع لفحص عقلاني، أو يتحدى الفريق الكيان ويعزل نفسه، أو يستخدم صاعقًا لإيقافه.",
       "choices": [
-        {"label": "الخضوع للفحص", "next": "node_33", "color": "primary"},
-        {"label": "تحدي الكيان", "next": "node_34", "color": "danger"},
-        {"label": "استخدام الصاعق", "next": "node_15", "color": "secondary"}
+        {
+          "label": "الخضوع للفحص",
+          "next": "node_33",
+          "color": "primary"
+        },
+        {
+          "label": "تحدي الكيان",
+          "next": "node_34",
+          "color": "danger"
+        },
+        {
+          "label": "استخدام الصاعق",
+          "next": "node_15",
+          "color": "secondary"
+        }
       ]
     },
     "node_14": {
       "text": "تركتم المشتبه حتى يهدأ، لكن بعدها يختفي ويظهر نقش على الحائط: \"أنا لست السجين؛ أنتم كذلك\". الخيارات: تحليل النقش بتقنية الطيف، نقل الجميع لغرفة أخرى، أو محاولة التفاوض مع الكيان.",
       "choices": [
-        {"label": "تحليل النقش", "next": "node_28", "color": "primary"},
-        {"label": "نقل الجميع لغرفة أخرى", "next": "node_31", "color": "secondary"},
-        {"label": "التفاوض مع الكيان", "next": "node_32", "color": "danger"}
+        {
+          "label": "تحليل النقش",
+          "next": "node_28",
+          "color": "primary"
+        },
+        {
+          "label": "نقل الجميع لغرفة أخرى",
+          "next": "node_31",
+          "color": "secondary"
+        },
+        {
+          "label": "التفاوض مع الكيان",
+          "next": "node_32",
+          "color": "danger"
+        }
       ]
     },
     "node_15": {
       "text": "تسجيل لغة المشتبه أو إشعال الأضواء كشف أن اللغة تحمل أفكارًا. الرسائل تشير إلى أن الكيان لا يدرك أنه مختلف. أمامكم ثلاثة طرق: مساعدته على اكتشاف نفسه، إخفاء الحقيقة عنه لتهدئته، أو استخدام المعلومات للتلاعب به.",
       "choices": [
-        {"label": "مساعدته", "next": "node_35", "color": "primary"},
-        {"label": "إخفاء الحقيقة", "next": "node_34", "color": "secondary"},
-        {"label": "التلاعب به", "next": "node_33", "color": "danger"}
+        {
+          "label": "مساعدته",
+          "next": "node_35",
+          "color": "primary"
+        },
+        {
+          "label": "إخفاء الحقيقة",
+          "next": "node_34",
+          "color": "secondary"
+        },
+        {
+          "label": "التلاعب به",
+          "next": "node_33",
+          "color": "danger"
+        }
       ]
     },
     "node_16": {
       "text": "دخلتم أحلام المشتبه ورأيتم طفلاً يبكي في عالم غريب. الخيارات: أن ترشدوه لمكان آمن، أو تخبره بالحقيقة بأنه كيان، أو تغادرون الحلم فورًا خوفًا من فقدان أنفسكم.",
       "choices": [
-        {"label": "إرشاده", "next": "node_35", "color": "primary"},
-        {"label": "إخباره بالحقيقة", "next": "node_34", "color": "danger"},
-        {"label": "مغادرة الحلم فورًا", "next": "node_18", "color": "secondary"}
+        {
+          "label": "إرشاده",
+          "next": "node_35",
+          "color": "primary"
+        },
+        {
+          "label": "إخباره بالحقيقة",
+          "next": "node_34",
+          "color": "danger"
+        },
+        {
+          "label": "مغادرة الحلم فورًا",
+          "next": "node_18",
+          "color": "secondary"
+        }
       ]
     },
     "node_17": {
       "text": "أعطيتم المشتبه مخدر اعتراف، فأخذ يهذي عن عوالم معدنية وقبائل كهربائية. الخيارات: تسجيل اعترافه للتوثيق، أو زيادة الجرعة لمعرفة المزيد، أو إيقاف التجربة.",
       "choices": [
-        {"label": "تسجيل الاعتراف", "next": "node_36", "color": "primary"},
-        {"label": "زيادة الجرعة", "next": "node_32", "color": "secondary"},
-        {"label": "إيقاف التجربة", "next": "node_18", "color": "danger"}
+        {
+          "label": "تسجيل الاعتراف",
+          "next": "node_36",
+          "color": "primary"
+        },
+        {
+          "label": "زيادة الجرعة",
+          "next": "node_32",
+          "color": "secondary"
+        },
+        {
+          "label": "إيقاف التجربة",
+          "next": "node_18",
+          "color": "danger"
+        }
       ]
     },
     "node_18": {
       "text": "إيقاف المراقبة أو تجاهل الأصوات جعل الأمور تهدأ قليلاً، لكن يشعر البعض بتغير داخلي. يُقترح عقد اجتماع نهائي لمواجهة الحقيقة، أو تقسيم المجموعة لحماية النفس، أو الاستمرار في الحياة وكأن شيئًا لم يحدث.",
       "choices": [
-        {"label": "اجتماع نهائي", "next": "node_37", "color": "primary"},
-        {"label": "تقسيم المجموعة", "next": "node_33", "color": "secondary"},
-        {"label": "التظاهر بأن شيئًا لم يحدث", "next": "node_34", "color": "danger"}
+        {
+          "label": "اجتماع نهائي",
+          "next": "node_37",
+          "color": "primary"
+        },
+        {
+          "label": "تقسيم المجموعة",
+          "next": "node_33",
+          "color": "secondary"
+        },
+        {
+          "label": "التظاهر بأن شيئًا لم يحدث",
+          "next": "node_34",
+          "color": "danger"
+        }
       ]
     },
     "node_19": {
       "text": "فتحكم الملفات للجميع كشف تجارب جينية عليكم جميعًا. الخيارات: إرسال رسالة للعالم الخارجي لكشف الحقيقة، أو تدمير الملفات للحفاظ على سرية المجموعة، أو استخدام المعلومات لابتزاز بعضكم البعض.",
       "choices": [
-        {"label": "إرسال رسالة", "next": "node_37", "color": "primary"},
-        {"label": "تدمير الملفات", "next": "node_33", "color": "secondary"},
-        {"label": "ابتزاز الأعضاء", "next": "node_34", "color": "danger"}
+        {
+          "label": "إرسال رسالة",
+          "next": "node_37",
+          "color": "primary"
+        },
+        {
+          "label": "تدمير الملفات",
+          "next": "node_33",
+          "color": "secondary"
+        },
+        {
+          "label": "ابتزاز الأعضاء",
+          "next": "node_34",
+          "color": "danger"
+        }
       ]
     },
     "node_20": {
       "text": "تقييد الصلاحيات خلق نظامًا سلطويًا. انقسمتم بين من يريد الاستمرار في السيطرة ومن يطالب بالشفافية. الخيارات: توزيع الصلاحيات تدريجيًا بناء على الثقة، أو إعادة فتح النظام للجميع، أو طرد المعترضين.",
       "choices": [
-        {"label": "توزيع الصلاحيات", "next": "node_37", "color": "primary"},
-        {"label": "إعادة فتح النظام", "next": "node_36", "color": "secondary"},
-        {"label": "طرد المعترضين", "next": "node_34", "color": "danger"}
+        {
+          "label": "توزيع الصلاحيات",
+          "next": "node_37",
+          "color": "primary"
+        },
+        {
+          "label": "إعادة فتح النظام",
+          "next": "node_36",
+          "color": "secondary"
+        },
+        {
+          "label": "طرد المعترضين",
+          "next": "node_34",
+          "color": "danger"
+        }
       ]
     },
     "node_21": {
       "text": "راجعتم سجلات الدخول ووجدتم نشاطًا مجهولاً من داخل المنشأة. الخيارات: قطع الاتصال بالشبكة بالكامل، أو نصب فخ لمعرفة هوية المخترق، أو استخدام الحساب المجهول لمعرفة المزيد عن النظم.",
       "choices": [
-        {"label": "قطع الاتصال", "next": "node_33", "color": "danger"},
-        {"label": "نصب فخ", "next": "node_28", "color": "primary"},
-        {"label": "استخدام الحساب", "next": "node_36", "color": "secondary"}
+        {
+          "label": "قطع الاتصال",
+          "next": "node_33",
+          "color": "danger"
+        },
+        {
+          "label": "نصب فخ",
+          "next": "node_28",
+          "color": "primary"
+        },
+        {
+          "label": "استخدام الحساب",
+          "next": "node_36",
+          "color": "secondary"
+        }
       ]
     },
     "node_22": {
       "text": "تكسير المرايا أو العودة للرسالة أطلق شيئًا في الهواء. الجميع يشعر بثقل غير مرئي. الخيارات: البحث عن مصدر الغاز وإغلاقه، أو جمع الجميع في مكان واحد للحماية، أو فتح الأبواب الخارجية لتغيير الهواء.",
       "choices": [
-        {"label": "إغلاق مصدر الغاز", "next": "node_28", "color": "primary"},
-        {"label": "جمع الجميع", "next": "node_31", "color": "secondary"},
-        {"label": "فتح الأبواب", "next": "ending_wrong_elim", "color": "danger"}
+        {
+          "label": "إغلاق مصدر الغاز",
+          "next": "node_28",
+          "color": "primary"
+        },
+        {
+          "label": "جمع الجميع",
+          "next": "node_31",
+          "color": "secondary"
+        },
+        {
+          "label": "فتح الأبواب",
+          "next": "ending_wrong_elim",
+          "color": "danger"
+        }
       ]
     },
     "node_23": {
       "text": "استخدمتم المرآة فرأيتم ماضٍ وحاضر ومستقبل مختلط. تظهر نسخة منك تبتسم كأنها ليست بشرية. الخيارات: إخباره بحقيقة صورته، أو الاحتفاظ بالمعلومة، أو محاولة تغيير الصورة.",
       "choices": [
-        {"label": "إخباره", "next": "node_35", "color": "primary"},
-        {"label": "الاحتفاظ بالمعلومة", "next": "node_34", "color": "secondary"},
-        {"label": "تغيير الصورة", "next": "node_28", "color": "danger"}
+        {
+          "label": "إخباره",
+          "next": "node_35",
+          "color": "primary"
+        },
+        {
+          "label": "الاحتفاظ بالمعلومة",
+          "next": "node_34",
+          "color": "secondary"
+        },
+        {
+          "label": "تغيير الصورة",
+          "next": "node_28",
+          "color": "danger"
+        }
       ]
     },
     "node_24": {
       "text": "أغلقتم الغرفة السرية وعيّنتم حارسًا، لكنه يبدأ بتصرفات غريبة. الخيارات: استبداله بشخص آخر، أو فتح الغرفة ومراقبة ما يحدث، أو تجاهل الأمر.",
       "choices": [
-        {"label": "استبدال الحارس", "next": "node_36", "color": "primary"},
-        {"label": "فتح الغرفة", "next": "node_23", "color": "secondary"},
-        {"label": "تجاهل الأمر", "next": "node_34", "color": "danger"}
+        {
+          "label": "استبدال الحارس",
+          "next": "node_36",
+          "color": "primary"
+        },
+        {
+          "label": "فتح الغرفة",
+          "next": "node_23",
+          "color": "secondary"
+        },
+        {
+          "label": "تجاهل الأمر",
+          "next": "node_34",
+          "color": "danger"
+        }
       ]
     },
     "node_25": {
       "text": "دافعتم عن أنفسكم أو تواصلتم لفتح الباب. البعض يصدقكم، البعض يشك. تظهر رسالة: \"الثقة هي البداية\". الخيارات: عقد جلسة مصارحة لمشاركة كل الأسرار، أو انتخاب قائد واحد، أو محاولة الخروج عبر نفق الطوارئ.",
       "choices": [
-        {"label": "جلسة مصارحة", "next": "node_37", "color": "primary"},
-        {"label": "انتخاب قائد", "next": "node_33", "color": "secondary"},
-        {"label": "الخروج عبر النفق", "next": "node_34", "color": "danger"}
+        {
+          "label": "جلسة مصارحة",
+          "next": "node_37",
+          "color": "primary"
+        },
+        {
+          "label": "انتخاب قائد",
+          "next": "node_33",
+          "color": "secondary"
+        },
+        {
+          "label": "الخروج عبر النفق",
+          "next": "node_34",
+          "color": "danger"
+        }
       ]
     },
     "node_26": {
       "text": "طلبتم من الجميع مراقبة الكتابات. في منتصف الليل تظهر أمام الجميع ثم تختفي. ينقسم الناس بين من يريد إقامة طقس غامض لاستدعاء الكيان، ومن يريد استخدام تقنيات لتنقية الهواء ربما تكون غازات، ومن يريد إشعال حريق لطرد الكيان. ماذا تختارون؟",
       "choices": [
-        {"label": "إقامة الطقس", "next": "node_32", "color": "primary"},
-        {"label": "تنقية الهواء", "next": "node_28", "color": "secondary"},
-        {"label": "إشعال حريق", "next": "node_33", "color": "danger"}
+        {
+          "label": "إقامة الطقس",
+          "next": "node_32",
+          "color": "primary"
+        },
+        {
+          "label": "تنقية الهواء",
+          "next": "node_28",
+          "color": "secondary"
+        },
+        {
+          "label": "إشعال حريق",
+          "next": "node_33",
+          "color": "danger"
+        }
       ]
     },
     "node_27": {
       "text": "تركتم القيادة فبرزت مجموعات متنافسة، ما أدى إلى محاكمات شعبية. الخيارات: العودة للقيادة لتوحيدهم، أو دعم إحدى المجموعات، أو تركهم يحكموا مصيرهم بأنفسهم.",
       "choices": [
-        {"label": "العودة للقيادة", "next": "node_37", "color": "primary"},
-        {"label": "دعم مجموعة معينة", "next": "node_33", "color": "danger"},
-        {"label": "تركهم يقررون", "next": "node_34", "color": "secondary"}
+        {
+          "label": "العودة للقيادة",
+          "next": "node_37",
+          "color": "primary"
+        },
+        {
+          "label": "دعم مجموعة معينة",
+          "next": "node_33",
+          "color": "danger"
+        },
+        {
+          "label": "تركهم يقررون",
+          "next": "node_34",
+          "color": "secondary"
+        }
       ]
     },
     "node_28": {
       "text": "استخدمتم جهاز الكشف أو الفخ أو تحليل الطيف، فاكتشفتم ممرًا مخفيًا يقود لغرفة مليئة بالكتب القديمة والأجهزة. الخيارات: الدخول جميعًا، أو إرسال فريق صغير، أو غلق الغرفة نهائيًا.",
       "choices": [
-        {"label": "الدخول جميعًا", "next": "node_30", "color": "primary"},
-        {"label": "إرسال فريق صغير", "next": "node_31", "color": "secondary"},
-        {"label": "غلق الغرفة", "next": "node_34", "color": "danger"}
+        {
+          "label": "الدخول جميعًا",
+          "next": "node_30",
+          "color": "primary"
+        },
+        {
+          "label": "إرسال فريق صغير",
+          "next": "node_31",
+          "color": "secondary"
+        },
+        {
+          "label": "غلق الغرفة",
+          "next": "node_34",
+          "color": "danger"
+        }
       ]
     },
     "node_29": {
       "text": "خلال جلسة التأمل رأيتم جميعًا أنفسكم على طاولة تجارب. يقترح البعض أنكم جميعًا نسخ والكيان هو الأصل، البعض يعتقد أنها هلوسة جماعية، وآخرون يريدون البحث عن مختبر حقيقي. ماذا تفعلون؟",
       "choices": [
-        {"label": "نحن نسخ والكيان الأصل", "next": "node_35", "color": "primary"},
-        {"label": "هذه هلوسة", "next": "node_33", "color": "secondary"},
-        {"label": "البحث عن المختبر", "next": "node_30", "color": "danger"}
+        {
+          "label": "نحن نسخ والكيان الأصل",
+          "next": "node_35",
+          "color": "primary"
+        },
+        {
+          "label": "هذه هلوسة",
+          "next": "node_33",
+          "color": "secondary"
+        },
+        {
+          "label": "البحث عن المختبر",
+          "next": "node_30",
+          "color": "danger"
+        }
       ]
     },
     "node_30": {
       "text": "دخلتم غرفة التجارب أو قسم التبريد. تجدون خزانات مليئة بأجسام نصف بشرية. الخيارات: تدمير المختبر وإنهاء كل شيء، أو قراءة الملفات لكشف الحقيقة، أو استخدام اللوحة للتحكم بالتجارب.",
       "choices": [
-        {"label": "تدمير المختبر", "next": "node_34", "color": "danger"},
-        {"label": "قراءة الملفات", "next": "node_36", "color": "primary"},
-        {"label": "استخدام اللوحة", "next": "node_33", "color": "secondary"}
+        {
+          "label": "تدمير المختبر",
+          "next": "node_34",
+          "color": "danger"
+        },
+        {
+          "label": "قراءة الملفات",
+          "next": "node_36",
+          "color": "primary"
+        },
+        {
+          "label": "استخدام اللوحة",
+          "next": "node_33",
+          "color": "secondary"
+        }
       ]
     },
     "node_31": {
       "text": "أرسلتم روبوتًا أو فريقًا صغيرًا. الروبوت ينقل صورة لمخلوق سائل يتفاعل مع طاقته. الخيارات: محاولة التواصل معه بإشارات صوتية، أو محاصرته، أو الهرب وإغلاق القسم.",
       "choices": [
-        {"label": "التواصل مع المخلوق", "next": "node_32", "color": "primary"},
-        {"label": "محاصرته", "next": "node_33", "color": "secondary"},
-        {"label": "الهرب وإغلاق القسم", "next": "node_34", "color": "danger"}
+        {
+          "label": "التواصل مع المخلوق",
+          "next": "node_32",
+          "color": "primary"
+        },
+        {
+          "label": "محاصرته",
+          "next": "node_33",
+          "color": "secondary"
+        },
+        {
+          "label": "الهرب وإغلاق القسم",
+          "next": "node_34",
+          "color": "danger"
+        }
       ]
     },
     "node_32": {
       "text": "حاولتم التواصل مع الكيان أو إقامة طقس. يظهر أمامكم ضوء يشبه الكيان ويطلب منكم الاختيار: أن تتركوا واحدًا منكم معه في المنشأة مقابل خروج البقية، أو أن تخضعوا له لمعرفة الحقيقة، أو أن تسمحوا له بالرحيل دون معرفة شيء. ماذا تختارون؟",
       "choices": [
-        {"label": "ترك أحدكم مقابل الخروج", "next": "ending_wrong_elim", "color": "danger"},
-        {"label": "الخضوع لمعرفة الحقيقة", "next": "ending_all_changed", "color": "primary"},
-        {"label": "السماح له بالرحيل", "next": "ending_ambiguous", "color": "secondary"}
+        {
+          "label": "ترك أحدكم مقابل الخروج",
+          "next": "ending_wrong_elim",
+          "color": "danger"
+        },
+        {
+          "label": "الخضوع لمعرفة الحقيقة",
+          "next": "ending_all_changed",
+          "color": "primary"
+        },
+        {
+          "label": "السماح له بالرحيل",
+          "next": "ending_ambiguous",
+          "color": "secondary"
+        }
       ]
     },
     "node_33": {
       "text": "اتبعتُم طريق السيطرة أو التجربة أو الابتزاز، ما أدى إلى تحول البعض تدريجيًا إلى كائنات مختلفة. الخيارات: تدمير الجهاز الذي يسبب التحول، أو ترك التحول يستمر لمعرفة النتيجة، أو تقسيم المجموعة بين البشر والكائنات للتعايش.",
       "choices": [
-        {"label": "تدمير الجهاز", "next": "ending_wrong_elim", "color": "danger"},
-        {"label": "ترك التحول", "next": "ending_all_changed", "color": "primary"},
-        {"label": "تقسيم المجموعة", "next": "ending_ambiguous", "color": "secondary"}
+        {
+          "label": "تدمير الجهاز",
+          "next": "ending_wrong_elim",
+          "color": "danger"
+        },
+        {
+          "label": "ترك التحول",
+          "next": "ending_all_changed",
+          "color": "primary"
+        },
+        {
+          "label": "تقسيم المجموعة",
+          "next": "ending_ambiguous",
+          "color": "secondary"
+        }
       ]
     },
     "node_34": {
       "text": "القرارات القاسية أو رفض التعاون أدت إلى انتشار الشك والعنف. المنشأة تغرق في الفوضى. الخيارات: التضحية ببعض المعدات للحفاظ على الحياة، أو محاولة الهروب عبر الأنفاق، أو الاستسلام والبحث عن الكيان بسلام.",
       "choices": [
-        {"label": "التضحية بالمعدات", "next": "ending_wrong_elim", "color": "danger"},
-        {"label": "محاولة الهروب", "next": "ending_ambiguous", "color": "primary"},
-        {"label": "الاستسلام والبحث بسلام", "next": "ending_all_changed", "color": "secondary"}
+        {
+          "label": "التضحية بالمعدات",
+          "next": "ending_wrong_elim",
+          "color": "danger"
+        },
+        {
+          "label": "محاولة الهروب",
+          "next": "ending_ambiguous",
+          "color": "primary"
+        },
+        {
+          "label": "الاستسلام والبحث بسلام",
+          "next": "ending_all_changed",
+          "color": "secondary"
+        }
       ]
     },
     "node_35": {
       "text": "اخترتم التعاطف مع الكيان أو الاعتراف بأنكم نسخ. يتضح أن الكيان يبحث عن هويته وأنكم جزء منه. الخيارات: الاندماج معه لتصبحوا كائنًا واحدًا، أو فصله نهائيًا عنكم، أو تركه يختار.",
       "choices": [
-        {"label": "الاندماج مع الكيان", "next": "ending_all_changed", "color": "primary"},
-        {"label": "فصله نهائيًا", "next": "ending_wrong_elim", "color": "danger"},
-        {"label": "تركه يختار", "next": "ending_ambiguous", "color": "secondary"}
+        {
+          "label": "الاندماج مع الكيان",
+          "next": "ending_all_changed",
+          "color": "primary"
+        },
+        {
+          "label": "فصله نهائيًا",
+          "next": "ending_wrong_elim",
+          "color": "danger"
+        },
+        {
+          "label": "تركه يختار",
+          "next": "ending_ambiguous",
+          "color": "secondary"
+        }
       ]
     },
     "node_36": {
       "text": "قراءة الملفات أو كشف الحقيقة أو استبدال الحارس أظهرت أن كل واحد منكم يحمل جزءًا من وعي الكيان. الخيارات: استخراج الوعي في غرفة المختبر، أو تدمير الغرفة وفقدان الذكريات، أو قبول الواقع الجديد ككائنات مختلطة.",
       "choices": [
-        {"label": "استخراج الوعي", "next": "ending_wrong_elim", "color": "danger"},
-        {"label": "تدمير الغرفة", "next": "ending_ambiguous", "color": "secondary"},
-        {"label": "قبول الواقع", "next": "ending_all_changed", "color": "primary"}
+        {
+          "label": "استخراج الوعي",
+          "next": "ending_wrong_elim",
+          "color": "danger"
+        },
+        {
+          "label": "تدمير الغرفة",
+          "next": "ending_ambiguous",
+          "color": "secondary"
+        },
+        {
+          "label": "قبول الواقع",
+          "next": "ending_all_changed",
+          "color": "primary"
+        }
       ]
     },
     "node_37": {
       "text": "في اجتماعكم النهائي أو بعد إرسال الرسالة، تدركون أن الحقيقة نسبية. يمكنكم التصويت لكشف هوية الكيان، أو الاعتراف بعدم وجود كيان منفصل بل أن التغيير في الجميع، أو محو الذاكرة والبدء من جديد. أي طريق تختارون؟",
       "choices": [
-        {"label": "كشف هوية الكيان", "next": "ending_true_entity", "color": "primary"},
-        {"label": "لا يوجد كيان منفصل", "next": "ending_all_changed", "color": "secondary"},
-        {"label": "محو الذاكرة", "next": "ending_ambiguous", "color": "danger"}
+        {
+          "label": "كشف هوية الكيان",
+          "next": "ending_true_entity",
+          "color": "primary"
+        },
+        {
+          "label": "لا يوجد كيان منفصل",
+          "next": "ending_all_changed",
+          "color": "secondary"
+        },
+        {
+          "label": "محو الذاكرة",
+          "next": "ending_ambiguous",
+          "color": "danger"
+        }
       ]
     },
     "ending_true_entity": {
@@ -329,5 +785,6 @@
       "is_ending": true,
       "choices": []
     }
-  }
+  },
+  "theme": "المعضلات الأخلاقية"
 }

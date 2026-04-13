@@ -2,7 +2,7 @@
   "world": "الفانتازيا",
   "categories": [
     {
-      "name": "لعنات صامتة",
+      "name": "الفانتازيا المظلمة",
       "stories": [
         {
           "id": "fb3_silent_shadow",
@@ -10,7 +10,7 @@
           "summary": "أنت ظل البطل المختار، تحمل بقايا إنسانيته وهو يهبط نحو الوحشية. في الظلام وحده يمكنك العبث بالمصير قبل أن يبتلع العالم.",
           "difficulty": "صعب",
           "estimated_length": "طويلة",
-          "theme": "لعنات صامتة",
+          "theme": "الفانتازيا المظلمة",
           "world_type": "fantasy",
           "game_mode": "single",
           "perspectives": [

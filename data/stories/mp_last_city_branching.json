@@ -8,201 +8,501 @@
     "start": {
       "text": "المدينة الأخيرة تنهار من الداخل والخارج. الطعام ينفد والمرض ينتشر. عليك أن تقرر مع مجلسك: هل تفرض نظام تقنين صارم، أم توزع الطعام بالتساوي، أم تعقد نقاشًا مع المجلس قبل القرار؟",
       "choices": [
-        { "label": "فرض نظام تقنين صارم", "next": "node_1", "color": "danger" },
-        { "label": "توزيع الطعام بالتساوي", "next": "node_2", "color": "primary" },
-        { "label": "إجراء نقاش مع المجلس", "next": "node_3", "color": "secondary" }
+        {
+          "label": "فرض نظام تقنين صارم",
+          "next": "node_1",
+          "color": "danger"
+        },
+        {
+          "label": "توزيع الطعام بالتساوي",
+          "next": "node_2",
+          "color": "primary"
+        },
+        {
+          "label": "إجراء نقاش مع المجلس",
+          "next": "node_3",
+          "color": "secondary"
+        }
       ]
     },
     "node_1": {
       "text": "اخترتم التقنين الصارم. الآن يجب تحديد من سيحصل على الحصص الأكبر. هل تمنحون الأولوية للمقاتلين لحماية المدينة، أم للأطفال والمرضى لضمان المستقبل، أم تقيمون قرعة عادلة؟",
       "choices": [
-        { "label": "أولوية للمقاتلين", "next": "node_4", "color": "danger" },
-        { "label": "أولوية للأطفال والمرضى", "next": "node_5", "color": "primary" },
-        { "label": "قرعة عادلة للجميع", "next": "node_6", "color": "secondary" }
+        {
+          "label": "أولوية للمقاتلين",
+          "next": "node_4",
+          "color": "danger"
+        },
+        {
+          "label": "أولوية للأطفال والمرضى",
+          "next": "node_5",
+          "color": "primary"
+        },
+        {
+          "label": "قرعة عادلة للجميع",
+          "next": "node_6",
+          "color": "secondary"
+        }
       ]
     },
     "node_2": {
       "text": "قررتم توزيع الطعام بالتساوي، لكن المخزون يكفي أسبوعًا واحدًا فقط. أمامكم ثلاث مسارات: إرسال بعثة خطرة خارج المدينة لجمع الموارد، تشديد الأمن لمنع السرقة، أو تشجيع الناس على التبرع من مخزونهم الخاص.",
       "choices": [
-        { "label": "إرسال بعثة بحث عن الموارد", "next": "node_7", "color": "primary" },
-        { "label": "تشديد الأمن ومنع السرقة", "next": "node_8", "color": "danger" },
-        { "label": "تشجيع التبرع والمشاركة", "next": "node_9", "color": "secondary" }
+        {
+          "label": "إرسال بعثة بحث عن الموارد",
+          "next": "node_7",
+          "color": "primary"
+        },
+        {
+          "label": "تشديد الأمن ومنع السرقة",
+          "next": "node_8",
+          "color": "danger"
+        },
+        {
+          "label": "تشجيع التبرع والمشاركة",
+          "next": "node_9",
+          "color": "secondary"
+        }
       ]
     },
     "node_3": {
       "text": "فضلتم النقاش قبل القرار. المجلس منقسم: البعض يريد قائدًا واحدًا قويًا، وآخرون يطالبون بمجلس جماعي، وفريق ثالث يقترح إجراء قرعة لاختيار القرار. أي طريق تسلكون؟",
       "choices": [
-        { "label": "انتخاب قائد واحد قوي", "next": "node_13", "color": "danger" },
-        { "label": "تشكيل مجلس جماعي", "next": "node_14", "color": "primary" },
-        { "label": "القرعة لاتخاذ القرار", "next": "node_15", "color": "secondary" }
+        {
+          "label": "انتخاب قائد واحد قوي",
+          "next": "node_13",
+          "color": "danger"
+        },
+        {
+          "label": "تشكيل مجلس جماعي",
+          "next": "node_14",
+          "color": "primary"
+        },
+        {
+          "label": "القرعة لاتخاذ القرار",
+          "next": "node_15",
+          "color": "secondary"
+        }
       ]
     },
     "node_4": {
       "text": "منحتم المقاتلين الحصص الأكبر. غضب الأهالي وأقارب الأطفال يتصاعد. أمامكم: استخدام القوة لفرض القرار، أو فتح باب التفاوض لتخفيف الغضب، أو إعادة توزيع جزئي لتهدئة العائلات.",
       "choices": [
-        { "label": "استخدام القوة لكبح الغضب", "next": "node_10", "color": "danger" },
-        { "label": "فتح باب التفاوض", "next": "node_11", "color": "primary" },
-        { "label": "إعادة توزيع جزئي", "next": "node_12", "color": "secondary" }
+        {
+          "label": "استخدام القوة لكبح الغضب",
+          "next": "node_10",
+          "color": "danger"
+        },
+        {
+          "label": "فتح باب التفاوض",
+          "next": "node_11",
+          "color": "primary"
+        },
+        {
+          "label": "إعادة توزيع جزئي",
+          "next": "node_12",
+          "color": "secondary"
+        }
       ]
     },
     "node_5": {
       "text": "منحتم الأطفال والمرضى الأولوية، فغضب المقاتلون وهددوا بالإضراب. هل تقومون بتجنيد مقاتلين جدد من المدنيين، أم حبس قادة المتمردين، أم إقناع المقاتلين بالمشاركة في تدريب الأطفال؟",
       "choices": [
-        { "label": "تجنيد مقاتلين جدد", "next": "node_13", "color": "primary" },
-        { "label": "حبس قادة المتمردين", "next": "node_10", "color": "danger" },
-        { "label": "إقناع المقاتلين بتدريب الأطفال", "next": "node_11", "color": "secondary" }
+        {
+          "label": "تجنيد مقاتلين جدد",
+          "next": "node_13",
+          "color": "primary"
+        },
+        {
+          "label": "حبس قادة المتمردين",
+          "next": "node_10",
+          "color": "danger"
+        },
+        {
+          "label": "إقناع المقاتلين بتدريب الأطفال",
+          "next": "node_11",
+          "color": "secondary"
+        }
       ]
     },
     "node_6": {
       "text": "القرعة العادلة هدأت النفوس، لكنها لم تحل أزمة الطعام. عليك أن تقرر: إرسال بعثة خطرة للخارج لجلب الطعام، أو ترك بعض الحصص للمصابين، أو حظر التجمعات لتقليل الاستهلاك.",
       "choices": [
-        { "label": "إرسال بعثة خطرة", "next": "node_7", "color": "primary" },
-        { "label": "ترك حصص للمصابين", "next": "node_14", "color": "secondary" },
-        { "label": "حظر التجمعات", "next": "node_15", "color": "danger" }
+        {
+          "label": "إرسال بعثة خطرة",
+          "next": "node_7",
+          "color": "primary"
+        },
+        {
+          "label": "ترك حصص للمصابين",
+          "next": "node_14",
+          "color": "secondary"
+        },
+        {
+          "label": "حظر التجمعات",
+          "next": "node_15",
+          "color": "danger"
+        }
       ]
     },
     "node_7": {
       "text": "تقررون إرسال بعثة خارج المدينة. هل تقودها بنفسك لتعزيز الثقة، أم تختار متطوعين شجعان، أم تلغي البعثة بسبب المخاطر؟",
       "choices": [
-        { "label": "قيادة البعثة بنفسك", "next": "node_16", "color": "primary" },
-        { "label": "اختيار متطوعين", "next": "node_17", "color": "secondary" },
-        { "label": "إلغاء البعثة", "next": "node_8", "color": "danger" }
+        {
+          "label": "قيادة البعثة بنفسك",
+          "next": "node_16",
+          "color": "primary"
+        },
+        {
+          "label": "اختيار متطوعين",
+          "next": "node_17",
+          "color": "secondary"
+        },
+        {
+          "label": "إلغاء البعثة",
+          "next": "node_8",
+          "color": "danger"
+        }
       ]
     },
     "node_8": {
       "text": "شددتم الأمن. أُنشئت نقاط تفتيش، وانتشر الخوف. الآن تواجهون خيار فرض حظر تجول، أو تدريب لجان أهلية للمراقبة، أو الإعلان عن عفو تشجيعي للمخالفين. ما الذي يوازن بين الأمان والحريات؟",
       "choices": [
-        { "label": "فرض حظر التجول", "next": "node_10", "color": "danger" },
-        { "label": "تدريب لجان أهلية", "next": "node_11", "color": "primary" },
-        { "label": "إعلان عفو تشجيعي", "next": "node_12", "color": "secondary" }
+        {
+          "label": "فرض حظر التجول",
+          "next": "node_10",
+          "color": "danger"
+        },
+        {
+          "label": "تدريب لجان أهلية",
+          "next": "node_11",
+          "color": "primary"
+        },
+        {
+          "label": "إعلان عفو تشجيعي",
+          "next": "node_12",
+          "color": "secondary"
+        }
       ]
     },
     "node_9": {
       "text": "شجعتَ الناس على التبرع بمخزونهم، فظهرت روح تضامن. لكن البعض استغل الموقف. عليك أن تقرر: مكافأة المتبرعين بحوافز رمزية، أو فضح من يرفض التبرع، أو تقسيم الموارد الجديدة بالتساوي لخلق نظام جديد.",
       "choices": [
-        { "label": "مكافأة المتبرعين", "next": "node_18", "color": "primary" },
-        { "label": "فضح الرافضين", "next": "node_10", "color": "danger" },
-        { "label": "تقسيم عادل للموارد", "next": "node_11", "color": "secondary" }
+        {
+          "label": "مكافأة المتبرعين",
+          "next": "node_18",
+          "color": "primary"
+        },
+        {
+          "label": "فضح الرافضين",
+          "next": "node_10",
+          "color": "danger"
+        },
+        {
+          "label": "تقسيم عادل للموارد",
+          "next": "node_11",
+          "color": "secondary"
+        }
       ]
     },
     "node_10": {
       "text": "القمع والقوة أو الفضائح أدت إلى تمرد مفتوح. الشوارع تحترق والأهالي غاضبون. هل تعقدون محاكمات سريعة لقادة التمرد، أم تنفونهم خارج المدينة، أم تتفاوضون لوقف العنف؟",
       "choices": [
-        { "label": "محاكمات سريعة", "next": "node_19", "color": "primary" },
-        { "label": "النفي خارج المدينة", "next": "node_20", "color": "danger" },
-        { "label": "التفاوض لوقف العنف", "next": "node_21", "color": "secondary" }
+        {
+          "label": "محاكمات سريعة",
+          "next": "node_19",
+          "color": "primary"
+        },
+        {
+          "label": "النفي خارج المدينة",
+          "next": "node_20",
+          "color": "danger"
+        },
+        {
+          "label": "التفاوض لوقف العنف",
+          "next": "node_21",
+          "color": "secondary"
+        }
       ]
     },
     "node_11": {
       "text": "الحوار واللجان الأهلية أو إعادة التوزيع قوبلت بموافقة جزئية. لكن وباءً بدأ ينتشر. أمامكم: توزيع الدواء على الجميع بالتساوي، أو إعطاء الأولوية للعاملين الأساسيين، أو عزل المصابين في منطقة خاصة.",
       "choices": [
-        { "label": "توزيع الدواء بالتساوي", "next": "node_22", "color": "primary" },
-        { "label": "أولوية للعاملين", "next": "node_23", "color": "danger" },
-        { "label": "عزل المصابين", "next": "node_24", "color": "secondary" }
+        {
+          "label": "توزيع الدواء بالتساوي",
+          "next": "node_22",
+          "color": "primary"
+        },
+        {
+          "label": "أولوية للعاملين",
+          "next": "node_23",
+          "color": "danger"
+        },
+        {
+          "label": "عزل المصابين",
+          "next": "node_24",
+          "color": "secondary"
+        }
       ]
     },
     "node_12": {
       "text": "إعادة توزيع جزئية أو عفو تشجيعي هدأت الأمور قليلًا لكن الجوع ما زال. هناك اقتراح للانضمام إلى جماعة مزارعة في الضواحي، أو إنشاء مزارع داخلية جديدة، أو غزو جماعات أخرى لسرقة مواردها. أي طريق؟",
       "choices": [
-        { "label": "الانضمام إلى الجماعة المزارعة", "next": "node_22", "color": "primary" },
-        { "label": "إنشاء مزارع داخلية", "next": "node_23", "color": "secondary" },
-        { "label": "غزو جماعات أخرى", "next": "node_20", "color": "danger" }
+        {
+          "label": "الانضمام إلى الجماعة المزارعة",
+          "next": "node_22",
+          "color": "primary"
+        },
+        {
+          "label": "إنشاء مزارع داخلية",
+          "next": "node_23",
+          "color": "secondary"
+        },
+        {
+          "label": "غزو جماعات أخرى",
+          "next": "node_20",
+          "color": "danger"
+        }
       ]
     },
     "node_13": {
       "text": "انتخبتم قائدًا واحدًا قويًا. الآن يعتمد كل شيء على حكمه. يطلب قائدكم فرض قوانين استثنائية. هل تدعمونه في ذلك، أم تضعون حدودًا لسلطته، أم تستعدون لعزله لو تجاوز؟",
       "choices": [
-        { "label": "دعم القوانين الاستثنائية", "next": "node_20", "color": "danger" },
-        { "label": "وضع حدود للسلطة", "next": "node_23", "color": "primary" },
-        { "label": "التحضير لعزله", "next": "node_19", "color": "secondary" }
+        {
+          "label": "دعم القوانين الاستثنائية",
+          "next": "node_20",
+          "color": "danger"
+        },
+        {
+          "label": "وضع حدود للسلطة",
+          "next": "node_23",
+          "color": "primary"
+        },
+        {
+          "label": "التحضير لعزله",
+          "next": "node_19",
+          "color": "secondary"
+        }
       ]
     },
     "node_14": {
       "text": "شكّلتم مجلسًا جماعيًا. القرارات بطيئة لكن تشاركية. يظهر اقتراح بتقسيم المدينة إلى مناطق حكم ذاتي، أو إنشاء دستور مكتوب، أو تشكيل لجنة دفاع موحدة. ماذا تختارون؟",
       "choices": [
-        { "label": "تقسيم إلى مناطق حكم ذاتي", "next": "node_21", "color": "secondary" },
-        { "label": "إنشاء دستور مكتوب", "next": "node_22", "color": "primary" },
-        { "label": "تشكيل لجنة دفاع موحدة", "next": "node_20", "color": "danger" }
+        {
+          "label": "تقسيم إلى مناطق حكم ذاتي",
+          "next": "node_21",
+          "color": "secondary"
+        },
+        {
+          "label": "إنشاء دستور مكتوب",
+          "next": "node_22",
+          "color": "primary"
+        },
+        {
+          "label": "تشكيل لجنة دفاع موحدة",
+          "next": "node_20",
+          "color": "danger"
+        }
       ]
     },
     "node_15": {
       "text": "استخدمتم القرعة لاتخاذ القرار. أدى ذلك إلى حلول عشوائية لكنها مرضية. الآن هناك مقترح بإنشاء نظام معونة للجميع، أو نظام نقاط مساهمة يكافئ العمل، أو الحفاظ على القرعة لكل قرار مستقبلي. أي نهج يتبعه المجتمع؟",
       "choices": [
-        { "label": "نظام معونة للجميع", "next": "node_22", "color": "primary" },
-        { "label": "نظام نقاط مساهمة", "next": "node_23", "color": "secondary" },
-        { "label": "الاعتماد الدائم على القرعة", "next": "node_24", "color": "danger" }
+        {
+          "label": "نظام معونة للجميع",
+          "next": "node_22",
+          "color": "primary"
+        },
+        {
+          "label": "نظام نقاط مساهمة",
+          "next": "node_23",
+          "color": "secondary"
+        },
+        {
+          "label": "الاعتماد الدائم على القرعة",
+          "next": "node_24",
+          "color": "danger"
+        }
       ]
     },
     "node_16": {
       "text": "تقدمت أنت لقيادة البعثة وجلبت موارد جديدة لكنك تعرضت لإصابة خطيرة. المجتمع يهتز بين إنقاذ قائدهم أو استخدام الموارد فورًا. هل يعالجونك أولًا، أم يوزعون الموارد، أم يختارون قائدًا جديدًا ويضعونك في الحجر؟",
       "choices": [
-        { "label": "معالجتك أولًا", "next": "node_23", "color": "secondary" },
-        { "label": "توزيع الموارد فورًا", "next": "node_22", "color": "primary" },
-        { "label": "اختيار قائد جديد", "next": "node_21", "color": "danger" }
+        {
+          "label": "معالجتك أولًا",
+          "next": "node_23",
+          "color": "secondary"
+        },
+        {
+          "label": "توزيع الموارد فورًا",
+          "next": "node_22",
+          "color": "primary"
+        },
+        {
+          "label": "اختيار قائد جديد",
+          "next": "node_21",
+          "color": "danger"
+        }
       ]
     },
     "node_17": {
       "text": "اختيار المتطوعين عاد بأخبار سيئة: قُتل بعضهم وغاب آخرون. المجتمع يلوم قيادتك. أمامك: التنحي عن القيادة، أو إعلان حالة طوارئ صارمة، أو دعوة لتشكيل اتحاد مع مجتمعات قريبة.",
       "choices": [
-        { "label": "التنحي عن القيادة", "next": "node_19", "color": "secondary" },
-        { "label": "إعلان حالة طوارئ", "next": "node_20", "color": "danger" },
-        { "label": "دعوة الاتحاد مع الآخرين", "next": "node_22", "color": "primary" }
+        {
+          "label": "التنحي عن القيادة",
+          "next": "node_19",
+          "color": "secondary"
+        },
+        {
+          "label": "إعلان حالة طوارئ",
+          "next": "node_20",
+          "color": "danger"
+        },
+        {
+          "label": "دعوة الاتحاد مع الآخرين",
+          "next": "node_22",
+          "color": "primary"
+        }
       ]
     },
     "node_18": {
       "text": "مكافأة المتبرعين أثارت انقسامًا بين من يملكون ومن لا يملكون. يظهر اقتراح بفرض ضريبة على الأغنياء، أو إنشاء صندوق جماعي يديره الشعب، أو إلغاء الحوافز تمامًا. ما الذي يعيد التوازن؟",
       "choices": [
-        { "label": "فرض ضريبة على الأغنياء", "next": "node_22", "color": "primary" },
-        { "label": "صندوق جماعي يديره الشعب", "next": "node_23", "color": "secondary" },
-        { "label": "إلغاء الحوافز", "next": "node_24", "color": "danger" }
+        {
+          "label": "فرض ضريبة على الأغنياء",
+          "next": "node_22",
+          "color": "primary"
+        },
+        {
+          "label": "صندوق جماعي يديره الشعب",
+          "next": "node_23",
+          "color": "secondary"
+        },
+        {
+          "label": "إلغاء الحوافز",
+          "next": "node_24",
+          "color": "danger"
+        }
       ]
     },
     "node_19": {
       "text": "المحاكمات والعزلة أو تنحيك عن القيادة زادت الانقسام. المدينة تقترب من الانهيار. يمكنكم إلغاء كل المحاكمات وإعلان المصالحة، أو الاستمرار في المحاكمات حتى النهاية، أو حل المدينة وتفريق السكان.",
       "choices": [
-        { "label": "إعلان المصالحة", "next": "ending_identity_change", "color": "primary" },
-        { "label": "الاستمرار في المحاكمات", "next": "ending_oppressive_survival", "color": "danger" },
-        { "label": "حل المدينة وتفريق السكان", "next": "ending_collapse", "color": "secondary" }
+        {
+          "label": "إعلان المصالحة",
+          "next": "ending_identity_change",
+          "color": "primary"
+        },
+        {
+          "label": "الاستمرار في المحاكمات",
+          "next": "ending_oppressive_survival",
+          "color": "danger"
+        },
+        {
+          "label": "حل المدينة وتفريق السكان",
+          "next": "ending_collapse",
+          "color": "secondary"
+        }
       ]
     },
     "node_20": {
       "text": "النفي أو حظر التجول أو قوانين القائد القاسي أثمرت استقرارًا ظاهريًا، لكن الحرية اختفت. الآن خياركم النهائي: الحفاظ على هذا النظام القاسي، أو التخلي عنه وإعادة التوزيع، أو دعوة تدخل خارجي لتغيير الأمر.",
       "choices": [
-        { "label": "الحفاظ على النظام القاسي", "next": "ending_oppressive_survival", "color": "danger" },
-        { "label": "التخلي عنه وإعادة التوزيع", "next": "ending_identity_change", "color": "primary" },
-        { "label": "دعوة تدخل خارجي", "next": "ending_collapse", "color": "secondary" }
+        {
+          "label": "الحفاظ على النظام القاسي",
+          "next": "ending_oppressive_survival",
+          "color": "danger"
+        },
+        {
+          "label": "التخلي عنه وإعادة التوزيع",
+          "next": "ending_identity_change",
+          "color": "primary"
+        },
+        {
+          "label": "دعوة تدخل خارجي",
+          "next": "ending_collapse",
+          "color": "secondary"
+        }
       ]
     },
     "node_21": {
       "text": "المفاوضات أو تشكيل لجنة دفاع أو تقسيم المناطق خلقت توازنًا هشًا. يظهر ضغط خارجي من غزاة يريدون مواردكم. أمامكم: القتال دفاعًا عن مدينتكم مع خطر الانهيار، أو التفاوض معهم رغم فقدان جزء من الموارد، أو الانسحاب إلى ملاذ أكثر أمانًا خارج المدينة.",
       "choices": [
-        { "label": "القتال حتى النهاية", "next": "ending_collapse", "color": "danger" },
-        { "label": "التفاوض مع الغزاة", "next": "ending_oppressive_survival", "color": "secondary" },
-        { "label": "الانسحاب وبناء مجتمع جديد", "next": "ending_identity_change", "color": "primary" }
+        {
+          "label": "القتال حتى النهاية",
+          "next": "ending_collapse",
+          "color": "danger"
+        },
+        {
+          "label": "التفاوض مع الغزاة",
+          "next": "ending_oppressive_survival",
+          "color": "secondary"
+        },
+        {
+          "label": "الانسحاب وبناء مجتمع جديد",
+          "next": "ending_identity_change",
+          "color": "primary"
+        }
       ]
     },
     "node_22": {
       "text": "الوحدة مع جماعات مزارعة أو دستور مكتوب أو نظام المعونة أو ضريبة الأغنياء أعطى بصيص أمل. الآن عليكم اختيار: إقامة اتحاد مفتوح مع المجتمعات القريبة، أو التركيز على تطوير المدينة داخليًا، أو إعادة بناء النظام الاجتماعي بالكامل.",
       "choices": [
-        { "label": "إقامة اتحاد مفتوح", "next": "ending_identity_change", "color": "primary" },
-        { "label": "تطوير المدينة داخليًا", "next": "ending_oppressive_survival", "color": "secondary" },
-        { "label": "إعادة بناء النظام بالكامل", "next": "ending_collapse", "color": "danger" }
+        {
+          "label": "إقامة اتحاد مفتوح",
+          "next": "ending_identity_change",
+          "color": "primary"
+        },
+        {
+          "label": "تطوير المدينة داخليًا",
+          "next": "ending_oppressive_survival",
+          "color": "secondary"
+        },
+        {
+          "label": "إعادة بناء النظام بالكامل",
+          "next": "ending_collapse",
+          "color": "danger"
+        }
       ]
     },
     "node_23": {
       "text": "إنشاء مزارع داخلية أو نظام نقاط أو صندوق جماعي أو وضع حدود للسلطة قدم حلولاً لكنها تتطلب إدارة قوية. أمامكم: اختيار زعيم جديد منتخب لإدارة الموارد، أو إنشاء مجالس تخصصية لإدارة كل قطاع، أو ترك السوق الحرة تحدد مصير الموارد.",
       "choices": [
-        { "label": "انتخاب زعيم جديد", "next": "ending_identity_change", "color": "primary" },
-        { "label": "إنشاء مجالس تخصصية", "next": "ending_oppressive_survival", "color": "secondary" },
-        { "label": "ترك السوق الحرة تحكم", "next": "ending_collapse", "color": "danger" }
+        {
+          "label": "انتخاب زعيم جديد",
+          "next": "ending_identity_change",
+          "color": "primary"
+        },
+        {
+          "label": "إنشاء مجالس تخصصية",
+          "next": "ending_oppressive_survival",
+          "color": "secondary"
+        },
+        {
+          "label": "ترك السوق الحرة تحكم",
+          "next": "ending_collapse",
+          "color": "danger"
+        }
       ]
     },
     "node_24": {
       "text": "عزل المصابين أو اعتماد القرعة دائمًا أو إلغاء الحوافز أو غزو جماعات أخرى أدى إلى ضياع الثقة. يزداد الخوف بين السكان. الآن يمكنكم: فرض رقابة مشددة على كل شخص، أو السماح للجميع بالرحيل وتفكيك المدينة، أو عقد اجتماع مفتوح للبدء من جديد.",
       "choices": [
-        { "label": "فرض رقابة مشددة", "next": "ending_oppressive_survival", "color": "danger" },
-        { "label": "السماح بالرحيل وتفكيك المدينة", "next": "ending_collapse", "color": "secondary" },
-        { "label": "اجتماع مفتوح للبداية من جديد", "next": "ending_identity_change", "color": "primary" }
+        {
+          "label": "فرض رقابة مشددة",
+          "next": "ending_oppressive_survival",
+          "color": "danger"
+        },
+        {
+          "label": "السماح بالرحيل وتفكيك المدينة",
+          "next": "ending_collapse",
+          "color": "secondary"
+        },
+        {
+          "label": "اجتماع مفتوح للبداية من جديد",
+          "next": "ending_identity_change",
+          "color": "primary"
+        }
       ]
     },
     "ending_oppressive_survival": {
@@ -220,5 +520,6 @@
       "is_ending": true,
       "choices": []
     }
-  }
+  },
+  "theme": "المعضلات الأخلاقية"
 }

@@ -2,7 +2,7 @@
   "world": "الفانتازيا",
   "categories": [
     {
-      "name": "حروب الظل",
+      "name": "الفانتازيا المظلمة",
       "stories": [
         {
           "id": "fb3_opportunist_blacksmith",
@@ -10,7 +10,7 @@
           "summary": "أنت حداد محايد في بلدة حدودية تنهشها الحرب. عليك موازنة الجشع والخوف والموارد لتنجو وتخرج بثروة من نار الجميع.",
           "difficulty": "صعب",
           "estimated_length": "طويلة",
-          "theme": "حروب الظل",
+          "theme": "الفانتازيا المظلمة",
           "world_type": "fantasy",
           "game_mode": "single",
           "perspectives": [

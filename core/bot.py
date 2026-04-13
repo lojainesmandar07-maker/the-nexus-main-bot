@@ -143,10 +143,10 @@ class StoryBot(commands.Bot):
         if GUILD_ID:
             guild = discord.Object(id=int(GUILD_ID))
             self.tree.copy_global_to(guild=guild)
-            await self.tree.sync(guild=guild)
+            # await self.tree.sync(guild=guild)  # Disabled to prevent Cloudflare 1015 ban
             print(f"Synced commands to guild {GUILD_ID}")
         else:
-            await self.tree.sync()
+            # await self.tree.sync()  # Disabled to prevent Cloudflare 1015 ban
             print("Synced global commands")
 
         print(f"Bot setup complete. Loaded {len(loaded_extensions)}/{len(extensions)} extensions.")

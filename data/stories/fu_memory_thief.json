@@ -1,0 +1,1096 @@
+{
+    "id": "fu_memory_thief",
+    "title": "سارق الذاكرة",
+    "world": "المستقبل",
+    "world_type": "future",
+    "category": "الاختراق والسرقات التقنية",
+    "theme": "الاختراق والسرقات التقنية",
+    "summary": "أنت شبح بيانات يسرق الذكريات قبل مسحها. كُلفت بسرقة ذاكرة من مسؤول ميت، لتكتشف أنها فيروس عصبي حي.",
+    "difficulty": "صعب جداً",
+    "estimated_length": "طويلة جداً",
+    "game_mode": "single",
+    "perspective": {
+        "id": "ghost",
+        "label": "الشبح",
+        "emoji": "👻",
+        "description": "سارق ذكريات مسلوب الماضي، يعيش في الظلال.",
+        "start_node": "start"
+    },
+    "nodes": {
+        "start": {
+            "text": "المطر الحمضي يغسل أزقة القطاع السفلي. الجثة أمامك تعود لمسؤول رفيع المستوى من شركة 'نيو-تيك'. الدماء تختلط بالزيت، والوصلة العصبية في مؤخرة عنقه تومض بضوء أزرق خافت. ذكرياته الثمينة تتحلل. لديك دقائق قبل أن يمسح النظام الآلي بياناته.",
+            "choices": [
+                {
+                    "label": "استخرج البيانات بسرعة",
+                    "emoji": "⚡",
+                    "next": "extract_fast",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "استخرج بحذر وتأني",
+                    "emoji": "🔍",
+                    "next": "extract_careful",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "ابحث في ملابسه أولاً",
+                    "emoji": "🧥",
+                    "next": "search_body",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "search_body": {
+            "text": "تفتش معطفه الثقيل. تجد مسدساً نبضياً متطوراً وشارة أمنية محطمة. الضوء الأزرق في عنقه يبدأ بالوميض السريع، عملية المسح تقترب.",
+            "choices": [
+                {
+                    "label": "خذ المسدس واستخرج",
+                    "emoji": "🔫",
+                    "next": "extract_careful",
+                    "sets_flag": "flag_took_weapon",
+                    "points_reward": 1,
+                    "reputation": "ruthless",
+                    "color": "primary"
+                },
+                {
+                    "label": "تجاهل الأسلحة واستخرج",
+                    "emoji": "🔌",
+                    "next": "extract_careful",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "extract_fast": {
+            "text": "توصل سلكك العصبي بقوة. تتدفق البيانات كالسيل الجارف. تشعر بألم حاد في رأسك. البيانات ضخمة جداً وغير مشفرة بطريقة طبيعية.",
+            "choices": [
+                {
+                    "label": "تحمل الألم وأكمل",
+                    "emoji": "😬",
+                    "next": "death_neural_fry",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "افصل الاتصال فوراً",
+                    "emoji": "❌",
+                    "next": "disconnect_early",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_neural_fry": {
+            "text": "البيانات ضخمة جداً. تشعر وكأن دماغك يحترق، لكن بدلاً من الموت، تفقد وعيك وتستيقظ في مكان مظلم.",
+            "choices": [
+                {
+                    "label": "افتح عينيك بصعوبة",
+                    "emoji": "👁️",
+                    "next": "wake_up_in_dumpster",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "extract_careful": {
+            "text": "تقوم بإنشاء جدار حماية مؤقت قبل الاتصال. البيانات تتدفق ببطء. تلاحظ شفرة غريبة تختبئ بين ذكرياته العائلية، شفرة تبدو كأنها... حية.",
+            "choices": [
+                {
+                    "label": "اسحب الشفرة الحية",
+                    "emoji": "🧬",
+                    "next": "push_deeper",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "اسحب الذكريات فقط",
+                    "emoji": "🧠",
+                    "next": "extract_memories_only",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "افصل الاتصال لخطورتها",
+                    "emoji": "❌",
+                    "next": "disconnect_early",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "extract_memories_only": {
+            "text": "تتجنب الشفرة المشبوهة. لكن الشفرة تلتصق بالذكريات وتنتقل إليك رغماً عنك. تشعر بوخز بارد يزحف في عمودك الفقري.",
+            "choices": [
+                {
+                    "label": "تفحص نظامك الداخلي",
+                    "emoji": "💻",
+                    "next": "virus_enters",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "disconnect_early": {
+            "text": "تفصل السلك قبل اكتمال النقل. جسدك يرتجف، لكنك تسمع أصوات خطوات ثقيلة تقترب. أضواء حمراء تمسح الزقاق. 'كلاب الصيد' التابعة للشركة وصلوا.",
+            "choices": [
+                {
+                    "label": "اختبئ في الحاوية",
+                    "emoji": "🗑️",
+                    "next": "hide_dumpster",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "اهرب عبر الأزقة",
+                    "emoji": "🏃",
+                    "next": "flee_alley",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "واجههم بالمسدس",
+                    "emoji": "🔫",
+                    "next": "fight_hounds",
+                    "requires_flag": "flag_took_weapon",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "push_deeper": {
+            "text": "تسحب الشفرة الحية. بمجرد دخولها رأسك، تهمس لك بصوت مألوف: 'أخيراً'. الجثة أمامك تحترق آلياً. 'كلاب الصيد' يطوقون المكان.",
+            "choices": [
+                {
+                    "label": "اهرب عبر الأزقة",
+                    "emoji": "🏃",
+                    "next": "flee_alley",
+                    "reputation": "unknown",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "اختبئ في الحاوية",
+                    "emoji": "🗑️",
+                    "next": "hide_dumpster",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "virus_enters": {
+            "text": "النظام الداخلي يبلغ عن اختراق حرج. الفيروس يندمج مع قشرتك البصرية. ترى ومضات لمدينة تحترق. الخطوات تقترب.",
+            "choices": [
+                {
+                    "label": "اهرب بسرعة",
+                    "emoji": "🏃",
+                    "next": "flee_alley",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "تسلق الجدار المجاور",
+                    "emoji": "🧱",
+                    "next": "stealth_rooftops",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "fight_hounds": {
+            "text": "تطلق النار من المسدس النبضي. يسقط الحارس الأول، لكن الثاني أسرع بكثير. دروعه متطورة، وتحتاج لعدة محاولات لكسرها.",
+            "choices": [
+                {
+                    "label": "أطلق على رأسه",
+                    "emoji": "🎯",
+                    "next": "hound_helmet_bounce",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "استهدف مفصل ركبته",
+                    "emoji": "🦵",
+                    "next": "hound_knee_shot",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_hound_execution": {
+            "text": "رأسه محمي بخوذة من التيتانيوم الكربوني. ارتدت النبضة، وقبل أن تستوعب، اخترقت شفرته صدرك. كان يجب أن تستهدف نقطة ضعفه.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "hide_dumpster": {
+            "text": "تغوص بين النفايات التقنية. رائحة الزيت العفن تخفي رائحتك. الحراس يمسحون الزقاق بأجهزة استشعار حرارية.",
+            "choices": [
+                {
+                    "label": "خفّض حرارة جسمك",
+                    "emoji": "❄️",
+                    "next": "lower_temp",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "انتظر بصمت تام",
+                    "emoji": "🤫",
+                    "next": "wait_long",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "wait_long": {
+            "text": "الانتظار لم يكن كافياً. جهاز الاستشعار التقط حرارة قلبك المرتفعة. يفتحون غطاء الحاوية.",
+            "choices": [
+                {
+                    "label": "ألقِ قنبلة دخانية",
+                    "emoji": "💨",
+                    "next": "smoke_escape_attempt",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "lower_temp": {
+            "text": "تخفض طاقة نظامك الحيوي للحد الأدنى. الحراس يغادرون بعد لحظات. أنت ترتجف من البرد وضعف الطاقة.",
+            "choices": [
+                {
+                    "label": "اخرج لشبكة المجاري",
+                    "emoji": "🕳️",
+                    "next": "escape_sewers",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "اصعد للسطح",
+                    "emoji": "⬆️",
+                    "next": "stealth_rooftops",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "flee_alley": {
+            "text": "تركض في الأزقة الضيقة. الفيروس يرسل صوراً مشوشة لعقلك. ترى طفلاً متشرداً يختبئ في طريقك، بينما الحراس يلاحقونك.",
+            "choices": [
+                {
+                    "label": "ادفعه وواصل الركض",
+                    "emoji": "一把",
+                    "next": "push_kid",
+                    "reputation": "ruthless",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "اسحبه لبر الأمان",
+                    "emoji": "🫂",
+                    "next": "save_kid",
+                    "sets_flag": "flag_saved_orphan",
+                    "points_reward": 1,
+                    "reputation": "guardian",
+                    "color": "primary"
+                },
+                {
+                    "label": "انعطف يميناً وتجاهله",
+                    "emoji": "↪️",
+                    "next": "ignore_kid",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "push_kid": {
+            "text": "يسقط الطفل وتبكي صرخته. الحراس يتوقفون لفحصه، مما يمنحك وقتاً للهرب. أنت ناجٍ، لكنك تشعر بالخزي.",
+            "choices": [
+                {
+                    "label": "اتجه للمنزل الآمن",
+                    "emoji": "🏠",
+                    "next": "safe_house",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "ignore_kid": {
+            "text": "تنعطف بسرعة. الطفل يهرب في الاتجاه المعاكس. تجد نفسك أمام طريق مسدود وجدار مرتفع.",
+            "choices": [
+                {
+                    "label": "تسلق الجدار",
+                    "emoji": "🧱",
+                    "next": "stealth_rooftops",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "ادخل الممر السري",
+                    "emoji": "🌑",
+                    "next": "dark_secret_corridor_entry",
+                    "points_reward": 1,
+                    "color": "secondary"
+                }
+            ]
+        },
+        "save_kid": {
+            "text": "تسحبه خلف بعض البراميل. الطفل ينظر إليك بامتنان ويهمس لك بكلمة سر لعيادة طبيب سري (ريبر-دوك).",
+            "choices": [
+                {
+                    "label": "توجه للعيادة السرية",
+                    "emoji": "🏥",
+                    "next": "meet_ripperdoc",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "توجه للمنزل الآمن",
+                    "emoji": "🏠",
+                    "next": "safe_house",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "stealth_rooftops": {
+            "text": "الهواء هنا أنقى قليلاً. تقفز بين الأسطح. فجأة، الفيروس يضرب بقوة. ترى جسراً متوهجاً يمتد بين مبنيين متباعدين جداً.",
+            "choices": [
+                {
+                    "label": "امشِ على الجسر",
+                    "emoji": "🌉",
+                    "next": "bridge_illusion_start",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "أغمض عينيك واقفز",
+                    "emoji": "🙈",
+                    "next": "jump_blind",
+                    "points_reward": 1,
+                    "color": "success"
+                },
+                {
+                    "label": "ابحث عن طريق آخر",
+                    "emoji": "🔍",
+                    "next": "safe_house",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_hallucination_fall": {
+            "text": "الجسر كان وهماً زرعه الفيروس في قشرتك البصرية. خطوت نحو الفراغ السحيق. الجاذبية لا ترحم المخدوعين.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "jump_blind": {
+            "text": "تعتمد على ذاكرتك العضلية بدل بصرك. تقفز وتتدحرج على السطح المقابل. الفيروس يتراجع مؤقتاً.",
+            "choices": [
+                {
+                    "label": "توجه للمنزل الآمن",
+                    "emoji": "🏠",
+                    "next": "safe_house",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "escape_sewers": {
+            "text": "المجاري مظلمة وتفوح منها رائحة المواد الكيميائية. تسمع أصوات تنقيب. عصابات التنظيف تبحث عن قطع الغيار هنا.",
+            "choices": [
+                {
+                    "label": "تسلل بحذر شديد",
+                    "emoji": "🤫",
+                    "next": "sewer_stealth",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "اصنع ضجيجاً كفخ",
+                    "emoji": "🔊",
+                    "next": "sewer_trap",
+                    "reputation": "ruthless",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "sewer_stealth": {
+            "text": "تعبر ببطء. الفيروس يجعلك ترى أشباحاً في الظلام، لكنك تتماسك. تجد مخرجاً يقود للسطح قرب المنزل الآمن.",
+            "choices": [
+                {
+                    "label": "اخرج للمنزل الآمن",
+                    "emoji": "🏠",
+                    "next": "safe_house",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "sewer_trap": {
+            "text": "ترمي قطعة معدنية. العصابة تقترب. تستغل الفرصة للهروب، لكنهم يطلقون النار عشوائياً.",
+            "choices": [
+                {
+                    "label": "اركض متعرجاً",
+                    "emoji": "🏃",
+                    "next": "death_cleaner_ambush",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "اختبئ في أنبوب",
+                    "emoji": "🕳️",
+                    "next": "safe_house",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_cleaner_ambush": {
+            "text": "رصاصة طائشة استقرت في عمودك الفقري. العصابات لا ترحم من يغزو أراضيها. أصبحت أنت الخردة الآن.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "safe_house": {
+            "text": "تصل لمنزلك الآمن. غرفة ضيقة جدرانها مغطاة بشاشات. رأسك يكاد ينفجر من الألم. تحتاج لمساعدة لاستخراج الفيروس.",
+            "choices": [
+                {
+                    "label": "اذهب للريبر-دوك",
+                    "emoji": "🏥",
+                    "next": "meet_ripperdoc",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "ابحث عن علاج بنفسك",
+                    "emoji": "💻",
+                    "next": "search_cure_alone",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "استرح لبعض الوقت",
+                    "emoji": "💤",
+                    "next": "rest_fatal",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "rest_fatal": {
+            "text": "تنام من الإرهاق.",
+            "choices": [
+                {
+                    "label": "استيقظ",
+                    "emoji": "👁️",
+                    "next": "death_virus_consumption",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_virus_consumption": {
+            "text": "لم تستيقظ أبداً. الفيروس سيطر على وظائفك الحيوية وأطفأ قلبك. النوم كان خطيئة مميتة.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "search_cure_alone": {
+            "text": "تتصل بالشبكة المظلمة. تجد برمجية مسح قوية، لكنها تستهلك طاقة هائلة قد تدمر دماغك.",
+            "choices": [
+                {
+                    "label": "شغل برمجية المسح",
+                    "emoji": "⚡",
+                    "next": "death_neural_purge",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "اذهب للريبر-دوك",
+                    "emoji": "🏥",
+                    "next": "meet_ripperdoc",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_neural_purge": {
+            "text": "شغلت البرمجية. سحبت الطاقة من جسدك بالكامل. الفيروس مات، لكن عقلك مُسح تماماً. أصبحت جثة تتنفس.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "meet_ripperdoc": {
+            "text": "العيادة السرية تفوح برائحة المعقمات الرخيصة. الطبيب 'فيك' ينظر لفحصك العصبي بعينين واسعتين. 'هذا ليس فيروساً عادياً... هذا الفيروس يحمل بصمتك أنت'.",
+            "choices": [
+                {
+                    "label": "كيف يكون بصمتي؟",
+                    "emoji": "❓",
+                    "next": "question_doc",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "استخرجه فوراً وفقط",
+                    "emoji": "🔪",
+                    "next": "trust_doc",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "امسح دماغه وهدده",
+                    "emoji": "🔫",
+                    "next": "threaten_doc",
+                    "reputation": "ruthless",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "trust_doc": {
+            "text": "تستلقي على كرسي الجراحة. يوصلك بالأجهزة. فجأة تشعر بشلل نصفي. فيك يبتسم: 'الشركة ستدفع الملايين مقابل رأسك'.",
+            "choices": [
+                {
+                    "label": "قاوم المخدر",
+                    "emoji": "💪",
+                    "next": "death_ripperdoc_betrayal",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "أرسل نبضة كهربائية",
+                    "emoji": "⚡",
+                    "next": "shock_doc",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_ripperdoc_betrayal": {
+            "text": "المخدر كان أقوى. استيقظت لتجد نفسك مجرد رأس موصول بآلة في مختبرات الشركة. خيانتك كانت متوقعة، لكنك كنت أعمى.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "shock_doc": {
+            "text": "تستخدم طاقة الفيروس لإرسال صدمة عبر أجهزته. تحترق العيادة. تهرب قبل وصول قوات الشركة.",
+            "choices": [
+                {
+                    "label": "اذهب لبرج البث",
+                    "emoji": "🗼",
+                    "next": "spire_approach_stealth",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "threaten_doc": {
+            "text": "ترفع السلاح بوجهه. يرتجف ويعترف: 'الفيروس مصمم لمسح القطاع السفلي بأكمله، وأنت من برمجته قبل أن تمسح الشركة ذاكرتك لتعاقبك'.",
+            "choices": [
+                {
+                    "label": "اقتله واغادر",
+                    "emoji": "🔪",
+                    "next": "kill_doc",
+                    "reputation": "ruthless",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "اتركه واغادر",
+                    "emoji": "🚶",
+                    "next": "revelation_truth",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "kill_doc": {
+            "text": "تتركه جثة هامدة. الحقيقة قاسية. أنت المهندس الذي صنع هذا السلاح. الآن يجب أن توقفه.",
+            "choices": [
+                {
+                    "label": "توجه لبرج البث",
+                    "emoji": "🗼",
+                    "next": "spire_approach_loud",
+                    "sets_flag": "flag_found_truth",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "question_doc": {
+            "text": "يعرض لك الشفرة. 'انظر للتوقيع الرقمي. إنه أنت. لقد كنت كبير مهندسي الشركة. صنعته، ندمت، مسحوا ذاكرتك، ورموك هنا'.",
+            "choices": [
+                {
+                    "label": "أريد استعادة ذاكرتي",
+                    "emoji": "🧠",
+                    "next": "restore_memory",
+                    "sets_flag": "flag_found_truth",
+                    "points_reward": 2,
+                    "color": "primary"
+                },
+                {
+                    "label": "تجاهل الماضي واهرب",
+                    "emoji": "🏃",
+                    "next": "flee_doc_truth",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "restore_memory": {
+            "text": "فيك يدمج الفيروس مع ذاكرتك المتبقية. ترى كل شيء. أنت صنعت هذا الفيروس ليكون أداة لتحرير العقول، لكن الشركة حولته لسلاح دمار.",
+            "choices": [
+                {
+                    "label": "توجه لبرج البث",
+                    "emoji": "🗼",
+                    "next": "spire_approach_stealth",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "flee_doc_truth": {
+            "text": "تهرب من العيادة. لا تريد معرفة من كنت. لكن الفيروس ينبض. الطريقة الوحيدة لإيقافه أو إطلاقه هي عبر برج البث الرئيسي.",
+            "choices": [
+                {
+                    "label": "توجه لبرج البث",
+                    "emoji": "🗼",
+                    "next": "spire_approach_stealth",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "revelation_truth": {
+            "text": "تخرج للشارع. الأمطار تغسل وجهك. أنت الوحش الذي صنع هذا الخراب. برج البث الشاهق يلوح في الأفق.",
+            "choices": [
+                {
+                    "label": "اقترب من البرج خلسة",
+                    "emoji": "🤫",
+                    "next": "spire_approach_stealth",
+                    "sets_flag": "flag_found_truth",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "هاجم البوابة الأمامية",
+                    "emoji": "💥",
+                    "next": "spire_approach_loud",
+                    "sets_flag": "flag_found_truth",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "spire_approach_loud": {
+            "text": "تهاجم حراس البوابة. تندلع معركة عنيفة. تستخدم كل ما لديك، لكن الدعم الجوي يصل.",
+            "choices": [
+                {
+                    "label": "استمر بالقتال",
+                    "emoji": "⚔️",
+                    "next": "death_loud_assault",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "تراجع للتهوية",
+                    "emoji": "🌬️",
+                    "next": "spire_vents",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_loud_assault": {
+            "text": "الرشاشات الثقيلة من الطائرات المسيرة مزقتك إرباً. الشجاعة بلا تخطيط هي مجرد انتحار غبي.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "spire_approach_stealth": {
+            "text": "البرج محمي بجدار طاقة. تجد نقطة ضعف في نظام التبريد الخلفي.",
+            "choices": [
+                {
+                    "label": "تسلق أنابيب التبريد",
+                    "emoji": "🧗",
+                    "next": "spire_climb",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "ادخل عبر فتحات التهوية",
+                    "emoji": "🌬️",
+                    "next": "spire_vents",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_fan_blades": {
+            "text": "صدقت وهم الفيروس. الشفرات المعدنية قطعت جسدك. عقلك خانك في اللحظة الحاسمة.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "stop_fan": {
+            "text": "تعطل المروحة بصعوبة وتعبر. تجد نفسك في غرفة الخوادم الرئيسية أسفل قمة البرج.",
+            "choices": [
+                {
+                    "label": "اصعد لقمة البرج",
+                    "emoji": "⬆️",
+                    "next": "final_confrontation",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "spire_vents": {
+            "text": "الفتحات ضيقة ومظلمة، لكنك تزحف بصعوبة متجنباً الدوريات. تصل إلى منطقة بها مروحة عملاقة تدور بسرعة. الفيروس يجعلك ترى المروحة كبوابة نور.",
+            "choices": [
+                {
+                    "label": "اعبر البوابة بسرعة",
+                    "emoji": "🏃",
+                    "next": "death_fan_blades",
+                    "points_reward": 0,
+                    "color": "danger"
+                },
+                {
+                    "label": "أوقف المروحة أولاً",
+                    "emoji": "🛑",
+                    "next": "stop_fan",
+                    "points_reward": 1,
+                    "color": "success"
+                }
+            ]
+        },
+        "spire_climb": {
+            "text": "تتسلق من الخارج. الرياح العاتية تكاد تسقطك. طائرة مراقبة تقترب منك.",
+            "choices": [
+                {
+                    "label": "توقف بلا حراك",
+                    "emoji": "🗿",
+                    "next": "climb_freeze",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "قفز نحو الشرفة",
+                    "emoji": "🦘",
+                    "next": "final_confrontation",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "climb_freeze": {
+            "text": "الطائرة تمر بجوارك مباشرة دون أن ترصدك. تكمل تسلقك ببطء نحو القمة.",
+            "choices": [
+                {
+                    "label": "ادخل غرفة التحكم",
+                    "emoji": "🚪",
+                    "next": "final_confrontation",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "final_confrontation": {
+            "text": "أنت في غرفة البث الرئيسية. واجهة التحكم المركزية تلمع أمامك. قائد 'كلاب الصيد' يدخل الغرفة خلفك. 'الشركة تشكرك على إيصال الفيروس. الآن سلمنا رأسك'.",
+            "choices": [
+                {
+                    "label": "تحدث معه",
+                    "emoji": "🗣️",
+                    "next": "death_hesitation",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "أطلق النار فوراً",
+                    "emoji": "🔫",
+                    "next": "shoot_boss",
+                    "requires_flag": "flag_took_weapon",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "اربط عقلك بالشبكة",
+                    "emoji": "🔌",
+                    "next": "plug_in_system",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_hesitation": {
+            "text": "حاولت التفاوض. رصاصته اخترقت جبهتك قبل أن تنهي جملتك. في هذا العالم، التردد هو الانتحار.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "shoot_boss": {
+            "text": "تطلق النار، تصيبه في كتفه لكنه يواصل التقدم. تستغل الثانية التي تعثر فيها للقفز نحو واجهة التحكم.",
+            "choices": [
+                {
+                    "label": "اربط عقلك بالشبكة",
+                    "emoji": "🔌",
+                    "next": "plug_in_system",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "plug_in_system": {
+            "text": "توصل وصلتك العصبية بالنظام المركزي. الزمن يتوقف. وعيك ينتشر في كل شبكات المدينة. الفيروس جاهز للانطلاق. ماذا ستفعل الآن؟",
+            "choices": [
+                {
+                    "label": "أطلق الفيروس المدمر",
+                    "emoji": "💥",
+                    "next": "ending_a",
+                    "requires_flag": "flag_found_truth",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "احبس الفيروس في عقلي",
+                    "emoji": "🔒",
+                    "next": "ending_b",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "أذب دماغي لقتله",
+                    "emoji": "🔥",
+                    "next": "ending_c",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "أعد برمجة الفيروس",
+                    "emoji": "🕊️",
+                    "next": "ending_d",
+                    "required_points": 8,
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "ابحث عن خيار آخر",
+                    "emoji": "🔍",
+                    "next": "death_recursive_loop",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_recursive_loop": {
+            "text": "حاولت البحث في النظام، لكن الفيروس ابتلع وعيك. حوصرت في حلقة ذكريات لا نهائية. مات جسدك، لكن عقلك يكرر هذه اللحظة للأبد.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "ending_a": {
+            "text": "أطلقت الفيروس. موجة كهرومغناطيسية عصبية ضربت القطاع. كل من يملك وصلة عصبية مسحت ذكرياته، بمن فيهم أنت. استيقظت في اليوم التالي وسط ملايين البشر الذين لا يعرفون من هم. لقد دمرت سجن الشركة، لكنك خلقت فوضى مرعبة. هل الحرية تستحق ثمن فقدان هويتنا؟",
+            "is_ending": true,
+            "ending_type": "ending_a",
+            "choices": []
+        },
+        "ending_b": {
+            "text": "سحبت الفيروس بالكامل إلى رأسك وفصلت الاتصال. قائد الحراس تركك تعيش لأنك لم تعد تشكل خطراً فورياً. أنت الآن تعيش في الأزقة مجدداً، تقاتل كل يوم وحشاً رقمياً يحاول السيطرة على جسدك. أنقذت القطاع، لكنك حولت عقلك إلى سجن أبدي. إلى متى ستصمد قبل أن تنهار؟",
+            "is_ending": true,
+            "ending_type": "ending_b",
+            "choices": []
+        },
+        "ending_c": {
+            "text": "بدأت عملية صهر قشرتك العصبية. الألم لا يطاق. الفيروس يصرخ داخل رأسك بينما يحترق. تسقط ميتاً على لوحة التحكم. قائد الحراس ينظر لجثتك بذهول. لقد مت، لكنك صححت خطيئتك القديمة ومحوت سلاح الدمار من الوجود. هل يكفي الموت للتكفير عن خطايا الماضي؟",
+            "is_ending": true,
+            "ending_type": "ending_c",
+            "choices": []
+        },
+        "ending_d": {
+            "text": "استخدمت معرفتك العميقة وخبرتك الطويلة. أعدت كتابة شيفرة الفيروس في ثوانٍ. بدلاً من المسح، أرسلت تحديثاً يكسر قيود الشركة عن أطواق المواطنين ويعيد لهم ذكرياتهم المسروقة، بما فيها ذاكرتك أنت. تذكرت اسمك، تذكرت عائلتك، وتذكرت كيف تقاتل. القطاع السفلي يثور الآن، وأنت قائدهم. هل أنت مستعد للحرب القادمة؟",
+            "is_ending": true,
+            "ending_type": "ending_d",
+            "choices": []
+        },
+        "street_dealer": {
+            "text": "تقابل تاجراً في الشارع يعرض عليك دواءً يخفف الألم.",
+            "choices": [
+                {
+                    "label": "خذ الدواء",
+                    "emoji": "💊",
+                    "next": "death_fake_cure",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "ارفض واكمل",
+                    "emoji": "❌",
+                    "next": "safe_house",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "death_fake_cure": {
+            "text": "الدواء كان سماً رخيصاً يستعمل لسرقة أعضاء المدمنين. الفيروس لم يقتلك، بل سذاجتك في الوثوق بتاجر شوارع. نهايتك رخيصة.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "dark_secret_corridor_entry": {
+            "text": "الممر السري مظلم وبارد. جدرانه تنضح بالرطوبة التقنية. تتساءل عن عدد الأشباح الذين عبروا من هنا قبلك.",
+            "choices": [
+                {
+                    "label": "استمر بالتقدم",
+                    "emoji": "➡️",
+                    "next": "dripping_pipe_path",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "dripping_pipe_path": {
+            "text": "ضوء أحمر خافت ينير نهاية الممر. صوت قطرات ماء منتظمة يشبه دقات قلب صناعي.",
+            "choices": [
+                {
+                    "label": "استمر بالتقدم",
+                    "emoji": "➡️",
+                    "next": "forgotten_cyborg_corpse",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "forgotten_cyborg_corpse": {
+            "text": "تجد جثة قديمة لسايبورغ متحلل. لقد استسلم قبل أن يصل لنهايته.",
+            "choices": [
+                {
+                    "label": "تجاهل الجثة وأكمل",
+                    "emoji": "➡️",
+                    "next": "virus_whispers_corridor",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "virus_whispers_corridor": {
+            "text": "يبدأ الفيروس بالهمس مجدداً. يحاول إقناعك بالعودة، بالاستسلام، لكنك تقاوم.",
+            "choices": [
+                {
+                    "label": "استمر بالتقدم",
+                    "emoji": "➡️",
+                    "next": "upward_steep_climb",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "upward_steep_climb": {
+            "text": "الممر ينعطف حاداً نحو الأعلى. تشعر باقترابك من السطح ومن الحقيقة.",
+            "choices": [
+                {
+                    "label": "استمر بالتقدم",
+                    "emoji": "➡️",
+                    "next": "street_dealer",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "wake_up_in_dumpster": {
+            "text": "تجد نفسك ملقى في حاوية نفايات. لقد رماك أحد منظفي الشوارع ظناً أنك ميت.",
+            "choices": [
+                {
+                    "label": "ازحف للخارج",
+                    "emoji": "🚯",
+                    "next": "hide_dumpster",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "hound_helmet_bounce": {
+            "text": "رأسه محمي بخوذة من التيتانيوم. ارتدت النبضة بقوة. يندفع نحوك بغضب محاولاً سحقك.",
+            "choices": [
+                {
+                    "label": "تدحرج لتفادي ضربته",
+                    "emoji": "🔄",
+                    "next": "hound_dodge_roll",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "hound_dodge_roll": {
+            "text": "تتدحرج بصعوبة. يضرب الحائط خلفك. الفرصة سانحة لرد الهجوم أو الهرب.",
+            "choices": [
+                {
+                    "label": "اهرب بسرعة",
+                    "emoji": "🏃",
+                    "next": "flee_alley",
+                    "points_reward": 0,
+                    "color": "primary"
+                },
+                {
+                    "label": "حاول طعنه",
+                    "emoji": "🔪",
+                    "next": "death_hound_execution",
+                    "points_reward": 0,
+                    "color": "danger"
+                }
+            ]
+        },
+        "hound_knee_shot": {
+            "text": "تصيب مفصل ركبته. يفقد توازنه ويسقط على ركبة واحدة.",
+            "choices": [
+                {
+                    "label": "اهرب عبر الأزقة",
+                    "emoji": "🏃",
+                    "next": "flee_alley",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "smoke_escape_attempt": {
+            "text": "الدخان يعمي أبصارهم مؤقتاً، لكن الرصاص يتطاير عشوائياً.",
+            "choices": [
+                {
+                    "label": "اركض متعرجاً",
+                    "emoji": "🏃",
+                    "next": "death_hound_execution",
+                    "points_reward": 0,
+                    "color": "danger"
+                },
+                {
+                    "label": "انبطح وزحف",
+                    "emoji": "🐛",
+                    "next": "escape_sewers",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        },
+        "bridge_illusion_start": {
+            "text": "تضع قدمك على الجسر المضيء. تشعر أنه صلب، لكن عقلك يصرخ بأن هذا مستحيل.",
+            "choices": [
+                {
+                    "label": "أكمل السير ببطء",
+                    "emoji": "🚶",
+                    "next": "death_hallucination_fall",
+                    "points_reward": 0,
+                    "color": "danger"
+                },
+                {
+                    "label": "تراجع وتفحص جيدا",
+                    "emoji": "🔙",
+                    "next": "safe_house",
+                    "points_reward": 0,
+                    "color": "primary"
+                }
+            ]
+        }
+    }
+}

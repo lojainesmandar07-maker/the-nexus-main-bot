@@ -1,5 +1,6 @@
 import os
 import threading
+import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 from core.bot import StoryBot
@@ -36,7 +37,13 @@ def main() -> None:
         server_thread.start()
 
     bot = StoryBot()
-    bot.run(DISCORD_TOKEN)
+    try:
+        bot.run(DISCORD_TOKEN)
+    except Exception as e:
+        print(f"Bot crashed: {e}")
+        print("Sleeping for 60 seconds to prevent rapid restart loop and rate limits...")
+        time.sleep(60)
+        raise e
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
   "world": "الفانتازيا",
   "categories": [
     {
-      "name": "حروب الظل",
+      "name": "الفانتازيا المظلمة",
       "stories": [
         {
           "id": "fb3_lowly_goblin",
@@ -10,7 +10,7 @@
           "summary": "أنت غول صغير هزيل في زنزانة دامسة. أبطال متغطرسون يذبحون عشيرتك، وعليك النجاة بالمكر والخيانة وربما التحول إلى شيء أشد ظلمة.",
           "difficulty": "صعب",
           "estimated_length": "طويلة",
-          "theme": "حروب الظل",
+          "theme": "الفانتازيا المظلمة",
           "world_type": "fantasy",
           "game_mode": "single",
           "perspectives": [

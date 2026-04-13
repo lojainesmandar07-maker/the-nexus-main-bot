@@ -23,20 +23,35 @@ Auto-organized index for planning and generation continuity.
 ### الفانتازيا المظلمة
 - ID `301` | Series `1` | Scenes `37` | **لعنة الدمار: ظلال المدينة المنسية** (`sp_dark_fantasy_1.json`)
 
+### ذكاء اصطناعي يتمرد
+- ID `fu_code_silence` | Scenes `89` | **شفرة الصمت** (`fu_code_silence.json`)
+
 ## Event (multi)
 ### اختبارات أسطورية
 
 
 ### المعضلات الأخلاقية
+- ID `mp_who_is_lying_branching` | Scenes `42` | **من يكذب؟** (`mp_who_is_lying_branching.json`)
+- ID `mp_last_city_branching` | Scenes `28` | **آخر مدينة** (`mp_last_city_branching.json`)
+- ID `mp_decision_branching` | Scenes `41` | **القرار الأخير** (`mp_decision_branching.json`)
 
 
 ### سياسة الممالك
 
 
 ### نجاة الفريق
-- ID `201` | Series `1` | Scenes `36` | **ليلة بلا قمر: مصحة الأرواح المنسية** (`mp_survival_1.json`)
 
 ### الفانتازيا المظلمة (World Stories - Batch 1)
+- ID `fb2_shapeshifter` | Scenes `24` | **قناع المختار** (`fantasy_shapeshifter.json`)
+- ID `fb2_familiar` | Scenes `30` | **غراب الساحرة الأسير** (`fantasy_familiar.json`)
+- ID `fb3_dungeon_slime` | Scenes `44` | **معدة القاع** (`fb3_dungeon_slime.json`)
+- ID `fb2_ghost` | Scenes `21` | **شبح القلعة الباردة** (`fantasy_ghost.json`)
+- ID `fb2_charlatan` | Scenes `20` | **خدعة النصّاب الأخيرة** (`fantasy_charlatan.json`)
+- ID `fb3_puppet` | Scenes `75` | **خيوط لا تُرى** (`fb3_puppet.json`)
+- ID `fb3_silent_shadow` | Scenes `58` | **حين يتمرّد الظل** (`fb3_silent_shadow.json`)
+- ID `fb2_architect` | Scenes `31` | **مهندس المتاهة السوداء** (`fantasy_architect.json`)
+- ID `fb3_opportunist_blacksmith` | Scenes `44` | **حداد على الحد الفاصل** (`fb3_opportunist_blacksmith.json`)
+- ID `fb3_lowly_goblin` | Scenes `49` | **ليلة الناب المكسور** (`fb3_lowly_goblin.json`)
 - ID `fb1_mailman` | Series `1` | Scenes `23` | **ساعي البريد** (`fantasy_mailman.json`)
 - ID `fb1_usurper` | Series `1` | Scenes `15` | **سارق التاج** (`fantasy_usurper.json`)
 - ID `fb1_blade` | Series `1` | Scenes `15` | **النصل الملعون** (`fantasy_blade.json`)

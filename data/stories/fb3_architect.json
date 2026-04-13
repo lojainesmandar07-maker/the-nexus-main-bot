@@ -324,7 +324,7 @@
       "text": "تلتقط السيف وتطعن الحارس. يطلق صرخة مكتومة قبل أن يموت. لكن الصرخة كانت كافية لتفعيل فخ صوتي في الغرفة. تنطلق سهام من الجدران.",
       "choices": [
         {
-          "label": " احتمِ بجثة الحارس",
+          "label": "احتمِ بجثة الحارس",
           "emoji": "🛡️",
           "next": "shield_body",
           "points_reward": 1,
@@ -335,7 +335,7 @@
           "reputation": null
         },
         {
-          "label": " اركض نحو الممر",
+          "label": "اركض نحو الممر",
           "emoji": "🏃",
           "next": "death_arrows",
           "points_reward": 0,
@@ -1302,20 +1302,32 @@
       ]
     },
     "dark_room_wakeup": {
-      "text": "تستيقظ. رأسك يؤلمك. أنت في غرفة الحرس القديمة.",
+      "text": "تستيقظ. رأسك يؤلمك. أنت في غرفة الحرس القديمة. تجد حارساً نائماً على كرسي، وهناك مفتاح معلق على حزامه، وبجواره سيف قصير.",
       "choices": [
         {
-          "label": "افتح الباب الخشبي",
-          "emoji": "🚪",
-          "next": "wooden_door",
-          "points_reward": 0,
+          "label": "اسرق المفتاح بخفة",
+          "emoji": "🔑",
+          "next": "steal_key",
+          "points_reward": 2,
+          "color": "primary",
           "required_points": null,
           "sets_flag": null,
           "requires_flag": null,
-          "reputation": null,
-          "color": "primary"
+          "reputation": null
+        },
+        {
+          "label": "اقتل الحارس بالسيف",
+          "emoji": "🗡️",
+          "next": "kill_guard",
+          "points_reward": 0,
+          "reputation": "ruthless",
+          "color": "primary",
+          "required_points": null,
+          "sets_flag": null,
+          "requires_flag": null
         }
-      ]
+      ],
+      "is_ending": false
     },
     "death_break_mirror": {
       "text": "تكسر المرآة بغضب. تتناثر الشظايا وتتحول إلى كائنات زجاجية صغيرة تمزق جسدك قطعة قطعة. لقد دمرت انعكاسك ودمرت نفسك.",
@@ -1335,5 +1347,12 @@
       "ending_type": "death",
       "choices": []
     }
+  },
+  "perspective": {
+    "id": "architect",
+    "label": "المهندس",
+    "emoji": "👤",
+    "description": "أنت من صمم هذا المكان.",
+    "start_node": "start"
   }
 }

@@ -577,21 +577,22 @@ nodes["p_node9_fight_inq"] = {
 
 # More filler nodes for branching depth
 for i in range(11, 46):
-    nodes[f"p_node{i}_filler"] = {
-        "text": f"ممر جانبي في الأرشيف (عقدة إضافية للتشعب وتعميق القصة رقم {i}). تجد نفسك تمشي في الظلام.",
-        "choices": [
-            {
-                "label": "امش يمينا",
-                "emoji": "➡️",
-                "next": f"p_node{i+1}_filler" if i < 45 else "p_node10_west"
-            },
-            {
-                "label": "امش يسارا",
-                "emoji": "⬅️",
-                "next": f"p_node{i+1}_filler" if i < 45 else "p_node10_west"
-            }
-        ]
-    }
+        nodes[f"p_node{i}_filler"] = {
+            "text": f"ممر جانبي في الأرشيف (عقدة إضافية للتشعب وتعميق القصة رقم {i}). تجد نفسك تمشي في الظلام.",
+            "is_ending": False,
+            "choices": [
+                {
+                    "label": "امش يمينا",
+                    "emoji": "➡️",
+                    "next": f"p_node{i+1}_filler" if i < 45 else "p_node10_west"
+                },
+                {
+                    "label": "امش يسارا",
+                    "emoji": "⬅️",
+                    "next": f"p_node{i+1}_filler" if i < 45 else "p_node10_west"
+                }
+            ]
+        }
 # We connect node 8 to a filler path
 nodes["p_node8_documents"]["choices"].append({
     "label": "اهرب في ممر سري",

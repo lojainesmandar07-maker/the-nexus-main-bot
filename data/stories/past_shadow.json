@@ -670,7 +670,7 @@
           "points_reward": 2
         },
         {
-          "label": "دع القاتل يهرب وحذر الوزير",
+          "label": "اترك القاتل وحذر الوزير",
           "emoji": "🗣️",
           "next": "let_assassin_go"
         }

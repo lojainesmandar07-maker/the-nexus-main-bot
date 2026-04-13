@@ -42,3 +42,8 @@ Auto-organized index for planning and generation continuity.
 - ID `fb1_blade` | Series `1` | Scenes `15` | **النصل الملعون** (`fantasy_blade.json`)
 - ID `fb1_healer` | Series `1` | Scenes `16` | **المعالج** (`fantasy_healer.json`)
 - ID `fb1_dragon` | Series `1` | Scenes `16` | **التنين** (`fantasy_dragon.json`)
+- ID `fb3_sentient_sword` | Series `1` | Scenes `80` | **لعنة النصل النائم** (`fantasy_sentient_sword.json`)
+
+## Alt Reality (alternate)
+### الواقع يتكسر
+- ID `al_broken_mirrors` | Series `1` | Scenes `88` | **صدى المرايا المكسورة** (`al_broken_mirrors.json`)

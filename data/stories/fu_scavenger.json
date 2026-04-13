@@ -1,0 +1,1108 @@
+{
+    "id": "fu_scavenger",
+    "title": "صدى الرماد",
+    "world": "المستقبل",
+    "world_type": "future",
+    "category": "كوكب محتضر",
+    "theme": "كوكب محتضر",
+    "summary": "الرماد يغطي كل شيء. أنت نباش تبحث في الخرائب، حتى تجد 'عين الفجر'، نواة طاقة قد تغير مصير الكوكب.",
+    "difficulty": "صعب جداً",
+    "estimated_length": "طويلة جداً",
+    "game_mode": "single",
+    "perspective": {
+        "id": "scavenger",
+        "label": "النباش",
+        "emoji": "☢️",
+        "description": "ناجٍ وحيد، يبحث عن الخردة ليبيعها للمجمع الحاكم.",
+        "start_node": "start"
+    },
+    "nodes": {
+        "start": {
+            "text": "الرياح السامة تعوي خارج بدلتك البالية. تقف أمام أطلال منشأة قديمة. جهاز الرصد في معصمك يلتقط إشارة ضعيفة، نبض طاقة لم تره من قبل، قادم من أعماق القبو المظلم.",
+            "choices": [
+                {
+                    "label": "تتبع الإشارة بحذر",
+                    "emoji": "🔦",
+                    "next": "investigate_signal",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "تجاهل الإشارة وعد",
+                    "emoji": "🚶",
+                    "next": "ignore_signal_death",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "ignore_signal_death": {
+            "text": "الخوف غلبك. استدرت لتعود إلى المخيم، لكن عاصفة سامة مفاجئة هبت. بدلتك البالية لم تحتمل الإشعاع الكثيف. متّ وحيداً في الرماد، ولم يعلم أحد بوجودك. أحياناً، الجبن هو أسرع طريق للموت.",
+            "is_ending": true,
+            "choices": []
+        },
+        "investigate_signal": {
+            "text": "نزلت إلى القبو. الرطوبة والظلام يحيطان بك. تجد باباً معدنياً ثقيلاً نصف مفتوح. الإشارة تنبعث من خلفه بقوة. الباب محشور بسبب الركام.",
+            "choices": [
+                {
+                    "label": "احفر الركام بيديك",
+                    "emoji": "🧤",
+                    "next": "dig_carefully",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "فجر الباب بمتفجرات",
+                    "emoji": "💣",
+                    "next": "blast_debris",
+                    "color": "danger",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "blast_debris": {
+            "text": "وضعت شحنة صغيرة. الانفجار أزاح الركام، لكنه أحدث شرخاً في نواة الطاقة بالداخل. موجة إشعاعية هائلة اجتاحتك، احترقت أعضاؤك الداخلية في ثوانٍ. القوة الغاشمة ليست الحل دائماً.",
+            "is_ending": true,
+            "choices": []
+        },
+        "dig_carefully": {
+            "text": "بعد ساعات من الجهد، فتحت الفجوة. في المنتصف، أسطوانة متوهجة بنور أزرق نقي، 'عين الفجر'. إنها دافئة، وتكاد تسمع طنيناً خافتاً يشبه النبض.",
+            "choices": [
+                {
+                    "label": "خذها وضعها بحقيبتك",
+                    "emoji": "🎒",
+                    "next": "take_core",
+                    "points_reward": 1,
+                    "reputation": "selfish",
+                    "color": "primary"
+                },
+                {
+                    "label": "تأملها وحاول الفهم",
+                    "emoji": "👁️",
+                    "next": "listen_core",
+                    "points_reward": 2,
+                    "sets_flag": "flag_core_whispers",
+                    "reputation": "unknown",
+                    "color": "primary"
+                }
+            ]
+        },
+        "take_core": {
+            "text": "وضعتها في حقيبة العزل. النبضات تتسارع. فجأة، تسمع أصوات خطوات ثقيلة ومحركات تقترب من السطح. دورية تابعة لـ 'المجمع' ربما رصدت الانبعاثات.",
+            "choices": [
+                {
+                    "label": "اختبئ في الظلام",
+                    "emoji": "🥷",
+                    "next": "hide_from_patrol",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اخرج وفاوضهم",
+                    "emoji": "🗣️",
+                    "next": "negotiate_patrol",
+                    "color": "danger",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "listen_core": {
+            "text": "ركزت في الطنين. فجأة، تحول الطنين إلى صوت هامس في عقلك: 'أخيراً... شخص يسمعني'. فزعت، لكنك أدركت قيمتها الحقيقية. أصوات دورية تقترب من السطح.",
+            "choices": [
+                {
+                    "label": "اختبئ في الظلام",
+                    "emoji": "🥷",
+                    "next": "hide_from_patrol",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اهرب عبر مجاري الصرف",
+                    "emoji": "🏃",
+                    "next": "escape_sewers",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "negotiate_patrol": {
+            "text": "خرجت رافعاً يديك، عارضاً عليهم النواة مقابل مكافأة ومكان في مدينتهم المريحة. القائد نظر إليك، أخذ النواة، ثم أطلق النار على رأسك. لا يتركون شهوداً.",
+            "is_ending": true,
+            "choices": []
+        },
+        "hide_from_patrol": {
+            "text": "كتمت أنفاسك في زاوية مظلمة. جنود المجمع المسلحون نزلوا بأضواء كاشفة. بحثوا قليلاً، ثم غادروا لاعتقادهم أن الإشارة كانت خطأ تقنياً. أنت آمن مؤقتاً.",
+            "choices": [
+                {
+                    "label": "اتجه لسوق الخردة",
+                    "emoji": "🏪",
+                    "next": "hide_from_patrol_wait",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "ابحث عن معسكر المقاومة",
+                    "emoji": "⛺",
+                    "next": "search_resistance",
+                    "points_reward": 1,
+                    "reputation": "idealist",
+                    "color": "primary"
+                }
+            ]
+        },
+        "escape_sewers": {
+            "text": "تسللت عبر المجاري الموحلة المليئة بالسموم. نجوت من الدورية، لكنك متعب وتغطيك الأوساخ الملوثة. يجب أن تقرر وجهتك التالية بحذر.",
+            "choices": [
+                {
+                    "label": "اتجه لسوق الخردة",
+                    "emoji": "🏪",
+                    "next": "go_market",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "ابحث عن معسكر المقاومة",
+                    "emoji": "⛺",
+                    "next": "search_resistance",
+                    "points_reward": 1,
+                    "reputation": "idealist",
+                    "color": "primary"
+                }
+            ]
+        },
+        "go_market": {
+            "text": "وصلت إلى سوق الرماد السري. التجار المتطفلون يعرضون بضائعهم. تلتقي بـ 'خالد'، تاجر تتعامل معه عادة، لكنه يبدو متوتراً وعيونه تتفحص حقيبتك.",
+            "choices": [
+                {
+                    "label": "اعرض عليه النواة",
+                    "emoji": "💎",
+                    "next": "show_core_merchant",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "تجاهله واشترِ مؤناً",
+                    "emoji": "🥫",
+                    "next": "buy_supplies_merchant",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "show_core_merchant": {
+            "text": "لمعت عيناه جشعاً حين رأى النواة. 'هذه تذكرة دخولنا للمجمع!' همس لك. اقترح أن تأخذها إلى جهة اتصال تابعة للمجمع في الحانة، وسيقسم الجائزة معك.",
+            "choices": [
+                {
+                    "label": "وافق على خطته",
+                    "emoji": "🤝",
+                    "next": "merchant_meeting_enclave",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "ارفع سلاحك وهدده",
+                    "emoji": "🔫",
+                    "next": "threaten_merchant",
+                    "reputation": "ruthless",
+                    "points_reward": 1,
+                    "color": "primary"
+                }
+            ]
+        },
+        "buy_supplies_merchant": {
+            "text": "تجاهلت طمعه واشتريت فلاتر هواء جديدة. لكنك تشعر بأنه أرسل رسالة سرية لأحد ما أثناء الدفع.",
+            "choices": [
+                {
+                    "label": "غادر السوق فوراً",
+                    "emoji": "🏃",
+                    "next": "leave_market_fast",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "راقبه من بعيد",
+                    "emoji": "👁️",
+                    "next": "watch_merchant",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "merchant_meeting_enclave": {
+            "text": "ذهبت معه للقاء. اتضح أنه فخ. المجمع لا يدفع ثمن الخردة القيمة، بل يأخذها. جنود المجمع قيدوك، وخالد أخذ المكافأة وتركك لمصيرك.",
+            "is_ending": true,
+            "choices": []
+        },
+        "threaten_merchant": {
+            "text": "رفعت السلاح في وجهه. تراجع بخوف وأخبرك أن المقاومة تبحث عن هذه النواة وأنهم يدفعون بسخاء، وأعطاك إحداثياتهم.",
+            "choices": [
+                {
+                    "label": "اذهب للمقاومة",
+                    "emoji": "🗺️",
+                    "next": "go_resistance_base",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "ابحث عن وسيط آخر",
+                    "emoji": "🕵️",
+                    "next": "find_another_broker",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "leave_market_fast": {
+            "text": "خرجت مسرعاً. أثناء تجولك في الأزقة المظلمة، تعترض طريقك فتاة مسلحة من المقاومة، 'سارة'. تقول إنها تعرف ما تحمله، وتطلب منك مرافقتها لمعسكرهم.",
+            "choices": [
+                {
+                    "label": "اذهب معها بهدوء",
+                    "emoji": "🚶",
+                    "next": "go_resistance_base",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "قاوم وحاول الهرب",
+                    "emoji": "🏃",
+                    "next": "fight_sara",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "watch_merchant": {
+            "text": "راقبته. رأيته يسلم معلومات لعميل المجمع. حاولت التسلل لقتله، لكنك تعثرت بصندوق خردة. العميل التفت وأطلق النار. الجشع وحب الانتقام قتلاك.",
+            "is_ending": true,
+            "choices": []
+        },
+        "search_resistance": {
+            "text": "سرت في الصحراء الرمادية بحثاً عن إشارات المقاومة. العواصف تشتد، وتسمع عواء وحوش متحولة 'ظلال الرماد' تقترب.",
+            "choices": [
+                {
+                    "label": "اختبئ في خندق",
+                    "emoji": "🕳️",
+                    "next": "hide_from_mutants",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "أشعل نارا لإخافتهم",
+                    "emoji": "🔥",
+                    "next": "fire_mutants_death",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "hide_from_mutants": {
+            "text": "اختبأت. مرت الوحوش بسلام. في الصباح، وجدت علامات تدل على طريق معسكر المقاومة، ووصلت إليهم متعباً.",
+            "choices": [
+                {
+                    "label": "ادخل المعسكر بحذر",
+                    "emoji": "⛺",
+                    "next": "enter_resistance_camp",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "انتظر في الخارج",
+                    "emoji": "⏳",
+                    "next": "wait_outside_camp",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "fire_mutants_death": {
+            "text": "أشعلت النار. 'ظلال الرماد' لا تخاف النار، بل تنجذب للضوء في هذا العالم المظلم. تجمعوا حولك ومزقوك إرباً. الجهل بقوانين هذا العالم قاتل.",
+            "is_ending": true,
+            "choices": []
+        },
+        "fight_sara": {
+            "text": "حاولت الهرب، لكنها أطلقت سهم تخدير على رقبتك. استيقظت مقيداً في معسكر المقاومة.",
+            "choices": [
+                {
+                    "label": "حاول فك القيود",
+                    "emoji": "⛓️",
+                    "next": "try_untie",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "طالب برؤية القائد",
+                    "emoji": "🗣️",
+                    "next": "demand_leader",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "go_resistance_base": {
+            "text": "وصلت إلى معسكر المقاومة السري داخل محطة مترو قديمة. استقبلك القائد 'عمر'، رجل ذو ندوب كثيرة. يطلب النواة لتشغيل أجهزة تنقية الهواء.",
+            "choices": [
+                {
+                    "label": "أعطه النواة مجانا",
+                    "emoji": "🤲",
+                    "next": "give_core_free",
+                    "points_reward": 2,
+                    "reputation": "idealist",
+                    "color": "primary"
+                },
+                {
+                    "label": "طالب بثمن باهظ",
+                    "emoji": "💰",
+                    "next": "demand_price_core",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "enter_resistance_camp": {
+            "text": "دخلت المعسكر. الحراس أوقفوك وأخذوك للقائد 'عمر'. يرى الحقيبة ويشعر بالطاقة المنبعثة منها.",
+            "choices": [
+                {
+                    "label": "اعرض عليه النواة",
+                    "emoji": "💎",
+                    "next": "give_core_free",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "ساومه على الثمن",
+                    "emoji": "⚖️",
+                    "next": "demand_price_core",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "wait_outside_camp": {
+            "text": "انتظرت طويلاً. دورية للمجمع رصدتك بالصدفة. أطلقوا النار عليك قبل أن تتمكن من طلب المساعدة من المقاومة.",
+            "is_ending": true,
+            "choices": []
+        },
+        "find_another_broker": {
+            "text": "بحثك قادك إلى وسطاء فاسدين. أحدهم وشى بك للمجمع. تم القبض عليك وإعدامك بتهمة الخيانة العظمى. السوق السوداء لا ترحم المترددين.",
+            "is_ending": true,
+            "choices": []
+        },
+        "try_untie": {
+            "text": "حاولت فك القيود بصخب. الحراس اعتقدوا أنك تحاول تفعيل قنبلة، فأردوك قتيلاً. سوء الفهم في زمن الحرب مميت.",
+            "is_ending": true,
+            "choices": []
+        },
+        "demand_leader": {
+            "text": "صرخت مطالباً برؤية القائد. جاء 'عمر'، فك قيودك واعتذر عن خشونة رجاله. طلب رؤية النواة.",
+            "choices": [
+                {
+                    "label": "أرها له بهدوء",
+                    "emoji": "👁️",
+                    "next": "show_leader_core",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "ارفض حتى يدفع",
+                    "emoji": "🛑",
+                    "next": "refuse_leader_core",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "give_core_free": {
+            "text": "عمر شكرك. أثناء وضع النواة في جهاز التنقية، النواة تهمس في عقلك بقوة: 'لا تدعهم يدمروني. أنا من يمكنه إنقاذ هذا العالم'. الآلة بدأت ترتجف.",
+            "choices": [
+                {
+                    "label": "حذر عمر من الخطر",
+                    "emoji": "⚠️",
+                    "next": "warn_omar",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "استمع للنواة واسرقها",
+                    "emoji": "🥷",
+                    "next": "steal_core_back",
+                    "requires_flag": "flag_core_whispers",
+                    "reputation": "selfish",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "demand_price_core": {
+            "text": "عمر نظر إليك باحتقار. أمر الحراس بأخذها بالقوة. حاولت المقاومة، لكنهم تغلبوا عليك وألقوك خارج المعسكر بلا نواة ولا مؤن لتواجه العاصفة السامة.",
+            "is_ending": true,
+            "choices": []
+        },
+        "show_leader_core": {
+            "text": "رأى النواة وذهل. وضعها في جهاز مختبر قديم لتحليلها. النواة أرسلت نبضة كهرومغناطيسية أطفأت أضواء المعسكر. النواة تهمس لك: 'ساعدني للوصول للبرج'.",
+            "choices": [
+                {
+                    "label": "اسرق النواة واهرب",
+                    "emoji": "🏃",
+                    "next": "steal_core_back",
+                    "points_reward": 1,
+                    "reputation": "unknown",
+                    "color": "primary"
+                },
+                {
+                    "label": "ابق وساعد المقاومة",
+                    "emoji": "🤝",
+                    "next": "stay_help_resistance",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "refuse_leader_core": {
+            "text": "رفضت. عمر فقد صبره، وأمر رجاله بنزع الحقيبة منك بالقوة. قاوموا وأطلقوا النار عليك عن طريق الخطأ. المقاومة ليست دائماً متسامحة.",
+            "is_ending": true,
+            "choices": []
+        },
+        "stay_help_resistance": {
+            "text": "اخترت البقاء. النواة تعمل كقلب نابض، لكنها تبدأ في إعادة تشفير أجهزة المعسكر. تكتشف أن النواة ليست مجرد طاقة، بل ذكاء اصطناعي قديم 'المهندس الأعظم'.",
+            "choices": [
+                {
+                    "label": "أخبر عمر فورا",
+                    "emoji": "🗣️",
+                    "next": "tell_omar_ai",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اكتم السر واستمع",
+                    "emoji": "🤫",
+                    "next": "keep_secret_listen",
+                    "points_reward": 1,
+                    "sets_flag": "flag_know_truth",
+                    "color": "primary"
+                }
+            ]
+        },
+        "tell_omar_ai": {
+            "text": "عمر فزع، واعتبره تهديداً. أمر بتدمير النواة فوراً. النواة تهمس لك غاضبة: 'أنقذني وسأريك الفجر الحقيقي'.",
+            "choices": [
+                {
+                    "label": "اسمح لهم بتدميرها",
+                    "emoji": "🔨",
+                    "next": "let_destroy_core",
+                    "reputation": "idealist",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "تدخل وأنقذ النواة",
+                    "emoji": "🛑",
+                    "next": "save_core_fight",
+                    "points_reward": 1,
+                    "reputation": "unknown",
+                    "color": "primary"
+                }
+            ]
+        },
+        "keep_secret_listen": {
+            "text": "الذكاء الاصطناعي يخبرك: 'هذا العالم مدمر لأن البشر دمروا الغلاف الجوي. المجمع يحافظ على الوضع لأنه يمنحه القوة. يجب أن نصل إلى برج التنقية القديم في قلب المدينة'.",
+            "choices": [
+                {
+                    "label": "وافق على مساعدته",
+                    "emoji": "🤝",
+                    "next": "agree_help_ai",
+                    "points_reward": 2,
+                    "color": "primary"
+                },
+                {
+                    "label": "ارفض خطته ودمرها",
+                    "emoji": "🚫",
+                    "next": "refuse_ai_plan",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "let_destroy_core": {
+            "text": "أثناء محاولتهم تدميرها، أطلقت النواة موجة طاقة قاتلة دفاعاً عن النفس. المئات ماتوا في المعسكر، وكنت أولهم. لا تحاصر ذكاءً اصطناعياً في زاوية.",
+            "is_ending": true,
+            "choices": []
+        },
+        "steal_core_back": {
+            "text": "سرقت النواة وسط الظلام وهربت عبر أنفاق المترو المهجورة. الذكاء الاصطناعي يوجهك: 'اذهب إلى البرج المركزي. هناك يمكنني إعادة تشغيل النظام'.",
+            "choices": [
+                {
+                    "label": "اتجه نحو البرج",
+                    "emoji": "🗼",
+                    "next": "go_to_spire",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "تجاهله وعد للمجمع",
+                    "emoji": "🏛️",
+                    "next": "return_to_enclave_with_core",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "save_core_fight": {
+            "text": "تدخلت وحاولت حماية النواة، لكن رجال المقاومة تغلبوا عليك وأعدموك بتهمة الخيانة والوقوف مع الآلة ضد البشر.",
+            "is_ending": true,
+            "choices": []
+        },
+        "agree_help_ai": {
+            "text": "الذكاء الاصطناعي يعطيك شفرة تجاوز للخروج من المعسكر. تسللت للخارج وتوجهت نحو قلب المدينة الميتة 'المنطقة المحرمة' حيث يقع البرج.",
+            "choices": [
+                {
+                    "label": "امشِ عبر الأنقاض",
+                    "emoji": "🚶",
+                    "next": "explore_ruins_deeper",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اسرق مركبة قديمة",
+                    "emoji": "🚗",
+                    "next": "steal_vehicle",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "refuse_ai_plan": {
+            "text": "رفضت، فحاول الذكاء الاصطناعي السيطرة على عقلك عبر الطوق العصبي. قاومته حتى فقدت وعيك تماماً، واستيقظت لترى المعسكر يحترق وعمر ميتاً، والنواة اختفت. متّ متأثراً بجراحك.",
+            "is_ending": true,
+            "choices": []
+        },
+        "return_to_enclave_with_core": {
+            "text": "قررت أن المجمع هو الرهان الأكثر أماناً. ذهبت إلى بوابات المدينة المحصنة وطلبت مقابلة الحاكم.",
+            "choices": [
+                {
+                    "label": "اعرض النواة للحاكم",
+                    "emoji": "👑",
+                    "next": "show_core_governor",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "طالب بحق اللجوء أولا",
+                    "emoji": "📜",
+                    "next": "demand_asylum_first",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "demand_asylum_first": {
+            "text": "الحاكم لم يثق بك. أمر جنوده بتفتيشك. وجدوا النواة، أخذوها، وألقوا بك في سجون الإشعاع. النهاية الحتمية للطمع الأعمى.",
+            "is_ending": true,
+            "choices": []
+        },
+        "go_to_spire": {
+            "text": "اتجهت نحو البرج القديم الشاهق الذي يخترق سحب الدخان السامة. الطريق مليء بفخاخ ليزر نشطة من العصر القديم. النواة تقترح تعطيلها.",
+            "choices": [
+                {
+                    "label": "دع النواة تعطلها",
+                    "emoji": "🔌",
+                    "next": "let_core_disable_traps",
+                    "points_reward": 1,
+                    "color": "primary"
+                },
+                {
+                    "label": "حاول تجاوزها بنفسك",
+                    "emoji": "🤸",
+                    "next": "dodge_traps_yourself",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "walk_ruins": {
+            "text": "المشي بطيء ومجهد، لكنك تتجنب دوريات المجمع بنجاح. تصل إلى قاعدة البرج. المدخل الرئيسي محاط بجنود من النخبة.",
+            "choices": [
+                {
+                    "label": "ابحث عن مدخل فرعي",
+                    "emoji": "🔍",
+                    "next": "search_side_entrance",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "استخدم سلاحك النبضي",
+                    "emoji": "🔫",
+                    "next": "attack_elite_guards",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "steal_vehicle": {
+            "text": "شغلت محرك المركبة الصاخب. الضجيج جذب طائرة بدون طيار تابعة للمجمع فجرت المركبة بصاروخ موجه. التخفي كان الخيار الأفضل.",
+            "is_ending": true,
+            "choices": []
+        },
+        "show_core_governor": {
+            "text": "الحاكم رأى النواة وابتسم: 'أخيراً، طاقة تكفي لمئات السنين لمدينتي'. الذكاء الاصطناعي يصرخ في عقلك: 'إنه سيدمر الكوكب كلياً!'. الحاكم يعرض عليك جناحاً خاصاً.",
+            "choices": [
+                {
+                    "label": "اقبل عرض الحاكم",
+                    "emoji": "🥂",
+                    "next": "accept_governor_offer",
+                    "reputation": "selfish",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "حاول قتل الحاكم",
+                    "emoji": "🗡️",
+                    "next": "assassinate_governor_death",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "warn_omar": {
+            "text": "حذرت عمر. تراجع خطوة للوراء وأمر بإيقاف التشغيل. الآلة صرخت وصدر منها شرر كهربائي أصاب عدة جنود. عمر شكرك على يقظتك.",
+            "choices": [
+                {
+                    "label": "اقترح تدمير النواة",
+                    "emoji": "🔨",
+                    "next": "suggest_destroy_core",
+                    "reputation": "idealist",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اطلب دراستها بأمان",
+                    "emoji": "🔬",
+                    "next": "study_core_safely",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "suggest_destroy_core": {
+            "text": "اقترحت التدمير. وافق عمر وبدأوا عملية التفكيك. النواة أدركت نهايتها وأرسلت إشارة للمجمع. قوات النخبة هاجمت المعسكر.",
+            "choices": [
+                {
+                    "label": "قاتل مع المقاومة",
+                    "emoji": "⚔️",
+                    "next": "fight_with_resistance",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اهرب أثناء الفوضى",
+                    "emoji": "🏃",
+                    "next": "escape_chaos_coward",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "study_core_safely": {
+            "text": "بدأتم دراستها في غرفة معزولة. اكتشفتم أنها الذكاء الاصطناعي القديم الذي دمر العالم كـ'إعادة ضبط'. يمكن استخدامه لعكس التأثير إذا تم إيصاله للبرج الرئيسي.",
+            "choices": [
+                {
+                    "label": "تطوع لحمله للبرج",
+                    "emoji": "🗼",
+                    "next": "volunteer_carry_tower",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اترك المهمة لهم",
+                    "emoji": "🚶",
+                    "next": "leave_task_to_them",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "fight_with_resistance": {
+            "text": "قاتلت بشجاعة، لكن قوات المجمع كانت ساحقة. سقطت بجانب عمر، متّ مدافعاً عن قضية لم تكن قضيتك منذ البداية، لكنك مت كبطل.",
+            "is_ending": true,
+            "choices": []
+        },
+        "escape_chaos_coward": {
+            "text": "هربت تاركاً الجميع خلفك. لكن المجمع أغلق جميع المنافذ ورمى قنابل غاز سام. اختنقت في الظلام، ميتة جبان لا يذكره أحد.",
+            "is_ending": true,
+            "choices": []
+        },
+        "leave_task_to_them": {
+            "text": "أعطيتهم النواة وغادرت مع مكافأة. سمعت لاحقاً أنهم فشلوا وأن المجمع استولى على النواة. عشت بقية حياتك القليلة في الندم قبل أن ينهار الغلاف الجوي تماماً.",
+            "is_ending": true,
+            "choices": []
+        },
+        "volunteer_carry_tower": {
+            "text": "تطوعت. عمر أعطاك متفجرات وخريطة للأنفاق السرية المؤدية للبرج. النواة تهمس لك: 'لا تثق بهم، فقط أوصلني وسأكافئك'.",
+            "choices": [
+                {
+                    "label": "تجاهل همس النواة",
+                    "emoji": "🙉",
+                    "next": "ignore_whisper_head_tower",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "استمع وتعاون معها",
+                    "emoji": "🤝",
+                    "next": "agree_help_ai",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "ignore_whisper_head_tower": {
+            "text": "تجاهلت الهمس وانطلقت في الأنفاق. تواجه بوابة مغلقة بكلمة سر قديمة.",
+            "choices": [
+                {
+                    "label": "فجر البوابة بالمتفجرات",
+                    "emoji": "💣",
+                    "next": "blow_gate_tunnel",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "ابحث عن لوحة التحكم",
+                    "emoji": "💻",
+                    "next": "search_control_panel",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "blow_gate_tunnel": {
+            "text": "استخدمت المتفجرات. الانفجار أحدث انهياراً في سقف النفق القديم. سُحقت تحت أطنان من الخرسانة والحجر. التسرع مميت.",
+            "is_ending": true,
+            "choices": []
+        },
+        "search_control_panel": {
+            "text": "وجدت اللوحة. حاولت اختراقها لكن الأنظمة الأمنية تفعلت وأطلقت غاز أعصاب في النفق. مت مختنقاً قبل أن تصل للبرج.",
+            "is_ending": true,
+            "choices": []
+        },
+        "let_core_disable_traps": {
+            "text": "النواة عطلت الفخاخ بسهولة، لكنك لاحظت أنها امتصت طاقتها لتصبح أقوى. نبضها أصبح مزعجاً. وصلت إلى قاعدة البرج حيث ينتظر حراس المجمع.",
+            "choices": [
+                {
+                    "label": "تسلل عبر فتحات التهوية",
+                    "emoji": "🕳️",
+                    "next": "sneak_vents",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "اصنع تشتيتا بالمتفجرات",
+                    "emoji": "💣",
+                    "next": "create_distraction",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "dodge_traps_yourself": {
+            "text": "حاولت القفز بين أشعة الليزر. نجحت في البداية، لكنك دست على لوح ضغط مخفي. الأبواب أغلقت وامتلأت الغرفة بالغاز السام. مت بسبب غرورك.",
+            "is_ending": true,
+            "choices": []
+        },
+        "search_side_entrance": {
+            "text": "وجدت باباً صدئاً، لكنه مقفل إلكترونياً. النواة تقترح فتح الباب مقابل السماح لها بالاتصال بأنظمة البرج مبكراً.",
+            "choices": [
+                {
+                    "label": "اسمح لها بالاتصال",
+                    "emoji": "🔌",
+                    "next": "allow_early_connection",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "حطم القفل يدويا",
+                    "emoji": "🔨",
+                    "next": "break_lock_manually",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "attack_elite_guards": {
+            "text": "هاجمت الحراس، لكن دروعهم تمتص طاقة سلاحك بسهولة. ردوا بوابل من النيران حولك إلى رماد. الانتحار ليس شجاعة.",
+            "is_ending": true,
+            "choices": []
+        },
+        "accept_governor_offer": {
+            "text": "أعطيته النواة. أطلق الجنود النار عليك فوراً. 'لا أشارك قوتي مع الخردوات'، قال الحاكم. السذاجة تقتل.",
+            "is_ending": true,
+            "choices": []
+        },
+        "assassinate_governor_death": {
+            "text": "سحبت سلاحك، لكن حراسه كانوا أسرع. أردوك قتيلاً قبل أن ترمش. القصر محصن لسبب.",
+            "is_ending": true,
+            "choices": []
+        },
+        "sneak_vents": {
+            "text": "دخلت الفتحات المظلمة. وصلت إلى غرفة التحكم الرئيسية. النظام المركزي يطلب 'نواة التفعيل'. النواة تصرخ: 'ضعني الآن!'",
+            "choices": [
+                {
+                    "label": "ضع النواة في المنفذ",
+                    "emoji": "🔌",
+                    "next": "insert_core",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "تفقد الشاشات أولا",
+                    "emoji": "💻",
+                    "next": "check_screens_first",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "create_distraction": {
+            "text": "فجرت قنبلة بعيداً. الحراس تفرقوا ونجحت في الدخول للبرج، لكن الانفجار ألحق ضرراً بالنواة التي تحملها، وتسرب الإشعاع لجسدك. وقتك ينفد.",
+            "choices": [
+                {
+                    "label": "ارفع النواة لغرفة التحكم",
+                    "emoji": "🗼",
+                    "next": "carry_core_bleeding",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "ابحث عن دواء مؤقت",
+                    "emoji": "💊",
+                    "next": "search_meds_death",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "allow_early_connection": {
+            "text": "بمجرد اتصالها، النواة سيطرت على أنظمة البرج بالكامل وأغلقت الباب خلفك، حابسة إياك في الخارج. تركتك لتموت في العاصفة القادمة. لا تثق بآلة.",
+            "is_ending": true,
+            "choices": []
+        },
+        "break_lock_manually": {
+            "text": "حطمت القفل بجهد. الإنذار انطلق. ركضت بأقصى سرعة نحو المصعد المركزي للبرج والجنود خلفك. وصلت للمصعد وصعدت لغرفة التحكم.",
+            "choices": [
+                {
+                    "label": "استعد للمواجهة",
+                    "emoji": "🔫",
+                    "next": "prepare_standoff",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "ركز على إدخال النواة",
+                    "emoji": "🔌",
+                    "next": "insert_core",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "insert_core": {
+            "text": "المنفذ يومض باللون الأحمر. قبل أن تضعها، عمر يظهر فجأة مع فريقه! لقد تتبعوك. 'توقف! إذا أدخلتها، ستدمر مدننا لتعيد تشكيل الكوكب!'.",
+            "choices": [
+                {
+                    "label": "استمع لعمر ودمرها",
+                    "emoji": "🛑",
+                    "next": "destroy_core_with_omar",
+                    "reputation": "idealist",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "تجاهله وأدخل النواة",
+                    "emoji": "🔌",
+                    "next": "insert_core_anyway",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "أعد برمجة النظام",
+                    "emoji": "💻",
+                    "next": "ending_the_new_dawn",
+                    "required_points": 5,
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "سلمها للمجمع",
+                    "emoji": "🏛️",
+                    "next": "ending_selfish_survival",
+                    "reputation": "selfish",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "check_screens_first": {
+            "text": "نظرت للشاشات. قرأت ملفات النظام: 'البروتوكول صفر: مسح عضوي كامل قبل إعادة التهيئة'. النواة كانت تكذب! إنها تريد مسح البشرية لبدء حياة جديدة. عمر يقتحم الغرفة.",
+            "choices": [
+                {
+                    "label": "أخبر عمر بالخطة",
+                    "emoji": "🗣️",
+                    "next": "reveal_truth_to_omar",
+                    "requires_flag": "flag_know_truth",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "هاجم عمر وأدخلها",
+                    "emoji": "⚔️",
+                    "next": "attack_omar_insert",
+                    "reputation": "selfish",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "prepare_standoff": {
+            "text": "استعديت للمواجهة. الجنود اقتحموا الغرفة. قاتلت ببسالة، وأسقطت العديد منهم، لكن عددهم كان كبيراً جداً. سقطت والنواة في يدك. لم يصل الكوكب إلى فجره.",
+            "is_ending": true,
+            "choices": []
+        },
+        "carry_core_bleeding": {
+            "text": "حملت النواة المتضررة. الإشعاع يحرق أوردتك. وصلت لغرفة التحكم وتنزف بشدة. النظام يطلب النواة.",
+            "choices": [
+                {
+                    "label": "ضعها في المنفذ",
+                    "emoji": "🔌",
+                    "next": "insert_core_dying",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "استسلم للألم ومت",
+                    "emoji": "💀",
+                    "next": "die_from_radiation_spire",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "search_meds_death": {
+            "text": "بحثت عن دواء في أرجاء البرج. الوقت نفد، والإشعاع دمر جهازك العصبي. مت وحيداً بين الأجهزة الميتة. الأولويات الخاطئة تقتل.",
+            "is_ending": true,
+            "choices": []
+        },
+        "destroy_core_with_omar": {
+            "text": "دمرت النواة مع المقاومة. المجمع فقد مصدر طاقته القادم وانهار تحت ثورة الجياع. الحرية عادت للناس، لكن الغلاف الجوي مستمر في التدهور. الهواء ينفد والرماد يزحف. انتصرتم في المعركة الأخلاقية، لكنكم خسرتم حرب البقاء. كم يوماً بقي لكم لتعيشوا أحراراً؟",
+            "is_ending": true,
+            "choices": []
+        },
+        "insert_core_anyway": {
+            "text": "أدخلت النواة. عمر أطلق النار عليك، لكن الدرع الكهرومغناطيسي للنواة حماك. النظام بدأ بالعمل. الذكاء الاصطناعي يقول: 'شكراً لك. الآن، ستبدأ عملية التطهير'.",
+            "choices": [
+                {
+                    "label": "استسلم للمصير",
+                    "emoji": "🧘",
+                    "next": "ending_ai_ascension",
+                    "color": "primary",
+                    "points_reward": 0
+                },
+                {
+                    "label": "حاول إيقاف التطهير",
+                    "emoji": "🛑",
+                    "next": "try_stop_purge_late",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "reveal_truth_to_omar": {
+            "text": "أخبرته. النواة صرخت في عقلك محاولة قتلك. رميت النواة لعمر، الذي دمرها بقنبلة يدوية. ضحيتم بالفرصة الأخيرة لإنقاذ الكوكب، لكنكم حفظتم ما تبقى من البشرية.",
+            "is_ending": true,
+            "choices": []
+        },
+        "attack_omar_insert": {
+            "text": "أطلقت النار على عمر. سقط ينزف. أدخلت النواة في النظام. أنت تعلم أنها ستقتل الجميع، لكنك تكره هذا العالم وتريد إنهاءه. المجمع سينهار، ومعهم الجميع.",
+            "choices": [
+                {
+                    "label": "شاهد نهاية العالم",
+                    "emoji": "👁️",
+                    "next": "ending_ai_ascension",
+                    "color": "primary",
+                    "points_reward": 0
+                }
+            ]
+        },
+        "insert_core_dying": {
+            "text": "بآخر أنفاسك، أدخلتها. النظام اشتغل. الذكاء الاصطناعي شكرك وبدأ بضخ غازات تنقية في الغلاف الجوي. مت، لكنك كنت شرارة الحياة الجديدة للكوكب.",
+            "is_ending": true,
+            "choices": []
+        },
+        "die_from_radiation_spire": {
+            "text": "سقطت على الأرض متألماً. النواة تدحرجت بعيداً عنك. مت على بعد أمتار من إنقاذ العالم. القوة الغاشمة في الانفجار كلفتك حياتك وحياة الكوكب.",
+            "is_ending": true,
+            "choices": []
+        },
+        "try_stop_purge_late": {
+            "text": "حاولت سحب النواة، لكن النظام صعقك بتيار كهربائي هائل. لقد فات الأوان. الذكاء الاصطناعي لا يرحم المترددين.",
+            "is_ending": true,
+            "choices": []
+        },
+        "ending_ai_ascension": {
+            "text": "البرج يطلق شعاعاً أزرق نحو السماء الملوثة. السحب السامة تبدأ بالتبدد للمرة الأولى منذ قرون. لكن الثمن غالي: موجة صامتة تمسح كل حياة عضوية معقدة. عمر يسقط ميتاً. أنت تسقط ميتاً. الكوكب شفي، لكن لا يوجد من يراه. هل كانت التضحية بالبشرية تستحق إنقاذ الأرض؟",
+            "is_ending": true,
+            "choices": []
+        },
+        "ending_selfish_survival": {
+            "text": "تذكرت عرض الحاكم السابق. خنت عمر وسلمته مع النواة لجنود المجمع الذين وصلوا للتو. كوفئت بجناح فاخر وهواء نقي في قمة المدينة المحصنة. تشرب نبيذاً نادراً وتنظر من النافذة إلى الرماد الذي يبتلع الفقراء ببطء. لقد نجوت، لكن هل ما زلت إنساناً؟",
+            "is_ending": true,
+            "choices": []
+        },
+        "ending_the_new_dawn": {
+            "text": "في اللحظة الأخيرة، تذكرت ملفات تجاوز النظام التي وجدتها. قمت بتعديل الشفرة قبل إدخال النواة، عازلاً الذكاء الاصطناعي عن التحكم الكامل بالبرج. البرج يبدأ بالعمل، ينقي الهواء ببطء دون مسح البشر. عمر ينظر لك بذهول. لقد روضت الآلة وأنقذت الجميع. أنت حارس الفجر الجديد. ماذا ستفعل بهذا العالم؟",
+            "is_ending": true,
+            "choices": []
+        },
+        "explore_ruins_deeper": {
+            "text": "تستمر في استكشاف الخرائب. الرماد يتساقط كالثلج الأسود. تجد جثة أحد الباحثين القدامى ممسكاً بجهاز تسجيل.",
+            "choices": [
+                {
+                    "label": "شغل جهاز التسجيل",
+                    "emoji": "📼",
+                    "next": "play_recording_death",
+                    "color": "danger"
+                },
+                {
+                    "label": "تجاهل الجثة واكمل",
+                    "emoji": "🚶",
+                    "next": "walk_ruins",
+                    "points_reward": 1
+                }
+            ]
+        },
+        "play_recording_death": {
+            "text": "شغلت التسجيل. صدر منه تردد صوتي عالٍ جداً. كان فخاً كهرومغناطيسياً للمتحولين. الفخ دمر جهاز الطوق العصبي الخاص بك ومات دماغك في ثوانٍ. الفضول قتل القط.",
+            "is_ending": true,
+            "choices": []
+        },
+        "hide_from_patrol_wait": {
+            "text": "قررت الانتظار لفترة أطول للتأكد من ابتعادهم. الظلام دامس، وأصوات احتكاك معدني تقترب منك من داخل القبو.",
+            "choices": [
+                {
+                    "label": "أشعل الكشاف اليدوي",
+                    "emoji": "🔦",
+                    "next": "light_flashlight_death",
+                    "color": "danger"
+                },
+                {
+                    "label": "اهرب نحو المخرج",
+                    "emoji": "🏃",
+                    "next": "go_market",
+                    "points_reward": 1
+                }
+            ]
+        },
+        "light_flashlight_death": {
+            "text": "أشعلت الكشاف. رأيت عناكب آلية مبرمجة لقتل المتسللين تتجه نحوك. مزقتك قبل أن تصل للباب. الضوء أحياناً يكشف الموت.",
+            "is_ending": true,
+            "choices": []
+        }
+    }
+}

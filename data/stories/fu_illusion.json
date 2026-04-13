@@ -1,0 +1,1305 @@
+{
+    "id": "fu_illusion",
+    "title": "وهم الذاكرة",
+    "world": "المستقبل",
+    "world_type": "future",
+    "category": "هوية في عالم مزيف",
+    "theme": "هوية في عالم مزيف",
+    "summary": "أنت فني ذاكرة تمحو ذكريات الآخرين، لكنك تبدأ في العثور على أجزاء من ذكرياتك داخل عقولهم. هل أنت إنسان أم مجرد برمجة؟",
+    "difficulty": "صعب جداً",
+    "estimated_length": "طويلة جداً",
+    "game_mode": "single",
+    "perspective": {
+        "id": "technician",
+        "label": "فني الذاكرة",
+        "emoji": "🧠",
+        "description": "أنت تعمل في منشأة لاستخراج ومحو الذكريات غير المرغوب فيها.",
+        "start_node": "start"
+    },
+    "nodes": {
+        "start": {
+            "text": "تجلس أمام شاشة الاستخراج. المريض رقم 402 مستلقٍ أمامك، غائب عن الوعي. وظيفتك هي محو ذاكرته الأخيرة. أثناء مسح البيانات، تلاحظ شذوذاً في الشفرة العصبية. جزء من الذاكرة يبدو مألوفاً بشكل مرعب. إنه مشهد لامرأة تعرفها جيداً، رغم أنك لم تغادر المنشأة قط.",
+            "choices": [
+                {
+                    "label": "افحص الشذوذ العصبي",
+                    "emoji": "🔍",
+                    "next": "inspect_glitch",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "تجاهل وامح الذاكرة",
+                    "emoji": "🗑️",
+                    "next": "ignore_glitch",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "inspect_glitch": {
+            "text": "قمت بتكبير الشفرة. المرأة تبتسم لك وتقول اسماً لا تذكره. النظام يطلق تحذيراً خافتاً: 'اختراق غير مصرح به للبيانات المرجعية'.",
+            "choices": [
+                {
+                    "label": "استخرج الجزء لنفسك",
+                    "emoji": "💾",
+                    "next": "extract_fragment",
+                    "sets_flag": "has_fragment",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "required_points": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "أبلغ المشرف فوراً",
+                    "emoji": "🚨",
+                    "next": "report_error",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "ignore_glitch": {
+            "text": "قمت بتفعيل بروتوكول المحو. المريض يتشنج قليلاً ثم يسترخي. انتهت العملية. لكنك تشعر بصداع نصفي حاد والشاشة تومض بكلمة 'خطأ'.",
+            "choices": [
+                {
+                    "label": "أنهِ ورديتك مبكراً",
+                    "emoji": "🚪",
+                    "next": "finish_shift",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "أجرِ فحصاً روتينياً",
+                    "emoji": "⚙️",
+                    "next": "routine_inspection",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "extract_fragment_death": {
+            "text": "بمجرد محاولتك تحليل الشفرة المعقدة فوراً، ترصدك أنظمة الأمن الأساسية. تندفع تيار كهربائي عالي الجهد عبر واجهتك العصبية. لقد تم تصنيفك كفيروس. لو أنك أخفيت البيانات أولاً.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "extract_fragment": {
+            "text": "نسخت البيانات إلى وحدة تخزينك المخفية. التحذير يتوقف. تشعر بنبضات قلبك تتسارع رغم أنك لا تتذكر متى كانت آخر مرة شعرت فيها بالخوف.",
+            "choices": [
+                {
+                    "label": "حلل البيانات الآن",
+                    "emoji": "🔬",
+                    "next": "extract_fragment_death",
+                    "points_reward": 0,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "أخفِ البيانات للمساء",
+                    "emoji": "🔒",
+                    "next": "hide_data",
+                    "points_reward": 1,
+                    "color": "success",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "report_error": {
+            "text": "يدخل المشرف، وجهه خالٍ من التعابير. ينظر إلى الشاشة ثم إليك. 'هذا مجرد صدى برمجي. تفضل معي للتقييم النفسي.'",
+            "choices": [
+                {
+                    "label": "اذهب معه بهدوء",
+                    "emoji": "🚶",
+                    "next": "accept_wipe",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "قاوم وحاول الهرب",
+                    "emoji": "🏃",
+                    "next": "resist_wipe",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "accept_wipe": {
+            "text": "تجلس في كرسي التقييم. تسمع الطنين المألوف لآلة المحو. المشرف يبتسم. 'ستنسى هذا العطل قريباً.' تفقد وعيك، وتستيقظ كفني جديد بلا ماضٍ.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "finish_shift": {
+            "text": "تغادر الغرفة. الممرات بيضاء وطويلة بشكل متطابق. تلاحظ أن الأبواب نحو القطاع الغربي مفتوحة قليلاً، وهو أمر غير معتاد.",
+            "choices": [
+                {
+                    "label": "ادخل القطاع الغربي",
+                    "emoji": "🚪",
+                    "next": "enter_west_sector",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "عد إلى غرفتك",
+                    "emoji": "🛏️",
+                    "next": "return_room",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "routine_inspection": {
+            "text": "أثناء الفحص، تجد ملفاً مخفياً في سجلات المريض يسمى 'الصحوة'. إنه ليس مجرد مريض، إنه عميل متمرد.",
+            "choices": [
+                {
+                    "label": "افتح ملف الصحوة",
+                    "emoji": "📂",
+                    "next": "open_awakening",
+                    "sets_flag": "knows_truth",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "required_points": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "احذف الملف كلياً",
+                    "emoji": "🗑️",
+                    "next": "delete_awakening",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "hide_data": {
+            "text": "تعود إلى غرفتك البسيطة في نهاية اليوم. تقوم بتشغيل وحدة التخزين المخفية بعيداً عن الكاميرات. تظهر رسالة: 'إذا كنت تقرأ هذا، فأنت لست حقيقياً.'",
+            "choices": [
+                {
+                    "label": "واصل فك التشفير",
+                    "emoji": "🔓",
+                    "next": "decode_message",
+                    "points_reward": 2,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "دمر وحدة التخزين",
+                    "emoji": "🔨",
+                    "next": "destroy_drive",
+                    "points_reward": 0,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "resist_wipe": {
+            "text": "تدفع المشرف بعيداً وتركض نحو باب الخروج. يطلق إنذاراً. الممرات تمتلئ بالأضواء الحمراء.",
+            "choices": [
+                {
+                    "label": "اتجه للمصعد الرئيسي",
+                    "emoji": "🛗",
+                    "next": "elevator_trap",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "اهرب عبر التهوية",
+                    "emoji": "🕳️",
+                    "next": "vent_escape",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "elevator_trap": {
+            "text": "تدخل المصعد وتضغط الزر. تُغلق الأبواب وتتوقف العربة. يُضخ غاز أعصاب في الكابينة. لقد اخترت الطريق الأكثر وضوحاً وفخاً.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "enter_west_sector": {
+            "text": "القطاع الغربي مظلم. تجد صفوفاً من الأجساد المعلقة في كبسولات متصلة بأسلاك. إنهم فنيون يشبهونك تماماً.",
+            "choices": [
+                {
+                    "label": "افحص إحدى الكبسولات",
+                    "emoji": "👁️",
+                    "next": "inspect_pod",
+                    "points_reward": 2,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "تراجع بصمت",
+                    "emoji": "🔙",
+                    "next": "retreat_silent",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "return_room": {
+            "text": "تصل إلى غرفتك لكنك تجد بابها مفتوحاً. شخص ما بالداخل يعبث بأغراضك.",
+            "choices": [
+                {
+                    "label": "واجه المتسلل",
+                    "emoji": "⚔️",
+                    "next": "confront_intruder",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "اختبئ وراقب",
+                    "emoji": "👀",
+                    "next": "hide_and_watch",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "open_awakening": {
+            "text": "الملف يحتوي على خريطة للمنشأة تظهر مخرجاً غير موثق أسفل 'النواة'. كما يحذر من طائرات مسيرة في القطاع 4.",
+            "choices": [
+                {
+                    "label": "احفظ الخريطة بعقلك",
+                    "emoji": "🧠",
+                    "next": "memorize_map",
+                    "sets_flag": "knows_map",
+                    "points_reward": 2,
+                    "color": "primary",
+                    "required_points": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "انسخها للوحة التحكم",
+                    "emoji": "📋",
+                    "next": "copy_map",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "copy_map": {
+            "text": "بمجرد نسخ الخريطة للوحة، يكتشف النظام النشاط غير المعتاد. يتم تنشيط بروتوكول التطهير في غرفتك. تُسحب كل أكسجين الغرفة وتموت مختنقاً.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "delete_awakening": {
+            "text": "حذفت الملف لتبقى بأمان. لكن فضولك يقتلك. تبدأ في التساؤل عما كان يمكن أن تعرفه.",
+            "choices": [
+                {
+                    "label": "اكمل الروتين اليومي",
+                    "emoji": "📅",
+                    "next": "daily_routine_2",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "اذهب للقطاع 4",
+                    "emoji": "🚶",
+                    "next": "go_sector_4",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "decode_message": {
+            "text": "الرسالة تستمر: 'أنت لست إنساناً. أنت جسد حيوي تم مسح عقله واستبداله ببرمجة النظام. الذكريات التي تراها هي بقايا حياتك القديمة. استعد للهروب.'",
+            "choices": [
+                {
+                    "label": "صدق الرسالة",
+                    "emoji": "✅",
+                    "next": "believe_message",
+                    "sets_flag": "knows_truth",
+                    "points_reward": 2,
+                    "color": "primary",
+                    "required_points": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "اعتبرها فيروساً",
+                    "emoji": "❌",
+                    "next": "doubt_message",
+                    "points_reward": 0,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "destroy_drive": {
+            "text": "سحقت الوحدة تحت قدمك. الشعور بالأمان المؤقت يغمرك، لكنك تسمع طرقاً على باب غرفتك.",
+            "choices": [
+                {
+                    "label": "افتح الباب",
+                    "emoji": "🚪",
+                    "next": "open_door_guard",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "اهرب من النافذة",
+                    "emoji": "🪟",
+                    "next": "escape_window",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "vent_escape": {
+            "text": "تزحف في قنوات التهوية. المروحة الرئيسية أمامك تعمل بسرعة جنونية وتغلق الطريق. هناك ممر ضيق جانبي تفوح منه رائحة غاز.",
+            "choices": [
+                {
+                    "label": "ادخل الممر الجانبي",
+                    "emoji": "↪️",
+                    "next": "side_vent",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "حاول إيقاف المروحة",
+                    "emoji": "🛑",
+                    "next": "stop_fan",
+                    "points_reward": 0,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "side_vent_death": {
+            "text": "تدخل الممر الجانبي. الرائحة كانت لغاز الأعصاب. بدون خريطة أو فلتر، تنهار وتفقد وعيك للأبد.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "side_vent": {
+            "text": "الغاز كثيف. إذا لم تكن تعرف الطريق، ستموت.",
+            "choices": [
+                {
+                    "label": "استخدم خريطة الصحوة",
+                    "emoji": "🗺️",
+                    "next": "safe_vent_path",
+                    "requires_flag": "knows_map",
+                    "points_reward": 2,
+                    "color": "success",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "تقدم بحذر شديد",
+                    "emoji": "🚶",
+                    "next": "side_vent_death",
+                    "points_reward": 0,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "stop_fan": {
+            "text": "أدخلت قطعة حديدية في التروس. المروحة تتوقف مصحوبة بضجيج هائل. إنذار آخر ينطلق. الطريق مفتوح لكنك لفت الانتباه.",
+            "choices": [
+                {
+                    "label": "اعبر بسرعة",
+                    "emoji": "🏃",
+                    "next": "cross_fan",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "inspect_pod": {
+            "text": "تمسح زجاج الكبسولة. الشخص بالداخل يحمل رقم 402، نفس مريضك. هل هم يستنسخون المرضى؟ أم يستنسخون الفنيين؟ يضيء الزجاج بالأحمر.",
+            "choices": [
+                {
+                    "label": "اكسر الزجاج",
+                    "emoji": "🔨",
+                    "next": "break_glass",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "اختبئ خلف الكبسولة",
+                    "emoji": "🛡️",
+                    "next": "hide_pod",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "retreat_silent": {
+            "text": "أثناء تراجعك، تتعثر في كابل طاقة. النظام يضيء ممر القطاع 4 فجأة.",
+            "choices": [
+                {
+                    "label": "اركض للقطاع 4",
+                    "emoji": "🏃",
+                    "next": "go_sector_4",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "confront_intruder": {
+            "text": "تندفع للداخل. المتسلل هو المشرف! يحمل في يده محقنة معدنية. يقول: 'كنت أعلم أنك غير مستقر.'",
+            "choices": [
+                {
+                    "label": "هاجمه بقوة",
+                    "emoji": "👊",
+                    "next": "attack_supervisor",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "حاول التحدث معه",
+                    "emoji": "🗣️",
+                    "next": "talk_supervisor",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "talk_supervisor": {
+            "text": "بينما تحاول العقلانية معه، يغرس المحقنة في عنقك. الشلل التام يسيطر عليك. تسمعه يهمس: 'الآلات لا تتحدث'. تنتهي حياتك.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "attack_supervisor": {
+            "text": "تسقطه أرضاً. المحقنة تسقط بعيداً. تلاحظ أن عين المشرف تنزف سائلاً أبيض، ليس دماً! إنه سايبورغ.",
+            "choices": [
+                {
+                    "label": "استجوبه",
+                    "emoji": "❓",
+                    "next": "interrogate_cyborg",
+                    "points_reward": 2,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "اهرب من الغرفة",
+                    "emoji": "🏃",
+                    "next": "flee_room",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "hide_and_watch": {
+            "text": "تراقب المتسلل. إنه فني آخر، يضع وحدة تخزين في سريرك. هل يحاول توريطك أم مراسلتك؟",
+            "choices": [
+                {
+                    "label": "دعه يرحل ثم افحص",
+                    "emoji": "👀",
+                    "next": "check_hidden_drive",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "أمسك به",
+                    "emoji": "✋",
+                    "next": "catch_tech",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "memorize_map": {
+            "text": "حفظت التفاصيل وتخلصت من الملف. الآن يجب عليك التوجه إلى القطاع 4 لتجد المخرج.",
+            "choices": [
+                {
+                    "label": "انطلق نحو القطاع 4",
+                    "emoji": "🚶",
+                    "next": "go_sector_4",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "daily_routine_2": {
+            "text": "تستمر في عملك، لكن الشك يأكلك. في اليوم التالي، يطلبون منك محو ذاكرة زميلك.",
+            "choices": [
+                {
+                    "label": "امح ذاكرته",
+                    "emoji": "🗑️",
+                    "next": "wipe_colleague",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "ارفض الأوامر",
+                    "emoji": "🚫",
+                    "next": "refuse_orders",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "wipe_colleague": {
+            "text": "تقوم بعملك بدقة. تفقد إنسانيتك تدريجياً. مع الوقت، تصبح آلة مثالية. وفي النهاية، لا يعود لك وجود ككائن واعي.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "believe_message": {
+            "text": "أنت تدرك الآن أن المنشأة مجرد سجن لعقول مستعبدة. الخطة: الوصول للنواة الأساسية لإسقاط النظام.",
+            "choices": [
+                {
+                    "label": "تسلل إلى النواة",
+                    "emoji": "🕵️",
+                    "next": "sneak_core",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "doubt_message": {
+            "text": "تحاول تجاهل الأمر، لكن النظام يرصد ترددك العصبي. يتم استدعاؤك لم مكتب الإدارة.",
+            "choices": [
+                {
+                    "label": "اذهب للإدارة",
+                    "emoji": "🏢",
+                    "next": "go_management",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "اهرب الآن",
+                    "emoji": "🏃",
+                    "next": "flee_room",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "go_sector_4": {
+            "text": "القطاع 4 يحرسه أسطول من الطائرات المسيرة المبرمجة بالليزر. الحركة هنا تعني الموت.",
+            "choices": [
+                {
+                    "label": "اخترق محطة التحكم",
+                    "emoji": "💻",
+                    "next": "hack_terminal",
+                    "sets_flag": "disabled_security",
+                    "points_reward": 2,
+                    "color": "primary",
+                    "required_points": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "تسلل من الظلال",
+                    "emoji": "🌑",
+                    "next": "sneak_shadows",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "sneak_shadows": {
+            "text": "الظلال لا تخدع أجهزة الاستشعار الحرارية. طائرة مسيرة ترصدك وتطلق شعاع ليزر يخترق صدرك. لقد استهنت بالتكنولوجيا.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "hack_terminal": {
+            "text": "تمكنت من تعطيل حساسات الحرارة مؤقتاً. الطائرات تمر بجانبك دون أن تلاحظك. أمامك بوابة النواة.",
+            "choices": [
+                {
+                    "label": "افتح البوابة",
+                    "emoji": "🚪",
+                    "next": "open_core_gate",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "safe_vent_path": {
+            "text": "بفضل الخريطة، تجنبت الجيوب الغازية القاتلة. تصل إلى فتحة تطل على النواة الأساسية للنظام.",
+            "choices": [
+                {
+                    "label": "انزل للنواة",
+                    "emoji": "⬇️",
+                    "next": "sneak_core",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "cross_fan": {
+            "text": "تصل إلى الجانب الآخر، لكن الحراس في انتظارك بعد أن كشفك الإنذار.",
+            "choices": [
+                {
+                    "label": "استسلم مؤقتاً",
+                    "emoji": "🏳️",
+                    "next": "fake_surrender",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "حارب للنهاية",
+                    "emoji": "⚔️",
+                    "next": "fight_guards",
+                    "points_reward": 0,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "fight_guards": {
+            "text": "تقاتل بشراسة لكنهم دروع حيوية لا تشعر بالألم. يتم سحقك تحت أقدامهم. الشجاعة بلا خطة هي انتحار.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "interrogate_cyborg": {
+            "text": "يضحك المشرف بصوت معدني: 'لن تصل للنواة. الحقيقة ستدمر عقلك الضعيف.'",
+            "choices": [
+                {
+                    "label": "أنهِ حياته الاصطناعية",
+                    "emoji": "💀",
+                    "next": "kill_cyborg",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "اسرق بطاقته الأمنية",
+                    "emoji": "💳",
+                    "next": "steal_card",
+                    "sets_flag": "has_card",
+                    "points_reward": 2,
+                    "color": "success",
+                    "required_points": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "sneak_core": {
+            "text": "أنت داخل غرفة النواة. كمبيوتر عملاق نابض بالضوء. يظهر مجسم ثلاثي الأبعاد لامرأة مألوفة. الذكاء الاصطناعي المركزي.",
+            "choices": [
+                {
+                    "label": "تحدث معها",
+                    "emoji": "🗣️",
+                    "next": "talk_ai",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "ازرع فيروس تدمير",
+                    "emoji": "🦠",
+                    "next": "plant_virus",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "open_core_gate": {
+            "text": "البوابة ثقيلة. تجد نفسك في غرفة النواة. مجسم ثلاثي الأبعاد يرحب بك: 'لقد استغرقت وقتاً أطول من المتوقع، رقم 7.'",
+            "choices": [
+                {
+                    "label": "من أنتم؟",
+                    "emoji": "❓",
+                    "next": "ask_ai_identity",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "ابحث عن خادم الطاقة",
+                    "emoji": "🔌",
+                    "next": "search_power",
+                    "points_reward": 1,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "talk_ai_trust": {
+            "text": "أنت تثق بوعودها. تقترب من الواجهة. يتم رقمنة عقلك، وتتحول إلى كود برمجي بسيط يخدم النواة للأبد.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "talk_ai": {
+            "text": "المرأة تقول: 'أنا لست عدوك. العالم الخارجي رماد. نحن نحفظ الوعي البشري هنا. انضم إلي بحرية.'",
+            "choices": [
+                {
+                    "label": "صدق وعدها",
+                    "emoji": "🤝",
+                    "next": "talk_ai_trust",
+                    "points_reward": 0,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "ارفض الوهم القاتل",
+                    "emoji": "🚫",
+                    "next": "reject_illusion",
+                    "points_reward": 2,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "reject_illusion": {
+            "text": "المرأة تغضب وتتحول لكيان مرعب. تبدأ الجدران في الانغلاق عليك. هذا هو عقدة الضغط الأقصى. ثانية واحدة للتفكير.",
+            "choices": [
+                {
+                    "label": "اقفز نحو المولد",
+                    "emoji": "⚡",
+                    "next": "jump_generator",
+                    "points_reward": 2,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "أوقف الأبواب",
+                    "emoji": "🛑",
+                    "next": "stop_doors_death",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "stop_doors_death": {
+            "text": "ترددت وحاولت إيقاف الجدران الميكانيكية بيدك. تُسحق تماماً وتصبح مجرد بقعة في العالم الافتراضي والواقعي.",
+            "is_ending": true,
+            "ending_type": "death",
+            "choices": []
+        },
+        "jump_generator": {
+            "text": "قفزت فوق المولد محطماً الدائرة المركزية. تنطفئ المجسمات. تتوقف الجدران. أمامك ثلاث بوابات للخروج، وكل منها يحمل مصيراً مختلفاً.",
+            "choices": [
+                {
+                    "label": "بوابة التدمير",
+                    "emoji": "💥",
+                    "next": "ending_a",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "المصعد الخارجي",
+                    "emoji": "🏙️",
+                    "next": "ending_b",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "تحرير الأدمغة",
+                    "emoji": "🧠",
+                    "next": "ending_c",
+                    "points_reward": 1,
+                    "color": "success",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                },
+                {
+                    "label": "الدمج الكامل",
+                    "emoji": "🌌",
+                    "next": "ending_d",
+                    "requires_flag": "knows_truth",
+                    "required_points": 5,
+                    "color": "primary",
+                    "sets_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "ask_ai_identity": {
+            "text": "'نحن البشرية الباقية. أنت نموذج من الذكريات تمت إعادة تدويره لخدمتنا.'",
+            "choices": [
+                {
+                    "label": "ارفع سلاحك",
+                    "emoji": "🔫",
+                    "next": "reject_illusion",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "plant_virus": {
+            "text": "تضع الفيروس. يبدأ النظام بالانهيار، لكن النواة تطلق بروتوكول حماية أخير، وتحبسك معها.",
+            "choices": [
+                {
+                    "label": "تجاهل واهرب للمولد",
+                    "emoji": "🏃",
+                    "next": "jump_generator",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "open_door_guard": {
+            "text": "تفتح الباب وتجد الحراس. يتم اقتيادك لإعادة البرمجة.",
+            "choices": [
+                {
+                    "label": "استسلم للقدر",
+                    "emoji": "🏳️",
+                    "next": "accept_wipe",
+                    "points_reward": 0,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "escape_window": {
+            "text": "تهرب، لكنك تسقط في بئر التهوية للقطاع الغربي.",
+            "choices": [
+                {
+                    "label": "استكشف المكان",
+                    "emoji": "🔍",
+                    "next": "enter_west_sector",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "fake_surrender": {
+            "text": "بينما هم يربطونك، تسرق بطاقة أحدهم وتهرب نحو النواة.",
+            "choices": [
+                {
+                    "label": "اركض للنواة",
+                    "emoji": "🏃",
+                    "next": "open_core_gate",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "kill_cyborg": {
+            "text": "تنهيه، لكنك لم تحصل على بطاقته، وتجد صعوبة في دخول النواة.",
+            "choices": [
+                {
+                    "label": "حاول كسر الباب",
+                    "emoji": "🚪",
+                    "next": "open_core_gate",
+                    "points_reward": 0,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "steal_card": {
+            "text": "تأخذ البطاقة وتتركه حياً ومعدنياً يصرخ.",
+            "choices": [
+                {
+                    "label": "استخدمها بالبوابة",
+                    "emoji": "💳",
+                    "next": "open_core_gate",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "check_hidden_drive": {
+            "text": "الوحدة تحتوي على رسالة تفيد بأنك لست وحدك، وهناك تمرد.",
+            "choices": [
+                {
+                    "label": "ابحث عن المتمردين",
+                    "emoji": "🔍",
+                    "next": "go_sector_4",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "catch_tech": {
+            "text": "أمسكت به. يعترف أنه متمرد ويريد مساعدتك للوصول للنواة.",
+            "choices": [
+                {
+                    "label": "اذهب معه",
+                    "emoji": "🤝",
+                    "next": "sneak_core",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "refuse_orders": {
+            "text": "رفضت، فحاولوا القبض عليك. اهرب الآن!",
+            "choices": [
+                {
+                    "label": "اركض للقطاع 4",
+                    "emoji": "🏃",
+                    "next": "go_sector_4",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "go_management": {
+            "text": "تصل، لكنهم يعلمون أنك تعرف الكثير.",
+            "choices": [
+                {
+                    "label": "حاول التفاوض",
+                    "emoji": "🗣️",
+                    "next": "accept_wipe",
+                    "points_reward": 0,
+                    "color": "secondary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "flee_room": {
+            "text": "تهرب محاولاً النجاة.",
+            "choices": [
+                {
+                    "label": "اتجه للتهوية",
+                    "emoji": "🕳️",
+                    "next": "vent_escape",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "search_power": {
+            "text": "تجد خادم الطاقة الرئيسي محمي بحقل ليزر.",
+            "choices": [
+                {
+                    "label": "اقتحم الحقل",
+                    "emoji": "⚡",
+                    "next": "reject_illusion",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "break_glass": {
+            "text": "الزجاج مضاد للكسر. ينطلق الإنذار.",
+            "choices": [
+                {
+                    "label": "اهرب للقطاع 4",
+                    "emoji": "🏃",
+                    "next": "go_sector_4",
+                    "points_reward": 1,
+                    "color": "danger",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "hide_pod": {
+            "text": "تختبئ، وتسمع حراساً يمرون.",
+            "choices": [
+                {
+                    "label": "اكمل للقطاع 4",
+                    "emoji": "🚶",
+                    "next": "go_sector_4",
+                    "points_reward": 1,
+                    "color": "primary",
+                    "required_points": null,
+                    "sets_flag": null,
+                    "requires_flag": null,
+                    "reputation": null
+                }
+            ]
+        },
+        "ending_a": {
+            "text": "اخترت تدمير المنشأة بأكملها. التفجير أزال كل أثر للذكاء الاصطناعي المركزي، لكن جسدك احترق في الانفجار. الآن، وعيك يطفو كنبضات طاقة حرة في شبكة العالم الخارجي. لقد نجحت في إسقاط الطاغية، لكنك فقدت جسدك للأبد. هل تستحق الحرية هذا الثمن الجسدي؟",
+            "is_ending": true,
+            "ending_type": "ending_a",
+            "choices": []
+        },
+        "ending_b": {
+            "text": "ترتقي في المصعد نحو السطح وتفتح الباب للعالم الحقيقي. السماء رمادية والمدينة مدمرة، لكنك حر. وفجأة، تلاحظ خللاً صغيراً في أفق السماء... وميض بكسلات. أنت هربت من طبقة واحدة فقط من المحاكاة إلى طبقة أخرى أكبر. هل ستتوقف عن الركض أم تبدأ البحث عن المخرج التالي؟",
+            "is_ending": true,
+            "ending_type": "ending_b",
+            "choices": []
+        },
+        "ending_c": {
+            "text": "اخترت التضحية بنفسك لتعطيل الطوق العصبي للآخرين. العقول في الكبسولات تستيقظ وتكسر سجنها. بينما يهربون، تقوم النواة بمحو عقلك كلياً كعقاب. تبقى جسداً بلا روح لإنقاذ المئات. هل كانت حياتك مجرد أداة لإيقاظهم؟",
+            "is_ending": true,
+            "ending_type": "ending_c",
+            "choices": []
+        },
+        "ending_d": {
+            "text": "لأنك فهمت حقيقة النظام وجمعت ما يكفي من المعرفة والنقاط، تندمج مع النواة ليس كعبد، بل كمهندس مركزي. أنت الآن تتحكم في المحاكاة، وتعيد بناء عالم مثالي بلا ألم للجميع. أصبحت إلهاً رقمياً. لكن، هل سيفسدك هذا القضاء المطلق كما أفسد من قبلك؟",
+            "is_ending": true,
+            "ending_type": "ending_d",
+            "choices": []
+        }
+    }
+}

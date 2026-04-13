@@ -29,7 +29,7 @@
                     "required_points": null,
                     "sets_flag": null,
                     "requires_flag": null,
-                    "reputation": null
+                    "reputation": "seeker"
                 },
                 {
                     "label": "تجاهل وامح الذاكرة",
@@ -40,7 +40,7 @@
                     "required_points": null,
                     "sets_flag": null,
                     "requires_flag": null,
-                    "reputation": null
+                    "reputation": "obedient"
                 }
             ]
         },
@@ -56,7 +56,7 @@
                     "color": "danger",
                     "required_points": null,
                     "requires_flag": null,
-                    "reputation": null
+                    "reputation": "rebel"
                 },
                 {
                     "label": "أبلغ المشرف فوراً",
@@ -67,7 +67,7 @@
                     "required_points": null,
                     "sets_flag": null,
                     "requires_flag": null,
-                    "reputation": null
+                    "reputation": "obedient"
                 }
             ]
         },
@@ -143,7 +143,7 @@
                     "required_points": null,
                     "sets_flag": null,
                     "requires_flag": null,
-                    "reputation": null
+                    "reputation": "obedient"
                 },
                 {
                     "label": "قاوم وحاول الهرب",
@@ -154,7 +154,7 @@
                     "required_points": null,
                     "sets_flag": null,
                     "requires_flag": null,
-                    "reputation": null
+                    "reputation": "rebel"
                 }
             ]
         },
@@ -680,7 +680,7 @@
                     "required_points": null,
                     "sets_flag": null,
                     "requires_flag": null,
-                    "reputation": null
+                    "reputation": "obedient"
                 },
                 {
                     "label": "ارفض الأوامر",
@@ -691,7 +691,7 @@
                     "required_points": null,
                     "sets_flag": null,
                     "requires_flag": null,
-                    "reputation": null
+                    "reputation": "rebel"
                 }
             ]
         },

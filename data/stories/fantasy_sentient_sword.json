@@ -92,20 +92,18 @@
           "label": "وجه ضربته العشوائية",
           "emoji": "🎯",
           "next": "crypt_ambush",
-          "points_reward": 0,
-          "color": "primary"
+          "points_reward": 0
         },
         {
-          "label": "استمر في الصمت",
-          "emoji": "🤐",
-          "next": "death_wielder_panic",
-          "points_reward": 0,
-          "color": "primary"
+          "label": "انتظر اللحظة الأخيرة",
+          "emoji": "⏳",
+          "next": "wait_last_moment",
+          "points_reward": 0
         }
       ]
     },
     "death_wielder_panic": {
-      "text": "الفتى يتعثر في الظلام ويسقطك. حارس الظل يمزقه إرباً. تظل أنت ملقى في بركة من دماء خادمك الجديد، تنتظر قروناً أخرى بلا أمل. لو كنت تحدثت إليه، لربما نجا.",
+      "text": "تلاشت روحك ببطء، وتآكل معدنك تماماً. الصمت الطويل كان قراراً خاطئاً من البداية. لقد انتهت أسطورتك قبل أن تبدأ.",
       "is_ending": true,
       "choices": []
     },
@@ -133,19 +131,17 @@
       "text": "تشتبكون مع الحراس. الفتى ضعيف لكنك تعوض نقصه. ضربة قوية تقترب من رأس الفتى.",
       "choices": [
         {
-          "label": "تصدى للضربة",
+          "label": "شجعه على الصمود",
           "emoji": "🛡️",
-          "next": "death_shattered_blade",
-          "points_reward": 0,
-          "color": "primary"
+          "next": "encourage_stand",
+          "points_reward": 0
         },
         {
           "label": "أرشده للتفادي",
           "emoji": "🏃",
           "next": "crypt_exploration",
           "points_reward": 1,
-          "reputation": "guardian",
-          "color": "primary"
+          "reputation": "guardian"
         }
       ]
     },
@@ -202,15 +198,13 @@
           "emoji": "✨",
           "next": "crypt_exploration",
           "points_reward": 1,
-          "reputation": "guardian",
-          "color": "primary"
+          "reputation": "guardian"
         },
         {
-          "label": "دعه يُلدغ",
-          "emoji": "🐛",
-          "next": "death_soul_consumed",
-          "points_reward": 0,
-          "color": "primary"
+          "label": "راقبه يزحف",
+          "emoji": "👀",
+          "next": "watch_him_crawl",
+          "points_reward": 0
         }
       ]
     },
@@ -238,15 +232,13 @@
           "label": "ساعده بقوتك",
           "emoji": "⚔️",
           "next": "great_hall_entry",
-          "points_reward": 1,
-          "color": "primary"
+          "points_reward": 1
         },
         {
-          "label": "دعه يتدبر أمره",
-          "emoji": "🤷",
-          "next": "death_warden_trap",
-          "points_reward": 0,
-          "color": "primary"
+          "label": "تراجع للوراء",
+          "emoji": "🔙",
+          "next": "fall_back",
+          "points_reward": 0
         }
       ]
     },
@@ -883,18 +875,16 @@
       "text": "أثناء تقدمكم، تصادفون لصاً لئيماً ينبش الجثث. يعرض على الفتى خريطة آمنة مقابل التخلي عنك.",
       "choices": [
         {
-          "label": "دعه يقبل العرض",
-          "emoji": "🤝",
-          "next": "death_betrayed_by_thief",
-          "points_reward": 0,
-          "color": "primary"
+          "label": "استمع لعرضه",
+          "emoji": "👂",
+          "next": "listen_thief",
+          "points_reward": 0
         },
         {
           "label": "امره بقتل اللص",
           "emoji": "🔪",
           "next": "kill_thief",
-          "points_reward": 1,
-          "color": "primary"
+          "points_reward": 1
         }
       ]
     },
@@ -919,18 +909,16 @@
       "text": "منذ فترة طويلة لم تمتزج بالدماء. تشعر بضعف شديد يمزق وعيك.",
       "choices": [
         {
-          "label": "استسلم للضعف",
-          "emoji": "💤",
-          "next": "death_starved_blade",
-          "points_reward": 0,
-          "color": "primary"
+          "label": "حاول الصمود",
+          "emoji": "🛡️",
+          "next": "try_endure",
+          "points_reward": 0
         },
         {
           "label": "اسحب من الفتى",
           "emoji": "🩸",
           "next": "threaten_boy",
-          "points_reward": 1,
-          "color": "primary"
+          "points_reward": 1
         }
       ]
     },
@@ -1242,6 +1230,245 @@
           "next": "great_hall_entry",
           "points_reward": 1,
           "color": "primary"
+        }
+      ]
+    },
+    "wait_last_moment": {
+      "text": "تنتظر حتى يقترب الحارس لترى إن كان الفتى سيقاتل بصدق.",
+      "choices": [
+        {
+          "label": "تسلل بصمت",
+          "emoji": "👣",
+          "next": "crypt_stealth",
+          "points_reward": 1
+        },
+        {
+          "label": "استمر في الصمت",
+          "emoji": "🤐",
+          "next": "keep_silent_2",
+          "points_reward": 0
+        }
+      ]
+    },
+    "keep_silent_2": {
+      "text": "الفتى يبكي من الرعب. الحارس يرفع سيفه الأسود ليضربه.",
+      "choices": [
+        {
+          "label": "التحم بهجومه",
+          "emoji": "⚔️",
+          "next": "crypt_ambush",
+          "points_reward": 0
+        },
+        {
+          "label": "لا تفعل شيئاً",
+          "emoji": "🚫",
+          "next": "do_nothing",
+          "points_reward": 0
+        }
+      ]
+    },
+    "do_nothing": {
+      "text": "أنت لا تزال ترفض المساعدة. الحارس ينقض على الفتى.",
+      "choices": [
+        {
+          "label": "حاول صده",
+          "emoji": "🛡️",
+          "next": "try_block",
+          "points_reward": 0
+        },
+        {
+          "label": "استسلم للقدر",
+          "emoji": "💀",
+          "next": "surrender_fate",
+          "points_reward": 0
+        }
+      ]
+    },
+    "surrender_fate": {
+      "text": "الفتى يتعثر في الظلام ويسقطك. حارس الظل يمزقه إرباً. تظل أنت ملقى في بركة من دماء خادمك الجديد، تنتظر قروناً أخرى.",
+      "choices": [
+        {
+          "label": "انتظر مئات السنين",
+          "emoji": "⏳",
+          "next": "wait_hundred_years",
+          "points_reward": 0
+        }
+      ]
+    },
+    "wait_hundred_years": {
+      "text": "تمر قرون طويلة. أنت مجرد معدن في الظلام. هل ستستيقظ يوماً؟",
+      "choices": [
+        {
+          "label": "ارحل للأبد",
+          "emoji": "👻",
+          "next": "death_wielder_panic",
+          "points_reward": 0
+        }
+      ]
+    },
+    "encourage_stand": {
+      "text": "الفتى يرفعك لمحاولة صد الضربة. يديه ترتجفان بشدة.",
+      "choices": [
+        {
+          "label": "ارفع طاقتك الدفاعية",
+          "emoji": "✨",
+          "next": "raise_defenses",
+          "points_reward": 0
+        },
+        {
+          "label": "تراجع بسرعة",
+          "emoji": "🏃",
+          "next": "crypt_exploration",
+          "points_reward": 1
+        }
+      ]
+    },
+    "raise_defenses": {
+      "text": "تحاول صد الفأس العملاقة، لكن الصدأ يعيق طاقتك.",
+      "choices": [
+        {
+          "label": "امتص الصدمة",
+          "emoji": "💥",
+          "next": "absorb_shock",
+          "points_reward": 0
+        }
+      ]
+    },
+    "absorb_shock": {
+      "text": "الصدمة تدوي في كل جزء منك. الفتى يصرخ.",
+      "choices": [
+        {
+          "label": "اجمع طاقة إضافية",
+          "emoji": "⚡",
+          "next": "gather_extra_energy",
+          "points_reward": 0
+        }
+      ]
+    },
+    "watch_him_crawl": {
+      "text": "الفتى يزحف بخوف، ديدان الظل تقترب.",
+      "choices": [
+        {
+          "label": "انتظر قليلاً",
+          "emoji": "⏳",
+          "next": "wait_worms",
+          "points_reward": 0
+        }
+      ]
+    },
+    "wait_worms": {
+      "text": "الديدان تقفز عليه.",
+      "choices": [
+        {
+          "label": "راقبه يتعذب",
+          "emoji": "👀",
+          "next": "watch_suffer",
+          "points_reward": 0
+        }
+      ]
+    },
+    "fall_back": {
+      "text": "تتراجعون قليلاً لكن الحراس يحاصرونكم.",
+      "choices": [
+        {
+          "label": "حاول الهرب",
+          "emoji": "🏃",
+          "next": "try_escape",
+          "points_reward": 0
+        }
+      ]
+    },
+    "try_escape": {
+      "text": "لا مجال للهرب.",
+      "choices": [
+        {
+          "label": "استسلم",
+          "emoji": "🏳️",
+          "next": "death_warden_trap",
+          "points_reward": 0
+        }
+      ]
+    },
+    "listen_thief": {
+      "text": "اللص يقدم وعوداً بالنجاة.",
+      "choices": [
+        {
+          "label": "حذره من اللص",
+          "emoji": "⚠️",
+          "next": "kill_thief",
+          "points_reward": 1
+        },
+        {
+          "label": "دعه يصدقه",
+          "emoji": "🤝",
+          "next": "death_betrayed_by_thief",
+          "points_reward": 0
+        }
+      ]
+    },
+    "try_endure": {
+      "text": "وعيك يضعف شيئاً فشيئاً.",
+      "choices": [
+        {
+          "label": "قاوم الإغماء",
+          "emoji": "😖",
+          "next": "resist_faint",
+          "points_reward": 0
+        }
+      ]
+    },
+    "try_block": {
+      "text": "تندفع للأمام بقوتك الباقية لصد الهجوم.",
+      "choices": [
+        {
+          "label": "اضرب الفأس",
+          "emoji": "⚔️",
+          "next": "strike_axe",
+          "points_reward": 0
+        }
+      ]
+    },
+    "strike_axe": {
+      "text": "الفأس تصطدم بنصلك بقوة هائلة.",
+      "choices": [
+        {
+          "label": "تلقى الصدمة",
+          "emoji": "💥",
+          "next": "death_shattered_blade",
+          "points_reward": 0
+        }
+      ]
+    },
+    "watch_suffer": {
+      "text": "الديدان تبدأ بامتصاص طاقته.",
+      "choices": [
+        {
+          "label": "تجاهل صراخه",
+          "emoji": "🤐",
+          "next": "death_soul_consumed",
+          "points_reward": 0
+        }
+      ]
+    },
+    "resist_faint": {
+      "text": "تحاول التمسك بوعيك، لكن الجوع يعصف بك.",
+      "choices": [
+        {
+          "label": "اغمض عينيك",
+          "emoji": "💤",
+          "next": "death_starved_blade",
+          "points_reward": 0
+        }
+      ]
+    },
+    "gather_extra_energy": {
+      "text": "تجمع كل ذرة طاقة من المقبض.",
+      "choices": [
+        {
+          "label": "تحمل الألم",
+          "emoji": "😖",
+          "next": "death_shattered_blade",
+          "points_reward": 0
         }
       ]
     }

@@ -1,0 +1,1275 @@
+{
+  "id": "p_spies_informant",
+  "title": "الخائن المزدوج",
+  "summary": "بين ولاء مشتت ومكائد البلاط، ليلة واحدة تفصلك عن تغيير تاريخ الإمبراطورية أو الموت في أزقتها المظلمة.",
+  "difficulty": "مستحيل",
+  "estimated_length": "طويلة جدا",
+  "theme": "جواسيس التاريخ",
+  "world_type": "past",
+  "game_mode": "single",
+  "perspective": {
+    "id": "persp_spy",
+    "label": "منظور الجاسوس",
+    "emoji": "🎭",
+    "description": "تلعب دور جاسوس محاصر يملك شفرة مصيرية بين الفصائل المتقاتلة.",
+    "start_node": "start"
+  },
+  "nodes": {
+    "start": {
+      "text": "الليل يلف العاصمة ككفن بارد. شفرة التمرد في جيبك، وزنها أثقل من الذهب. فجأة يخرج من الظلام رجل بوجه مألوف، يعرض عليك الهروب.",
+      "choices": [
+        {
+          "label": "اتبع الرجل للأزقة",
+          "next": "p_alley_meeting",
+          "emoji": "🌑",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اهرب نحو الأسطح",
+          "next": "p_rooftop_escape",
+          "emoji": "🏢",
+          "color": "secondary",
+          "points_reward": 2
+        },
+        {
+          "label": "ادخل الحانة الصاخبة",
+          "next": "p_tavern_hideout",
+          "emoji": "🍺",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_alley_meeting": {
+      "text": "تتبعه في زقاق ضيق لا يدخله ضوء القمر. يتوقف الرجل ويلتفت إليك، وعيناه تلتمعان بنظرة غريبة. يمد يده طالباً الشفرة ليحفظها.",
+      "choices": [
+        {
+          "label": "ثق به وسلمه الشفرة",
+          "next": "p_death_trusted_spy",
+          "emoji": "🤝",
+          "color": "success",
+          "points_reward": 0
+        },
+        {
+          "label": "اقتله بصمت",
+          "next": "p_kill_informant",
+          "emoji": "🗡️",
+          "color": "danger",
+          "points_reward": 2,
+          "sets_flag": "flag_knows_secret_route"
+        }
+      ]
+    },
+    "p_death_trusted_spy": {
+      "text": "ابتسم وهو يأخذ الشفرة. في اللحظة التالية، شعرت ببرودة نصله يخترق صدرك. 'السلطان يرسل تحياته'، همس في أذنك. كان يجب ألا تثق بأحد في هذه المدينة.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_kill_informant": {
+      "text": "تطعنه قبل أن ينطق. تسقط جثته بلا صوت. تفتش جيوبه وتجد خريطة لأنابيب المياه القديمة. هذه فرصتك للهروب من أعين الحرس.",
+      "choices": [
+        {
+          "label": "انزل للمجاري",
+          "next": "p_enter_sewers",
+          "emoji": "🕳️",
+          "color": "primary",
+          "points_reward": 2,
+          "requires_flag": "flag_knows_secret_route"
+        },
+        {
+          "label": "تسلق الجدران",
+          "next": "p_climb_walls",
+          "emoji": "🧱",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_rooftop_escape": {
+      "text": "تتسلق بشراسة حتى تصل للسطح. الرياح تعصف بك، ومن بعيد تسمع صفارات حرس السلطان. هناك فجوة واسعة بين المباني، ومداخن يمكن الاختباء بها.",
+      "choices": [
+        {
+          "label": "اقفز فوق الفجوة",
+          "next": "p_leap_gap",
+          "emoji": "🏃",
+          "color": "danger",
+          "points_reward": 2
+        },
+        {
+          "label": "اختبئ داخل المدخنة",
+          "next": "p_hide_chimney",
+          "emoji": "🏭",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_tavern_hideout": {
+      "text": "رائحة العرق والنبيذ تملأ المكان. في الزاوية، يلوح لك صديق قديم من أيام التجنيد، ويدعوك لكأسه. خلف الحانة، باب يؤدي للقبو.",
+      "choices": [
+        {
+          "label": "اشرب مع الصديق",
+          "next": "p_drink_with_friend",
+          "emoji": "🍷",
+          "color": "success",
+          "points_reward": 0
+        },
+        {
+          "label": "تسلل نحو القبو",
+          "next": "p_slip_to_basement",
+          "emoji": "🚪",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_drink_with_friend": {
+      "text": "ترتشف النبيذ وأنت تلتقط أنفاسك. فجأة، يضيق تنفسك وتتصلب عضلاتك. ينظر إليك صديقك ببرود: 'الجائزة على رأسك تسدد ديوني'. السم كان سريعاً.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_slip_to_basement": {
+      "text": "تهبط للقبو المظلم لتجد صاحب الحانة يخبئ أموالاً. يلتفت إليك مرعوباً، ثم يمسك سكيناً بيده المرتجفة. الوقت ينفد.",
+      "choices": [
+        {
+          "label": "قدم له رشوة",
+          "next": "p_bribe_bartender",
+          "emoji": "💰",
+          "color": "success",
+          "points_reward": 1
+        },
+        {
+          "label": "هدده بالقتل",
+          "next": "p_threaten_bartender",
+          "emoji": "⚔️",
+          "color": "danger",
+          "points_reward": 2,
+          "sets_flag": "flag_wounded"
+        }
+      ]
+    },
+    "p_leap_gap": {
+      "text": "تقف على الحافة. المسافة مرعبة. يمكنك الوثوب مستعيناً بتوازنك، أو استخدام حبل غسيل معلق لتعبر.",
+      "choices": [
+        {
+          "label": "اعتمد على توازنك",
+          "next": "p_trust_balance",
+          "emoji": "⚖️",
+          "color": "primary",
+          "points_reward": 0
+        },
+        {
+          "label": "استخدم الحبل",
+          "next": "p_use_rope",
+          "emoji": "🪢",
+          "color": "secondary",
+          "points_reward": 2,
+          "sets_flag": "flag_wounded"
+        }
+      ]
+    },
+    "p_trust_balance": {
+      "text": "تقفز بكل قوتك، لكن القرميد المبلل يخون قدمك. تزل وتسقط في الفراغ. ارتطامك بالأرض المرصوفة ينهي كل شيء. شجاعة بلا حذر تعني الموت.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_use_rope": {
+      "text": "تتأرجح بالحبل، يحترق جلد يديك بشدة لكنك تصل للضفة الأخرى. الألم يذكرك بأنك حي. أمامك نافذة مفتوحة ومسار يكمل فوق الأسطح.",
+      "choices": [
+        {
+          "label": "ادخل النافذة",
+          "next": "p_enter_window",
+          "emoji": "🪟",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "استمر على السطح",
+          "next": "p_keep_running_roofs",
+          "emoji": "🏃",
+          "color": "secondary",
+          "points_reward": 2
+        }
+      ]
+    },
+    "p_hide_chimney": {
+      "text": "تحشر نفسك في المدخنة. تسمع خطوات قتلة 'النصال الصامتة' فوقك. يبدو أنهم يتفحصون المكان بدقة.",
+      "choices": [
+        {
+          "label": "انتظر لفترة أطول",
+          "next": "p_wait_longer",
+          "emoji": "⏳",
+          "color": "primary",
+          "points_reward": 0
+        },
+        {
+          "label": "اخرج فوراً",
+          "next": "p_exit_now",
+          "emoji": "🚪",
+          "color": "danger",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_wait_longer": {
+      "text": "تنتظر في الظلام. فجأة، يشعل صاحب المنزل موقده بالأسفل. الدخان الكثيف يملأ رئتيك، تحاول الخروج لكنك تختنق وتفقد الوعي. نهايتك كانت رماداً.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_exit_now": {
+      "text": "تخرج بحذر. القتلة رحلوا للتو. تلمح عربة قش بالأسفل، أو يمكنك العودة للشارع الرئيسي.",
+      "choices": [
+        {
+          "label": "اقفز لعربة القش",
+          "next": "p_dive_cart",
+          "emoji": "🌾",
+          "color": "secondary",
+          "points_reward": 2,
+          "sets_flag": "flag_found_poison"
+        },
+        {
+          "label": "عد للشارع",
+          "next": "p_market_run",
+          "emoji": "🛣️",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_enter_sewers": {
+      "text": "بفضل الخريطة، تتجنب الفخاخ. لكن المياه ترتفع والتيار يشتد. عليك اختيار مسار.",
+      "choices": [
+        {
+          "label": "اسبح في العمق",
+          "next": "p_swim_deep",
+          "emoji": "🌊",
+          "color": "primary",
+          "points_reward": 0
+        },
+        {
+          "label": "امش على الحافة",
+          "next": "p_walk_edge",
+          "emoji": "🚶",
+          "color": "secondary",
+          "points_reward": 2
+        }
+      ]
+    },
+    "p_swim_deep": {
+      "text": "تغوص في المياه الباردة محاولاً اختصار الطريق. التيار يسحبك بقوة لأسفل نحو نفق مسدود. تنفد أنفاسك وتغرق في ظلام الأقنية.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_walk_edge": {
+      "text": "تتمسك بالحافة الزلقة بصعوبة وتنجو من التيار. ترى ضوءاً من معسكر متمردين تحت الأرض، ومخرجاً آخر نحو سطح المدينة.",
+      "choices": [
+        {
+          "label": "ادخل معسكر المتمردين",
+          "next": "p_aqueduct_rebel_camp",
+          "emoji": "⛺",
+          "color": "primary",
+          "points_reward": 2,
+          "reputation": "rebel"
+        },
+        {
+          "label": "اخرج للمدينة",
+          "next": "p_aqueduct_exit",
+          "emoji": "🚪",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_climb_walls": {
+      "text": "تتسلق وتصل لشرفة. تجد باباً يخص منزلاً آمناً قديماً للجواسيس. يمكنك دخوله للاختباء أو تجاهله والمضي نحو السوق.",
+      "choices": [
+        {
+          "label": "ادخل المنزل الآمن",
+          "next": "p_enter_safehouse",
+          "emoji": "🏠",
+          "color": "success",
+          "points_reward": 0
+        },
+        {
+          "label": "تجاوز المنزل",
+          "next": "p_bypass_safehouse",
+          "emoji": "⏭️",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_enter_safehouse": {
+      "text": "بمجرد دخولك، يُقفل الباب من الخارج ورائحة الزيت تملأ المكان. النيران تندلع في ثوان. لقد كان فخاً أُعد لمن يعرف هذه الأماكن.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_bypass_safehouse": {
+      "text": "تصل إلى حافة سوق ليلي مزدحم. الحرس ينتشرون في كل مكان يبحثون عنك.",
+      "choices": [
+        {
+          "label": "تسلل بين الحشود",
+          "next": "p_market_stealth",
+          "emoji": "👥",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اركض بسرعة",
+          "next": "p_market_run",
+          "emoji": "🏃",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_market_run": {
+      "text": "تركض محاولاً استغلال سرعتك، لكنك تدخل زقاقاً مغلقاً بالخطأ. حرس السلطان كانوا بانتظارك هناك. الأسهم تخترق جسدك قبل أن تتراجع.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_market_stealth": {
+      "text": "تختبئ بين الناس. تلمح جاسوساً من المتمردين كان صديقك يوماً، يراقب الحرس. يبدو أنه يعرف مخرجاً.",
+      "choices": [
+        {
+          "label": "تحدث معه",
+          "next": "p_rebel_contact_talk",
+          "emoji": "🗣️",
+          "color": "primary",
+          "points_reward": 1,
+          "sets_flag": "flag_betrayed_friend"
+        },
+        {
+          "label": "تجاهله وامض",
+          "next": "p_rebel_contact_ignore",
+          "emoji": "🚶",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_bribe_bartender": {
+      "text": "يأخذ الذهب بشراهة ويدلّك على ممر سري خلف براميل النبيذ القديمة. الممر يبدو مظلماً وعميقاً.",
+      "choices": [
+        {
+          "label": "ادخل الممر السري",
+          "next": "p_basement_passage",
+          "emoji": "🕳️",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "ابق واختبئ هنا",
+          "next": "p_basement_stay",
+          "emoji": "📦",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_threaten_bartender": {
+      "text": "يشهر سكينه وتتعاركان. تغلبه لكنك تصاب بجرح عميق. تجد الممر السري الذي كان يحرسه.",
+      "choices": [
+        {
+          "label": "ادخل الممر السري",
+          "next": "p_basement_passage",
+          "emoji": "🕳️",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اهرب للشارع",
+          "next": "p_flee_tavern",
+          "emoji": "🚪",
+          "color": "danger",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_basement_stay": {
+      "text": "تقرر الاختباء بين البراميل. بعد دقائق، يقتحم الحرس القبو، وصاحب الحانة يشي بك فوراً. تُسلب الشفرة ويُقطع عنقك في الظلام.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_enter_window": {
+      "text": "تجد نفسك في غرفة أرستقراطي نائم. هناك ملابس فاخرة يمكنك سرقتها للتنكر، أو يمكنك المغادرة قبل أن يستيقظ.",
+      "choices": [
+        {
+          "label": "اسرق الملابس الفاخرة",
+          "next": "p_steal_clothes",
+          "emoji": "👔",
+          "color": "success",
+          "points_reward": 2
+        },
+        {
+          "label": "اعتذر وغادر بصمت",
+          "next": "p_apologize_leave",
+          "emoji": "🤫",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_keep_running_roofs": {
+      "text": "تواصل الركض، لكن ظلال 'النصال الصامتة' تحاصرك من ثلاث جهات. لا مفر إلا القتال أو محاولة قفزة انتحارية نحو عربة قش بالأسفل.",
+      "choices": [
+        {
+          "label": "قاتل القتلة",
+          "next": "p_fight_assassins",
+          "emoji": "⚔️",
+          "color": "danger",
+          "points_reward": 0
+        },
+        {
+          "label": "اقفز لعربة القش",
+          "next": "p_dive_cart",
+          "emoji": "🌾",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "استخدم السم للهروب",
+          "next": "p_escape_with_poison",
+          "emoji": "🧪",
+          "color": "success",
+          "requires_flag": "flag_found_poison",
+          "points_reward": 2
+        }
+      ]
+    },
+    "p_fight_assassins": {
+      "text": "تستل سيفك وتواجههم. لكنهم أشباح لا يمكن التنبؤ بحركتهم. نصل سام يخدش رقبتك، وتسقط مشلولاً قبل أن يجهزوا عليك.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_dive_cart": {
+      "text": "تقفز وتغوص في القش. تنجو بأعجوبة. وأنت تنهض، تجد زجاجة سم غريبة تركها أحدهم هنا. قد تنفعك لاحقاً. العربة تتجه نحو مفترق طرق.",
+      "choices": [
+        {
+          "label": "تسلل لقصر السلطان",
+          "next": "p_cart_to_palace",
+          "emoji": "🏰",
+          "color": "primary",
+          "points_reward": 1,
+          "reputation": "loyalist"
+        },
+        {
+          "label": "توجه لأحياء التمرد",
+          "next": "p_cart_to_slums",
+          "emoji": "🏚️",
+          "color": "secondary",
+          "points_reward": 1,
+          "reputation": "rebel"
+        }
+      ]
+    },
+    "p_aqueduct_rebel_camp": {
+      "text": "تصل لمعسكر المتمردين السري. يحيط بك المقاتلون والشك يملأ أعينهم. يطلبون منك تسليم الشفرة فوراً لإثبات حسن نيتك.",
+      "choices": [
+        {
+          "label": "سلمهم الشفرة مبكراً",
+          "next": "p_give_cipher_early",
+          "emoji": "📜",
+          "color": "success",
+          "points_reward": 0
+        },
+        {
+          "label": "طالب برؤية القائد",
+          "next": "p_demand_leader",
+          "emoji": "👑",
+          "color": "danger",
+          "points_reward": 2
+        },
+        {
+          "label": "استغل صديقك المقتول",
+          "next": "p_give_cipher_general",
+          "emoji": "🗣️",
+          "color": "danger",
+          "points_reward": 1,
+          "requires_flag": "flag_betrayed_friend"
+        }
+      ]
+    },
+    "p_give_cipher_early": {
+      "text": "تسلم الشفرة لأحد الضباط. يبتسم بسخرية ويقول: 'لم نعد بحاجة إليك إذن'. يغمد خنجره في قلبك. غباء منك أن تتخلى عن ورقتك الرابحة.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_demand_leader": {
+      "text": "ترفض التسليم وتصرخ مطالباً بالقائد. يحترم القائد شجاعتك ويخرج من خيمته. يطلب منك خطة للتحرك.",
+      "choices": [
+        {
+          "label": "فاوض بحكمة",
+          "next": "p_negotiate_rebels",
+          "emoji": "🤝",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اكذب بشأن الحرس",
+          "next": "p_lie_rebels",
+          "emoji": "🤥",
+          "color": "secondary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_aqueduct_exit": {
+      "text": "تخرج من الأقنية لتجد نفسك قرب أسوار قصر السلطان. البوابات محروسة بكثافة. يمكنك مواجهة الحرس أو محاولة تسلق السور المنيع.",
+      "choices": [
+        {
+          "label": "واجه الحرس",
+          "next": "p_palace_guards",
+          "emoji": "🛡️",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "تسلق السور",
+          "next": "p_palace_wall",
+          "emoji": "🧱",
+          "color": "secondary",
+          "points_reward": 2
+        }
+      ]
+    },
+    "p_rebel_contact_talk": {
+      "text": "يخبرك الصديق القديم أنه سيهربك، بشرط أن تقتل جاسوساً آخر يهدد عائلته. القرار صعب.",
+      "choices": [
+        {
+          "label": "اقبل واتبعه",
+          "next": "p_follow_contact",
+          "emoji": "🚶",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اقتله هو",
+          "next": "p_kill_contact",
+          "emoji": "🗡️",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_kill_contact": {
+      "text": "تطعنه في السوق. الفوضى تعم المكان، ويسحقك حرس السلطان تحت أقدامهم في التدافع. نهايتك دموية ومخزية.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_rebel_contact_ignore": {
+      "text": "تتركه لحال سبيله وتتجه نحو الأحياء الفقيرة حيث معقل المتمردين. الطريق مليء بقطاع الطرق.",
+      "choices": [
+        {
+          "label": "تسلل بحذر",
+          "next": "p_slums_stealth",
+          "emoji": "🤫",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "ادفع رشوة للعبور",
+          "next": "p_slums_bribe",
+          "emoji": "💰",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_basement_passage": {
+      "text": "تمشي في الممر لتكتشف أنه يؤدي لآثار مدينة قديمة تحت الأرض. المكان مليء بالفخاخ.",
+      "choices": [
+        {
+          "label": "استكشف ببطء",
+          "next": "p_ruins_explore",
+          "emoji": "🔍",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اسرع لتجاوز الفخاخ",
+          "next": "p_ruins_rush",
+          "emoji": "🏃",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_ruins_rush": {
+      "text": "تركض بلا مبالاة. تضغط قدمك على حجر بارز، فتنهال عليك سهام مسمومة من الجدران. تموت وحيداً في الظلام.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_flee_tavern": {
+      "text": "تهرب للشارع والدماء تنزف منك. الحرس يقتربون. هل تركض أم تختبئ؟",
+      "choices": [
+        {
+          "label": "اركض للأزقة",
+          "next": "p_streets_run",
+          "emoji": "🏃",
+          "color": "danger",
+          "points_reward": 0
+        },
+        {
+          "label": "اختبئ في عربة",
+          "next": "p_streets_hide",
+          "emoji": "📦",
+          "color": "primary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_streets_run": {
+      "text": "تركض بجرحك النازف لكنك تفقد الوعي من الألم وتسقط في قبضتهم. يتم تعذيبك حتى الموت.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_steal_clothes": {
+      "text": "الملابس الفاخرة تناسبك. تخرج للشارع كأحد النبلاء. الحرس يفسحون لك الطريق. هل تذهب للشارع الرئيسي أم الفرعي؟",
+      "choices": [
+        {
+          "label": "امش بشموخ للرئيسي",
+          "next": "p_walk_main_street",
+          "emoji": "👑",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "توارى في الفرعي",
+          "next": "p_walk_side_street",
+          "emoji": "🚶",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_apologize_leave": {
+      "text": "يستيقظ الرجل ويصرخ منادياً الحرس. يحاصرونك في الغرفة. لا مجال للهروب.",
+      "choices": [
+        {
+          "label": "قاتل بشراسة",
+          "next": "p_fight_guards",
+          "emoji": "⚔️",
+          "color": "danger",
+          "points_reward": 2
+        },
+        {
+          "label": "استسلم لهم",
+          "next": "p_surrender_guards",
+          "emoji": "🏳️",
+          "color": "primary",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_surrender_guards": {
+      "text": "تستسلم على أمل النجاة. لكن السلطان لا يرحم الخونة. يتم قطع رأسك في ساحة القصر فجراً.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_fight_guards": {
+      "text": "تقتلهم بصعوبة بالغة. جسدك مثخن بالجراح لكنك حر. تخرج متجهاً لتحديد مصيرك.",
+      "choices": [
+        {
+          "label": "اذهب للقصر",
+          "next": "p_palace_approach",
+          "emoji": "🏰",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اذهب للمتمردين",
+          "next": "p_rebel_approach",
+          "emoji": "⛺",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_cart_to_palace": {
+      "text": "تصل للبوابات الضخمة لقصر السلطان. يمكنك محاولة رشوة حارس مرتشٍ تعرفه، أو التسلل عبر المطبخ.",
+      "choices": [
+        {
+          "label": "قدم رشوة للحارس",
+          "next": "p_bribe_gate",
+          "emoji": "💰",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "تسلل من المطبخ",
+          "next": "p_sneak_gate",
+          "emoji": "🤫",
+          "color": "secondary",
+          "points_reward": 2
+        }
+      ]
+    },
+    "p_cart_to_slums": {
+      "text": "تصل للأحياء الفقيرة. هل تبحث عن قاعدة المتمردين فوراً أم تختبئ لتراقب الوضع أولاً؟",
+      "choices": [
+        {
+          "label": "ابحث عن القاعدة",
+          "next": "p_find_rebel_base",
+          "emoji": "🔍",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اختبئ وراقب",
+          "next": "p_hide_in_slums",
+          "emoji": "👀",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_negotiate_rebels": {
+      "text": "يثق بك قائد المتمردين وتصبح مستشاره. يعرض عليك خطتين: هجوم شامل على القصر، أو تحصين القاعدة للدفاع.",
+      "choices": [
+        {
+          "label": "خطط للهجوم",
+          "next": "p_rebel_plan_attack",
+          "emoji": "⚔️",
+          "color": "danger",
+          "points_reward": 2
+        },
+        {
+          "label": "خطط للدفاع",
+          "next": "p_rebel_plan_defend",
+          "emoji": "🛡️",
+          "color": "primary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_lie_rebels": {
+      "text": "يكتشفون كذبك. يرفعون أسلحتهم في وجهك. يمكنك محاولة الهرب أو القتال.",
+      "choices": [
+        {
+          "label": "اهرب في الظلام",
+          "next": "p_rebel_escape",
+          "emoji": "🏃",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "قاتلهم بقوة",
+          "next": "p_rebel_fight",
+          "emoji": "⚔️",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_rebel_fight": {
+      "text": "تحاول مقاتلة جيش المتمردين بأكمله. شجاعة حمقاء تنهي حياتك تحت سيوفهم.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_palace_guards": {
+      "text": "تقف أمام الحرس وتعلن أن معك رسالة للسلطان. يحيطون بك بشك.",
+      "choices": [
+        {
+          "label": "أظهر الشفرة لهم",
+          "next": "p_show_cipher_guards",
+          "emoji": "📜",
+          "color": "danger",
+          "points_reward": 0
+        },
+        {
+          "label": "طالب بمقابلة الجنرال",
+          "next": "p_demand_general",
+          "emoji": "👑",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "ادع الإصابة لدخولهم",
+          "next": "p_fake_injury",
+          "emoji": "🩸",
+          "color": "secondary",
+          "requires_flag": "flag_wounded"
+        }
+      ]
+    },
+    "p_show_cipher_guards": {
+      "text": "ينبهرون بقيمة الوثيقة. يدركون أن قتلهم لك وتقديمهم الشفرة سيجلب لهم المجد. يقتلونك بدم بارد.",
+      "choices": [],
+      "is_ending": true
+    },
+    "p_demand_general": {
+      "text": "يأخذونك للجنرال القاسي. يقف أمامك منتظراً الشفرة. إما أن تسلمها أو تبتزه.",
+      "choices": [
+        {
+          "label": "سلمها للجنرال",
+          "next": "p_give_cipher_general",
+          "emoji": "🤝",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "ابتز الجنرال بالشفرة",
+          "next": "p_blackmail_general",
+          "emoji": "🗣️",
+          "color": "danger",
+          "points_reward": 3,
+          "required_points": 8
+        }
+      ]
+    },
+    "p_palace_wall": {
+      "text": "تتسلق السور بنجاح. أنت الآن داخل الحدائق الملكية. يمكنك التسلل ببطء أو اغتيال الحرس القريبين.",
+      "choices": [
+        {
+          "label": "تسلل عبر الحدائق",
+          "next": "p_wall_stealth",
+          "emoji": "🌳",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اغتل الحرس",
+          "next": "p_wall_assassinate",
+          "emoji": "🗡️",
+          "color": "danger",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_rebel_plan_attack": {
+      "text": "الهجوم يبدأ. القائد يطلب منك أن تقود طليعة الهجوم، أو أن تبقى في الخلف لتأمين التراجع.",
+      "choices": [
+        {
+          "label": "قد الطليعة",
+          "next": "p_lead_vanguard",
+          "emoji": "⚔️",
+          "color": "danger",
+          "points_reward": 3
+        },
+        {
+          "label": "ابق في الخلف",
+          "next": "p_stay_back",
+          "emoji": "🛡️",
+          "color": "primary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_rebel_plan_defend": {
+      "text": "تحصنون القاعدة. قوات السلطان تهاجم بقوة عاتية. هل تصمدون أم تفرون من ممر سري؟",
+      "choices": [
+        {
+          "label": "اصمدوا وقاتلوا",
+          "next": "p_fortify_base",
+          "emoji": "🛡️",
+          "color": "danger",
+          "points_reward": 2
+        },
+        {
+          "label": "اهجروا القاعدة",
+          "next": "p_abandon_base",
+          "emoji": "🏃",
+          "color": "primary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_follow_contact": {
+      "text": "يأخذك الصديق لقاعدة المتمردين الآمنة.",
+      "choices": [
+        {
+          "label": "تحدث للقائد",
+          "next": "p_demand_leader",
+          "emoji": "👑",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "راقب بصمت",
+          "next": "p_negotiate_rebels",
+          "emoji": "👀",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_slums_stealth": {
+      "text": "تصل لمعقل المتمردين دون أن يلاحظك أحد.",
+      "choices": [
+        {
+          "label": "ادخل القاعدة",
+          "next": "p_aqueduct_rebel_camp",
+          "emoji": "⛺",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "عد للقصر",
+          "next": "p_palace_approach",
+          "emoji": "🏰",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_slums_bribe": {
+      "text": "تدفع الرشوة، لكن اللصوص يطمعون بالمزيد ويهجمون.",
+      "choices": [
+        {
+          "label": "اهرب منهم",
+          "next": "p_rebel_escape",
+          "emoji": "🏃",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "قاتل اللصوص",
+          "next": "p_thief_fight",
+          "emoji": "⚔️",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_ruins_explore": {
+      "text": "تجد كنزاً صغيراً ومخرجاً يقود مباشرة لحدائق القصر.",
+      "choices": [
+        {
+          "label": "تسلل عبر الحدائق",
+          "next": "p_wall_stealth",
+          "emoji": "🌳",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اغتل الحرس",
+          "next": "p_wall_assassinate",
+          "emoji": "🗡️",
+          "color": "danger",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_streets_hide": {
+      "text": "تختبئ في عربة بضائع. تنطلق العربة وتصل بك إلى الأحياء الفقيرة.",
+      "choices": [
+        {
+          "label": "ابحث عن القاعدة",
+          "next": "p_find_rebel_base",
+          "emoji": "🔍",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اختبئ وراقب",
+          "next": "p_hide_in_slums",
+          "emoji": "👀",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_walk_main_street": {
+      "text": "تصل للبوابات الرئيسية للقصر بسهولة تامة بفضل تنكرك.",
+      "choices": [
+        {
+          "label": "واجه الحرس",
+          "next": "p_palace_guards",
+          "emoji": "🛡️",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "طالب بمقابلة الجنرال",
+          "next": "p_demand_general",
+          "emoji": "👑",
+          "color": "secondary",
+          "points_reward": 2
+        }
+      ]
+    },
+    "p_walk_side_street": {
+      "text": "التنكر الفاخر في زقاق فقير يجذب اللصوص إليك.",
+      "choices": [
+        {
+          "label": "أعطهم الذهب",
+          "next": "p_slums_stealth",
+          "emoji": "💰",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "قاتل اللصوص",
+          "next": "p_thief_fight",
+          "emoji": "⚔️",
+          "color": "danger",
+          "points_reward": 0
+        }
+      ]
+    },
+    "p_palace_approach": {
+      "text": "تصل إلى أسوار القصر الملكي متعباً.",
+      "choices": [
+        {
+          "label": "تسلق السور",
+          "next": "p_palace_wall",
+          "emoji": "🧱",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اذهب للبوابة",
+          "next": "p_palace_guards",
+          "emoji": "🚪",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_rebel_approach": {
+      "text": "تصل لحي المتمردين منهكاً تبحث عن مأوى.",
+      "choices": [
+        {
+          "label": "ابحث عن القاعدة",
+          "next": "p_find_rebel_base",
+          "emoji": "🔍",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اختبئ وراقب",
+          "next": "p_hide_in_slums",
+          "emoji": "👀",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_bribe_gate": {
+      "text": "الحارس يأخذ الرشوة ويفتح لك باباً صغيراً يقود لمكتب الجنرال.",
+      "choices": [
+        {
+          "label": "ادخل المكتب",
+          "next": "p_demand_general",
+          "emoji": "🚪",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "تراجع",
+          "next": "p_palace_wall",
+          "emoji": "🔙",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_sneak_gate": {
+      "text": "تتسلل عبر المطبخ وتصل لأروقة القصر الداخلية.",
+      "choices": [
+        {
+          "label": "ابحث عن الجنرال",
+          "next": "p_demand_general",
+          "emoji": "🔍",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "تسلل للحدائق",
+          "next": "p_wall_stealth",
+          "emoji": "🌳",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_find_rebel_base": {
+      "text": "تجد مدخلاً مموهاً يقود للقاعدة السفلية.",
+      "choices": [
+        {
+          "label": "ادخل بحزم",
+          "next": "p_aqueduct_rebel_camp",
+          "emoji": "🚪",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "تسلل خفية",
+          "next": "p_demand_leader",
+          "emoji": "🤫",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_hide_in_slums": {
+      "text": "تراقب المكان فتلاحظ دوريات حرس تقترب.",
+      "choices": [
+        {
+          "label": "حذر المتمردين",
+          "next": "p_demand_leader",
+          "emoji": "🗣️",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اهرب وحدك",
+          "next": "p_rebel_escape",
+          "emoji": "🏃",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_rebel_escape": {
+      "text": "تحاول الهروب من المدينة بأكملها وتجنب الصراع.",
+      "choices": [
+        {
+          "label": "غادر من النهر",
+          "next": "p_abandon_base",
+          "emoji": "🌊",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "غادر من الجبال",
+          "next": "p_abandon_base",
+          "emoji": "⛰️",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_wall_stealth": {
+      "text": "تصل لمخدع السلطان وتجده وحيداً يقرأ كتاباً.",
+      "choices": [
+        {
+          "label": "اغتله بالشفرة",
+          "next": "p_assassinate_sultan",
+          "emoji": "🗡️",
+          "color": "danger",
+          "points_reward": 3
+        },
+        {
+          "label": "فاوضه بالشفرة",
+          "next": "p_blackmail_sultan",
+          "emoji": "🗣️",
+          "color": "primary",
+          "points_reward": 2,
+          "required_points": 8
+        }
+      ]
+    },
+    "p_wall_assassinate": {
+      "text": "اغتيال الحرس يثير انتباه الجنرال الذي يخرج مسرعاً.",
+      "choices": [
+        {
+          "label": "واجه الجنرال",
+          "next": "p_demand_general",
+          "emoji": "⚔️",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اهرب للحديقة",
+          "next": "p_wall_stealth",
+          "emoji": "🌳",
+          "color": "secondary",
+          "points_reward": 1
+        }
+      ]
+    },
+    "p_lead_vanguard": {
+      "text": "تقود الهجوم وتتمكن من إسقاط السلطان بنفسك. تفتح بوابات القصر للمتمردين. انتصرتم، لكنك تقف وسط جثث الأبرياء والحرس. لقد بنيت مستقبلاً جديداً فوق بحر من الدماء، والثمن كان إنسانيتك. هل استحق الأمر كل هذا الخراب؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending_a"
+    },
+    "p_give_cipher_general": {
+      "text": "تسلم الشفرة للجنرال. يبتسم بمكر ويأمر بإخماد التمرد بقسوة. تكافأ بوزنك ذهباً وتهرب لمدينة بعيدة. تعيش في رخاء، لكن صرخات من خنتهم تطاردك كل ليلة. هل يمكن للذهب أن يشتري لك نوماً هادئاً؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending_b"
+    },
+    "p_stay_back": {
+      "text": "تقرر التضحية بنفسك وتدمير الشفرة لمنع المذبحة بين الطرفين. تموت وحيداً في القبو بينما النيران تأكل الوثيقة. لا السلطان نجا ولا المتمردون انتصروا، لكنك منعت تدمير المدينة. متّ بطلاً مجهولاً، فهل يكفيك شرف النية؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending_c"
+    },
+    "p_abandon_base": {
+      "text": "تهرب خارج المدينة ومعك الشفرة. تترك السلطان والمتمردين في حرب طاحنة تدمر كل شيء. تنجو بحياتك، لكنك تصبح طريداً أبدياً لكلا الجانبين. اخترت النجاة الأنانية، فإلى متى يمكنك الركض؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending_b"
+    },
+    "p_fortify_base": {
+      "text": "تقاتل بشراسة دفاعاً عن القاعدة. تسقط بعد معركة ملحمية، لكن دفاعك منح الأبرياء وقتاً للهروب. تموت والابتسامة على وجهك. خسرت المعركة وكسبت احترام التاريخ، هل هذه هي الحرية الحقيقية؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending_c"
+    },
+    "p_blackmail_general": {
+      "text": "تستخدم الشفرة لابتزاز الجنرال بجرائمه السرية. بذكائك الفائق والنقاط التي جمعتها، تجبره على التنحي وتنصب نفسك حاكماً للظل. تدير المدينة بخيوط خفية، وأنت الآن أقوى من السلطان نفسه. لقد أصبحت الوحش الذي كنت تحاربه، فهل تشعر بالرضا؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending_d"
+    },
+    "p_escape_with_poison": {
+      "text": "تلقي زجاجة السم على الأرض. ينتشر الغاز بسرعة، ويسعل القتلة بشدة حتى يسقطوا صرعى. طريقك أصبح سالكاً بفضل ما وجدته.",
+      "choices": [
+        {
+          "label": "اهرب للحديقة",
+          "next": "p_wall_stealth",
+          "emoji": "🌳",
+          "color": "primary"
+        },
+        {
+          "label": "اذهب للمتمردين",
+          "next": "p_rebel_approach",
+          "emoji": "⛺",
+          "color": "secondary"
+        }
+      ]
+    },
+    "p_fake_injury": {
+      "text": "تستغل جراحك الحقيقية وتتظاهر بالإغماء. ينقلك الحرس لمشفى القصر، ومن هناك تتسلل بسهولة إلى الداخل.",
+      "choices": [
+        {
+          "label": "ابحث عن الجنرال",
+          "next": "p_demand_general",
+          "emoji": "🔍",
+          "color": "primary"
+        },
+        {
+          "label": "تسلل للحدائق",
+          "next": "p_wall_stealth",
+          "emoji": "🌳",
+          "color": "secondary"
+        }
+      ]
+    },
+    "p_thief_fight": {
+      "text": "تشتبك مع اللصوص في قتال يائس بالأسلحة البيضاء. تتغلب على اثنين لكن الثالث يطعنك في الظهر. تسقط في الوحل وتنزف حتى الموت بينما يسرقون ما تملك.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "p_assassinate_sultan": {
+      "text": "تطعن السلطان في قلبه بدم بارد. يموت دون صوت، وتترك الشفرة على جثته رسالة للمتمردين. تهرب في جنح الظلام وقد غيرت مجرى التاريخ، لكنك ستعيش طريداً منتقماً. هل يستحق الأمر؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending_a"
+    },
+    "p_blackmail_sultan": {
+      "text": "تساوم السلطان بالشفرة. يوافق على تعيينك مستشاره السري مقابل ولائك التام. تصبح القوة الخفية التي تدير الإمبراطورية بيد من حديد. السلطة المطلقة مفسدة مطلقة، فهل تستحق الثمن؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending_d"
+    }
+  },
+  "world": "الماضي",
+  "category": "جواسيس التاريخ"
+}

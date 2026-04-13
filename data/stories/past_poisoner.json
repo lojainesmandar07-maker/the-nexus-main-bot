@@ -1,0 +1,1224 @@
+{
+  "id": "p_poisoner",
+  "title": "ساقي الموت الصامت",
+  "summary": "أنت الساقي المخلص لحاكم متمرد محاصر. في ليلة المأدبة الأخيرة، بين كؤوس النبيذ المسمومة وخيانة الأبواب الخلفية، لمن ستقدم كأس الموت ولمن كأس الحياة؟",
+  "difficulty": "صعب",
+  "estimated_length": "طويلة",
+  "theme": "الحاكم والشعب",
+  "world_type": "past",
+  "game_mode": "single",
+  "perspective": {
+    "id": "servant_cupbearer",
+    "label": "منظور الساقي",
+    "emoji": "🍷",
+    "description": "العب كساقي الحاكم، من يملك الموت في زجاجة صغيرة، والحياة في قطرة ترياق.",
+    "start_node": "start"
+  },
+  "nodes": {
+    "start": {
+      "text": "ليلة الحصار المائة. أصوات المنجنيق تهز أسوار القلعة. أنت في قبو النبيذ، تمزج قطرات 'الظل السائل' في قارورة الحاكم كما طلب. الباب يفتح وتدخل الخادمة 'ليلى' مسرعة، تهمس لك: 'جواسيس الإمبراطورية في القاعة، أحدهم قدم لي ذهباً لأضع هذا في كأس الحاكم'. تمد يدها بمسحوق أبيض.",
+      "choices": [
+        {
+          "label": "خذ المسحوق منها",
+          "emoji": "✋",
+          "next": "take_empire_poison",
+          "color": "primary",
+          "points_reward": 1,
+          "sets_flag": "has_empire_poison"
+        },
+        {
+          "label": "ارفض واطردها",
+          "emoji": "🚪",
+          "next": "reject_empire_poison",
+          "color": "primary",
+          "points_reward": 1,
+          "reputation": "loyalist"
+        },
+        {
+          "label": "اخلط المسحوق بنبيذك",
+          "emoji": "🧪",
+          "next": "mix_both_poisons",
+          "color": "primary",
+          "points_reward": 2,
+          "sets_flag": "has_empire_poison"
+        }
+      ],
+      "is_ending": false
+    },
+    "take_empire_poison": {
+      "text": "تأخذ المسحوق ببرود وتضعه في جيبك. ليلى تنظر إليك بخوف ثم تهرب. الآن أنت تملك سم الحاكم السري، وسم الإمبراطورية. حان وقت الصعود إلى قاعة المأدبة.",
+      "choices": [
+        {
+          "label": "اصعد للقاعة الكبرى",
+          "emoji": "🏛️",
+          "next": "enter_great_hall",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "reject_empire_poison": {
+      "text": "توبخ ليلى بشدة وتهددها بالفضائح إذا لم تتخلص منه. تهرب باكية. تأخذ صينية النبيذ الخاصة بك وتصعد، قلبك مثقل بالولاء الأعمى للحاكم الذي رباك.",
+      "choices": [
+        {
+          "label": "اصعد للقاعة الكبرى",
+          "emoji": "🏛️",
+          "next": "enter_great_hall",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "mix_both_poisons": {
+      "text": "تمزج سم الحاكم بمسحوق الإمبراطورية المجهول. التفاعل يجعل السائل يغلي للحظة ثم يستقر بلون أرجواني داكن لم تره من قبل. لا تعرف ما تأثيره الآن.",
+      "choices": [
+        {
+          "label": "اصعد للقاعة الكبرى",
+          "emoji": "🏛️",
+          "next": "enter_great_hall",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "enter_great_hall": {
+      "text": "تدخل القاعة الكبرى. النبلاء يشربون بخوف، والفرسان يتهامسون. الحاكم جالس على كرسيه بوجه شاحب، وإلى يمينه 'اللورد طارق' الذي يشك الجميع بولائه. يشير إليك الحاكم لتصب له كأس خمره المعتاد.",
+      "choices": [
+        {
+          "label": "صب الخمر المعتاد",
+          "emoji": "🍷",
+          "next": "serve_governor_normal",
+          "color": "primary"
+        },
+        {
+          "label": "صب الخمر المسموم",
+          "emoji": "☠️",
+          "next": "serve_governor_poison",
+          "color": "primary",
+          "reputation": "traitor"
+        },
+        {
+          "label": "صب للورد طارق أولاً",
+          "emoji": "🤫",
+          "next": "serve_tariq_first",
+          "color": "primary",
+          "points_reward": 1,
+          "reputation": "survivor"
+        }
+      ],
+      "is_ending": false
+    },
+    "serve_governor_normal": {
+      "text": "تصب الخمر العادي للحاكم. ينظر في عينيك طويلاً، ثم يشرب. يعتدل في جلسته ويقول بصوت عال: 'الموت على أسوارنا، لكن الخيانة في قاعتنا'. يوجه نظره للورد طارق.",
+      "choices": [
+        {
+          "label": "راقب اللورد طارق",
+          "emoji": "👀",
+          "next": "observe_tariq",
+          "color": "primary"
+        },
+        {
+          "label": "اسحب السيف للحماية",
+          "emoji": "🗡️",
+          "next": "death_guard_misunderstanding",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_guard_misunderstanding": {
+      "text": "تستل خنجرك القصير للدفاع عن الحاكم. قبل أن تكمل حركتك، يغرس قائد الحرس رمحه في ظهرك ظناً أنك المهاجم. تسقط وسط الخمر المسكوب، تسمع صراخ الحاكم بينما تغمض عينيك.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "serve_governor_poison": {
+      "text": "تصب له الخمر الممزوج. يرفع الكأس، يبتلع رشفة كبيرة. فجأة يتسع بؤبؤ عينيه، يمسك حنجرته ويقع على الطاولة يلفظ أنفاسه بصمت مرعب. القاعة تسقط في فوضى عارمة.",
+      "choices": [
+        {
+          "label": "اهرب نحو المطابخ",
+          "emoji": "🏃",
+          "next": "flee_to_kitchens_panic",
+          "color": "primary"
+        },
+        {
+          "label": "اتهم اللورد طارق",
+          "emoji": "🗣️",
+          "next": "accuse_tariq_panic",
+          "color": "primary",
+          "points_reward": 2
+        }
+      ],
+      "is_ending": false
+    },
+    "flee_to_kitchens_panic": {
+      "text": "تركض بين الطاولات المنقلبة نحو الممرات الخلفية. الحرس يغلقون الأبواب لكنك تنجح بالانزلاق نحو السلالم.",
+      "choices": [
+        {
+          "label": "انزل للقبو السري",
+          "emoji": "🕳️",
+          "next": "enter_secret_cellar",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "accuse_tariq_panic": {
+      "text": "تصرخ بأعلى صوتك وتشير إلى اللورد طارق: 'لقد دس له السم!'. الحرس ينقضون على طارق الذي يحاول الدفاع عن نفسه، في هذه الفوضى تجد فرصتك للانسحاب.",
+      "choices": [
+        {
+          "label": "انسحب بهدوء",
+          "emoji": "🚶",
+          "next": "enter_secret_cellar",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "serve_tariq_first": {
+      "text": "تتجاوز الحاكم وتصب للورد طارق أولاً. الحاكم يغضب ويصرخ: 'منذ متى يخدم الساقي الكلاب قبل سيده؟'. طارق يبتسم بخبث ويرفض الشرب.",
+      "choices": [
+        {
+          "label": "اعتذر وصب للحاكم",
+          "emoji": "🙇",
+          "next": "serve_governor_normal",
+          "color": "primary"
+        },
+        {
+          "label": "أجبر طارق على الشرب",
+          "emoji": "😠",
+          "next": "death_tariq_retaliation",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_tariq_retaliation": {
+      "text": "تحاول إجبار طارق على الشرب. ينهض بلمح البصر، يستل خنجراً مخفياً في كمه ويمرر شفرته المسمومة على عنقك. تسقط وحبالك الصوتية مقطوعة، تموت مختنقاً بدمك بينما يضحك النبلاء لاعتقادهم أنه عرض ترفيهي مقزز.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "observe_tariq": {
+      "text": "اللورد طارق يعرق بشدة. يخرج من جيبه منديلاً أحمر، وهي نفس العلامة التي تستخدمها جواسيس الإمبراطورية. يمسح جبينه وينظر نحو قائد الحرس 'سالم'.",
+      "choices": [
+        {
+          "label": "اهمس للحاكم بالسر",
+          "emoji": "👂",
+          "next": "whisper_governor",
+          "color": "primary",
+          "points_reward": 1,
+          "sets_flag": "warned_governor_tariq"
+        },
+        {
+          "label": "اسكب خمر طارق",
+          "emoji": "🍷",
+          "next": "spill_tariq_wine",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "whisper_governor": {
+      "text": "تنحني وتهمس في أذن الحاكم: 'المنديل الأحمر، يا سيدي. إنه معهم'. الحاكم يومئ ببطء، ويهمس لك: 'اسقِ سالم، قائد الحرس، من كأس الظل السائل. فوراً'.",
+      "choices": [
+        {
+          "label": "صب السم لقائد الحرس",
+          "emoji": "☠️",
+          "next": "poison_guard_captain",
+          "color": "primary",
+          "points_reward": 2,
+          "sets_flag": "killed_guard_captain"
+        },
+        {
+          "label": "تردد وتراجع",
+          "emoji": "😨",
+          "next": "hesitate_poisoning_guard",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "poison_guard_captain": {
+      "text": "تتجه نحو القائد سالم، تصب له كأساً محتوياً على سم الظل. يشربه دون تفكير كونه متوتراً. بعد ثوانٍ، ينهار سالم بجلطة قلبية صامتة. الحاكم يبتسم، وطارق يفزع.",
+      "choices": [
+        {
+          "label": "عد للوقوف خلف الحاكم",
+          "emoji": "🛡️",
+          "next": "stand_behind_governor",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "hesitate_poisoning_guard": {
+      "text": "تتراجع، يداك ترتجفان. الحاكم يرمقك بنظرة خيبة أمل عميقة. طارق يلاحظ التردد ويعطي إشارة بيده.",
+      "choices": [
+        {
+          "label": "اهرب من القاعة",
+          "emoji": "🚪",
+          "next": "death_caught_poisoning",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_caught_poisoning": {
+      "text": "تحاول الهرب، لكن نظراتك المذعورة فضحتك. القائد سالم يمسك بك قبل بلوغ الباب ويجد السم في جيبك. الحاكم يتبرأ منك، ويأمر بقطع رأسك أمام النبلاء في نفس اللحظة.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "spill_tariq_wine": {
+      "text": "تتعمد التعثر وتسكب النبيذ العادي على ملابس طارق. يغضب ويقفز شاتماً إياك. الحاكم ينتهز الفرصة ليوبخه أمام الجميع على قلة تهذيبه.",
+      "choices": [
+        {
+          "label": "اعتذر بمسكنة",
+          "emoji": "🙏",
+          "next": "apologize_profusely",
+          "color": "primary"
+        },
+        {
+          "label": "اهمس له بتهديد",
+          "emoji": "🗡️",
+          "next": "threaten_tariq_whisper",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "apologize_profusely": {
+      "text": "تعتذر وتمسح ثيابه. وسط الفوضى، تلاحظ أن طارق أسقط رسالة صغيرة ملفوفة. تلتقطها بخفة.",
+      "choices": [
+        {
+          "label": "اقرأ الرسالة سراً",
+          "emoji": "📜",
+          "next": "read_tariq_letter",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "threaten_tariq_whisper": {
+      "text": "تهمس له وأنت تمسح ثيابه: 'أعرف ما تخفيه، أيها الخائن'. طارق يشحب وجهه، ثم يهمس لك: 'قابلني في المكتبة بعد قليل، لك ثقلك ذهباً'.",
+      "choices": [
+        {
+          "label": "اذهب للمكتبة",
+          "emoji": "📚",
+          "next": "go_to_library_tariq",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اخبر الحاكم وابق",
+          "emoji": "🗣️",
+          "next": "stand_behind_governor",
+          "color": "primary",
+          "points_reward": 1,
+          "sets_flag": "betrayed_tariq"
+        }
+      ],
+      "is_ending": false
+    },
+    "read_tariq_letter": {
+      "text": "تبتعد نحو الظل وتقرأ الرسالة: 'الأبواب الغربية ستفتح عند منتصف الليل. اقتل الحاكم قبلها'. منتصف الليل بعد ربع ساعة فقط!",
+      "choices": [
+        {
+          "label": "أبلغ الحاكم فوراً",
+          "emoji": "👑",
+          "next": "warn_governor_midnight",
+          "color": "primary",
+          "points_reward": 2,
+          "sets_flag": "governor_knows_midnight"
+        },
+        {
+          "label": "اذهب للبوابة الغربية",
+          "emoji": "🚪",
+          "next": "go_west_gate_alone",
+          "color": "primary",
+          "points_reward": 1
+        }
+      ],
+      "is_ending": false
+    },
+    "warn_governor_midnight": {
+      "text": "تخبر الحاكم بخطة البوابة. ينتفض ويأمر الحرس الموالين بالتوجه غرباً، ويأمر بالقبض على طارق. في تلك اللحظة، تدوي صرخة مرعبة من الخارج. لقد بدأ الهجوم أبكر من المتوقع.",
+      "choices": [
+        {
+          "label": "اسحب الحاكم للممر السري",
+          "emoji": "🏃",
+          "next": "drag_governor_secret_passage",
+          "color": "primary",
+          "points_reward": 2
+        }
+      ],
+      "is_ending": false
+    },
+    "go_west_gate_alone": {
+      "text": "تنسل نحو الباب الغربي. تجد الخادمة ليلى هناك، تحمل مشعلاً وتحاول فتح المزلاج الثقيل.",
+      "choices": [
+        {
+          "label": "امنعها بالقوة",
+          "emoji": "👊",
+          "next": "stop_laila_force",
+          "color": "primary"
+        },
+        {
+          "label": "ساعدها في الفتح",
+          "emoji": "🤝",
+          "next": "help_laila_open",
+          "color": "primary",
+          "sets_flag": "opened_gate",
+          "reputation": "traitor"
+        }
+      ],
+      "is_ending": false
+    },
+    "stop_laila_force": {
+      "text": "تضربها على رأسها فتسقط. تحاول إحكام الإغلاق، لكن سيفاً يخترق الباب الخشبي ويجرح كتفك. جنود الإمبراطورية في الخارج يكسرون الباب.",
+      "choices": [
+        {
+          "label": "ارمي قنديل الزيت",
+          "emoji": "🔥",
+          "next": "throw_oil_lamp_gate",
+          "color": "primary"
+        },
+        {
+          "label": "اركض عائداً",
+          "emoji": "🏃",
+          "next": "death_arrow_hallway",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_arrow_hallway": {
+      "text": "تستدير لتركض مبتعداً عن الباب الغربي المكسور. سهم أسود الريش يخترق نافذة الرواق ويستقر في عنقك. تسقط على الأرض الرخامية الباردة، والدماء تملأ رئتيك قبل أن ترى من أطلقه.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "throw_oil_lamp_gate": {
+      "text": "تحطم قنديل الزيت على الأرضية الخشبية أمام الباب. تشتعل النيران وتعيق دخول الجنود مؤقتاً. رائحة الخشب المحترق تملأ الرواق.",
+      "choices": [
+        {
+          "label": "تراجع نحو المكتبة",
+          "emoji": "📚",
+          "next": "retreat_to_library",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "help_laila_open": {
+      "text": "تساعدها في سحب المزلاج. يفتح الباب ليدخل جنود بأسلحة سوداء. قائدهم ينظر إليك ببرود ويقول: 'أين الحاكم؟'.",
+      "choices": [
+        {
+          "label": "أرشده للقاعة الكبرى",
+          "emoji": "👉",
+          "next": "guide_to_great_hall",
+          "color": "primary",
+          "sets_flag": "guided_empire"
+        },
+        {
+          "label": "اكذب ووجهه للقبو",
+          "emoji": "🤥",
+          "next": "lie_guide_to_cellar",
+          "color": "primary",
+          "points_reward": 1
+        }
+      ],
+      "is_ending": false
+    },
+    "guide_to_great_hall": {
+      "text": "تقودهم نحو القاعة الكبرى. يقتحمونها وتبدأ مجزرة رهيبة. النبلاء يتساقطون كأوراق الخريف. الحاكم يراك معهم وتلعنك عيناه قبل أن يسقط.",
+      "choices": [
+        {
+          "label": "اختبئ في الزاوية",
+          "emoji": "🙈",
+          "next": "hide_in_corner_massacre",
+          "color": "primary"
+        },
+        {
+          "label": "حاول إنقاذ الخادمات",
+          "emoji": "👩",
+          "next": "save_maids_massacre",
+          "color": "primary",
+          "points_reward": 2,
+          "reputation": "survivor"
+        }
+      ],
+      "is_ending": false
+    },
+    "hide_in_corner_massacre": {
+      "text": "تختبئ تحت طاولة. ترى الأحذية الملطخة بالدماء تمر بجوارك. انتهت المعركة بانتصار الإمبراطورية.",
+      "choices": [
+        {
+          "label": "اخرج واركع للقائد",
+          "emoji": "🧎",
+          "next": "kneel_to_empire_leader",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "save_maids_massacre": {
+      "text": "تصرخ للخادمات للهروب عبر باب المطبخ. تجذب انتباه جندي يحاول اللحاق بهن.",
+      "choices": [
+        {
+          "label": "رش السم في وجهه",
+          "emoji": "🧪",
+          "next": "spray_poison_soldier",
+          "color": "primary",
+          "points_reward": 2,
+          "requires_flag": "has_empire_poison"
+        },
+        {
+          "label": "اضربه بزجاجة خمر",
+          "emoji": "🍾",
+          "next": "hit_with_bottle",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "spray_poison_soldier": {
+      "text": "ترش السم الإمبراطوري في عينيه. يصرخ بجنون ويسقط يتخبط. الخادمات يهربن بفضل تضحيتك.",
+      "choices": [
+        {
+          "label": "اهرب معهن للمطبخ",
+          "emoji": "🏃",
+          "next": "escape_to_kitchen",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "hit_with_bottle": {
+      "text": "تكسر زجاجة نبيذ غليظة على خوذته. يترنح قليلاً ثم يغضب ويستل سيفه الطويل.",
+      "choices": [
+        {
+          "label": "قاتل بالزجاجة المكسورة",
+          "emoji": "🔪",
+          "next": "death_servant_revenge",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_servant_revenge": {
+      "text": "تحاول طعنه بالزجاجة المكسورة، لكن تدريبه العسكري يفوق شجاعتك البائسة. يغمد سيفه في بطنك بحركة واحدة سلسة. تموت وأنت تنظر للخادمات يهربن بسلام.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "lie_guide_to_cellar": {
+      "text": "تقول للقائد: 'إنه مختبئ في قبو النبيذ'. الجنود يندفعون نحو القبو السفلية.",
+      "choices": [
+        {
+          "label": "أغلق باب القبو عليهم",
+          "emoji": "🚪",
+          "next": "lock_cellar_door",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اركض لتحذير الحاكم",
+          "emoji": "🏃",
+          "next": "warn_governor_midnight",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "lock_cellar_door": {
+      "text": "بمجرد نزولهم، تدفع الباب الحديدي الثقيل وتغلقه بالمفتاح الذي تحمله دائماً كساقي. يضربون الباب بغضب من الأسفل لكنه لن يفتح قريباً.",
+      "choices": [
+        {
+          "label": "ابحث عن الحاكم",
+          "emoji": "👑",
+          "next": "find_governor_after_lock",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "find_governor_after_lock": {
+      "text": "تعود للقاعة الكبرى لتجدها فارغة إلا من الجثث. الحاكم هرب. تتجه نحو الممر السري المؤدي لغرفة العرش.",
+      "choices": [
+        {
+          "label": "ادخل الممر السري",
+          "emoji": "🕳️",
+          "next": "drag_governor_secret_passage",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "go_to_library_tariq": {
+      "text": "تصل إلى المكتبة المظلمة. طارق ينتظرك هناك، يحمل حقيبة مليئة بالذهب. 'السم الإمبراطوري... هل هو معك؟' يسألك بلهفة.",
+      "choices": [
+        {
+          "label": "نعم، هو معي",
+          "emoji": "🧪",
+          "next": "give_poison_to_tariq",
+          "color": "primary",
+          "requires_flag": "has_empire_poison"
+        },
+        {
+          "label": "كلا، تخلصت منه",
+          "emoji": "🗑️",
+          "next": "death_drank_own_poison",
+          "color": "danger"
+        },
+        {
+          "label": "طعنه بالخنجر فجأة",
+          "emoji": "🗡️",
+          "next": "stab_tariq_library",
+          "color": "primary",
+          "points_reward": 2
+        }
+      ],
+      "is_ending": false
+    },
+    "death_drank_own_poison": {
+      "text": "طارق يغضب. يخرج كأساً ويقول: 'إذن اشرب هذا، لأتأكد أنك لا تحمل سماً'. يجبرك على الشرب من قنينتك الخاصة. السم الذي جهزته للحاكم يحرق أحشاءك وتموت في زوايا المكتبة المنسية.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "give_poison_to_tariq": {
+      "text": "تناوله السم الإمبراطوري. يبتسم ويعطيك كيساً من الذهب. 'اخرج من القلعة عبر المجاري، لن تنجو إذا بقيت'.",
+      "choices": [
+        {
+          "label": "اهرب عبر المجاري",
+          "emoji": "🐀",
+          "next": "escape_sewers_coward",
+          "color": "primary"
+        },
+        {
+          "label": "خذ الذهب واتبعه",
+          "emoji": "👣",
+          "next": "stab_tariq_library",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "escape_sewers_coward": {
+      "text": "تنزل إلى المجاري النتنة. الظلام دامس والمياه باردة. تسمع صراخ القلعة من الأعلى، لكنك في أمان نسبي، ويدك تعتصر كيس الذهب.",
+      "choices": [
+        {
+          "label": "امشِ نحو المخرج",
+          "emoji": "🚶",
+          "next": "ending_ashes_king",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "stab_tariq_library": {
+      "text": "تستل سكين الفاكهة الذي تحمله دائماً وتطعنه في صدره قبل أن ينطق. يسقط مصدوماً وينزف حتى الموت. تفتش جثته وتجد خريطة لأماكن المتفجرات المزروعة تحت أسوار القلعة.",
+      "choices": [
+        {
+          "label": "اذهب لتعطيل المتفجرات",
+          "emoji": "💣",
+          "next": "defuse_explosives",
+          "color": "primary",
+          "points_reward": 2,
+          "sets_flag": "knows_explosives"
+        },
+        {
+          "label": "عد للحاكم بالخريطة",
+          "emoji": "👑",
+          "next": "ascend_to_throne_room",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "defuse_explosives": {
+      "text": "تنزل لأساسات القلعة. تجد براميل البارود متصلة بفتيل بطيء الاحتراق. الفتيل مشتعل بالفعل!",
+      "choices": [
+        {
+          "label": "اقطع الفتيل بيديك",
+          "emoji": "✂️",
+          "next": "cut_fuse_hands",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "اسكب النبيذ عليه",
+          "emoji": "🍷",
+          "next": "pour_wine_fuse",
+          "color": "primary"
+        },
+        {
+          "label": "اهرب بعيداً",
+          "emoji": "🏃",
+          "next": "death_crushed_rubble",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_crushed_rubble": {
+      "text": "تدرك أن الوقت قد فات. تركض عائداً للأعلى لكن الانفجار يهز القلعة من جذورها. السقف الحجري ينهار فوقك وتسحق تحت الأنقاض قبل أن ترى ضوء النهار مجدداً.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "cut_fuse_hands": {
+      "text": "تخاطر بحرق يديك بشدة وتسحق الفتيل المشتعل بأصابعك. تتألم لكن المتفجرات لا تنفجر. القلعة آمنة من الانهيار.",
+      "choices": [
+        {
+          "label": "اصعد لمقابلة الحاكم",
+          "emoji": "⬆️",
+          "next": "ascend_to_throne_room",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "pour_wine_fuse": {
+      "text": "تكسر زجاجة نبيذك النادر على الفتيل. السائل يخمد النار، وتتنفس الصعداء. لقد ضحيت بأثمن خمر لإنقاذ القلعة.",
+      "choices": [
+        {
+          "label": "اصعد لمقابلة الحاكم",
+          "emoji": "⬆️",
+          "next": "ascend_to_throne_room",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "stand_behind_governor": {
+      "text": "تقف خلف الحاكم بصمت. القاعة تشتعل بالصراخ إثر انهيار القائد سالم. الحاكم يقف ويسحب سيفه: 'أيها الخونة!'. فجأة، تنفجر الأبواب الكبيرة وتدخل قوات الإمبراطورية.",
+      "choices": [
+        {
+          "label": "ادفع الحاكم نحو المخرج",
+          "emoji": "🚪",
+          "next": "push_governor_exit",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "استسلم للجنود",
+          "emoji": "🏳️",
+          "next": "surrender_to_soldiers",
+          "color": "primary",
+          "reputation": "traitor"
+        }
+      ],
+      "is_ending": false
+    },
+    "surrender_to_soldiers": {
+      "text": "ترفع يديك وتسقط على ركبتيك. الجنود يتجاوزونك للوصول للحاكم. الحاكم يُقيد وتُساق أنت مع الخادمات إلى الساحة.",
+      "choices": [
+        {
+          "label": "اطلب مقابلة الجنرال",
+          "emoji": "🗣️",
+          "next": "ask_general_mercy",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "push_governor_exit": {
+      "text": "تدفع الحاكم وتصرخ: 'من هنا يا سيدي!'. تركضان نحو الباب الخلفي للعرش وسط تطاير السهام.",
+      "choices": [
+        {
+          "label": "اغلق الباب خلفكم",
+          "emoji": "🔒",
+          "next": "lock_door_behind_escape",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "lock_door_behind_escape": {
+      "text": "تغلق الباب الخشبي الثقيل وتسقط المزلاج. الحاكم يلهث، كتفه ينزف. 'لقد خسرنا القلعة'، يقول بمرارة.",
+      "choices": [
+        {
+          "label": "عرض عليه السم للرحمة",
+          "emoji": "☠️",
+          "next": "offer_poison_mercy_governor",
+          "color": "primary",
+          "points_reward": 2
+        },
+        {
+          "label": "شجعه على القتال",
+          "emoji": "⚔️",
+          "next": "encourage_governor_fight",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "offer_poison_mercy_governor": {
+      "text": "تخرج القارورة الصامتة المخصصة له. 'هذا أرحم من سيوفهم يا سيدي'. ينظر للقارورة، ثم يومئ شاكراً ويشربها. يموت الحاكم بكرامة ودون ألم.",
+      "choices": [
+        {
+          "label": "خذ خاتمه واهرب",
+          "emoji": "💍",
+          "next": "take_ring_escape",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "اجلس بجواره وانتظر",
+          "emoji": "🧘",
+          "next": "sit_wait_death_loyal",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "sit_wait_death_loyal": {
+      "text": "تجلس بجوار جثة سيدك. يقتحم الجنود الغرفة، لكنك لا تتحرك. يقتلونك بضربة سريعة دون أن ترمش. متّ وفياً لنهايتك.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "take_ring_escape": {
+      "text": "تسحب خاتم الحاكم الملكي وتنسل عبر مدخنة سرية نحو السطح. الدخان يغطي السماء، والقلعة تحترق.",
+      "choices": [
+        {
+          "label": "انزل عبر الحبال",
+          "emoji": "🪢",
+          "next": "descend_ropes_ending",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "descend_ropes_ending": {
+      "text": "تستخدم حبال البنائين للنزول خارج الأسوار تحت جنح الدخان.",
+      "choices": [
+        {
+          "label": "توجه نحو الغابة",
+          "emoji": "🌲",
+          "next": "ending_ashes_king",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "encourage_governor_fight": {
+      "text": "تقول له: 'أنت الحاكم، مت وسيفك بيدك'. يبتسم بتعب ويستند على الجدار انتظاراً لاقتحام الباب.",
+      "choices": [
+        {
+          "label": "قف للقتال بجواره",
+          "emoji": "🛡️",
+          "next": "fight_beside_governor",
+          "color": "primary",
+          "points_reward": 2,
+          "reputation": "loyalist"
+        }
+      ],
+      "is_ending": false
+    },
+    "fight_beside_governor": {
+      "text": "الباب يتحطم. يدخل الجنرال الإمبراطوري نفسه، مدرعاً بالكامل. يبتسم قائلاً: 'حاكم وساقٍ... نهاية شعرية'.",
+      "choices": [
+        {
+          "label": "القِ السم في عينيه",
+          "emoji": "🧪",
+          "next": "throw_poison_general_eyes",
+          "color": "primary",
+          "points_reward": 3,
+          "requires_flag": "has_empire_poison"
+        },
+        {
+          "label": "اهجم بالخنجر",
+          "emoji": "🗡️",
+          "next": "death_general_execution",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_general_execution": {
+      "text": "تهجم بخنجرك البسيط. الجنرال لا يتزحزح، يصد ضربتك بيده المدرعة ويضربك بمقبض سيفه على رأسك. تسقط مغشياً عليك، لتستيقظ وحبل المشنقة يُلف حول عنقك في فناء القلعة.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "throw_poison_general_eyes": {
+      "text": "تكسر قارورة السم الإمبراطوري في وجه الجنرال. يصرخ ألمًا وعمىً. الحاكم ينتهز الفرصة ويغرس سيفه في ثغرة درع الجنرال ويرديه قتيلاً.",
+      "choices": [
+        {
+          "label": "ساعد الحاكم على الهروب",
+          "emoji": "🤝",
+          "next": "help_governor_escape_victory",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "help_governor_escape_victory": {
+      "text": "بدون قائدهم، يتراجع الجنود قليلاً. تسحب الحاكم عبر الممر السري وتخرجان إلى الغابة. القلعة سقطت، لكن الحاكم نجا بفضلك.",
+      "choices": [
+        {
+          "label": "استمر في المشي",
+          "emoji": "🚶",
+          "next": "ending_loyal_sacrifice",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "drag_governor_secret_passage": {
+      "text": "تسحب الحاكم من ذراعه نحو اللوحة الكبيرة في القاعة. تضغط على الزر الخفي وينزلق الجدار. تدخلان وتغلقانه خلفكما.",
+      "choices": [
+        {
+          "label": "امشِ في العتمة",
+          "emoji": "🌑",
+          "next": "walk_dark_passage",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "walk_dark_passage": {
+      "text": "الممر بارد ومظلم. الحاكم يسألك بصوت لاهث: 'هل تثق بطارق؟ لقد رأيتك تتحدث معه'.",
+      "choices": [
+        {
+          "label": "لا أثق به",
+          "emoji": "❌",
+          "next": "distrust_tariq_honest",
+          "color": "primary"
+        },
+        {
+          "label": "إنه يحاول المساعدة",
+          "emoji": "✅",
+          "next": "death_governor_wrath",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_governor_wrath": {
+      "text": "الحاكم يتوقف، يمسك بياقتك بقوة. 'كاذب! رأيته يسلمك الذهب!'. يطعنك الحاكم بخنجره الشخصي في الظلام، متوهماً أنك جزء من المؤامرة. تموت في الممر البارد وحدك.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "distrust_tariq_honest": {
+      "text": "يقول الحاكم: 'جيد. لقد أرسلت من يقتله للتو'. تصلان إلى مفترق طرق في الممرات الأرضية.",
+      "choices": [
+        {
+          "label": "اذهب نحو النهر",
+          "emoji": "🌊",
+          "next": "path_river_escape",
+          "color": "primary"
+        },
+        {
+          "label": "اذهب لغرفة العرش",
+          "emoji": "👑",
+          "next": "path_throne_room_stand",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "path_river_escape": {
+      "text": "تتجهان نحو باب النهر القديم. تجدان قارباً صغيراً هناك. القلعة تشتعل خلفكما.",
+      "choices": [
+        {
+          "label": "اركبا القارب",
+          "emoji": "🛶",
+          "next": "board_boat_escape",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "board_boat_escape": {
+      "text": "تجدفان في صمت. الحاكم ينظر إليك ويقول: 'أنت لست مجرد ساقٍ بعد اليوم. أنت درعي'.",
+      "choices": [
+        {
+          "label": "انحنِ باحترام",
+          "emoji": "🙇",
+          "next": "ending_loyal_sacrifice",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "path_throne_room_stand": {
+      "text": "يصر الحاكم على التوجه لغرفة العرش. 'لن أهرب كالجرذ'. تدخلان الغرفة وتنتظران.",
+      "choices": [
+        {
+          "label": "جهز كؤوس السم",
+          "emoji": "🍷",
+          "next": "prepare_poison_cups_throne",
+          "color": "primary",
+          "points_reward": 1
+        }
+      ],
+      "is_ending": false
+    },
+    "prepare_poison_cups_throne": {
+      "text": "تصب كأسين من النبيذ، وتضع السم في أحدهما. باب العرش يُكسر ويدخل الجنرال وحيداً متغطرساً.",
+      "choices": [
+        {
+          "label": "اعرض عليه كأساً",
+          "emoji": "🥂",
+          "next": "offer_general_drink_standoff",
+          "color": "primary",
+          "points_reward": 2
+        }
+      ],
+      "is_ending": false
+    },
+    "offer_general_drink_standoff": {
+      "text": "تقف بين الحاكم والجنرال. تقول للجنرال: 'نخب نصرك يا سيدي، أم نخب هزيمتك؟ اختر كأساً'. الجنرال يضحك لإعجابه بجرأتك.",
+      "choices": [
+        {
+          "label": "اجعله يختار الكأس المسموم",
+          "emoji": "☠️",
+          "next": "general_chooses_poison",
+          "color": "primary",
+          "points_reward": 3,
+          "required_points": 4
+        },
+        {
+          "label": "اختر الكأس الخطأ بنفسك",
+          "emoji": "😨",
+          "next": "death_poison_mistake",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_poison_mistake": {
+      "text": "ترتبك وتنسى أي الكؤوس هو المسموم. تشرب أنت من الكأس لإثبات سلامته للجنرال... لكنه الكأس الخطأ. تسقط ميتًا قبل أن ترى نهاية المواجهة.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "general_chooses_poison": {
+      "text": "بفضل دهائك، تدفع الكأس المسموم نحوه بخفة. الجنرال يشرب بانتصار... ثم يسقط صريعاً. الحاكم ينهض ويستعيد السيطرة على فلول الإمبراطورية المذعورين بفقدان قائدهم.",
+      "choices": [
+        {
+          "label": "أعلن الهدنة",
+          "emoji": "☮️",
+          "next": "ending_shadow_master",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "retreat_to_library": {
+      "text": "تتراجع وتختبئ في المكتبة. النيران في الأسفل والجنود في الأعلى. الدخان بدأ يخنقك.",
+      "choices": [
+        {
+          "label": "اكسر النافذة للقفز",
+          "emoji": "🪟",
+          "next": "break_window_jump",
+          "color": "primary"
+        },
+        {
+          "label": "ابحث عن باب سري",
+          "emoji": "🚪",
+          "next": "death_burned_kitchen",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_burned_kitchen": {
+      "text": "تبحث بيأس عن مخرج سري لكن النيران تحاصر المكتبة والمطابخ السفلية. تلتهمك النيران وأنت تائه في الدخان الكثيف، لتصبح مجرد رماد في قلعة ساقطة.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "break_window_jump": {
+      "text": "تكسر الزجاج وتقفز نحو عربة قش في الفناء الخارجي. تنجو بأعجوبة وتهرب في الظلام.",
+      "choices": [
+        {
+          "label": "اركض للغابة",
+          "emoji": "🌲",
+          "next": "ending_ashes_king",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "enter_secret_cellar": {
+      "text": "تختبئ في القبو. تجد مجموعة من الخادمات الصغيرات يبكين في رعب.",
+      "choices": [
+        {
+          "label": "اسكتهن وهدئهن",
+          "emoji": "🤫",
+          "next": "quiet_maids_down",
+          "color": "primary",
+          "points_reward": 1
+        },
+        {
+          "label": "دعهن واهرب وحدك",
+          "emoji": "🏃",
+          "next": "escape_alone_leave_maids",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "quiet_maids_down": {
+      "text": "تهدئ من روعهن وتعدهن بالخروج. تقودهن عبر نفق التصريف المائي.",
+      "choices": [
+        {
+          "label": "اخرج نحو النهر",
+          "emoji": "🌊",
+          "next": "exit_to_river_maids",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "exit_to_river_maids": {
+      "text": "تصلون للنهر في الخارج. الجنود يلاحظونكم ويطلقون السهام.",
+      "choices": [
+        {
+          "label": "كن درعاً لهن",
+          "emoji": "🛡️",
+          "next": "shield_maids_arrows",
+          "color": "primary",
+          "points_reward": 2
+        }
+      ],
+      "is_ending": false
+    },
+    "shield_maids_arrows": {
+      "text": "تتلقى السهام بجسدك لتغطية هروب الخادمات للقوارب. هن ينجون، بينما أنت تسقط في النهر.",
+      "choices": [
+        {
+          "label": "اسلم الروح بسلام",
+          "emoji": "🕊️",
+          "next": "ending_servants_shield",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "escape_alone_leave_maids": {
+      "text": "تتركهن لمصيرهن وتتسلل وحدك للخارج. تنجو، لكن صراخهن يطاردك.",
+      "choices": [
+        {
+          "label": "اختفِ في الغابة",
+          "emoji": "🌲",
+          "next": "ending_ashes_king",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "ask_general_mercy": {
+      "text": "تتوسل للجنرال وتدعي أنك من فتح الباب. ينظر إليك باحتقار: 'من يخون سيده مرة، يخونني غداً'.",
+      "choices": [
+        {
+          "label": "دافع عن نفسك",
+          "emoji": "🗣️",
+          "next": "death_empire_betrayal",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "death_empire_betrayal": {
+      "text": "تحاول الشرح، لكن الجنرال يشير بإصبعه ببساطة. يقطع أحد الجنود رأسك دون تردد، وتلقى جثتك مع الخونة الآخرين في الخندق.",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "death"
+    },
+    "kneel_to_empire_leader": {
+      "text": "تركع وتقول إنك مجرد ساقٍ مطيع. الجنرال يتجاهلك ويأمر بحرق القلعة بمن فيها.",
+      "choices": [
+        {
+          "label": "اختنق في الدخان",
+          "emoji": "💨",
+          "next": "death_burned_kitchen",
+          "color": "danger"
+        }
+      ],
+      "is_ending": false
+    },
+    "escape_to_kitchen": {
+      "text": "تصل للمطبخ المحترق جزئياً مع الخادمات. تجدون فتحة تصريف ضيقة.",
+      "choices": [
+        {
+          "label": "ادفع الخادمات أولاً",
+          "emoji": "🤝",
+          "next": "push_maids_first_hole",
+          "color": "primary",
+          "points_reward": 2
+        }
+      ],
+      "is_ending": false
+    },
+    "push_maids_first_hole": {
+      "text": "تساعدهن على النزول. قبل أن تلحق بهن، ينهار السقف المشتعل.",
+      "choices": [
+        {
+          "label": "تلقى الضربة بشجاعة",
+          "emoji": "🔥",
+          "next": "ending_servants_shield",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "ascend_to_throne_room": {
+      "text": "تصعد متعباً لغرفة العرش. تجد الحاكم والجنرال في مبارزة قاتلة.",
+      "choices": [
+        {
+          "label": "تدخل لصالح الحاكم",
+          "emoji": "⚔️",
+          "next": "intervene_for_governor",
+          "color": "primary",
+          "points_reward": 2
+        }
+      ],
+      "is_ending": false
+    },
+    "intervene_for_governor": {
+      "text": "تضرب الجنرال من الخلف بالخنجر. يترنح وينهي الحاكم حياته. القلعة تنجو بصعوبة.",
+      "choices": [
+        {
+          "label": "اسند الحاكم الجريح",
+          "emoji": "🤕",
+          "next": "ending_loyal_sacrifice",
+          "color": "primary"
+        }
+      ],
+      "is_ending": false
+    },
+    "ending_loyal_sacrifice": {
+      "text": "لقد أنقذت الحاكم ودعمت بقاءه. على الرغم من أن القلعة دمرت والموارد نضبت، إلا أنك أثبتت أن الولاء ليس مجرد كلمة تقال في ولائم السلام، بل فعل يختبر بالدم. ستظل الساقي الموثوق، واليد اليمنى المخفية لسيدك. هل كان هذا الولاء يستحق التضحية بكل شيء آخر؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending"
+    },
+    "ending_ashes_king": {
+      "text": "القلعة تحترق، والجميع ماتوا أو أُسروا. أنت الناجي الوحيد الذي يملك الذهب والحرية. لقد بعت ولاءك لمن يدفع، ثم هربت من الجميع لتنجو بنفسك. أصبحت ملكاً على الرماد، وحيداً مع ذكرياتك. هل يمكن للذهب أن يشتري لك نوماً هادئاً بعد الآن؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending"
+    },
+    "ending_servants_shield": {
+      "text": "لم تكن بطلاً خارقاً، ولا حاكماً عظيماً، بل خادماً بسيطاً اختار أن يحمي من هم أضعف منه. ضحيت بحياتك لتعيش الخادمات الأبرياء بعيداً عن مجزرة السادة والملوك. سيتذكرن اسمك ويبكونك في صلواتهن. هل هناك نهاية أشرف من هذه؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending"
+    },
+    "ending_shadow_master": {
+      "text": "بدهائك وجمعك للأسرار والسموم، أجبرت الحاكم والجنرال على عقد هدنة خوفاً من فضحك لأسرارهما وتسميمهما معاً. لم تعد مجرد ساقٍ، بل صرت محرك الدمى الذي يحكم من الظلال. الجميع يخشاك سراً. لكن، إلى متى يمكنك الرقص على هذا الحبل المرفوع فوق الهاوية؟",
+      "choices": [],
+      "is_ending": true,
+      "ending_type": "ending"
+    }
+  },
+  "category": "الحاكم والشعب",
+  "world": "past"
+}

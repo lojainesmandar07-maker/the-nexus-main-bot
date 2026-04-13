@@ -868,7 +868,8 @@
           "emoji": "🪓",
           "next": "kill_king",
           "color": "primary",
-          "points_reward": 2
+          "points_reward": 2,
+          "requires_flag": "curse_weakened"
         },
         {
           "label": "اعرض عليه الاستسلام",

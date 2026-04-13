@@ -215,7 +215,7 @@
           "sets_flag": "flag_saw_the_seal"
         },
         {
-          "label": "لا تلمسها قد تكون فخاً",
+          "label": "لا تلمسها، إنها فخ",
           "emoji": "🚫",
           "next": "leave_spy_message"
         }

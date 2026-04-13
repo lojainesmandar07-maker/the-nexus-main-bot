@@ -755,7 +755,7 @@
           "label": "ابتز الوزير بالوثائق",
           "emoji": "📜",
           "next": "blackmail_minister",
-          "required_points": 10
+          "required_points": 5
         },
         {
           "label": "أحرق الوثائق واحم الوزير",

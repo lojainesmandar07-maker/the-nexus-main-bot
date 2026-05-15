@@ -1,0 +1,1059 @@
+{
+  "id": "p_silent_servant",
+  "title": "خادم الظلال",
+  "world": "الماضي",
+  "world_type": "past",
+  "category": "جواسيس التاريخ",
+  "summary": "أنت خادم منسي في قصر الوالي. الليلة هي ليلة المأدبة الكبرى، والمتمردون ينتظرون إشارتك. بين ولائك القديم وتعاطفك المفاجئ، سيتحدد مصير المدينة.",
+  "difficulty": "صعب جداً",
+  "estimated_length": "طويلة جداً",
+  "theme": "جواسيس التاريخ",
+  "game_mode": "single",
+  "perspective": {
+    "id": "persp_servant",
+    "label": "الخادم المنسي",
+    "emoji": "🍷",
+    "description": "عبد يعتبره الجميع أصم وأبكم، لكنه يرى ويسمع كل شيء.",
+    "start_node": "start"
+  },
+  "nodes": {
+    "start": {
+      "text": "يقف القصر على حافة الانفجار. الليلة هي المأدبة الكبرى. في جيبك زجاجة سم من المتمردين. كبير الخدم يصرخ مطالباً بإحضار النبيذ المعتّق. يجب أن تستعد.",
+      "choices": [
+        {
+          "label": "اذهب للقبو بهدوء",
+          "next": "phase2_cellar",
+          "points_reward": 1,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اسرق سكيناً من المطبخ",
+          "next": "phase2_kitchen_thief",
+          "sets_flag": "has_knife",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase2_kitchen_thief": {
+      "text": "تخفي السكين في كمك. الطباخ يلاحظ اختفاءها وينظر إليك بشك. يتوعدك بالعقاب لاحقاً.",
+      "choices": [
+        {
+          "label": "انسحب للقبو",
+          "next": "phase3_cellar_late",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "تجاهله واذهب",
+          "next": "phase3_cellar_late",
+          "sets_flag": "cook_suspicious",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase2_cellar": {
+      "text": "تنزل للقبو. تسمع حارسين يتحدثان عن كمين للمتمردين الليلة.",
+      "choices": [
+        {
+          "label": "استرق السمع",
+          "next": "phase3_eavesdrop",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اجمع النبيذ",
+          "next": "phase3_wine_ready",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase3_cellar_late": {
+      "text": "بسبب تأخرك، تجد القبو مليئاً بالحرس. لا يمكنك استراق السمع براحة.",
+      "choices": [
+        {
+          "label": "خذ النبيذ واصعد",
+          "next": "phase4_stairs",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "حاول التسلل بينهم",
+          "next": "phase4_stairs_spotted",
+          "sets_flag": "guards_suspicious",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase3_eavesdrop": {
+      "text": "تكتشف أن الوالي يعلم بخطة التمرد. المتمردون يمشون نحو حتفهم.",
+      "choices": [
+        {
+          "label": "اصعد بالنبيذ",
+          "next": "phase4_stairs",
+          "sets_flag": "knows_ambush",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اكتب رسالة تحذير",
+          "next": "phase4_stairs_delayed",
+          "sets_flag": "warned_rebels",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase3_wine_ready": {
+      "text": "تجمع زجاجات النبيذ المعتّق وتضعها في السلة. أنت جاهز.",
+      "choices": [
+        {
+          "label": "اصعد السلالم",
+          "next": "phase4_stairs",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "دس السم الآن",
+          "next": "phase4_stairs",
+          "sets_flag": "wine_poisoned",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase4_stairs": {
+      "text": "تصعد السلالم. تصادف قائد الحرس. يوقفك ويسألك عن سبب تعرقك.",
+      "choices": [
+        {
+          "label": "أشر لحرارة القبو",
+          "next": "phase5_hallway",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "تظاهر بالغباء",
+          "next": "phase5_hallway_suspicious",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase4_stairs_spotted": {
+      "text": "تصعد، لكن قائد الحرس يمسكك من كتفك. 'لقد كنت تتلصص في القبو، أيها الجرذ'.",
+      "choices": [
+        {
+          "label": "انحنِ بخضوع",
+          "next": "phase5_hallway_suspicious",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "أظهر سلة النبيذ",
+          "next": "phase5_hallway",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase4_stairs_delayed": {
+      "text": "تضع الرسالة تحت باب خفي، لكنك تتأخر. القائد يوبخك بقسوة عند السلم.",
+      "choices": [
+        {
+          "label": "تقبل التوبيخ",
+          "next": "phase5_hallway",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "أسرع للقاعة",
+          "next": "phase5_hallway_suspicious",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase5_hallway": {
+      "text": "أنت في الممر المؤدي للقاعة. باب مكتب الوالي مفتوح قليلاً. لا أحد في الجوار.",
+      "choices": [
+        {
+          "label": "ادخل المكتب للسرقة",
+          "next": "phase6_study",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "توجه للقاعة مباشرة",
+          "next": "phase6_feast",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase5_hallway_suspicious": {
+      "text": "أنت في الممر، لكنك تشعر بعيون تراقبك. المضي للمكتب قد يكون خطراً.",
+      "choices": [
+        {
+          "label": "خاطر وادخل المكتب",
+          "next": "phase6_study_caught",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "توجه للقاعة بأمان",
+          "next": "phase6_feast",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase6_study": {
+      "text": "تتسلل للمكتب. تجد الختم الذهبي ورسالة تكشف أن المتمردين باعوك للوالي.",
+      "choices": [
+        {
+          "label": "خذ الختم فقط",
+          "next": "phase7_feast_late",
+          "sets_flag": "has_seal",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "خذ الختم والرسالة",
+          "next": "phase7_feast_late",
+          "sets_flag": "knows_betrayal",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase6_study_caught": {
+      "text": "بمجرد دخولك، يظهر حارس. يضربك بقوة ويأخذك للقاعة كخادم معاقب.",
+      "choices": [
+        {
+          "label": "تحمل الضرب",
+          "next": "phase7_feast_beaten",
+          "sets_flag": "injured",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "قاوم قليلاً",
+          "next": "phase7_feast_beaten",
+          "sets_flag": "injured_badly",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase6_feast": {
+      "text": "تدخل قاعة المأدبة. الأضواء الساطعة والضحكات. الوالي يجلس على عرشه، وابنه الصغير بجانبه.",
+      "choices": [
+        {
+          "label": "اسكب للوالي بهدوء",
+          "next": "phase7_serving",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "دس السم في كأسه",
+          "next": "phase7_serving_poison",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase7_feast_late": {
+      "text": "تدخل القاعة متأخراً. كبير الخدم يرمقك بغضب ويدفعك لخدمة طاولة الوالي فوراً.",
+      "choices": [
+        {
+          "label": "اسكب للوالي",
+          "next": "phase8_governor_chat",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اسكب لابنه أولاً",
+          "next": "phase8_child_chat",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase7_feast_beaten": {
+      "text": "تدخل وأنت تنزف. الوالي يضحك ويسخر من 'الخادم الأخرق'. يطلب منك صب النبيذ.",
+      "choices": [
+        {
+          "label": "اسكب ويدك ترتجف",
+          "next": "phase8_governor_chat",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "دس السم انتقاماً",
+          "next": "phase8_poison_attempt",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase7_serving": {
+      "text": "تسكب النبيذ النظيف. الوالي ينظر إليك للحظة، وكأنه يقرأ أفكارك. 'هل تحب عملك هنا؟'",
+      "choices": [
+        {
+          "label": "أومئ برأسك بإيجاب",
+          "next": "phase8_governor_chat",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "لا تقم بأي حركة",
+          "next": "phase8_silence",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase7_serving_poison": {
+      "text": "تدس السم بخفة. الوالي يرفع الكأس، لكن ابنه يطلب رشفة.",
+      "choices": [
+        {
+          "label": "دعه يشرب",
+          "next": "phase8_child_dies",
+          "reputation": "ruthless",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "أسقط الكأس",
+          "next": "phase8_cup_smashed",
+          "reputation": "guardian",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase8_governor_chat": {
+      "text": "الوالي يهمس: 'أعرف من أرسلك. لكنهم خونة. ساعدني الليلة وستكون حراً'.",
+      "choices": [
+        {
+          "label": "اقبل عرضه",
+          "next": "phase9_chaos_starts",
+          "sets_flag": "governor_ally",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "تظاهر بعدم الفهم",
+          "next": "phase9_chaos_starts",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase8_child_chat": {
+      "text": "تسكب للطفل. يبتسم لك ويعطيك قطعة حلوى. تشعر بوخز في ضميرك.",
+      "choices": [
+        {
+          "label": "ابتسم له قليلاً",
+          "next": "phase9_chaos_starts",
+          "sets_flag": "child_friend",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "تجاهله ببرود",
+          "next": "phase9_chaos_starts",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase8_poison_attempt": {
+      "text": "تسكب السم. القائد يلاحظ قطرة سوداء. يجبرك على الشرب أولاً.",
+      "choices": [
+        {
+          "label": "اشرب وتظاهر",
+          "next": "phase9_poisoned_survival",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "ارمه في وجهه",
+          "next": "phase9_dungeon_thrown",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase8_silence": {
+      "text": "صمتك يزعجه. يتجاهلك ويكمل حديثه مع النبلاء. فجأة، تسمع بوق المتمردين من الخارج.",
+      "choices": [
+        {
+          "label": "انظر للنافذة",
+          "next": "phase9_chaos_starts",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "تراجع للظلال",
+          "next": "phase9_chaos_starts",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase8_child_dies": {
+      "text": "الطفل يشرب ويسقط ميتاً. القاعة تنفجر بالصراخ. الوالي يبكي دماً. بوق التمرد يُقرع.",
+      "choices": [
+        {
+          "label": "اهرب للسطح",
+          "next": "phase9_chaos_starts_guilty",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "افتح البوابات",
+          "next": "phase9_gates_open",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase8_cup_smashed": {
+      "text": "تسقط الكأس. الوالي يغضب ويأمر بضربك. لكن البوق يُقرع من الخارج والهجوم يبدأ.",
+      "choices": [
+        {
+          "label": "استغل الفوضى للهرب",
+          "next": "phase9_chaos_starts",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "ابحث عن سلاح",
+          "next": "phase9_chaos_starts_armed",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase9_poisoned_survival": {
+      "text": "تشرب السم. تسقط متألماً، لكنك كنت تأخذ جرعات صغيرة طوال حياتك لبناء مناعة. تنهض بصعوبة أثناء الفوضى.",
+      "choices": [
+        {
+          "label": "ازحف للخارج",
+          "next": "phase10_escape_attempt",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "ابحث عن ترياق",
+          "next": "phase10_find_cure",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase9_dungeon_thrown": {
+      "text": "ترمى في الزنزانة. المعركة تدور في الأعلى. الزنزانة تنهار جزئياً بسبب المنجنيق.",
+      "choices": [
+        {
+          "label": "اخرج من الفجوة",
+          "next": "phase10_escape_attempt",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "حرر السجناء",
+          "next": "phase10_lead_prisoners",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase9_chaos_starts": {
+      "text": "المتمردون يهاجمون القصر. الحرس يشتبكون معهم. الدماء تغطي الأرض. إلى أين تذهب؟",
+      "choices": [
+        {
+          "label": "نحو البوابة",
+          "next": "phase10_gate_battle",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "نحو غرفة الوالي",
+          "next": "phase10_loot_room",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "نحو السطح",
+          "next": "phase10_roof_escape",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase9_chaos_starts_guilty": {
+      "text": "تركض، لكن صورة الطفل الميت تطاردك. المتمردون يكسرون النوافذ.",
+      "choices": [
+        {
+          "label": "ابحث عن القائد المتمرد",
+          "next": "phase10_hunt_leader",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اهرب فقط",
+          "next": "phase10_escape_attempt",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase9_gates_open": {
+      "text": "تصل للبوابة الرئيسية وتفتحها. المتمردون يتدفقون. القائد يبتسم لك بخبث ويرفع سيفه نحوك.",
+      "choices": [
+        {
+          "label": "تفادى الضربة",
+          "next": "phase10_fight_leader",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "ارمه بالسم المتبقي",
+          "next": "phase10_fight_leader",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase9_chaos_starts_armed": {
+      "text": "تلتقط سيفاً من حارس ميت. أنت الآن مسلح وجاهز.",
+      "choices": [
+        {
+          "label": "قاتل الحرس",
+          "next": "phase10_gate_battle",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "قاتل المتمردين",
+          "next": "phase10_defend_palace",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase10_escape_attempt": {
+      "text": "تركض في الممرات المحترقة. تجد مخرجاً سرياً، لكنه مقفل يتطلب قوة لفتحه.",
+      "choices": [
+        {
+          "label": "اكسر الباب",
+          "next": "phase11_final_push",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "ابحث عن طريق آخر",
+          "next": "phase11_fire_trap",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase10_find_cure": {
+      "text": "تصل لمختبر القصر. تجد زجاجة ترياق وتجرعها. تسترد قوتك، لكن النيران تحاصرك.",
+      "choices": [
+        {
+          "label": "اقفز من النافذة",
+          "next": "phase11_final_push",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "شق طريقك بالنار",
+          "next": "phase11_fire_trap",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase10_lead_prisoners": {
+      "text": "تقود السجناء الغاضبين. يمزقون كل حارس ومتمرد في طريقهم.",
+      "choices": [
+        {
+          "label": "قدهم لخارج المدينة",
+          "next": "phase11_final_push",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "قدهم لعرش الوالي",
+          "next": "phase11_mob_rule",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase10_gate_battle": {
+      "text": "معركة طاحنة عند البوابة. قائد الحرس وقائد المتمردين يتبارزان. كلاهما خائن.",
+      "choices": [
+        {
+          "label": "اقتل القائد المتمرد",
+          "next": "phase11_kill_rebel",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اقتل قائد الحرس",
+          "next": "phase11_kill_guard",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "دعهما يتقاتلان",
+          "next": "phase11_sneak_past",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase10_loot_room": {
+      "text": "تدخل غرفة الوالي. تجد صرة ذهب، لكن زوجته تنتظر هناك تحمل قوساً.",
+      "choices": [
+        {
+          "label": "استسلم",
+          "next": "phase11_wife_mercy",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اندفع نحوها",
+          "next": "phase11_wife_duel",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase10_roof_escape": {
+      "text": "السطح البارد. ترى المدينة كلها تحترق تحتك.",
+      "choices": [
+        {
+          "label": "اقفز للخندق المائي",
+          "next": "phase11_final_push",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "انتظر النهاية هنا",
+          "next": "phase11_wait_end",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase10_hunt_leader": {
+      "text": "تجد القائد المتمرد ينهب الخزينة. 'انتهى دورك' يقولها ويرفع خنجره.",
+      "choices": [
+        {
+          "label": "ارمه بالسكين",
+          "next": "phase11_kill_rebel",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "هاجمه بيديك",
+          "next": "phase11_fight_leader_bare",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase10_fight_leader": {
+      "text": "تتفادى ضربته الغادرة. الخيانة تملأ قلبه. تدرك أنه لا ينوي ترك شهود.",
+      "choices": [
+        {
+          "label": "اطرحه أرضاً",
+          "next": "phase11_kill_rebel",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اهرب منه",
+          "next": "phase11_final_push",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase10_defend_palace": {
+      "text": "تقاتل المتمردين بشراسة. الوالي يراك من شرفته ويومئ لك باحترام.",
+      "choices": [
+        {
+          "label": "استمر بالدفاع",
+          "next": "phase11_governor_victory",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "انسحب للداخل",
+          "next": "phase11_sneak_past",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_final_push": {
+      "text": "تصل أخيراً إلى أسوار المدينة الخارجية. الفجر يبزغ على خراب هائل. أنت حر، لكنك تتنفس الرماد.",
+      "choices": [
+        {
+          "label": "اخرج للمجهول",
+          "next": "ending_success_sacrifice",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اقفز للخندق",
+          "next": "death_drowned",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_fire_trap": {
+      "text": "النيران تلتهم الممر الذي اخترته. الدخان يعمي عينيك ولا تجد مخرجاً.",
+      "choices": [
+        {
+          "label": "استسلم للنار",
+          "next": "death_fire_trap",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "حاول اختراقها",
+          "next": "death_fire_trap",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_mob_rule": {
+      "text": "السجناء يحتلون قاعة العرش. يعلنونك زعيماً لمدينة الخراب. الفوضى ستحكم الآن.",
+      "choices": [
+        {
+          "label": "اجلس على العرش",
+          "next": "ending_incomplete_victory",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "ارفض العرش",
+          "next": "death_ambush",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_kill_rebel": {
+      "text": "يموت الخائن المتمرد. بلا قائد، ينهار التمرد وتنجو المدينة من الإبادة.",
+      "choices": [
+        {
+          "label": "تلاشى في الليل",
+          "next": "ending_incomplete_victory",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اظهر الختم",
+          "next": "ending_secret_ruler",
+          "required_points": 2,
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_kill_guard": {
+      "text": "يسقط قائد الحرس. المتمردون يكتسحون القصر ويبدأون بذبح الجميع.",
+      "choices": [
+        {
+          "label": "اهرب بعيداً",
+          "next": "ending_incomplete_victory",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "ابحث عن ذهب",
+          "next": "death_betrayal",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_sneak_past": {
+      "text": "تتسلل متجاوزاً الجميع. لا أحد يلاحظك، فأنت مجرد خادم أبكم منسي.",
+      "choices": [
+        {
+          "label": "اغادر المدينة",
+          "next": "ending_success_sacrifice",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اسرق حصاناً",
+          "next": "death_arrow_rain",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_wife_mercy": {
+      "text": "تركع وترفع يديك. تتركك وتأخذ الذهب لتهرب. تجد نفسك وحيداً في القصر المحترق.",
+      "choices": [
+        {
+          "label": "اهرب",
+          "next": "ending_success_sacrifice",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_wife_duel": {
+      "text": "تندفع نحوها، لكن السهم يخترق صدرك. تموت في غرفة مليئة بالذهب.",
+      "choices": [
+        {
+          "label": "سقوط أخير",
+          "next": "death_wife_duel",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "قاوم السهم",
+          "next": "death_exhaustion",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_wait_end": {
+      "text": "تجلس على السطح. الدخان يرتفع. لقد سئمت من القتال. النيران تصل إليك ببطء.",
+      "choices": [
+        {
+          "label": "أغمض عينيك",
+          "next": "ending_honorable_defeat",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "حاول النهوض",
+          "next": "death_crushed",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_fight_leader_bare": {
+      "text": "تقاتله بيديك العاريتين. يطعنك عدة طعنات، لكنك تكسر عنقه قبل أن تموت. لقد أنقذت المدينة.",
+      "choices": [
+        {
+          "label": "تلفظ أنفاسك",
+          "next": "ending_honorable_defeat",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "phase11_governor_victory": {
+      "text": "ينتصر الوالي. يقترب منك ويمنحك حريتك وكيساً من الذهب مكافأة لولائك.",
+      "choices": [
+        {
+          "label": "ارحل بسلام",
+          "next": "ending_incomplete_victory",
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        },
+        {
+          "label": "اظهر الدليل",
+          "next": "ending_secret_ruler",
+          "required_points": 2,
+          "points_reward": 0,
+          "color": "primary",
+          "emoji": "🔹"
+        }
+      ]
+    },
+    "death_fire_trap": {
+      "text": "النيران تلتهمك بلا رحمة. أحياناً يكون المخرج الوحيد هو الأصعب، والبحث عن طريق سهل هو الفخ.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "death_wife_duel": {
+      "text": "تنزف على سجاد الوالي الفاخر. لقد استهنت بها لأنها امرأة، وهذا الخطأ كلفك حياتك.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "death_betrayal": {
+      "text": "في النهاية، الخيانة تدفع ثمن الخيانة. تموت وحيداً في القصر البارد.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "death_crushed": {
+      "text": "ينهار السقف المشتعل فوقك. القصور لا ترحم من بداخلها.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "death_drowned": {
+      "text": "الخندق المائي عميق وبارد، وثيابك ثقيلة. تغرق وأنت تحاول الوصول للحرية.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "death_arrow_rain": {
+      "text": "وابل من السهام يسقط من السماء المظلمة. لا مفر.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "death_exhaustion": {
+      "text": "تسقط من الإرهاق الدامي. تنتهي رحلتك هنا.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "death_ambush": {
+      "text": "كمين أخير ينهي حياتك قبل خطوة من البوابة.",
+      "is_ending": true,
+      "ending_type": "death",
+      "choices": []
+    },
+    "ending_success_sacrifice": {
+      "text": "تخرج من المدينة المحترقة حياً. نجوت، لكن روحك مشوهة والندوب تملأ جسدك. تركت خلفك المتمردين والوالي ليحرقوا بعضهم البعض. هل كانت حريتك تستحق مشاهدة مدينتك تحترق؟",
+      "is_ending": true,
+      "ending_type": "success",
+      "choices": []
+    },
+    "ending_incomplete_victory": {
+      "text": "تنتهي الليلة، وتتغير السلطة أو تبقى كما هي. لقد ساهمت في النتيجة ونجوت، لكنك تعلم أن الدورة ستتكرر، والطغيان سيأخذ وجهاً جديداً. هل تعتقد أن شيئاً تغير حقاً؟",
+      "is_ending": true,
+      "ending_type": "neutral",
+      "choices": []
+    },
+    "ending_honorable_defeat": {
+      "text": "تموت في الظلام، لكنك تموت وأنت تحمي من لا يستطيع حماية نفسه، أو تقضي على الخائن الأكبر. لم يعرف أحد اسمك، ولم يكتب عنك التاريخ. هل تكفيك تضحيتك المجهولة في عالم لا يرحم؟",
+      "is_ending": true,
+      "ending_type": "failure",
+      "choices": []
+    },
+    "ending_secret_ruler": {
+      "text": "تتحدث لأول مرة بصوت واثق. ترفع الختم والدلائل التي جمعتها، وتستغل دهاءك للسيطرة على الفوضى. الحرس والمتمردون يخضعون لذكائك بعد موت قادتهم. أنت الآن حاكم الرماد. لكن إلى متى سيدوم عرشك؟",
+      "is_ending": true,
+      "ending_type": "success",
+      "choices": []
+    }
+  }
+}
